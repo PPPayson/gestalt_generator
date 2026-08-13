@@ -1,15 +1,15 @@
-"""Generative pair proposal via the Modal-hosted LLM. Merges into candidate files (no clobber)."""
+"""Generative pair proposal via a Proposer provider. Merges into candidate files (no clobber)."""
 import json, re
 from .utils import DATA
 
 
-def run(llm, cfg, metas):
+def run(proposer, cfg, metas):
     n = cfg["propose"]["n_per"]
     for natural in cfg["propose"]["natural"]:
         fn = DATA / ("candidates_nat.json" if natural else "candidates_any.json")
         cand = json.loads(fn.read_text()) if fn.exists() else {}
         for meta in metas:
-            resp = llm.propose.remote(meta["illusion"], meta["inducer_shape"], natural, n)
+            resp = proposer.propose(meta["illusion"], meta["inducer_shape"], natural, n)
             mt = re.search(r"\[.*\]", resp, re.S)
             try:
                 items = json.loads(mt.group(0)) if mt else []

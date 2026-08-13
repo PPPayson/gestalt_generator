@@ -6,7 +6,7 @@ from .utils import SIL, OUT, sid, append_manifest
 from . import gt
 
 
-def run(sdxl, cfg, metas, pairs):
+def run(provider, cfg, metas, pairs):
     out = OUT / "cn"; out.mkdir(parents=True, exist_ok=True); k = 0
     for meta in metas:
         sil_png = (SIL / f"{meta['stem']}.png").read_bytes()
@@ -14,7 +14,7 @@ def run(sdxl, cfg, metas, pairs):
             o, b, nat = it["object"], it["background"], it.get("natural", True)
             prompt = (f"top-down realistic photograph of {o}s arranged on {b}, "
                       f"natural light, sharp focus, high contrast")
-            img = sdxl.dress_controlnet.remote(sil_png, prompt, 0.7, seed=k)
+            img = provider.dress(sil_png, prompt, 0.7, seed=k)
             i = sid(meta["stem"], o, "controlnet", "perfect")
             (out / f"{i}.png").write_bytes(img)
             append_manifest([i, meta["stem"], o, b, "controlnet", "perfect", nat])

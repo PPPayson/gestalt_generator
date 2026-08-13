@@ -1,17 +1,20 @@
-"""One Modal app for the perceptual-grouping stimulus pipeline.
-  LLM  cls  -> Qwen2.5-7B proposes object/background pairs (source=propose only)
-  SDXL cls  -> SDXL + canny-ControlNet + rembg: object cutouts, backgrounds, ControlNet renders
-  run()     -> local entrypoint that orchestrates every stage from a YAML config.
+"""Deployable Modal app for the `modal_hf` provider (maintainer's access point).
 
-Usage:  modal run app.py::run --config configs/example.yaml      (or: python run.py configs/example.yaml)
+Deploy once:   modal deploy app.py
+Then set provider: modal_hf in your config; pipeline/providers/modal_hf.py calls these classes by
+name via modal.Cls.from_name. The rest of the repo never imports modal.
+
+Model ids are class parameters (swappable per config); weights lazy-load in @modal.enter into a
+Volume (any model id works, no image rebuild). Gated models: attach a Secret holding HF_TOKEN.
 """
-import io, modal
+import io, os, modal
 
+# Defaults (kept in sync with pipeline/providers/base.py). Self-contained so the container needs
+# only this file — the `pipeline` package is NOT shipped into the Modal image.
 SDXL_MODEL = "stabilityai/stable-diffusion-xl-base-1.0"
-CN = "diffusers/controlnet-canny-sdxl-1.0"
+CN_MODEL = "diffusers/controlnet-canny-sdxl-1.0"
 LLM_MODEL = "Qwen/Qwen2.5-7B-Instruct"
 CACHE = "/cache"
-
 sdxl_vol = modal.Volume.from_name("sdxl-cache", create_if_missing=True)
 u2 = modal.Volume.from_name("u2net-cache", create_if_missing=True)
 llm_vol = modal.Volume.from_name("qwen-cache", create_if_missing=True)
@@ -27,22 +30,11 @@ sdxl_image = (
     )
     .env({"U2NET_HOME": "/models"})
 )
-def _dl_sdxl():
-    from huggingface_hub import snapshot_download
-    snapshot_download(SDXL_MODEL, cache_dir=CACHE, allow_patterns=["*.json", "*.txt", "*fp16*", "*.model"])
-    snapshot_download(CN, cache_dir=CACHE, allow_patterns=["*.json", "*.safetensors"])
-    from rembg import new_session; new_session("u2net")
-sdxl_image = sdxl_image.run_function(_dl_sdxl, volumes={CACHE: sdxl_vol, "/models": u2})
-
 llm_image = (
     modal.Image.debian_slim(python_version="3.11")
     .pip_install("torch==2.4.1", "transformers==4.44.2", "accelerate==0.34.2",
                  "safetensors==0.8.0", "huggingface_hub==0.36.2", "numpy==2.4.6")
 )
-def _dl_llm():
-    from huggingface_hub import snapshot_download
-    snapshot_download(LLM_MODEL, cache_dir=CACHE, allow_patterns=["*.json", "*.safetensors", "*.txt", "*.model"])
-llm_image = llm_image.run_function(_dl_llm, volumes={CACHE: llm_vol})
 
 app = modal.App("perceptual-grouping")
 
@@ -50,15 +42,25 @@ app = modal.App("perceptual-grouping")
 @app.cls(gpu="L4", image=sdxl_image, volumes={CACHE: sdxl_vol, "/models": u2},
          timeout=1800, max_containers=8)
 class SDXL:
+    model_id: str = modal.parameter(default=SDXL_MODEL)
+    cn_id: str = modal.parameter(default=CN_MODEL)
+
     @modal.enter()
     def load(self):
         import torch
+        from huggingface_hub import snapshot_download
         from diffusers import StableDiffusionXLControlNetPipeline, ControlNetModel
+        tok = os.environ.get("HF_TOKEN")                 # present only if a Secret is attached
+        # lazy, cached in Volume; fp16 patterns keep the default (SDXL) download lean
+        snapshot_download(self.model_id, cache_dir=CACHE, token=tok,
+                          allow_patterns=["*.json", "*.txt", "*fp16*", "*.model"])
+        snapshot_download(self.cn_id, cache_dir=CACHE, token=tok,
+                          allow_patterns=["*.json", "*.safetensors"])
         self.torch = torch
-        cn = ControlNetModel.from_pretrained(CN, torch_dtype=torch.float16,
+        cn = ControlNetModel.from_pretrained(self.cn_id, torch_dtype=torch.float16,
                                              use_safetensors=True, cache_dir=CACHE)
         self.pipe = StableDiffusionXLControlNetPipeline.from_pretrained(
-            SDXL_MODEL, controlnet=cn, torch_dtype=torch.float16, variant="fp16",
+            self.model_id, controlnet=cn, torch_dtype=torch.float16, variant="fp16",
             use_safetensors=True, cache_dir=CACHE).to("cuda")
         self.pipe.watermark = None
 
@@ -70,22 +72,22 @@ class SDXL:
         ).images[0]
 
     @modal.method()
-    def gen_object(self, prompt, seed=0):
+    def gen_object(self, name, seed=0):
         from PIL import Image
         from rembg import remove
         blank = Image.new("RGB", (1024, 1024), "white")
         img = self._run(
-            f"top-down product photo of one {prompt}, centered on a pure flat white seamless "
+            f"top-down product photo of one {name}, centered on a pure flat white seamless "
             f"background, evenly lit, realistic, sharp",
             "table, plate, shadow, text, multiple", blank, 0.0, 28, seed)
         b = io.BytesIO(); remove(img).save(b, format="PNG"); return b.getvalue()
 
     @modal.method()
-    def gen_bg(self, prompt, seed=0):
+    def gen_bg(self, name, seed=0):
         from PIL import Image
         blank = Image.new("RGB", (1024, 1024), "white")
         img = self._run(
-            f"top-down flat-lay photo of a {prompt}, even soft light, plain, nothing on it",
+            f"top-down flat-lay photo of a {name}, even soft light, plain, nothing on it",
             "objects, food, clutter, text", blank, 0.0, 28, seed)
         b = io.BytesIO(); img.save(b, format="PNG"); return b.getvalue()
 
@@ -102,14 +104,20 @@ class SDXL:
 
 @app.cls(gpu="L4", image=llm_image, volumes={CACHE: llm_vol}, timeout=1800)
 class LLM:
+    model_id: str = modal.parameter(default=LLM_MODEL)
+
     @modal.enter()
     def load(self):
         import torch
+        from huggingface_hub import snapshot_download
         from transformers import AutoModelForCausalLM, AutoTokenizer
+        tok = os.environ.get("HF_TOKEN")
+        snapshot_download(self.model_id, cache_dir=CACHE, token=tok,
+                          allow_patterns=["*.json", "*.safetensors", "*.txt", "*.model"])
         self.torch = torch
-        self.tok = AutoTokenizer.from_pretrained(LLM_MODEL, cache_dir=CACHE)
+        self.tok = AutoTokenizer.from_pretrained(self.model_id, cache_dir=CACHE)
         self.model = AutoModelForCausalLM.from_pretrained(
-            LLM_MODEL, torch_dtype=torch.bfloat16, cache_dir=CACHE).to("cuda")
+            self.model_id, torch_dtype=torch.bfloat16, cache_dir=CACHE).to("cuda")
 
     @modal.method()
     def propose(self, illusion, inducer_shape, natural=True, n=12):
@@ -135,32 +143,3 @@ class LLM:
         ids = self.tok([text], return_tensors="pt").to("cuda")
         out = self.model.generate(**ids, max_new_tokens=900, do_sample=True, temperature=0.9, top_p=0.9)
         return self.tok.decode(out[0][ids.input_ids.shape[1]:], skip_special_tokens=True)
-
-
-@app.local_entrypoint()
-def run(config: str = "configs/example.yaml"):
-    from pipeline import (config as C, silhouettes, propose, assets, validate,
-                          pairs as P, dress_composite, dress_controlnet, contact)
-    from pipeline.utils import load_all_candidates, DATA
-    cfg = C.load(config)
-    print(f"== {cfg['name']} : pairs.source={cfg['pairs']['source']} ==")
-    metas = silhouettes.build(cfg)
-    sdxl = SDXL()
-    if cfg["pairs"]["source"] == "propose":
-        propose.run(LLM(), cfg, metas)
-        cand = load_all_candidates()
-        objs = {it["object"] for v in cand.values() for it in v}
-        bgs = {it["background"] for v in cand.values() for it in v}
-        assets.ensure(sdxl, objs, bgs, cfg["assets"]["best_of"])
-        prs = validate.run(cfg, metas)
-    else:
-        prs = P.resolve(cfg, metas)
-        objs, bgs = P.needed(prs)
-        assets.ensure(sdxl, objs, bgs, cfg["assets"]["best_of"])
-    if "composite" in cfg["dress"]["backends"]:
-        dress_composite.run(cfg, metas, prs)
-    if "controlnet" in cfg["dress"]["backends"]:
-        dress_controlnet.run(sdxl, cfg, metas, prs)
-    if cfg["output"]["contact_sheet"]:
-        contact.run(cfg)
-    print(f"DONE -> {DATA / 'out'} (stimuli), {DATA / 'gt'} (ground truth), {DATA / 'manifest.csv'}")

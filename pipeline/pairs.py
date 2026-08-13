@@ -1,5 +1,5 @@
 """Resolve object/background pairs from the shipped catalog or an explicit list (no LLM run)."""
-import json, yaml
+import json, random, yaml
 from .utils import DATA, ROOT
 
 CATALOG = ROOT / "pipeline" / "pairs_catalog.yaml"
@@ -20,7 +20,12 @@ def resolve(cfg, metas):
             if f.get("objects") and it["object"] not in f["objects"]:
                 return False
             return True
-        items = sorted([i for i in cat if ok(i)], key=lambda x: -x.get("contrast", 0))
+        items = [i for i in cat if ok(i)]
+        if cfg["pairs"].get("select") == "random":       # random N textures (seeded)
+            items = random.Random(cfg["pairs"].get("seed", 0)).sample(
+                items, min(cfg["pairs"]["n_per_silhouette"], len(items)))
+        else:                                             # highest contrast first
+            items = sorted(items, key=lambda x: -x.get("contrast", 0))
     items = items[: cfg["pairs"]["n_per_silhouette"]]
     pairs = {m["stem"]: [dict(i) for i in items] for m in metas}
     (DATA / "pairs.json").write_text(json.dumps(pairs, indent=2))

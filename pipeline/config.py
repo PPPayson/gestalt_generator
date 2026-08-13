@@ -5,7 +5,20 @@ DEFAULTS = {
     "name": "benchmark",
     "silhouettes": [{"type": "kanizsa", "params": {"n_sides": 3}},
                     {"type": "kanizsa", "params": {"n_sides": 4}}],
+    # Generation models. provider = builtin name (hf_api | modal_hf) OR "module:Class" (bring your own).
+    "models": {
+        "image": {"provider": "hf_api",
+                  "model": "stabilityai/stable-diffusion-xl-base-1.0",
+                  "controlnet": "diffusers/controlnet-canny-sdxl-1.0",
+                  "gpu": "L4", "secret": None, "params": {}},
+        "proposer": {"provider": "hf_api",
+                     "model": "Qwen/Qwen2.5-7B-Instruct",
+                     "gpu": "L4", "secret": None, "params": {}},
+    },
+    "credentials": {"secret": None},        # Modal secret name (modal_hf, gated models); HF via env HF_TOKEN
     "pairs": {"source": "catalog",          # catalog | propose | explicit
+              "select": "contrast",         # contrast | random
+              "seed": 0,
               "n_per_silhouette": 8,
               "filter": {"natural": None, "min_contrast": 0.0, "objects": None},
               "explicit": []},              # [{object, background, natural}] when source=explicit

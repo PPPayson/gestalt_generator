@@ -1,6 +1,13 @@
 #!/usr/bin/env python
-"""Thin CLI: `python run.py configs/example.yaml` -> `modal run app.py::run --config ...`"""
-import sys, subprocess
+"""Run a benchmark from a config. Pure Python — never imports modal.
 
-cfg = sys.argv[1] if len(sys.argv) > 1 else "configs/example.yaml"
-sys.exit(subprocess.run(["modal", "run", "app.py::run", "--config", cfg]).returncode)
+    python run.py configs/example.yaml
+
+The generation provider is chosen in the config (models.image.provider / models.proposer.provider).
+Default is hf_api (pure HuggingFace). modal_hf is the maintainer's option and self-contains Modal
+(run `modal deploy app.py` once first)."""
+import sys
+from pipeline import config as C, orchestrate
+
+cfg = C.load(sys.argv[1] if len(sys.argv) > 1 else "configs/example.yaml")
+orchestrate.run(cfg)

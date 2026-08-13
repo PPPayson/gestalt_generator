@@ -1,0 +1,30 @@
+# 100 examples = 10 random gestalt silhouettes x 10 random textures, generated on Modal (maintainer).
+#   modal deploy app.py        # once
+#   python run.py configs/gen100.yaml
+name: gen100
+
+silhouettes:
+  - type: gestalt
+    params: {mode: existing, n: 10, seed: 0}
+
+models:
+  image:    {provider: modal_hf, model: "stabilityai/stable-diffusion-xl-base-1.0",
+             controlnet: "diffusers/controlnet-canny-sdxl-1.0", gpu: "L4", secret: null}
+  proposer: {provider: modal_hf, model: "Qwen/Qwen2.5-7B-Instruct", gpu: "L4", secret: null}
+
+pairs:
+  source: catalog
+  select: random          # 10 random textures
+  seed: 0
+  n_per_silhouette: 10
+
+assets:
+  best_of: 3
+
+dress:
+  backends: [composite]   # 10 silhouettes x 10 textures = 100 composites
+  modes: [perfect]
+  shadow: 55
+
+output:
+  contact_sheet: true
