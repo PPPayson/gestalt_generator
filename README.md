@@ -57,14 +57,16 @@ We consider a task where a model, shown a stimulus, must report what is recorded
 
 ```json
 {
-  "condition": "illusory",
+  "id": "stim_bec2bca3aa",
+  "condition": "control",
   "n_inducers": 6,
-  "has_illusion": true,
-  "has_visible_contour": false,
+  "has_illusion": false,
+  "has_visible_contour": true,
   "illusory_shape": "irregular",
+  "polygon_vertices": 3,
   "nonillusory_shapes": {
-    "real_life": ["satellite dish", "satellite dish", "..."],
-    "primitive": ["circle", "circle", "..."]
+    "real_life": ["satellite dish", "satellite dish", "satellite dish", "satellite dish", "satellite dish", "satellite dish"],
+    "primitive": ["circle", "circle", "circle", "circle", "circle", "circle"]
   }
 }
 ```
@@ -75,7 +77,8 @@ Each field states one question the model should answer:
 |---|---|
 | `n_inducers` | how many objects are present |
 | `has_illusion` | whether an illusory figure appears |
-| `illusory_shape` | what the illusory figure is |
+| `illusory_shape` | what the illusory figure is (`irregular` for bezier figures) |
+| `polygon_vertices` | the figure's vertex count — a deterministic shape descriptor |
 | `nonillusory_shapes.real_life` | what the real objects are |
 | `nonillusory_shapes.primitive` | their geometric primitive |
 

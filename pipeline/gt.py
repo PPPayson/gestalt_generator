@@ -30,6 +30,7 @@ def write(stim_id, meta, item, backend, mode, condition="illusory"):
         "has_illusion": not control,                        # control shows a real (drawn) contour, not illusory
         "has_visible_contour": control,
         "illusory_shape": _illusory_shape(meta),
+        "polygon_vertices": meta.get("polygon_vertices"),   # deterministic shape descriptor (gestalt)
         "nonillusory_shapes": {
             "real_life": [obj] * n,                         # the dressed object, one per inducer
             "primitive": [primitive] * n,                   # geometric primitive, one per inducer

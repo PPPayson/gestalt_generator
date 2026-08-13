@@ -11,8 +11,8 @@ def test_gt_schema_and_values():
     meta = _meta_kanizsa()
     item = {"object": "moon", "background": "sky", "natural": True}
     g = gt.write("stim_x", meta, item, "composite", "perfect")
-    assert set(g) == {"id", "condition", "n_inducers", "has_illusion",
-                      "has_visible_contour", "illusory_shape", "nonillusory_shapes"}
+    assert set(g) == {"id", "condition", "n_inducers", "has_illusion", "has_visible_contour",
+                      "illusory_shape", "polygon_vertices", "nonillusory_shapes"}
     assert g["id"] == "stim_x" and g["condition"] == "illusory"
     assert g["has_illusion"] is True and g["has_visible_contour"] is False
     assert g["illusory_shape"] == "triangle" and g["n_inducers"] == 3
@@ -35,4 +35,5 @@ def test_gt_gestalt_is_irregular():
     meta = json.loads((SIL / f"{stem}.json").read_text()) | {"stem": stem}
     g = gt.write("stim_g", meta, {"object": "coin", "background": "felt"}, "composite", "perfect")
     assert g["illusory_shape"] == "irregular"
+    assert isinstance(g["polygon_vertices"], int)       # deterministic descriptor for gestalt figures
     assert g["n_inducers"] == len(g["nonillusory_shapes"]["real_life"])

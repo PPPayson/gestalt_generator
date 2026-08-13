@@ -5,6 +5,7 @@
   "has_illusion": true,
   "has_visible_contour": false,
   "illusory_shape": "irregular",
+  "polygon_vertices": 8,
   "nonillusory_shapes": {
     "real_life": [
       "lens",

@@ -5,6 +5,7 @@
   "has_illusion": true,
   "has_visible_contour": false,
   "illusory_shape": "irregular",
+  "polygon_vertices": 6,
   "nonillusory_shapes": {
     "real_life": [
       "Bullseye",
