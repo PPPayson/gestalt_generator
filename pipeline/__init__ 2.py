@@ -1,1 +1,0 @@
-"""Perceptual-grouping stimulus pipeline."""
