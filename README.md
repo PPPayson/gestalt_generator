@@ -115,10 +115,3 @@ their frozen output: the proposed pairs that passed validation (`pipeline/pairs_
 rendered cutouts (`data/assets/`). Every remaining step — which silhouettes and pairs are selected, and
 how objects are composited — is seeded and deterministic, so `seed: 1` yields the identical set on any
 machine. The silhouettes themselves are regenerated with `python3 main.py`.
-
-## Testing
-
-```bash
-pip install -r requirements.txt -r requirements-dev.txt
-pytest        # no network, GPU, or token — all external calls are mocked
-```
