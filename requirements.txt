@@ -1,12 +1,14 @@
-# Core — silhouette generation + orchestration + composite dressing + gt/contact. Pure, no Modal.
-# Enough to run configs/offline.yaml against the shipped catalog assets.
+# Core dependencies: reproduce the benchmark (silhouettes + compositing) and run the tests.
+# Pure Python -- no GPU, API key, or internet needed.
+#
+# Optional extras, installed ONLY if you generate NEW textures with a model provider:
+#   requirements-hf.txt      provider: hf_api    (HuggingFace Inference API)
+#   requirements-modal.txt   provider: modal_hf  (SDXL on a Modal GPU)
+
 PyYAML==6.0.3
 numpy==2.4.6
 scipy==1.18.0
 Pillow==12.3.0
 matplotlib==3.11.1        # main.py (silhouette generator)
 scikit-image==0.26.0      # main.py (polygon2mask)
-
-# Optional extras (install what you use):
-#   requirements-hf.txt      -> provider: hf_api (default, pure HuggingFace generation)
-#   requirements-modal.txt   -> provider: modal_hf (maintainer, deployed Modal app)
+pytest==8.3.4             # tests
