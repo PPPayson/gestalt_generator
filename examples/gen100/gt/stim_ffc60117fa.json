@@ -1,0 +1,20 @@
+{
+  "id": "stim_ffc60117fa",
+  "n_inducers": 4,
+  "has_illusion": true,
+  "illusory_shape": "irregular",
+  "nonillusory_shapes": {
+    "real_life": [
+      "silver coin",
+      "silver coin",
+      "silver coin",
+      "silver coin"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "stim_1018d32095",
+  "n_inducers": 2,
+  "has_illusion": true,
+  "illusory_shape": "irregular",
+  "nonillusory_shapes": {
+    "real_life": [
+      "egg",
+      "egg"
+    ],
+    "primitive": [
+      "circle",
+      "circle"
+    ]
+  }
+}

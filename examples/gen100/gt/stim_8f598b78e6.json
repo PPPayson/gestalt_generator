@@ -1,0 +1,16 @@
+{
+  "id": "stim_8f598b78e6",
+  "n_inducers": 2,
+  "has_illusion": true,
+  "illusory_shape": "irregular",
+  "nonillusory_shapes": {
+    "real_life": [
+      "silver coin",
+      "silver coin"
+    ],
+    "primitive": [
+      "circle",
+      "circle"
+    ]
+  }
+}

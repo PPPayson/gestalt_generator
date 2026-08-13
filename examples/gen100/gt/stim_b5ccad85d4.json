@@ -1,0 +1,20 @@
+{
+  "id": "stim_b5ccad85d4",
+  "n_inducers": 4,
+  "has_illusion": true,
+  "illusory_shape": "irregular",
+  "nonillusory_shapes": {
+    "real_life": [
+      "Space pod",
+      "Space pod",
+      "Space pod",
+      "Space pod"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  }
+}

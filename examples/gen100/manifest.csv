@@ -1,0 +1,101 @@
+id,silhouette,object,background,backend,mode,natural
+stim_9151cce773,img_0.8_7_6_1_0.2,pear,green leafy forest floor,composite,perfect,True
+stim_e531a142ab,img_0.8_7_6_1_0.2,silver coin,pitch-black velvet fabric,composite,perfect,False
+stim_fbbd455e1a,img_0.8_7_6_1_0.2,Bullseye,Dark forest floor,composite,perfect,False
+stim_05858950d9,img_0.8_7_6_1_0.2,Space pod,Deep space,composite,perfect,False
+stim_0c128c3ea6,img_0.8_7_6_1_0.2,coin,charcoal pavement,composite,perfect,False
+stim_5ba2e3c3d9,img_0.8_7_6_1_0.2,gray rock,white sand,composite,perfect,False
+stim_9b35ddca22,img_0.8_7_6_1_0.2,apple,red apple basket,composite,perfect,True
+stim_bc3820bf1c,img_0.8_7_6_1_0.2,blueberry,ivory plate,composite,perfect,False
+stim_f092deb7c5,img_0.8_7_6_1_0.2,egg,white cracked ceramic bowl,composite,perfect,True
+stim_d9587414cf,img_0.8_7_6_1_0.2,candle,dark wood table,composite,perfect,True
+stim_a3830605b8,img_1_6_5_1_0.1,pear,green leafy forest floor,composite,perfect,True
+stim_874a4aa5d9,img_1_6_5_1_0.1,silver coin,pitch-black velvet fabric,composite,perfect,False
+stim_d83500a738,img_1_6_5_1_0.1,Bullseye,Dark forest floor,composite,perfect,False
+stim_9adf059f13,img_1_6_5_1_0.1,Space pod,Deep space,composite,perfect,False
+stim_ece3c71ed1,img_1_6_5_1_0.1,coin,charcoal pavement,composite,perfect,False
+stim_5694ebc733,img_1_6_5_1_0.1,gray rock,white sand,composite,perfect,False
+stim_92eec03701,img_1_6_5_1_0.1,apple,red apple basket,composite,perfect,True
+stim_6d9b46f309,img_1_6_5_1_0.1,blueberry,ivory plate,composite,perfect,False
+stim_6d0385aaf3,img_1_6_5_1_0.1,egg,white cracked ceramic bowl,composite,perfect,True
+stim_dd1edf2aa6,img_1_6_5_1_0.1,candle,dark wood table,composite,perfect,True
+stim_e41d9671c4,img_0.8_8_6_1_0.2,pear,green leafy forest floor,composite,perfect,True
+stim_f385dbee71,img_0.8_8_6_1_0.2,silver coin,pitch-black velvet fabric,composite,perfect,False
+stim_e350ac663d,img_0.8_8_6_1_0.2,Bullseye,Dark forest floor,composite,perfect,False
+stim_41c1c5f193,img_0.8_8_6_1_0.2,Space pod,Deep space,composite,perfect,False
+stim_aa7d49328d,img_0.8_8_6_1_0.2,coin,charcoal pavement,composite,perfect,False
+stim_6bebc142e7,img_0.8_8_6_1_0.2,gray rock,white sand,composite,perfect,False
+stim_9de1ab0ef1,img_0.8_8_6_1_0.2,apple,red apple basket,composite,perfect,True
+stim_d7d9e634a0,img_0.8_8_6_1_0.2,blueberry,ivory plate,composite,perfect,False
+stim_797e53201b,img_0.8_8_6_1_0.2,egg,white cracked ceramic bowl,composite,perfect,True
+stim_71677132f9,img_0.8_8_6_1_0.2,candle,dark wood table,composite,perfect,True
+stim_d9dfc81c39,img_0.4_4_3_0.5_0.4,pear,green leafy forest floor,composite,perfect,True
+stim_48d6c86a70,img_0.4_4_3_0.5_0.4,silver coin,pitch-black velvet fabric,composite,perfect,False
+stim_f8774efe58,img_0.4_4_3_0.5_0.4,Bullseye,Dark forest floor,composite,perfect,False
+stim_956cc69f49,img_0.4_4_3_0.5_0.4,Space pod,Deep space,composite,perfect,False
+stim_69fc363094,img_0.4_4_3_0.5_0.4,coin,charcoal pavement,composite,perfect,False
+stim_accb2ef0b3,img_0.4_4_3_0.5_0.4,gray rock,white sand,composite,perfect,False
+stim_0d2970ca4e,img_0.4_4_3_0.5_0.4,apple,red apple basket,composite,perfect,True
+stim_36a2ff8489,img_0.4_4_3_0.5_0.4,blueberry,ivory plate,composite,perfect,False
+stim_56af46e52f,img_0.4_4_3_0.5_0.4,egg,white cracked ceramic bowl,composite,perfect,True
+stim_8e244fecc9,img_0.4_4_3_0.5_0.4,candle,dark wood table,composite,perfect,True
+stim_c723efa2ef,img_0.8_4_4_0.5_0.2,pear,green leafy forest floor,composite,perfect,True
+stim_8f598b78e6,img_0.8_4_4_0.5_0.2,silver coin,pitch-black velvet fabric,composite,perfect,False
+stim_0077a7a77e,img_0.8_4_4_0.5_0.2,Bullseye,Dark forest floor,composite,perfect,False
+stim_7936fa19ca,img_0.8_4_4_0.5_0.2,Space pod,Deep space,composite,perfect,False
+stim_f521db58c5,img_0.8_4_4_0.5_0.2,coin,charcoal pavement,composite,perfect,False
+stim_3383f891e4,img_0.8_4_4_0.5_0.2,gray rock,white sand,composite,perfect,False
+stim_823c82ffbb,img_0.8_4_4_0.5_0.2,apple,red apple basket,composite,perfect,True
+stim_8ad9846e61,img_0.8_4_4_0.5_0.2,blueberry,ivory plate,composite,perfect,False
+stim_1018d32095,img_0.8_4_4_0.5_0.2,egg,white cracked ceramic bowl,composite,perfect,True
+stim_37692d94f6,img_0.8_4_4_0.5_0.2,candle,dark wood table,composite,perfect,True
+stim_e95341e3b3,img_0_5_5_0.1_0.2,pear,green leafy forest floor,composite,perfect,True
+stim_443ea8b1e9,img_0_5_5_0.1_0.2,silver coin,pitch-black velvet fabric,composite,perfect,False
+stim_edb9ea10d9,img_0_5_5_0.1_0.2,Bullseye,Dark forest floor,composite,perfect,False
+stim_5b78f8776d,img_0_5_5_0.1_0.2,Space pod,Deep space,composite,perfect,False
+stim_33de64f5a6,img_0_5_5_0.1_0.2,coin,charcoal pavement,composite,perfect,False
+stim_f2a3b6996e,img_0_5_5_0.1_0.2,gray rock,white sand,composite,perfect,False
+stim_770ae6d266,img_0_5_5_0.1_0.2,apple,red apple basket,composite,perfect,True
+stim_32f10e24f8,img_0_5_5_0.1_0.2,blueberry,ivory plate,composite,perfect,False
+stim_fb0b0d4016,img_0_5_5_0.1_0.2,egg,white cracked ceramic bowl,composite,perfect,True
+stim_f78be138ab,img_0_5_5_0.1_0.2,candle,dark wood table,composite,perfect,True
+stim_03c6bf87c7,img_0_4_6_0.1_0.4,pear,green leafy forest floor,composite,perfect,True
+stim_2835532dd4,img_0_4_6_0.1_0.4,silver coin,pitch-black velvet fabric,composite,perfect,False
+stim_76b5250423,img_0_4_6_0.1_0.4,Bullseye,Dark forest floor,composite,perfect,False
+stim_964a323705,img_0_4_6_0.1_0.4,Space pod,Deep space,composite,perfect,False
+stim_0d8f6884af,img_0_4_6_0.1_0.4,coin,charcoal pavement,composite,perfect,False
+stim_fc4b776de5,img_0_4_6_0.1_0.4,gray rock,white sand,composite,perfect,False
+stim_5d20376270,img_0_4_6_0.1_0.4,apple,red apple basket,composite,perfect,True
+stim_51cc56574a,img_0_4_6_0.1_0.4,blueberry,ivory plate,composite,perfect,False
+stim_5787918806,img_0_4_6_0.1_0.4,egg,white cracked ceramic bowl,composite,perfect,True
+stim_5c19c3142e,img_0_4_6_0.1_0.4,candle,dark wood table,composite,perfect,True
+stim_241890c569,img_0.8_8_5_0.1_0.1,pear,green leafy forest floor,composite,perfect,True
+stim_2f865b55ae,img_0.8_8_5_0.1_0.1,silver coin,pitch-black velvet fabric,composite,perfect,False
+stim_8c6ab846f2,img_0.8_8_5_0.1_0.1,Bullseye,Dark forest floor,composite,perfect,False
+stim_b5ccad85d4,img_0.8_8_5_0.1_0.1,Space pod,Deep space,composite,perfect,False
+stim_f4b4cde0ae,img_0.8_8_5_0.1_0.1,coin,charcoal pavement,composite,perfect,False
+stim_ffc6ea05b6,img_0.8_8_5_0.1_0.1,gray rock,white sand,composite,perfect,False
+stim_ecd3cfd400,img_0.8_8_5_0.1_0.1,apple,red apple basket,composite,perfect,True
+stim_9828a0aa15,img_0.8_8_5_0.1_0.1,blueberry,ivory plate,composite,perfect,False
+stim_e613d93a92,img_0.8_8_5_0.1_0.1,egg,white cracked ceramic bowl,composite,perfect,True
+stim_bd0b1ebdca,img_0.8_8_5_0.1_0.1,candle,dark wood table,composite,perfect,True
+stim_8998cbe9ee,img_1_7_4_0.5_0.4,pear,green leafy forest floor,composite,perfect,True
+stim_dab7609696,img_1_7_4_0.5_0.4,silver coin,pitch-black velvet fabric,composite,perfect,False
+stim_ef76dec058,img_1_7_4_0.5_0.4,Bullseye,Dark forest floor,composite,perfect,False
+stim_bb5481b1a9,img_1_7_4_0.5_0.4,Space pod,Deep space,composite,perfect,False
+stim_c9663ddaa5,img_1_7_4_0.5_0.4,coin,charcoal pavement,composite,perfect,False
+stim_7b3c57ec7d,img_1_7_4_0.5_0.4,gray rock,white sand,composite,perfect,False
+stim_8f21b12f35,img_1_7_4_0.5_0.4,apple,red apple basket,composite,perfect,True
+stim_657d935bf6,img_1_7_4_0.5_0.4,blueberry,ivory plate,composite,perfect,False
+stim_1cfd0388b9,img_1_7_4_0.5_0.4,egg,white cracked ceramic bowl,composite,perfect,True
+stim_b9968a91e0,img_1_7_4_0.5_0.4,candle,dark wood table,composite,perfect,True
+stim_12a20454e1,img_1_8_5_1_0.2,pear,green leafy forest floor,composite,perfect,True
+stim_ffc60117fa,img_1_8_5_1_0.2,silver coin,pitch-black velvet fabric,composite,perfect,False
+stim_900b7822fc,img_1_8_5_1_0.2,Bullseye,Dark forest floor,composite,perfect,False
+stim_d733d7bc89,img_1_8_5_1_0.2,Space pod,Deep space,composite,perfect,False
+stim_145db6e663,img_1_8_5_1_0.2,coin,charcoal pavement,composite,perfect,False
+stim_4ec7175623,img_1_8_5_1_0.2,gray rock,white sand,composite,perfect,False
+stim_3882de093b,img_1_8_5_1_0.2,apple,red apple basket,composite,perfect,True
+stim_f4816f7df5,img_1_8_5_1_0.2,blueberry,ivory plate,composite,perfect,False
+stim_c4f6f89bf2,img_1_8_5_1_0.2,egg,white cracked ceramic bowl,composite,perfect,True
+stim_9c3276a6d7,img_1_8_5_1_0.2,candle,dark wood table,composite,perfect,True

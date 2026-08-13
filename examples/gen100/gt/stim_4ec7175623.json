@@ -1,0 +1,20 @@
+{
+  "id": "stim_4ec7175623",
+  "n_inducers": 4,
+  "has_illusion": true,
+  "illusory_shape": "irregular",
+  "nonillusory_shapes": {
+    "real_life": [
+      "gray rock",
+      "gray rock",
+      "gray rock",
+      "gray rock"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  }
+}
