@@ -1,0 +1,23 @@
+{
+  "id": "stim_7b0e290583",
+  "condition": "control",
+  "n_inducers": 4,
+  "has_illusion": false,
+  "has_visible_contour": true,
+  "illusory_shape": "irregular",
+  "polygon_vertices": 4,
+  "nonillusory_shapes": {
+    "real_life": [
+      "lens",
+      "lens",
+      "lens",
+      "lens"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  }
+}

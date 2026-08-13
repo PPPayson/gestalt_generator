@@ -1,0 +1,27 @@
+{
+  "id": "stim_97604d9fd0",
+  "condition": "control",
+  "n_inducers": 6,
+  "has_illusion": false,
+  "has_visible_contour": true,
+  "illusory_shape": "irregular",
+  "polygon_vertices": 7,
+  "nonillusory_shapes": {
+    "real_life": [
+      "candle",
+      "candle",
+      "candle",
+      "candle",
+      "candle",
+      "candle"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  }
+}

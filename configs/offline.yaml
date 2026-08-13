@@ -1,0 +1,24 @@
+# Fully offline — no Modal, no network, no token. Uses the SHIPPED catalog assets.
+#   pip install -r requirements.txt
+#   python run.py configs/offline.yaml
+# (No generator is loaded because every needed asset is already on disk. If you pick a pair whose
+#  asset isn't shipped you'll get a clear "asset missing" error — pick shipped catalog pairs.)
+name: offline_demo
+
+silhouettes:
+  - {type: kanizsa, params: {n_sides: 3}}
+  - {type: kanizsa, params: {n_sides: 4}}
+
+pairs:
+  source: catalog
+  select: contrast
+  n_per_silhouette: 6
+  filter: {min_contrast: 0.25}
+
+dress:
+  backends: [composite]
+  modes: [perfect]
+  shadow: 55
+
+output:
+  contact_sheet: true

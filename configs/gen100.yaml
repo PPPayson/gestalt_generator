@@ -1,0 +1,37 @@
+# OUR benchmark set. Reproduce with:  python3 run.py configs/gen100.yaml
+#   N = (#silhouettes) x (n_per_silhouette) = 10 x 10 = 100 stimuli.
+# REPRODUCTION NEEDS NO GPU / API KEY / INTERNET: pairs.source=catalog and all catalog assets are
+# shipped in data/assets/, so NO provider is ever loaded (the models block below is unused here).
+# The models block only matters if you generate NEW textures (pairs.source=propose) or use the
+# ControlNet backend (dress.backends: [controlnet]) -- both need the Modal provider (modal deploy app.py).
+name: gen100
+seed: 1                     # change the seed -> different silhouettes + pairs
+
+silhouettes:
+  - type: gestalt
+    params: {mode: existing, n: 10}   # 10 silhouettes (seed inherited)
+
+models:                     # UNUSED for reproduction (no provider loaded when assets are present)
+  image:    {provider: modal_hf, model: "stabilityai/stable-diffusion-xl-base-1.0",
+             controlnet: "diffusers/controlnet-canny-sdxl-1.0", gpu: "L4", secret: null}
+  proposer: {provider: modal_hf, model: "Qwen/Qwen2.5-7B-Instruct", gpu: "L4", secret: null}
+
+pairs:
+  source: catalog          # the proposer's passed pairs (pipeline/pairs_catalog.yaml)
+  select: random           # sample from those passed pairs (seed inherited)
+  n_per_silhouette: 10
+
+assets:
+  best_of: 3
+
+dress:
+  backends: [composite]    # composite only (add controlnet to also run the one-pass Modal path)
+  modes: [perfect]
+  conditions: [illusory, control]   # matched pairs: illusory (no contour) + control (contour drawn)
+  contour: auto            # control-outline colour: auto (per-image high contrast) | white | black
+  shadow: 55               # light inward shadow
+  crop: true               # trim dead silhouette margin so objects fill the frame
+  feather: 1.5             # soft cutout edge
+
+output:
+  contact_sheet: true

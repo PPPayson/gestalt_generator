@@ -1,0 +1,2 @@
+# provider: modal_hf — maintainer path. Deploy once: modal deploy app.py
+modal==1.4.2

@@ -1,0 +1,27 @@
+# Default quickstart — pure HuggingFace generation, no Modal.
+#   pip install -r requirements.txt -r requirements-hf.txt
+#   export HF_TOKEN=hf_xxx
+#   python run.py configs/example.yaml
+name: hf_demo
+
+silhouettes:
+  - {type: kanizsa, params: {n_sides: 3}}
+  - {type: kanizsa, params: {n_sides: 4}}
+
+models:
+  image:    {provider: hf_api, model: "stabilityai/stable-diffusion-xl-base-1.0"}
+  proposer: {provider: hf_api, model: "Qwen/Qwen2.5-7B-Instruct"}
+
+pairs:
+  source: catalog
+  select: contrast
+  n_per_silhouette: 6
+  filter: {min_contrast: 0.25}
+
+dress:
+  backends: [composite]      # composite needs only a generator; controlnet needs modal_hf
+  modes: [perfect]
+  shadow: 55
+
+output:
+  contact_sheet: true
