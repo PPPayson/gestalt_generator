@@ -4,23 +4,28 @@
 
 <p align="center"><img src="examples/gen100/images/stim_67efcc909b.jpg" width="380"></p>
 
-**Gestalt Generator** builds benchmark stimuli that test **perceptual grouping** in vision models:
-Kanizsa-style **illusory contours** made from real objects. Several objects are cut into "pac-man"
-inducers and arranged so their aligned bites make you see a shape that isn't actually drawn (above:
-satellite dishes forming an illusory hexagon). Every stimulus ships a ground-truth answer key, and the
-exact set reproduces from **one command — offline, no GPU or API key.**
+**Gestalt Generator** produces benchmark stimuli that test perceptual grouping in vision models.
+Perceptual grouping — binding separate elements into a whole — underlies how we perceive objects and
+contours, and the *Kanizsa* figure is its classic probe: several "pac-man" inducers, arranged so their
+bitten edges align, evoke a shape whose contour is never drawn. We build these figures from **real
+objects** rather than abstract discs (above: satellite dishes evoking an illusory hexagon), and pair
+each stimulus with a machine-readable answer key. The stimulus set reproduces from a single command,
+offline, without a GPU or an API key.
 
-*This repo covers stimulus generation only; an evaluation harness will ship separately.*
+*This repository covers stimulus generation. An evaluation harness will follow separately.*
 
 ## Installation
 
 ```bash
-pip install -r requirements.txt      # pure Python; no GPU, API key, or internet
+pip install -r requirements.txt
 ```
+
+The reproduction path is pure Python and needs no GPU, API key, or internet connection.
 
 ## Quick start
 
-Reproduce our 100-stimulus benchmark (deterministic — the config pins `seed: 1`):
+We ship a fixed set of 100 stimuli. To regenerate it exactly — the configuration pins `seed: 1` —
+run:
 
 ```bash
 python3 run.py configs/gen100.yaml
@@ -29,17 +34,18 @@ python3 run.py configs/gen100.yaml
 This writes to `out/`:
 
 ```
-out/comp/<id>.png      100 stimulus images  (the benchmark)
-out/gt/<id>.json       ground-truth answer key, one per image
+out/comp/<id>.png      100 stimulus images (the benchmark)
+out/gt/<id>.json       one answer key per image
 out/manifest.csv       id -> silhouette / object / background
 ```
 
-Filenames are opaque hashes so the answer isn't in the name — join image ↔ answer key by `id`. A
-rendered preview of the set is committed in `examples/gen100/`.
+Filenames are opaque hashes, so the answer is not encoded in the name; each image is joined to its
+answer key by `id`. A rendered preview of the set is committed under `examples/gen100/`.
 
 ## The task
 
-Shown a stimulus, a model should report what's in its `out/gt/<id>.json`:
+We consider a task where a model, shown a stimulus, must report what is recorded in its answer key
+`out/gt/<id>.json`:
 
 ```json
 {
@@ -53,24 +59,26 @@ Shown a stimulus, a model should report what's in its `out/gt/<id>.json`:
 }
 ```
 
-| Field | The question it answers |
+Each field states one question the model should answer:
+
+| Field | Question |
 |---|---|
-| `n_inducers` | how many objects/inducers are there |
-| `has_illusion` | is there an illusory figure |
-| `illusory_shape` | what shape the illusory figure is |
+| `n_inducers` | how many objects are present |
+| `has_illusion` | whether an illusory figure appears |
+| `illusory_shape` | what the illusory figure is |
 | `nonillusory_shapes.real_life` | what the real objects are |
 | `nonillusory_shapes.primitive` | their geometric primitive |
 
-> The `gen100` set uses bezier silhouettes, so `illusory_shape` is always `"irregular"` and there are
-> no no-illusion controls yet. For clean named shapes (`triangle`, `square`, …) use a **Kanizsa** config.
+The shipped set uses bezier figures, so `illusory_shape` is always `"irregular"` and includes no
+no-illusion controls. For named shapes (`triangle`, `square`, …), use a Kanizsa configuration below.
 
 ## Make your own set
 
-Copy `configs/gen100.yaml`, edit it, and run `python3 run.py configs/your.yaml`. Everything is in the
-one file:
+Each benchmark is defined by one configuration file. To create your own, copy `configs/gen100.yaml`,
+edit the fields below, and run `python3 run.py configs/your.yaml`.
 
 ```yaml
-seed: 1                                              # any seed -> a reproducible draw
+seed: 1                                              # any seed gives a reproducible draw
 silhouettes:
   - {type: gestalt, params: {mode: existing, n: 10}} # or  {type: kanizsa, params: {n_sides: 3}}
 pairs:
@@ -78,36 +86,39 @@ pairs:
   select: random
   n_per_silhouette: 10
 dress:
-  backends: [composite]                              # paste real objects (offline, pixel-exact)
+  backends: [composite]                              # composite real objects into the figure
   shadow: 55
   feather: 1.5
 ```
 
-Number of stimuli = `#silhouettes × n_per_silhouette`. The shipped catalog has 16 pre-validated pairs.
+The number of stimuli is `#silhouettes × n_per_silhouette`. Textures are drawn from a catalog of 16
+pre-validated object/background pairs.
 
 <details>
-<summary><b>Generate new objects &amp; backgrounds (needs a model)</b></summary>
+<summary><b>Generate new objects and backgrounds (requires a model)</b></summary>
 
-The catalog is fixed. To invent new textures, set a provider in the config and give it credentials —
-the rest of the pipeline is unchanged. New pairs are auto-validated (round shape + colour contrast).
+The catalog is fixed. To introduce new textures, name a provider in the configuration and supply its
+credentials; the rest of the pipeline is unchanged. New pairs are validated for round shape and colour
+contrast before use.
 
 - **`hf_api`** — HuggingFace Inference API. `pip install -r requirements-hf.txt`, `export HF_TOKEN=...`
-- **`modal_hf`** — SDXL on Modal GPU. `pip install -r requirements-modal.txt`, `modal deploy app.py`
-- **your own** — copy `pipeline/providers/template.py`, set `provider: "yourmodule:YourClass"`
+- **`modal_hf`** — SDXL on a Modal GPU. `pip install -r requirements-modal.txt`, `modal deploy app.py`
+- **your own** — copy `pipeline/providers/template.py` and set `provider: "yourmodule:YourClass"`
 
 </details>
 
-## How it reproduces
+## Reproducibility
 
-Generation uses an LLM (invents object/background pairs) and a diffusion model (renders them) — both
-stochastic and GPU-bound. We ship their **frozen output** (`pipeline/pairs_catalog.yaml` + the cutouts
-in `data/assets/`), so the only remaining randomness is seeded selection and the compositing is exact.
-`seed: 1` therefore yields the identical set every time, offline. Silhouettes are regenerable with
-`python3 main.py`.
+Stimuli are assembled from two stochastic, GPU-bound models — a language model that proposes
+object/background pairs, and a diffusion model that renders them. To make the set reproducible we ship
+their frozen output: the proposed pairs that passed validation (`pipeline/pairs_catalog.yaml`) and the
+rendered cutouts (`data/assets/`). Every remaining step — which silhouettes and pairs are selected, and
+how objects are composited — is seeded and deterministic, so `seed: 1` yields the identical set on any
+machine. The silhouettes themselves are regenerated with `python3 main.py`.
 
 ## Testing
 
 ```bash
 pip install -r requirements.txt -r requirements-dev.txt
-pytest        # no network / GPU / token — all externals mocked
+pytest        # no network, GPU, or token — all external calls are mocked
 ```
