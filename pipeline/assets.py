@@ -8,13 +8,13 @@ from .utils import OBJ, BG, slug, roundness
 MAX_WORKERS = 8
 
 
-def ensure(provider, objects, bgs, best_of=3):
+def ensure(provider, objects, bgs, best_of=3, seed=0):
     OBJ.mkdir(parents=True, exist_ok=True); BG.mkdir(parents=True, exist_ok=True)
     objects = sorted({o for o in objects if not (OBJ / f"{slug(o)}.png").exists()})
     bgs = sorted({b for b in bgs if not (BG / f"{slug(b)}.png").exists()})
     print(f"  assets: {len(objects)} new objects, {len(bgs)} new bgs")
     if objects:
-        jobs = [(o, s) for o in objects for s in range(best_of)]     # best-of-N jobs
+        jobs = [(o, seed * 1000 + s) for o in objects for s in range(best_of)]   # seeded best-of-N
         with ThreadPoolExecutor(max_workers=MAX_WORKERS) as ex:
             results = list(ex.map(lambda j: (j[0], provider.gen_object(j[0], j[1])), jobs))
         best = {}
@@ -26,6 +26,6 @@ def ensure(provider, objects, bgs, best_of=3):
             (OBJ / f"{slug(o)}.png").write_bytes(b); print(f"    obj {o}: roundness {sc:.2f}")
     if bgs:
         with ThreadPoolExecutor(max_workers=MAX_WORKERS) as ex:
-            results = list(ex.map(lambda b: (b, provider.gen_bg(b, 0)), bgs))
+            results = list(ex.map(lambda b: (b, provider.gen_bg(b, seed * 1000)), bgs))
         for bg, b in results:
             (BG / f"{slug(bg)}.png").write_bytes(b); print(f"    bg {bg}")

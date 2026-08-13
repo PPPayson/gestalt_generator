@@ -124,10 +124,11 @@ def build(cfg):
     """Silhouette set = exactly what the config specs declare (no blanket include)."""
     stems = []
     for spec in cfg["silhouettes"]:
-        t, params = spec["type"], (spec.get("params") or {})
+        t, params = spec["type"], dict(spec.get("params") or {})
         if t in REGISTRY:
             stems += REGISTRY[t](**params)
         elif t == "gestalt":
+            params.setdefault("seed", cfg.get("seed", 0))   # inherit global seed
             stems += use_gestalt(**params)
         elif t == "dropin":
             stems += use_dropin(**params)

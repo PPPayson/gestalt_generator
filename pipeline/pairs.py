@@ -22,7 +22,10 @@ def resolve(cfg, metas):
             return True
         items = [i for i in cat if ok(i)]
         if cfg["pairs"].get("select") == "random":       # random N textures (seeded)
-            items = random.Random(cfg["pairs"].get("seed", 0)).sample(
+            seed = cfg["pairs"].get("seed")
+            if seed is None:
+                seed = cfg.get("seed", 0)                 # inherit global seed
+            items = random.Random(seed).sample(
                 items, min(cfg["pairs"]["n_per_silhouette"], len(items)))
         else:                                             # highest contrast first
             items = sorted(items, key=lambda x: -x.get("contrast", 0))

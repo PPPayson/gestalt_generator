@@ -23,14 +23,14 @@ def run(cfg):
         cand = load_all_candidates()
         objs = {it["object"] for v in cand.values() for it in v}
         bgs = {it["background"] for v in cand.values() for it in v}
-        assets.ensure(providers.load_image(cfg), objs, bgs, cfg["assets"]["best_of"])
+        assets.ensure(providers.load_image(cfg), objs, bgs, cfg["assets"]["best_of"], cfg.get("seed", 0))
         prs = validate.run(cfg, metas)
     else:
         prs = P.resolve(cfg, metas)
         objs, bgs = P.needed(prs)
         mo, mb = _missing(objs, bgs)
         if mo or mb:                                      # generation needed -> load provider
-            assets.ensure(providers.load_image(cfg), objs, bgs, cfg["assets"]["best_of"])
+            assets.ensure(providers.load_image(cfg), objs, bgs, cfg["assets"]["best_of"], cfg.get("seed", 0))
         else:
             print("  assets: all present (offline, no provider loaded)")
 

@@ -1,13 +1,15 @@
-"""Shared helpers: paths, slug, robust metrics, opaque IDs, manifest, candidate loading."""
-import re, hashlib, csv, json, pathlib
+"""Shared helpers: paths, slug, robust metrics, opaque IDs, manifest, candidate loading.
+
+Paths honor GESTALT_DATA / GESTALT_OUT env vars so tests (and users) can redirect I/O."""
+import os, re, hashlib, csv, json, pathlib
 import numpy as np
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-DATA = ROOT / "data"
+DATA = pathlib.Path(os.environ.get("GESTALT_DATA", ROOT / "data"))
 SIL = DATA / "silhouettes"           # silhouette store (his generator output lives here too)
 OBJ = DATA / "assets" / "objects"
 BG = DATA / "assets" / "bg"
-OUT = ROOT / "out"                   # our benchmark output (stimuli, gt, manifest)
+OUT = pathlib.Path(os.environ.get("GESTALT_OUT", ROOT / "out"))   # benchmark output (stimuli, gt, manifest)
 
 
 def slug(s):

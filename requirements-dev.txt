@@ -1,0 +1,2 @@
+# Test deps (run: pytest -q). No network / modal / gpu / token needed.
+pytest==8.3.4

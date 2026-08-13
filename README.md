@@ -82,3 +82,36 @@ Assets are generated on first use and cached, so catalog pairs render fast.
   `illusory_shape` is a clean name for Kanizsa (`triangle`, `square`, …) and `"irregular"` for the
   bezier gestalt figures. `has_illusion` is `true` for everything generated here; it's reserved for
   future non-illusory control stimuli (which would set it `false` and `illusory_shape: "none"`).
+
+## Generation providers (`models.image.provider` / `models.proposer.provider`)
+
+Generation goes through a tiny provider contract, so it's free and pluggable:
+
+- **`hf_api`** (default) — pure HuggingFace Inference API + local `rembg` cutout. No Modal, no GPU.
+  `pip install -r requirements-hf.txt`, `export HF_TOKEN=...`. (No `dress()` → ControlNet warns + skips.)
+- **`modal_hf`** — maintainer path on a deployed Modal app. `pip install -r requirements-modal.txt`,
+  `modal deploy app.py` once. Does images + proposer + ControlNet.
+- **offline** — with the shipped catalog assets present, no provider is loaded at all.
+- **plug in your own** — copy `pipeline/providers/template.py`, implement `gen_object`/`gen_bg`
+  (return PNG bytes), and set `provider: "yourmodule:YourClass"`. Great for testing other models.
+
+Composite (default) needs only a generator; ControlNet needs a provider with `dress()`.
+
+## Reproducibility (`seed`)
+
+A single top-level `seed` in the config makes a run replayable: it drives gestalt silhouette
+selection, random texture selection, and asset-generation seeds (composite dressing is already
+deterministic). `pairs.seed` / gestalt `seed` inherit it unless set explicitly. Same seed → identical
+stimuli; different seed → different selection.
+
+## Testing
+
+```
+pip install -r requirements.txt -r requirements-dev.txt
+pytest
+```
+
+The suite (`tests/`) covers every module — silhouettes, geometry, pairs, validate, dress, gt,
+contact, config, the provider loader (incl. a **custom `module:Class` provider**), `hf_api` (mocked
+HTTP), `modal_hf` (mocked Modal), orchestration (incl. the ControlNet-without-`dress` warning), and
+seed reproducibility. It runs with **no network, no Modal, no GPU, no token** — all externals mocked.
