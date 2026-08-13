@@ -1,0 +1,22 @@
+{
+  "id": "stim_96c275aa40",
+  "condition": "control",
+  "n_inducers": 4,
+  "has_illusion": false,
+  "has_visible_contour": true,
+  "illusory_shape": "irregular",
+  "nonillusory_shapes": {
+    "real_life": [
+      "blueberry",
+      "blueberry",
+      "blueberry",
+      "blueberry"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  }
+}

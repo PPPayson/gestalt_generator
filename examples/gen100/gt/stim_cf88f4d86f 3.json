@@ -1,0 +1,25 @@
+{
+  "id": "stim_cf88f4d86f",
+  "condition": "control",
+  "n_inducers": 5,
+  "has_illusion": false,
+  "has_visible_contour": true,
+  "illusory_shape": "irregular",
+  "polygon_vertices": 5,
+  "nonillusory_shapes": {
+    "real_life": [
+      "blueberry",
+      "blueberry",
+      "blueberry",
+      "blueberry",
+      "blueberry"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  }
+}

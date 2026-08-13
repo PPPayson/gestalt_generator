@@ -1,0 +1,4 @@
+# provider: hf_api (default) — pure HuggingFace generation via Inference Providers.
+huggingface_hub==1.4.1
+rembg==2.0.78
+onnxruntime==1.28.0
