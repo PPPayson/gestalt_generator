@@ -1,0 +1,22 @@
+{
+  "id": "stim_4b17314383",
+  "n_inducers": 5,
+  "has_illusion": true,
+  "illusory_shape": "irregular",
+  "nonillusory_shapes": {
+    "real_life": [
+      "chocolate",
+      "chocolate",
+      "chocolate",
+      "chocolate",
+      "chocolate"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  }
+}

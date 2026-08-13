@@ -1,0 +1,24 @@
+{
+  "id": "stim_7bd29d07a8",
+  "n_inducers": 6,
+  "has_illusion": true,
+  "illusory_shape": "irregular",
+  "nonillusory_shapes": {
+    "real_life": [
+      "poker chip",
+      "poker chip",
+      "poker chip",
+      "poker chip",
+      "poker chip",
+      "poker chip"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  }
+}

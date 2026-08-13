@@ -1,0 +1,16 @@
+{
+  "id": "stim_599135d5cc",
+  "n_inducers": 2,
+  "has_illusion": true,
+  "illusory_shape": "irregular",
+  "nonillusory_shapes": {
+    "real_life": [
+      "chocolate",
+      "chocolate"
+    ],
+    "primitive": [
+      "circle",
+      "circle"
+    ]
+  }
+}

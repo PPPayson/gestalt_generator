@@ -3,11 +3,11 @@
 # ControlNet needs the Modal provider:  modal deploy app.py  (once), then:
 #   python run.py configs/gen100.yaml
 name: gen100
-seed: 0
+seed: 1                     # change the seed -> different silhouettes + pairs
 
 silhouettes:
   - type: gestalt
-    params: {mode: existing, n: 10, seed: 0}
+    params: {mode: existing, n: 10}   # 10 silhouettes (seed inherited)
 
 models:
   image:    {provider: modal_hf, model: "stabilityai/stable-diffusion-xl-base-1.0",
@@ -16,19 +16,19 @@ models:
 
 pairs:
   source: catalog
-  select: random           # random sample of FITTING, high-contrast pairs
-  seed: 0
-  n_per_silhouette: 10
-  filter: {min_contrast: 0.25}   # exclude low-contrast / camouflage pairs
+  select: random           # random sample of FITTING pairs (object belongs on the surface)
+  n_per_silhouette: 10     # 10 of the 11 fitting pairs (seed inherited)
+  filter: {natural: true}  # FITTING pairs only (e.g. poker chips on green felt)
 
 assets:
   best_of: 3
 
 dress:
-  backends: [composite, controlnet]   # both ways
+  backends: [composite]    # composite only (add controlnet to also run the one-pass Modal path)
   modes: [perfect]
   shadow: 55               # light inward shadow
   crop: true               # trim dead silhouette margin so objects fill the frame
+  feather: 1.5             # soft cutout edge
 
 output:
   contact_sheet: true

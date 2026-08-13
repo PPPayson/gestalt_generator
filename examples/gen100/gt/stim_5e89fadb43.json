@@ -1,0 +1,16 @@
+{
+  "id": "stim_5e89fadb43",
+  "n_inducers": 2,
+  "has_illusion": true,
+  "illusory_shape": "irregular",
+  "nonillusory_shapes": {
+    "real_life": [
+      "candle",
+      "candle"
+    ],
+    "primitive": [
+      "circle",
+      "circle"
+    ]
+  }
+}

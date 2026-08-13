@@ -45,7 +45,21 @@ def run(cfg):
             prov = cfg["models"]["image"]["provider"]
             print(f"  ! WARNING: provider '{prov}' can't do ControlNet (no dress()). "
                   f"Skipping controlnet — use provider modal_hf, or drop it from dress.backends.")
+    _copy_silhouettes(metas)
     if cfg["output"]["contact_sheet"]:
         contact.run(cfg)
     from .utils import OUT
-    print(f"DONE -> {OUT} (stimuli + gt + manifest)")
+    print(f"DONE -> {OUT} (stimuli + gt + manifest + silhouettes)")
+
+
+def _copy_silhouettes(metas):
+    """Copy the silhouettes actually used into out/silhouettes/ for completeness."""
+    import shutil
+    from .utils import SIL, OUT
+    d = OUT / "silhouettes"; d.mkdir(parents=True, exist_ok=True)
+    for m in metas:
+        for ext in (".png", ".json"):
+            src = SIL / f"{m['stem']}{ext}"
+            if src.exists():
+                shutil.copy(src, d / src.name)
+    print(f"  silhouettes: copied {len(metas)} used silhouettes -> {d}")

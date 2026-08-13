@@ -1,0 +1,14 @@
+{
+  "id": "stim_8c76b3db17",
+  "n_inducers": 1,
+  "has_illusion": true,
+  "illusory_shape": "irregular",
+  "nonillusory_shapes": {
+    "real_life": [
+      "mushroom cap"
+    ],
+    "primitive": [
+      "circle"
+    ]
+  }
+}

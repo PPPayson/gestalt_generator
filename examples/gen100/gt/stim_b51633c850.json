@@ -1,0 +1,16 @@
+{
+  "id": "stim_b51633c850",
+  "n_inducers": 2,
+  "has_illusion": true,
+  "illusory_shape": "irregular",
+  "nonillusory_shapes": {
+    "real_life": [
+      "pear",
+      "pear"
+    ],
+    "primitive": [
+      "circle",
+      "circle"
+    ]
+  }
+}
