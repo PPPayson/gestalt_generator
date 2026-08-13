@@ -1,0 +1,18 @@
+{
+  "id": "stim_e0e8bf1708",
+  "n_inducers": 3,
+  "has_illusion": true,
+  "illusory_shape": "irregular",
+  "nonillusory_shapes": {
+    "real_life": [
+      "lens",
+      "lens",
+      "lens"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle"
+    ]
+  }
+}

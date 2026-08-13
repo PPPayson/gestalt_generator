@@ -15,10 +15,9 @@ models:
   proposer: {provider: modal_hf, model: "Qwen/Qwen2.5-7B-Instruct", gpu: "L4", secret: null}
 
 pairs:
-  source: catalog
-  select: random           # random sample of FITTING pairs (object belongs on the surface)
-  n_per_silhouette: 10     # 10 of the 11 fitting pairs (seed inherited)
-  filter: {natural: true}  # FITTING pairs only (e.g. poker chips on green felt)
+  source: catalog          # the proposer's passed pairs (pipeline/pairs_catalog.yaml)
+  select: random           # sample from those passed pairs (seed inherited)
+  n_per_silhouette: 10
 
 assets:
   best_of: 3

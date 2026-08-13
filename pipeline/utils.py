@@ -34,6 +34,20 @@ def luminance(img):
     return float((0.2126 * rgb[:, 0] + 0.7152 * rgb[:, 1] + 0.0722 * rgb[:, 2]).mean() / 255)
 
 
+def color_contrast(obj, bg):
+    """Perceptual color contrast (CIELAB delta-E) between the object and the background.
+    Captures colour difference (red chip on green felt) that plain luminance misses."""
+    from skimage.color import rgb2lab
+    a, m = _mask(obj)
+    if m.sum() < 50:
+        return 0.0
+    oc = a[..., :3][m].mean(0) / 255.0
+    bc = np.array(bg.convert("RGB")).reshape(-1, 3).mean(0) / 255.0
+    lab_o = rgb2lab(oc.reshape(1, 1, 3))[0, 0]
+    lab_b = rgb2lab(bc.reshape(1, 1, 3))[0, 0]
+    return float(np.linalg.norm(lab_o - lab_b))
+
+
 def roundness(img):
     """1.0 = clean disc; square ~0.64; thin/elongated/empty -> low. Robust to stray specks."""
     _, m = _mask(img)

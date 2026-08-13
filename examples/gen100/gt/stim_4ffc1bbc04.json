@@ -1,0 +1,24 @@
+{
+  "id": "stim_4ffc1bbc04",
+  "n_inducers": 6,
+  "has_illusion": true,
+  "illusory_shape": "irregular",
+  "nonillusory_shapes": {
+    "real_life": [
+      "grapefruit",
+      "grapefruit",
+      "grapefruit",
+      "grapefruit",
+      "grapefruit",
+      "grapefruit"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  }
+}

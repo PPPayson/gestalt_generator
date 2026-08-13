@@ -71,8 +71,9 @@ def _gestalt_sidecar(stem, p):
     (SIL / f"{stem}.json").write_text(json.dumps(meta))
 
 
-def use_gestalt(mode="existing", n=20, seed=0, src_dir=None, regenerate=None):
-    """Return N gestalt silhouette stems (seeded random sample). mode=regenerate runs main.generate."""
+def use_gestalt(mode="existing", n=20, seed=0, src_dir=None, regenerate=None, inducers=None):
+    """Return N gestalt silhouettes (seeded random sample). `inducers` optionally restricts the
+    number of inducers from the filename, e.g. [3, 4]. mode=regenerate runs main.generate."""
     from pathlib import Path
     src = Path(src_dir) if src_dir else SIL
     if mode == "regenerate":
@@ -80,19 +81,29 @@ def use_gestalt(mode="existing", n=20, seed=0, src_dir=None, regenerate=None):
         grid = regenerate or {}
         print(f"  gestalt: regenerating into {src} ...")
         main.generate(output_folder=str(src), seed=seed, **grid)
-    pool = sorted(p.stem for p in src.glob("img_*.png") if parse_gestalt_name(p.stem))
+    from .geometry import separate_inducer_count
+    pool = [p.stem for p in src.glob("img_*.png") if parse_gestalt_name(p.stem)]
+    if inducers:                                     # restrict inducer count from the filename
+        lo, hi = (inducers if isinstance(inducers, (list, tuple)) else (inducers, inducers))
+        pool = [s for s in pool if lo <= parse_gestalt_name(s)["n_points"] <= hi]
+    pool.sort()
+    random.Random(seed).shuffle(pool)               # reproducible scan order
     if not pool:
-        print(f"  ! gestalt: no img_*.png in {src}"); return []
-    k = min(n, len(pool))
-    if k < n:
-        print(f"  ! gestalt: requested {n} but only {len(pool)} available -> using {k}")
-    chosen = random.Random(seed).sample(pool, k)
+        print(f"  ! gestalt: no matching img_*.png in {src}"); return []
     SIL.mkdir(parents=True, exist_ok=True)
-    for stem in chosen:
-        if src != SIL:                              # copy into our store if sourced elsewhere
+    chosen, checked = [], 0
+    for stem in pool:                               # keep only CLEAN silhouettes (all inducers separate)
+        if len(chosen) >= n:
+            break
+        checked += 1
+        want = parse_gestalt_name(stem)["n_points"]
+        if separate_inducer_count(src / f"{stem}.png") != want:
+            continue                                # some inducer merged with the margin -> skip
+        if src != SIL:
             Image.open(src / f"{stem}.png").save(SIL / f"{stem}.png")
         _gestalt_sidecar(stem, parse_gestalt_name(stem))
-    print(f"  gestalt: selected {k} silhouettes (seed={seed})")
+        chosen.append(stem)
+    print(f"  gestalt: selected {len(chosen)} clean silhouettes ({checked} checked, seed={seed})")
     return chosen
 
 

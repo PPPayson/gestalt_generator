@@ -1,0 +1,20 @@
+{
+  "id": "stim_049999c17e",
+  "n_inducers": 4,
+  "has_illusion": true,
+  "illusory_shape": "irregular",
+  "nonillusory_shapes": {
+    "real_life": [
+      "Bullseye",
+      "Bullseye",
+      "Bullseye",
+      "Bullseye"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  }
+}

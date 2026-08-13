@@ -1,0 +1,20 @@
+{
+  "id": "stim_2e458bcc7c",
+  "n_inducers": 4,
+  "has_illusion": true,
+  "illusory_shape": "irregular",
+  "nonillusory_shapes": {
+    "real_life": [
+      "lily pad",
+      "lily pad",
+      "lily pad",
+      "lily pad"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  }
+}

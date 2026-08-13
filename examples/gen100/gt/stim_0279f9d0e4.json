@@ -1,0 +1,22 @@
+{
+  "id": "stim_0279f9d0e4",
+  "n_inducers": 5,
+  "has_illusion": true,
+  "illusory_shape": "irregular",
+  "nonillusory_shapes": {
+    "real_life": [
+      "white pearl",
+      "white pearl",
+      "white pearl",
+      "white pearl",
+      "white pearl"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  }
+}

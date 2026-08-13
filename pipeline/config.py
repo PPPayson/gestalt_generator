@@ -27,7 +27,7 @@ DEFAULTS = {
     "assets": {"best_of": 3},
     "dress": {"backends": ["composite"], "modes": ["perfect"], "shadow": 55,
               "crop": True, "feather": 1.5},
-    "select": {"round_min": 0.55, "contrast_high": 0.22, "contrast_low_natural": 0.10},
+    "select": {"round_min": 0.55, "delta_e_min": 30.0},   # disc shape + min perceptual colour contrast
     "output": {"contact_sheet": True},
 }
 
