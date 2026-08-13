@@ -3,13 +3,15 @@ Polarity-agnostic, aspect-preserving, object clipped EXACTLY to the region, inwa
 import numpy as np
 from PIL import Image, ImageFilter, ImageOps
 from .utils import OBJ, BG, OUT, SIL, slug, sid, append_manifest
-from .geometry import inducer_labels
+from .geometry import inducer_labels, crop_to_content
 from . import gt
 
 
-def render(sil_path, o, b, shadow=55, mode="perfect"):
-    """Return (RGB image, canvas_size)."""
-    lab, n, (TW, TH) = inducer_labels(sil_path)
+def render(sil_path, o, b, shadow=55, mode="perfect", crop=True, pad_frac=0.10):
+    """Return (RGB image, canvas_size). `crop` trims the silhouette to its inducer region so the
+    objects fill the frame (bigger); proportions between inducers and the inward shadow are kept."""
+    sil = crop_to_content(sil_path, pad_frac) if crop else sil_path
+    lab, n, (TW, TH) = inducer_labels(sil)
     obj = Image.open(OBJ / f"{slug(o)}.png").convert("RGBA")
     obj = obj.crop(obj.getbbox())
     canvas = ImageOps.fit(Image.open(BG / f"{slug(b)}.png").convert("RGBA"), (TW, TH))
@@ -43,12 +45,13 @@ def render(sil_path, o, b, shadow=55, mode="perfect"):
 
 def run(cfg, metas, pairs):
     shadow = cfg["dress"].get("shadow", 55)
+    crop = cfg["dress"].get("crop", True)
     out = OUT / "comp"; out.mkdir(parents=True, exist_ok=True); k = 0
     for meta in metas:
         sp = SIL / f"{meta['stem']}.png"
         for it in pairs.get(meta["stem"], []):
             for mode in cfg["dress"]["modes"]:
-                img, canvas = render(sp, it["object"], it["background"], shadow, mode)
+                img, canvas = render(sp, it["object"], it["background"], shadow, mode, crop)
                 i = sid(meta["stem"], it["object"], "composite", mode)
                 img.save(out / f"{i}.png")
                 append_manifest([i, meta["stem"], it["object"], it["background"],

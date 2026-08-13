@@ -1,7 +1,9 @@
-# 100 examples = 10 random gestalt silhouettes x 10 random textures, generated on Modal (maintainer).
-#   modal deploy app.py        # once
+# Generate N samples with our method, BOTH composite and controlnet.
+#   N = (#silhouettes) x (n_per_silhouette) = 10 x 10 = 100.
+# ControlNet needs the Modal provider:  modal deploy app.py  (once), then:
 #   python run.py configs/gen100.yaml
 name: gen100
+seed: 0
 
 silhouettes:
   - type: gestalt
@@ -14,17 +16,19 @@ models:
 
 pairs:
   source: catalog
-  select: random          # 10 random textures
+  select: random           # random sample of FITTING, high-contrast pairs
   seed: 0
   n_per_silhouette: 10
+  filter: {min_contrast: 0.25}   # exclude low-contrast / camouflage pairs
 
 assets:
   best_of: 3
 
 dress:
-  backends: [composite]   # 10 silhouettes x 10 textures = 100 composites
+  backends: [composite, controlnet]   # both ways
   modes: [perfect]
-  shadow: 55
+  shadow: 55               # light inward shadow
+  crop: true               # trim dead silhouette margin so objects fill the frame
 
 output:
   contact_sheet: true

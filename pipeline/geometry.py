@@ -13,10 +13,33 @@ def target_size(size):
     return round(W * s), round(H * s)
 
 
-def inducer_labels(sil_path):
+def _as_rgba(sil):
+    return sil.convert("RGBA") if isinstance(sil, Image.Image) else Image.open(sil).convert("RGBA")
+
+
+def crop_to_content(sil, pad_frac=0.10):
+    """Crop a silhouette to the bounding box of its inducers (+ padding) so the arrangement fills
+    the frame instead of floating in dead margin. Returns a PIL RGBA image. Proportions between
+    inducers are preserved; only empty border is removed."""
+    rgba = _as_rgba(sil)
+    lab, n, (TW, TH) = inducer_labels(rgba)
+    ys, xs = np.where(lab > 0)
+    if len(xs) == 0:
+        return rgba
+    W, H = rgba.size
+    sx, sy = W / TW, H / TH
+    x0, x1 = xs.min() * sx, (xs.max() + 1) * sx
+    y0, y1 = ys.min() * sy, (ys.max() + 1) * sy
+    px, py = (x1 - x0) * pad_frac, (y1 - y0) * pad_frac
+    box = (max(0, x0 - px), max(0, y0 - py), min(W, x1 + px), min(H, y1 + py))
+    return rgba.crop(tuple(int(v) for v in box))
+
+
+def inducer_labels(sil):
     """Return (labeled array, count, (canvas_w, canvas_h)). Inducers are the compact
-    interior blobs that don't touch the border, so black-on-white and white-on-black both work."""
-    rgba = Image.open(sil_path).convert("RGBA")
+    interior blobs that don't touch the border, so black-on-white and white-on-black both work.
+    `sil` may be a path or a PIL image."""
+    rgba = _as_rgba(sil)
     TW, TH = target_size(rgba.size)
     base = Image.new("RGBA", rgba.size, (0, 0, 0, 255))
     base.alpha_composite(rgba)                       # transparent -> black field
@@ -40,9 +63,9 @@ def inducer_labels(sil_path):
     return out, len(keep), (TW, TH)
 
 
-def inducers(sil_path):
+def inducers(sil):
     """List of inducer descriptors {cx, cy, r, area_px} at canvas coords."""
-    lab, n, _ = inducer_labels(sil_path)
+    lab, n, _ = inducer_labels(sil)
     out = []
     for lb in range(1, n + 1):
         ys, xs = np.where(lab == lb)

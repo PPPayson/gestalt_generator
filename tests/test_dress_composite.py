@@ -10,7 +10,8 @@ def _sil():
 
 
 def test_render_fills_inducer_regions():
-    img, (w, h) = DC.render(_sil(), "white disc", "black bg", shadow=0, mode="perfect")
+    # crop=False so image coords match inducer_labels(uncropped silhouette)
+    img, (w, h) = DC.render(_sil(), "white disc", "black bg", shadow=0, mode="perfect", crop=False)
     assert img.size == (w, h)
     lab, n, _ = inducer_labels(_sil())
     a = np.asarray(img)
