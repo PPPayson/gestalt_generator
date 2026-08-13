@@ -23,7 +23,7 @@ def run(provider, cfg, metas, pairs):
             img = provider.dress(sil_png, prompt, 0.7, seed=k)
             i = sid(meta["stem"], o, "controlnet", "perfect")
             (out / f"{i}.png").write_bytes(img)
-            append_manifest([i, meta["stem"], o, b, "controlnet", "perfect", nat])
-            gt.write(i, meta, it, "controlnet", "perfect")
+            append_manifest([i, meta["stem"], o, b, "controlnet", "perfect", nat, "illusory"])
+            gt.write(i, meta, it, "controlnet", "perfect", condition="illusory")
             k += 1
     print(f"  controlnet: {k} stimuli")

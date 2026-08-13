@@ -149,7 +149,10 @@ def run(cfg, metas, pairs):
         for it in pairs.get(meta["stem"], []):
             for mode in cfg["dress"]["modes"]:
                 for cond in conditions:                 # illusory (no contour) + control (drawn contour)
-                    ctrl = cp if (cond == "control" and cp.exists()) else None
+                    if cond == "control" and not cp.exists():
+                        print(f"  ! no control silhouette for {meta['stem']}; skipping control")
+                        continue                        # never emit a 'control' without a drawn contour
+                    ctrl = cp if cond == "control" else None
                     img, _ = render(sp, it["object"], it["background"], shadow, mode, crop,
                                     feather=feather, control=ctrl, contour=contour)
                     i = sid(meta["stem"], it["object"], "composite", f"{mode}_{cond}")

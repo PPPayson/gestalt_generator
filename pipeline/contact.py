@@ -29,6 +29,8 @@ def run(cfg):
             x = PAD + j * (CELL + PAD)
             sid_ = g[key].get(cond)
             f = OUT / "comp" / cond / f"{sid_}.png" if sid_ else None
+            if f and not f.exists():
+                f = OUT / "cn" / f"{sid_}.png"          # controlnet writes flat to out/cn/
             if f and f.exists():
                 im = Image.open(f).convert("RGB"); im.thumbnail((CELL, CELL))
                 sheet.paste(im, (x, y))
