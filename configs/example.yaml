@@ -1,0 +1,40 @@
+# Example benchmark spec. Run:  python run.py configs/example.yaml
+name: kanizsa_demo
+
+# Silhouettes: built-in producers here + any drop-in PNGs in data/silhouettes/ are auto-included.
+silhouettes:
+  - {type: kanizsa, params: {n_sides: 3}}   # illusory triangle
+  - {type: kanizsa, params: {n_sides: 4}}   # illusory square
+
+# Where object/background pairs come from:
+#   catalog  -> pick from the shipped, pre-validated pipeline/pairs_catalog.yaml (no LLM run)
+#   propose  -> regenerate with Qwen, then generate assets + validate
+#   explicit -> use the list under pairs.explicit
+pairs:
+  source: catalog
+  n_per_silhouette: 8
+  filter:
+    natural: null          # true | false | null(=either)
+    min_contrast: 0.25     # keep only clearly-visible pairs
+    objects: null          # e.g. [moon, target] to restrict
+  explicit: []             # [{object: moon, background: night sky, natural: false}]
+
+propose:                   # used only when pairs.source == propose
+  n_per: 12
+  natural: [true, false]
+
+assets:
+  best_of: 3               # best-of-N object generations, kept by roundness
+
+dress:
+  backends: [composite]    # composite (local, pixel-exact) and/or controlnet (Modal)
+  modes: [perfect]         # perfect | imperfect
+  shadow: 55               # inward-cast shadow strength (0 = none)
+
+select:                    # thresholds for pairs.source == propose
+  round_min: 0.55
+  contrast_high: 0.22
+  contrast_low_natural: 0.10
+
+output:
+  contact_sheet: true

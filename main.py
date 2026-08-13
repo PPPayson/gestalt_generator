@@ -300,17 +300,26 @@ def draw_shapes(
         mask |= region
     return mask.astype(np.uint8)
 
-if __name__ == "__main__":
-    output_folder = "./out"
-    os.makedirs(output_folder, exist_ok=True)
-    output_shape = [1024, 1024]
-    basedist = 150
+def generate(
+    output_folder="data/silhouettes",
+    output_shape=(1024, 1024),
+    basedist=150,
+    rs=(0, 0.4, 0.8, 1),
+    n_vs=(3, 4, 5, 6, 7, 8),
+    n_ps=(3, 4, 5, 6),
+    es=(0.1, 0.5, 1),
+    rads=(0.1, 0.2, 0.4),
+    seed=None,
+):
+    """Generate the silhouette grid into `output_folder`.
 
-    rs = [0, 0.4, 0.8, 1]
-    n_vs = [3, 4, 5, 6, 7, 8]
-    n_ps = [3, 4, 5, 6]
-    es = [0.1, 0.5, 1]
-    rads = [0.1, 0.2, 0.4]
+    Extracted from the original __main__ block so the generator can be imported and driven
+    from other code (e.g. a dressing pipeline). Called with no arguments it reproduces the
+    original behaviour exactly. `seed` (if given) makes the polygon sampling reproducible.
+    """
+    output_shape = list(output_shape)
+    os.makedirs(output_folder, exist_ok=True)
+    count = 0
     for randomness in rs:
         for n_vertices in n_vs:
             for n_points in n_ps:
@@ -323,7 +332,7 @@ if __name__ == "__main__":
                         ax.set_axis_off()
 
                         c = [0, 0]
-                        a = get_random_points(n=n_vertices, scale=0.8, randomness=randomness) + c
+                        a = get_random_points(n=n_vertices, scale=0.8, randomness=randomness, seed=seed) + c
                         x,y, _ = get_bezier_curve(a,rad=rad, edgy=edgy)
                         x = output_shape[0] * x
                         y = output_shape[1] * y
@@ -332,8 +341,9 @@ if __name__ == "__main__":
 
                         coords = np.stack([x, y], axis=1)
                         mask = polygon2mask(output_shape, coords)
-                        sampled_points = sample_points(coords, n=n_points, mindist=mindist*3)
+                        sampled_points = sample_points(coords, n=n_points, mindist=mindist*3, seed=seed)
                         if sampled_points is None:
+                            plt.close()
                             continue
                         output_array = draw_shapes(sampled_points, mindist=mindist, shape=output_shape, shape_type="circle")
                         output_array[mask] = 0
@@ -342,3 +352,9 @@ if __name__ == "__main__":
                         # plt.show()
                         fig.savefig(os.path.join(output_folder,fname), dpi=300)
                         plt.close()
+                        count += 1
+    return count
+
+
+if __name__ == "__main__":
+    generate()

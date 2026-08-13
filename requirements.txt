@@ -1,0 +1,31 @@
+# Local deps (silhouette generation + orchestration + composite/geometry/gt run on your machine).
+# GPU deps are pinned separately inside app.py's Modal images (see below).
+modal==1.4.2
+PyYAML==6.0.3
+numpy==2.4.6
+scipy==1.18.0
+Pillow==12.3.0
+matplotlib==3.11.1        # main.py (silhouette generator)
+scikit-image==0.26.0      # main.py (polygon2mask)
+
+# --- Modal SDXL image (GPU; pinned in app.py, listed here for the record) ---
+# torch==2.4.1
+# diffusers==0.31.0
+# transformers==4.44.2
+# accelerate==0.34.2
+# safetensors==0.8.0
+# huggingface_hub==0.36.2
+# invisible-watermark==0.2.0
+# opencv-python-headless==5.0.0.93
+# rembg==2.0.78
+# onnxruntime==1.28.0
+# Pillow==12.3.0
+# numpy==2.4.6
+#
+# --- Modal LLM image (GPU; pinned in app.py) ---
+# torch==2.4.1
+# transformers==4.44.2
+# accelerate==0.34.2
+# safetensors==0.8.0
+# huggingface_hub==0.36.2
+# numpy==2.4.6
