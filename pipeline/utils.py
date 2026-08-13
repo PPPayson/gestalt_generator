@@ -7,6 +7,7 @@ import numpy as np
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = pathlib.Path(os.environ.get("GESTALT_DATA", ROOT / "data"))
 SIL = DATA / "silhouettes"           # silhouette store (his generator output lives here too)
+SIL_CTRL = DATA / "control"          # paired control silhouettes (illusory shape drawn as an outline)
 OBJ = DATA / "assets" / "objects"
 BG = DATA / "assets" / "bg"
 OUT = pathlib.Path(os.environ.get("GESTALT_OUT", ROOT / "out"))   # benchmark output (stimuli, gt, manifest)
@@ -80,5 +81,5 @@ def append_manifest(row, out=OUT):
     with open(p, "a", newline="") as f:
         w = csv.writer(f)
         if new:
-            w.writerow(["id", "silhouette", "object", "background", "backend", "mode", "natural"])
+            w.writerow(["id", "silhouette", "object", "background", "backend", "mode", "natural", "condition"])
         w.writerow(row)

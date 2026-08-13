@@ -40,6 +40,33 @@ def test_run_writes_stimuli_and_manifest(cfg):
               "illusory_shape": "triangle"}]
     pairs = {"kanizsa_triangle": [{"object": "white disc", "background": "black bg", "natural": False}]}
     DC.run(cfg(), metas, pairs)
-    assert len(list((OUT / "comp").glob("*.png"))) == 1
+    assert len(list((OUT / "comp").rglob("*.png"))) == 1
     assert (OUT / "manifest.csv").exists()
     assert len(list((OUT / "gt").glob("*.json"))) == 1
+
+
+def test_control_draws_contour():
+    # render a gestalt silhouette with and without its control; the control must differ (drawn outline)
+    from pipeline.utils import SIL_CTRL
+    import numpy as np
+    stem = sorted(p.stem for p in SIL.glob("img_*.png"))[0]
+    illus, _ = DC.render(SIL / f"{stem}.png", "white disc", "black bg", crop=True, control=None)
+    ctrl, _ = DC.render(SIL / f"{stem}.png", "white disc", "black bg", crop=True,
+                        control=SIL_CTRL / f"{stem}.png")
+    assert illus.size == ctrl.size
+    assert not np.array_equal(np.asarray(illus), np.asarray(ctrl))   # contour was drawn
+
+
+def test_run_emits_both_conditions(cfg):
+    from pipeline.utils import OUT
+    import csv
+    stem = sorted(p.stem for p in SIL.glob("img_*.png"))[0]
+    metas = [{"stem": stem, "illusion": stem, "illusory_shape": "irregular"}]
+    pairs = {stem: [{"object": "white disc", "background": "black bg", "natural": False}]}
+    c = cfg(dress={"backends": ["composite"], "modes": ["perfect"],
+                   "conditions": ["illusory", "control"], "contour": "auto",
+                   "shadow": 55, "crop": True, "feather": 1.5})
+    DC.run(c, metas, pairs)
+    conds = {r["condition"] for r in csv.DictReader(open(OUT / "manifest.csv"))}
+    assert conds == {"illusory", "control"}
+    assert len(list((OUT / "comp").rglob("*.png"))) == 2

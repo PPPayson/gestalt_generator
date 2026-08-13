@@ -18,14 +18,17 @@ def _illusory_shape(meta):
     return "irregular"                                      # arbitrary drop-in
 
 
-def write(stim_id, meta, item, backend, mode):
+def write(stim_id, meta, item, backend, mode, condition="illusory"):
     n = len(inducers(SIL / f"{meta['stem']}.png"))
     obj = item["object"]
     primitive = meta.get("primitive", "circle")             # inducer geometry (his + our discs = circle)
+    control = condition == "control"                        # the illusory shape's contour is DRAWN
     gt = {
         "id": stim_id,
+        "condition": condition,                             # illusory | control
         "n_inducers": n,
-        "has_illusion": True,                               # everything generated via silhouettes; controls set False later
+        "has_illusion": not control,                        # control shows a real (drawn) contour, not illusory
+        "has_visible_contour": control,
         "illusory_shape": _illusory_shape(meta),
         "nonillusory_shapes": {
             "real_life": [obj] * n,                         # the dressed object, one per inducer

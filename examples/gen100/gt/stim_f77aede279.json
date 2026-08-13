@@ -1,0 +1,22 @@
+{
+  "id": "stim_f77aede279",
+  "condition": "control",
+  "n_inducers": 4,
+  "has_illusion": false,
+  "has_visible_contour": true,
+  "illusory_shape": "irregular",
+  "nonillusory_shapes": {
+    "real_life": [
+      "Space pod",
+      "Space pod",
+      "Space pod",
+      "Space pod"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  }
+}

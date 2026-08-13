@@ -18,7 +18,7 @@ def _run_collect(cfg, seed):
         shutil.rmtree(OUT)
     OUT.mkdir(parents=True, exist_ok=True)
     orchestrate.run(_cfg(cfg, seed))
-    return {f.name: f.read_bytes() for f in (OUT / "comp").glob("*.png")}
+    return {f.name: f.read_bytes() for f in (OUT / "comp").rglob("*.png")}
 
 
 def test_same_seed_identical(cfg, use_fixture_catalog):

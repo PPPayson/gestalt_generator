@@ -11,12 +11,22 @@ def test_gt_schema_and_values():
     meta = _meta_kanizsa()
     item = {"object": "moon", "background": "sky", "natural": True}
     g = gt.write("stim_x", meta, item, "composite", "perfect")
-    assert set(g) == {"id", "n_inducers", "has_illusion", "illusory_shape", "nonillusory_shapes"}
-    assert g["id"] == "stim_x" and g["has_illusion"] is True
+    assert set(g) == {"id", "condition", "n_inducers", "has_illusion",
+                      "has_visible_contour", "illusory_shape", "nonillusory_shapes"}
+    assert g["id"] == "stim_x" and g["condition"] == "illusory"
+    assert g["has_illusion"] is True and g["has_visible_contour"] is False
     assert g["illusory_shape"] == "triangle" and g["n_inducers"] == 3
     assert g["nonillusory_shapes"]["real_life"] == ["moon", "moon", "moon"]
     assert g["nonillusory_shapes"]["primitive"] == ["circle", "circle", "circle"]
     assert (OUT / "gt" / "stim_x.json").exists()
+
+
+def test_gt_control_condition():
+    meta = _meta_kanizsa()
+    g = gt.write("stim_c", meta, {"object": "moon", "background": "sky"}, "composite", "perfect",
+                 condition="control")
+    assert g["condition"] == "control"
+    assert g["has_visible_contour"] is True and g["has_illusion"] is False   # contour is drawn/real
 
 
 def test_gt_gestalt_is_irregular():

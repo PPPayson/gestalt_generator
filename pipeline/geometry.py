@@ -17,22 +17,27 @@ def _as_rgba(sil):
     return sil.convert("RGBA") if isinstance(sil, Image.Image) else Image.open(sil).convert("RGBA")
 
 
-def crop_to_content(sil, pad_frac=0.02):
-    """Crop only the empty border MARGIN, never the silhouette. We remove the uniform border
-    (the matplotlib figure margin) by cropping to the bounding box of everything that differs from
-    the corner colour — i.e. the whole plot/figure area, with ALL inducers kept intact."""
+def crop_box(sil, pad_frac=0.02):
+    """The crop box (left, top, right, bottom) that trims the empty border MARGIN, never the
+    silhouette — the bbox of everything differing from the corner colour, plus a little padding.
+    Returned so the control silhouette can be cropped with the SAME box (keeps the contour aligned)."""
     rgba = _as_rgba(sil)
     arr = np.array(rgba).astype(int)
     corner = arr[0, 0]                              # border/margin colour (+alpha)
     content = np.any(np.abs(arr - corner) > 12, axis=-1)   # anything that isn't the margin
     ys, xs = np.where(content)
-    if len(xs) == 0:
-        return rgba
     W, H = rgba.size
+    if len(xs) == 0:
+        return (0, 0, W, H)
     x0, x1, y0, y1 = xs.min(), xs.max() + 1, ys.min(), ys.max() + 1
     px, py = (x1 - x0) * pad_frac, (y1 - y0) * pad_frac
-    box = (max(0, x0 - px), max(0, y0 - py), min(W, x1 + px), min(H, y1 + py))
-    return rgba.crop(tuple(int(v) for v in box))
+    return (int(max(0, x0 - px)), int(max(0, y0 - py)), int(min(W, x1 + px)), int(min(H, y1 + py)))
+
+
+def crop_to_content(sil, pad_frac=0.02):
+    """Crop a silhouette to `crop_box` (removes the empty margin, keeps all inducers)."""
+    rgba = _as_rgba(sil)
+    return rgba.crop(crop_box(rgba, pad_frac))
 
 
 def _label_keep(mask, TW, TH, use_border=True):

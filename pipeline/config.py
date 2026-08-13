@@ -26,7 +26,9 @@ DEFAULTS = {
     "propose": {"n_per": 12, "natural": [True, False]},
     "assets": {"best_of": 3},
     "dress": {"backends": ["composite"], "modes": ["perfect"], "shadow": 55,
-              "crop": True, "feather": 1.5},
+              "crop": True, "feather": 1.5,
+              "conditions": ["illusory"],       # illusory | control (control draws the shape's outline)
+              "contour": "auto"},               # control outline colour: auto | white | black
     "select": {"round_min": 0.55, "delta_e_min": 30.0},   # disc shape + min perceptual colour contrast
     "output": {"contact_sheet": True},
 }

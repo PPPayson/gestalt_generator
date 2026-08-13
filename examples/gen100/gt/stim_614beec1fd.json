@@ -1,0 +1,22 @@
+{
+  "id": "stim_614beec1fd",
+  "condition": "control",
+  "n_inducers": 4,
+  "has_illusion": false,
+  "has_visible_contour": true,
+  "illusory_shape": "irregular",
+  "nonillusory_shapes": {
+    "real_life": [
+      "candle",
+      "candle",
+      "candle",
+      "candle"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  }
+}

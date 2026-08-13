@@ -16,7 +16,7 @@ def run(cfg):
     import shutil
     from .utils import OUT
     # start from a clean output so a re-run reproduces EXACTLY (manifest is not append-idempotent)
-    for sub in ("comp", "cn", "gt", "silhouettes"):
+    for sub in ("comp", "cn", "gt", "silhouettes", "control"):
         shutil.rmtree(OUT / sub, ignore_errors=True)
     (OUT / "manifest.csv").unlink(missing_ok=True)
 
@@ -60,13 +60,18 @@ def run(cfg):
 
 
 def _copy_silhouettes(metas):
-    """Copy the silhouettes actually used into out/silhouettes/ for completeness."""
+    """Copy the silhouettes used into out/silhouettes/ and their controls into out/control/
+    (mirrors the source data/silhouettes + data/control split)."""
     import shutil
-    from .utils import SIL, OUT
-    d = OUT / "silhouettes"; d.mkdir(parents=True, exist_ok=True)
+    from .utils import SIL, SIL_CTRL, OUT
+    d = OUT / "silhouettes"; dc = OUT / "control"
+    d.mkdir(parents=True, exist_ok=True); dc.mkdir(parents=True, exist_ok=True)
     for m in metas:
         for ext in (".png", ".json"):
             src = SIL / f"{m['stem']}{ext}"
             if src.exists():
                 shutil.copy(src, d / src.name)
-    print(f"  silhouettes: copied {len(metas)} used silhouettes -> {d}")
+        ctrl = SIL_CTRL / f"{m['stem']}.png"
+        if ctrl.exists():
+            shutil.copy(ctrl, dc / ctrl.name)
+    print(f"  silhouettes: copied {len(metas)} silhouettes -> {d} and controls -> {dc}")

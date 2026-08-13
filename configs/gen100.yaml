@@ -27,6 +27,8 @@ assets:
 dress:
   backends: [composite]    # composite only (add controlnet to also run the one-pass Modal path)
   modes: [perfect]
+  conditions: [illusory, control]   # matched pairs: illusory (no contour) + control (contour drawn)
+  contour: auto            # control-outline colour: auto (per-image high contrast) | white | black
   shadow: 55               # light inward shadow
   crop: true               # trim dead silhouette margin so objects fill the frame
   feather: 1.5             # soft cutout edge

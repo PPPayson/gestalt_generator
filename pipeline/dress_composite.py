@@ -3,7 +3,7 @@ Polarity-agnostic, aspect-preserving, object clipped EXACTLY to the region, inwa
 import numpy as np
 from PIL import Image, ImageFilter, ImageOps
 from scipy import ndimage
-from .utils import OBJ, BG, OUT, SIL, slug, sid, append_manifest
+from .utils import OBJ, BG, OUT, SIL, SIL_CTRL, slug, sid, append_manifest
 from .geometry import inducer_labels, crop_to_content
 from . import gt
 
@@ -58,11 +58,37 @@ def min_enclosing_circle(xs, ys):
     return c
 
 
-def render(sil_path, o, b, shadow=55, mode="perfect", crop=True, pad_frac=0.10, feather=1.5):
-    """Return (RGB image, canvas_size). `crop` trims the silhouette to its inducer region so the
-    objects fill the frame (bigger); proportions between inducers and the inward shadow are kept.
-    `feather` softens the cutout edge (px) so it blends into the scene instead of looking pasted."""
-    sil = crop_to_content(sil_path, pad_frac) if crop else sil_path
+def _draw_contour(canvas, ring, style="auto", feather=1.6):
+    """Draw the illusory shape's outline `ring` onto the composite (positive control) as a soft,
+    anti-aliased line. `auto` picks white or black so the line contrasts the background."""
+    if not ring.any():
+        return canvas
+    arr = np.array(canvas)
+    if style == "white":
+        rgb = (255, 255, 255)
+    elif style == "black":
+        rgb = (0, 0, 0)
+    else:                                              # auto: contrast the local background
+        lum = (0.2126 * arr[..., 0] + 0.7152 * arr[..., 1] + 0.0722 * arr[..., 2]) / 255.0
+        rgb = (255, 255, 255) if lum[ring].mean() < 0.5 else (0, 0, 0)
+    alpha = Image.fromarray((ring * 255).astype(np.uint8), "L").filter(ImageFilter.GaussianBlur(feather))
+    line = Image.new("RGBA", canvas.size, rgb + (0,))
+    line.putalpha(alpha)                               # soft edges instead of hard pixels
+    out = canvas.copy()
+    out.alpha_composite(line)
+    return out
+
+
+def render(sil_path, o, b, shadow=55, mode="perfect", crop=True, pad_frac=0.10, feather=1.5,
+           control=None, contour="auto"):
+    """Return (RGB image, canvas_size). `crop` trims the silhouette margin so objects fill the frame;
+    `feather` softens the cutout edge. If `control` (a paired control silhouette) is given, the
+    illusory shape's drawn outline is added as a positive control."""
+    from .geometry import crop_box
+    sil_img = sil_path if isinstance(sil_path, Image.Image) else Image.open(sil_path)
+    sil_img = sil_img.convert("RGBA")
+    box = crop_box(sil_img, pad_frac) if crop else (0, 0, sil_img.width, sil_img.height)
+    sil = sil_img.crop(box)
     lab, n, (TW, TH) = inducer_labels(sil)
     obj = Image.open(OBJ / f"{slug(o)}.png").convert("RGBA")
     obj = obj.crop(obj.getbbox())
@@ -97,6 +123,13 @@ def render(sil_path, o, b, shadow=55, mode="perfect", crop=True, pad_frac=0.10, 
             sh.paste((0, 0, 0, shadow), (dx, dy), Image.fromarray((mask * 255).astype(np.uint8), "L"))
             canvas.alpha_composite(sh.filter(ImageFilter.GaussianBlur(7)))
         canvas.alpha_composite(Image.fromarray(layer, "RGBA"))
+    if control is not None:                             # draw the illusory shape's outline (control)
+        ctrl = (control if isinstance(control, Image.Image) else Image.open(control)).convert("RGBA")
+        ctrl = ctrl.crop(box).resize((TW, TH))          # SAME box -> aligned to the composite
+        cl = np.array(ctrl.convert("L"))
+        sl = np.array(sil.resize((TW, TH)).convert("L"))
+        ring = (cl > 127) & (sl <= 127)                 # pixels drawn in control but not the silhouette
+        canvas = _draw_contour(canvas, ring, contour)
     return canvas.convert("RGB"), (TW, TH)
 
 
@@ -104,16 +137,25 @@ def run(cfg, metas, pairs):
     shadow = cfg["dress"].get("shadow", 55)
     crop = cfg["dress"].get("crop", True)
     feather = cfg["dress"].get("feather", 1.5)
-    out = OUT / "comp"; out.mkdir(parents=True, exist_ok=True); k = 0
+    conditions = cfg["dress"].get("conditions", ["illusory"])
+    contour = cfg["dress"].get("contour", "auto")
+    out = OUT / "comp"
+    for cond in conditions:
+        (out / cond).mkdir(parents=True, exist_ok=True)   # out/comp/illusory, out/comp/control
+    k = 0
     for meta in metas:
         sp = SIL / f"{meta['stem']}.png"
+        cp = SIL_CTRL / f"{meta['stem']}.png"
         for it in pairs.get(meta["stem"], []):
             for mode in cfg["dress"]["modes"]:
-                img, canvas = render(sp, it["object"], it["background"], shadow, mode, crop, feather=feather)
-                i = sid(meta["stem"], it["object"], "composite", mode)
-                img.save(out / f"{i}.png")
-                append_manifest([i, meta["stem"], it["object"], it["background"],
-                                 "composite", mode, it.get("natural", True)])
-                gt.write(i, meta, it, "composite", mode)
-                k += 1
+                for cond in conditions:                 # illusory (no contour) + control (drawn contour)
+                    ctrl = cp if (cond == "control" and cp.exists()) else None
+                    img, _ = render(sp, it["object"], it["background"], shadow, mode, crop,
+                                    feather=feather, control=ctrl, contour=contour)
+                    i = sid(meta["stem"], it["object"], "composite", f"{mode}_{cond}")
+                    img.save(out / cond / f"{i}.png")
+                    append_manifest([i, meta["stem"], it["object"], it["background"],
+                                     "composite", mode, it.get("natural", True), cond])
+                    gt.write(i, meta, it, "composite", mode, condition=cond)
+                    k += 1
     print(f"  composite: {k} stimuli")

@@ -14,7 +14,7 @@ def test_end_to_end_generates_with_provider(cfg):
             dress={"backends": ["composite"]}, output={"contact_sheet": False})
     orchestrate.run(c)
     assert (OBJ / f"{slug('novel obj')}.png").exists()      # provider generated the asset
-    assert len(list((OUT / "comp").glob("*.png"))) == 1
+    assert len(list((OUT / "comp").rglob("*.png"))) == 1
     assert len(list((OUT / "gt").glob("*.json"))) == 1
 
 
@@ -26,7 +26,7 @@ def test_offline_loads_no_provider(cfg):
                    "explicit": [{"object": "white disc", "background": "black bg"}]},
             dress={"backends": ["composite"]}, output={"contact_sheet": False})
     orchestrate.run(c)                                       # would ValueError if provider loaded
-    assert len(list((OUT / "comp").glob("*.png"))) == 1
+    assert len(list((OUT / "comp").rglob("*.png"))) == 1
 
 
 def test_controlnet_without_dress_warns_and_skips(cfg, capsys):
@@ -37,7 +37,7 @@ def test_controlnet_without_dress_warns_and_skips(cfg, capsys):
             dress={"backends": ["composite", "controlnet"]}, output={"contact_sheet": False})
     orchestrate.run(c)
     assert "WARNING" in capsys.readouterr().out
-    assert len(list((OUT / "comp").glob("*.png"))) == 1     # composite still ran
+    assert len(list((OUT / "comp").rglob("*.png"))) == 1     # composite still ran
     assert not (OUT / "cn").exists() or not list((OUT / "cn").glob("*.png"))
 
 

@@ -1,0 +1,201 @@
+id,silhouette,object,background,backend,mode,natural,condition
+stim_5fc0c4fce6,img_1_5_6_0.1_0.2,Bullseye,Dark forest floor,composite,perfect,False,illusory
+stim_96c1795bfc,img_1_5_6_0.1_0.2,Bullseye,Dark forest floor,composite,perfect,False,control
+stim_8bdbac2700,img_1_5_6_0.1_0.2,lens,white marble slab,composite,perfect,False,illusory
+stim_371df330fb,img_1_5_6_0.1_0.2,lens,white marble slab,composite,perfect,False,control
+stim_3a58f2946e,img_1_5_6_0.1_0.2,moon,bright starry night sky,composite,perfect,False,illusory
+stim_b3b68d202b,img_1_5_6_0.1_0.2,moon,bright starry night sky,composite,perfect,False,control
+stim_abaa0bb64d,img_1_5_6_0.1_0.2,Space pod,Deep space,composite,perfect,False,illusory
+stim_5351cf44bb,img_1_5_6_0.1_0.2,Space pod,Deep space,composite,perfect,False,control
+stim_3b50436911,img_1_5_6_0.1_0.2,white pearl,deep purple velvet,composite,perfect,False,illusory
+stim_1d836c449c,img_1_5_6_0.1_0.2,white pearl,deep purple velvet,composite,perfect,False,control
+stim_e0f2b8ed37,img_1_5_6_0.1_0.2,lily pad,pond,composite,perfect,True,illusory
+stim_64305bbf4a,img_1_5_6_0.1_0.2,lily pad,pond,composite,perfect,True,control
+stim_4f137757cb,img_1_5_6_0.1_0.2,blueberry,ivory plate,composite,perfect,False,illusory
+stim_5bf223cacc,img_1_5_6_0.1_0.2,blueberry,ivory plate,composite,perfect,False,control
+stim_6b1cb80c51,img_1_5_6_0.1_0.2,candle,dark wood table,composite,perfect,True,illusory
+stim_54d2fd9341,img_1_5_6_0.1_0.2,candle,dark wood table,composite,perfect,True,control
+stim_8529469fb4,img_1_5_6_0.1_0.2,grapefruit,fruit basket,composite,perfect,True,illusory
+stim_0b174d7498,img_1_5_6_0.1_0.2,grapefruit,fruit basket,composite,perfect,True,control
+stim_0a7190bdbc,img_1_5_6_0.1_0.2,Satellite dish,Black asphalt,composite,perfect,False,illusory
+stim_c38b66cddc,img_1_5_6_0.1_0.2,Satellite dish,Black asphalt,composite,perfect,False,control
+stim_bce96c6d75,img_0.8_5_3_1_0.4 2,Bullseye,Dark forest floor,composite,perfect,False,illusory
+stim_1be9503a20,img_0.8_5_3_1_0.4 2,Bullseye,Dark forest floor,composite,perfect,False,control
+stim_501ed9a9d3,img_0.8_5_3_1_0.4 2,lens,white marble slab,composite,perfect,False,illusory
+stim_55edf04d4f,img_0.8_5_3_1_0.4 2,lens,white marble slab,composite,perfect,False,control
+stim_b1e8863a65,img_0.8_5_3_1_0.4 2,moon,bright starry night sky,composite,perfect,False,illusory
+stim_594aec95e8,img_0.8_5_3_1_0.4 2,moon,bright starry night sky,composite,perfect,False,control
+stim_9e111a46bc,img_0.8_5_3_1_0.4 2,Space pod,Deep space,composite,perfect,False,illusory
+stim_c7e6d48e7a,img_0.8_5_3_1_0.4 2,Space pod,Deep space,composite,perfect,False,control
+stim_d22c49f654,img_0.8_5_3_1_0.4 2,white pearl,deep purple velvet,composite,perfect,False,illusory
+stim_b55590a773,img_0.8_5_3_1_0.4 2,white pearl,deep purple velvet,composite,perfect,False,control
+stim_b369d59a13,img_0.8_5_3_1_0.4 2,lily pad,pond,composite,perfect,True,illusory
+stim_ba48431049,img_0.8_5_3_1_0.4 2,lily pad,pond,composite,perfect,True,control
+stim_1f5831c8c8,img_0.8_5_3_1_0.4 2,blueberry,ivory plate,composite,perfect,False,illusory
+stim_ade7d01198,img_0.8_5_3_1_0.4 2,blueberry,ivory plate,composite,perfect,False,control
+stim_529b8eaa81,img_0.8_5_3_1_0.4 2,candle,dark wood table,composite,perfect,True,illusory
+stim_c16f8d2d43,img_0.8_5_3_1_0.4 2,candle,dark wood table,composite,perfect,True,control
+stim_fb68b85a7a,img_0.8_5_3_1_0.4 2,grapefruit,fruit basket,composite,perfect,True,illusory
+stim_89c8e7538b,img_0.8_5_3_1_0.4 2,grapefruit,fruit basket,composite,perfect,True,control
+stim_26df6cd9b9,img_0.8_5_3_1_0.4 2,Satellite dish,Black asphalt,composite,perfect,False,illusory
+stim_a90deb4a60,img_0.8_5_3_1_0.4 2,Satellite dish,Black asphalt,composite,perfect,False,control
+stim_ae0e2af065,img_0.4_4_5_0.5_0.2,Bullseye,Dark forest floor,composite,perfect,False,illusory
+stim_166ac51310,img_0.4_4_5_0.5_0.2,Bullseye,Dark forest floor,composite,perfect,False,control
+stim_5675c56bd7,img_0.4_4_5_0.5_0.2,lens,white marble slab,composite,perfect,False,illusory
+stim_a9898577fd,img_0.4_4_5_0.5_0.2,lens,white marble slab,composite,perfect,False,control
+stim_e040a1313d,img_0.4_4_5_0.5_0.2,moon,bright starry night sky,composite,perfect,False,illusory
+stim_ddc02e979c,img_0.4_4_5_0.5_0.2,moon,bright starry night sky,composite,perfect,False,control
+stim_5a76f5f066,img_0.4_4_5_0.5_0.2,Space pod,Deep space,composite,perfect,False,illusory
+stim_014361eae2,img_0.4_4_5_0.5_0.2,Space pod,Deep space,composite,perfect,False,control
+stim_f5e1b2255d,img_0.4_4_5_0.5_0.2,white pearl,deep purple velvet,composite,perfect,False,illusory
+stim_c063c01f9f,img_0.4_4_5_0.5_0.2,white pearl,deep purple velvet,composite,perfect,False,control
+stim_e92a723c61,img_0.4_4_5_0.5_0.2,lily pad,pond,composite,perfect,True,illusory
+stim_63a2a0c818,img_0.4_4_5_0.5_0.2,lily pad,pond,composite,perfect,True,control
+stim_b463c6b13d,img_0.4_4_5_0.5_0.2,blueberry,ivory plate,composite,perfect,False,illusory
+stim_fb1a0640d7,img_0.4_4_5_0.5_0.2,blueberry,ivory plate,composite,perfect,False,control
+stim_26cd5e220e,img_0.4_4_5_0.5_0.2,candle,dark wood table,composite,perfect,True,illusory
+stim_123e8770f5,img_0.4_4_5_0.5_0.2,candle,dark wood table,composite,perfect,True,control
+stim_e299858421,img_0.4_4_5_0.5_0.2,grapefruit,fruit basket,composite,perfect,True,illusory
+stim_64250cf80f,img_0.4_4_5_0.5_0.2,grapefruit,fruit basket,composite,perfect,True,control
+stim_a50fdf60f6,img_0.4_4_5_0.5_0.2,Satellite dish,Black asphalt,composite,perfect,False,illusory
+stim_1a22e7493f,img_0.4_4_5_0.5_0.2,Satellite dish,Black asphalt,composite,perfect,False,control
+stim_03ac71cb48,img_0.4_7_3_1_0.1,Bullseye,Dark forest floor,composite,perfect,False,illusory
+stim_3eeef08cea,img_0.4_7_3_1_0.1,Bullseye,Dark forest floor,composite,perfect,False,control
+stim_68be659dee,img_0.4_7_3_1_0.1,lens,white marble slab,composite,perfect,False,illusory
+stim_627f9d1312,img_0.4_7_3_1_0.1,lens,white marble slab,composite,perfect,False,control
+stim_e5ad6ae597,img_0.4_7_3_1_0.1,moon,bright starry night sky,composite,perfect,False,illusory
+stim_1b550c64d8,img_0.4_7_3_1_0.1,moon,bright starry night sky,composite,perfect,False,control
+stim_68ba0a670b,img_0.4_7_3_1_0.1,Space pod,Deep space,composite,perfect,False,illusory
+stim_73fb9a3ed1,img_0.4_7_3_1_0.1,Space pod,Deep space,composite,perfect,False,control
+stim_730f621d4f,img_0.4_7_3_1_0.1,white pearl,deep purple velvet,composite,perfect,False,illusory
+stim_ccf5bbadc4,img_0.4_7_3_1_0.1,white pearl,deep purple velvet,composite,perfect,False,control
+stim_35f34a5a09,img_0.4_7_3_1_0.1,lily pad,pond,composite,perfect,True,illusory
+stim_0225de0288,img_0.4_7_3_1_0.1,lily pad,pond,composite,perfect,True,control
+stim_0da5fa52ea,img_0.4_7_3_1_0.1,blueberry,ivory plate,composite,perfect,False,illusory
+stim_d50b6f5a28,img_0.4_7_3_1_0.1,blueberry,ivory plate,composite,perfect,False,control
+stim_c7ad19711f,img_0.4_7_3_1_0.1,candle,dark wood table,composite,perfect,True,illusory
+stim_0fef47b134,img_0.4_7_3_1_0.1,candle,dark wood table,composite,perfect,True,control
+stim_18a5c06030,img_0.4_7_3_1_0.1,grapefruit,fruit basket,composite,perfect,True,illusory
+stim_d416042919,img_0.4_7_3_1_0.1,grapefruit,fruit basket,composite,perfect,True,control
+stim_c70d9dde57,img_0.4_7_3_1_0.1,Satellite dish,Black asphalt,composite,perfect,False,illusory
+stim_ea7ddab51d,img_0.4_7_3_1_0.1,Satellite dish,Black asphalt,composite,perfect,False,control
+stim_a492202f68,img_1_4_4_0.1_0.2,Bullseye,Dark forest floor,composite,perfect,False,illusory
+stim_c7f2679bad,img_1_4_4_0.1_0.2,Bullseye,Dark forest floor,composite,perfect,False,control
+stim_6e83c280d3,img_1_4_4_0.1_0.2,lens,white marble slab,composite,perfect,False,illusory
+stim_6eb9e30c45,img_1_4_4_0.1_0.2,lens,white marble slab,composite,perfect,False,control
+stim_909837222b,img_1_4_4_0.1_0.2,moon,bright starry night sky,composite,perfect,False,illusory
+stim_64862e7728,img_1_4_4_0.1_0.2,moon,bright starry night sky,composite,perfect,False,control
+stim_cd886cbd3c,img_1_4_4_0.1_0.2,Space pod,Deep space,composite,perfect,False,illusory
+stim_120a278029,img_1_4_4_0.1_0.2,Space pod,Deep space,composite,perfect,False,control
+stim_503700b273,img_1_4_4_0.1_0.2,white pearl,deep purple velvet,composite,perfect,False,illusory
+stim_f120766fc7,img_1_4_4_0.1_0.2,white pearl,deep purple velvet,composite,perfect,False,control
+stim_7fbf1e2039,img_1_4_4_0.1_0.2,lily pad,pond,composite,perfect,True,illusory
+stim_cc6b12adf9,img_1_4_4_0.1_0.2,lily pad,pond,composite,perfect,True,control
+stim_a76935c648,img_1_4_4_0.1_0.2,blueberry,ivory plate,composite,perfect,False,illusory
+stim_7a7d7d1444,img_1_4_4_0.1_0.2,blueberry,ivory plate,composite,perfect,False,control
+stim_41310a3868,img_1_4_4_0.1_0.2,candle,dark wood table,composite,perfect,True,illusory
+stim_92e7f43f8b,img_1_4_4_0.1_0.2,candle,dark wood table,composite,perfect,True,control
+stim_250512b1fd,img_1_4_4_0.1_0.2,grapefruit,fruit basket,composite,perfect,True,illusory
+stim_b763ab308a,img_1_4_4_0.1_0.2,grapefruit,fruit basket,composite,perfect,True,control
+stim_656841f6bd,img_1_4_4_0.1_0.2,Satellite dish,Black asphalt,composite,perfect,False,illusory
+stim_97e6a4bd99,img_1_4_4_0.1_0.2,Satellite dish,Black asphalt,composite,perfect,False,control
+stim_c997b65a0d,img_1_7_6_0.5_0.2,Bullseye,Dark forest floor,composite,perfect,False,illusory
+stim_7fb8ff2351,img_1_7_6_0.5_0.2,Bullseye,Dark forest floor,composite,perfect,False,control
+stim_4852c23606,img_1_7_6_0.5_0.2,lens,white marble slab,composite,perfect,False,illusory
+stim_c0046e9c06,img_1_7_6_0.5_0.2,lens,white marble slab,composite,perfect,False,control
+stim_2dd36fc1de,img_1_7_6_0.5_0.2,moon,bright starry night sky,composite,perfect,False,illusory
+stim_71c50e5a56,img_1_7_6_0.5_0.2,moon,bright starry night sky,composite,perfect,False,control
+stim_2bf8e51d0b,img_1_7_6_0.5_0.2,Space pod,Deep space,composite,perfect,False,illusory
+stim_02b0994b21,img_1_7_6_0.5_0.2,Space pod,Deep space,composite,perfect,False,control
+stim_f9bca9d918,img_1_7_6_0.5_0.2,white pearl,deep purple velvet,composite,perfect,False,illusory
+stim_28319fbc3e,img_1_7_6_0.5_0.2,white pearl,deep purple velvet,composite,perfect,False,control
+stim_f28ca39df3,img_1_7_6_0.5_0.2,lily pad,pond,composite,perfect,True,illusory
+stim_27a1df6c9b,img_1_7_6_0.5_0.2,lily pad,pond,composite,perfect,True,control
+stim_33808debbd,img_1_7_6_0.5_0.2,blueberry,ivory plate,composite,perfect,False,illusory
+stim_eb5b7c8c33,img_1_7_6_0.5_0.2,blueberry,ivory plate,composite,perfect,False,control
+stim_95edd7c326,img_1_7_6_0.5_0.2,candle,dark wood table,composite,perfect,True,illusory
+stim_55412773a3,img_1_7_6_0.5_0.2,candle,dark wood table,composite,perfect,True,control
+stim_d1a824282c,img_1_7_6_0.5_0.2,grapefruit,fruit basket,composite,perfect,True,illusory
+stim_d289cf89b7,img_1_7_6_0.5_0.2,grapefruit,fruit basket,composite,perfect,True,control
+stim_9388b6d2dd,img_1_7_6_0.5_0.2,Satellite dish,Black asphalt,composite,perfect,False,illusory
+stim_5f64457539,img_1_7_6_0.5_0.2,Satellite dish,Black asphalt,composite,perfect,False,control
+stim_1e61a8fcb8,img_0.4_7_3_1_0.2,Bullseye,Dark forest floor,composite,perfect,False,illusory
+stim_46ff1fce60,img_0.4_7_3_1_0.2,Bullseye,Dark forest floor,composite,perfect,False,control
+stim_17cec7264a,img_0.4_7_3_1_0.2,lens,white marble slab,composite,perfect,False,illusory
+stim_092e0f3f2e,img_0.4_7_3_1_0.2,lens,white marble slab,composite,perfect,False,control
+stim_51fc8b293a,img_0.4_7_3_1_0.2,moon,bright starry night sky,composite,perfect,False,illusory
+stim_d88852b585,img_0.4_7_3_1_0.2,moon,bright starry night sky,composite,perfect,False,control
+stim_5a2b614c67,img_0.4_7_3_1_0.2,Space pod,Deep space,composite,perfect,False,illusory
+stim_0b7b64f1f4,img_0.4_7_3_1_0.2,Space pod,Deep space,composite,perfect,False,control
+stim_5004835796,img_0.4_7_3_1_0.2,white pearl,deep purple velvet,composite,perfect,False,illusory
+stim_21b5bc610a,img_0.4_7_3_1_0.2,white pearl,deep purple velvet,composite,perfect,False,control
+stim_7d511c49e8,img_0.4_7_3_1_0.2,lily pad,pond,composite,perfect,True,illusory
+stim_0f01d2fc0d,img_0.4_7_3_1_0.2,lily pad,pond,composite,perfect,True,control
+stim_7f7482b201,img_0.4_7_3_1_0.2,blueberry,ivory plate,composite,perfect,False,illusory
+stim_a08ce65736,img_0.4_7_3_1_0.2,blueberry,ivory plate,composite,perfect,False,control
+stim_0511e2cb69,img_0.4_7_3_1_0.2,candle,dark wood table,composite,perfect,True,illusory
+stim_cd0b1e9e53,img_0.4_7_3_1_0.2,candle,dark wood table,composite,perfect,True,control
+stim_10d9d88b35,img_0.4_7_3_1_0.2,grapefruit,fruit basket,composite,perfect,True,illusory
+stim_7c07bf4c5f,img_0.4_7_3_1_0.2,grapefruit,fruit basket,composite,perfect,True,control
+stim_8aed5fd2c3,img_0.4_7_3_1_0.2,Satellite dish,Black asphalt,composite,perfect,False,illusory
+stim_daf6c5d665,img_0.4_7_3_1_0.2,Satellite dish,Black asphalt,composite,perfect,False,control
+stim_62f2f5432f,img_1_5_4_0.1_0.1,Bullseye,Dark forest floor,composite,perfect,False,illusory
+stim_67c35b9f82,img_1_5_4_0.1_0.1,Bullseye,Dark forest floor,composite,perfect,False,control
+stim_2eef4ef99f,img_1_5_4_0.1_0.1,lens,white marble slab,composite,perfect,False,illusory
+stim_1894ae609a,img_1_5_4_0.1_0.1,lens,white marble slab,composite,perfect,False,control
+stim_3523b3b0a8,img_1_5_4_0.1_0.1,moon,bright starry night sky,composite,perfect,False,illusory
+stim_74d748cbcc,img_1_5_4_0.1_0.1,moon,bright starry night sky,composite,perfect,False,control
+stim_1e96fec0e8,img_1_5_4_0.1_0.1,Space pod,Deep space,composite,perfect,False,illusory
+stim_52cb6ffdd8,img_1_5_4_0.1_0.1,Space pod,Deep space,composite,perfect,False,control
+stim_74e03f82f3,img_1_5_4_0.1_0.1,white pearl,deep purple velvet,composite,perfect,False,illusory
+stim_726a9c1353,img_1_5_4_0.1_0.1,white pearl,deep purple velvet,composite,perfect,False,control
+stim_a6ec0c781e,img_1_5_4_0.1_0.1,lily pad,pond,composite,perfect,True,illusory
+stim_b83ba299b1,img_1_5_4_0.1_0.1,lily pad,pond,composite,perfect,True,control
+stim_f6911bd904,img_1_5_4_0.1_0.1,blueberry,ivory plate,composite,perfect,False,illusory
+stim_8cbc8df81c,img_1_5_4_0.1_0.1,blueberry,ivory plate,composite,perfect,False,control
+stim_6bde5b3a89,img_1_5_4_0.1_0.1,candle,dark wood table,composite,perfect,True,illusory
+stim_3acb26aa37,img_1_5_4_0.1_0.1,candle,dark wood table,composite,perfect,True,control
+stim_dd5224c776,img_1_5_4_0.1_0.1,grapefruit,fruit basket,composite,perfect,True,illusory
+stim_a1697b2a14,img_1_5_4_0.1_0.1,grapefruit,fruit basket,composite,perfect,True,control
+stim_a2cadf248a,img_1_5_4_0.1_0.1,Satellite dish,Black asphalt,composite,perfect,False,illusory
+stim_03fa2f1d97,img_1_5_4_0.1_0.1,Satellite dish,Black asphalt,composite,perfect,False,control
+stim_f5a271768b,img_0.4_5_4_1_0.4,Bullseye,Dark forest floor,composite,perfect,False,illusory
+stim_359bd08b9e,img_0.4_5_4_1_0.4,Bullseye,Dark forest floor,composite,perfect,False,control
+stim_5c4e97d3a1,img_0.4_5_4_1_0.4,lens,white marble slab,composite,perfect,False,illusory
+stim_07cad71004,img_0.4_5_4_1_0.4,lens,white marble slab,composite,perfect,False,control
+stim_23c4c342b5,img_0.4_5_4_1_0.4,moon,bright starry night sky,composite,perfect,False,illusory
+stim_3dedff94ec,img_0.4_5_4_1_0.4,moon,bright starry night sky,composite,perfect,False,control
+stim_1e3be21510,img_0.4_5_4_1_0.4,Space pod,Deep space,composite,perfect,False,illusory
+stim_c847468341,img_0.4_5_4_1_0.4,Space pod,Deep space,composite,perfect,False,control
+stim_92a3ca9755,img_0.4_5_4_1_0.4,white pearl,deep purple velvet,composite,perfect,False,illusory
+stim_3661a66855,img_0.4_5_4_1_0.4,white pearl,deep purple velvet,composite,perfect,False,control
+stim_43415eb12f,img_0.4_5_4_1_0.4,lily pad,pond,composite,perfect,True,illusory
+stim_0d51e9cc4d,img_0.4_5_4_1_0.4,lily pad,pond,composite,perfect,True,control
+stim_0620a8100d,img_0.4_5_4_1_0.4,blueberry,ivory plate,composite,perfect,False,illusory
+stim_83cdb56124,img_0.4_5_4_1_0.4,blueberry,ivory plate,composite,perfect,False,control
+stim_9e2e6834f2,img_0.4_5_4_1_0.4,candle,dark wood table,composite,perfect,True,illusory
+stim_f344e66744,img_0.4_5_4_1_0.4,candle,dark wood table,composite,perfect,True,control
+stim_a622d4aa94,img_0.4_5_4_1_0.4,grapefruit,fruit basket,composite,perfect,True,illusory
+stim_bce19212b5,img_0.4_5_4_1_0.4,grapefruit,fruit basket,composite,perfect,True,control
+stim_a57fe67e99,img_0.4_5_4_1_0.4,Satellite dish,Black asphalt,composite,perfect,False,illusory
+stim_f7671cfcae,img_0.4_5_4_1_0.4,Satellite dish,Black asphalt,composite,perfect,False,control
+stim_1bbb3368d9,img_0.8_7_6_1_0.4,Bullseye,Dark forest floor,composite,perfect,False,illusory
+stim_da7827d8bb,img_0.8_7_6_1_0.4,Bullseye,Dark forest floor,composite,perfect,False,control
+stim_79fbd87975,img_0.8_7_6_1_0.4,lens,white marble slab,composite,perfect,False,illusory
+stim_9532591c93,img_0.8_7_6_1_0.4,lens,white marble slab,composite,perfect,False,control
+stim_9c5fb8d37c,img_0.8_7_6_1_0.4,moon,bright starry night sky,composite,perfect,False,illusory
+stim_89bf8667ed,img_0.8_7_6_1_0.4,moon,bright starry night sky,composite,perfect,False,control
+stim_b42063f0c0,img_0.8_7_6_1_0.4,Space pod,Deep space,composite,perfect,False,illusory
+stim_eefcee2d0d,img_0.8_7_6_1_0.4,Space pod,Deep space,composite,perfect,False,control
+stim_657c1ae32e,img_0.8_7_6_1_0.4,white pearl,deep purple velvet,composite,perfect,False,illusory
+stim_a15ce0e5bc,img_0.8_7_6_1_0.4,white pearl,deep purple velvet,composite,perfect,False,control
+stim_bacdc98f5a,img_0.8_7_6_1_0.4,lily pad,pond,composite,perfect,True,illusory
+stim_42a3865bbe,img_0.8_7_6_1_0.4,lily pad,pond,composite,perfect,True,control
+stim_a02cce3337,img_0.8_7_6_1_0.4,blueberry,ivory plate,composite,perfect,False,illusory
+stim_7a25dc5c89,img_0.8_7_6_1_0.4,blueberry,ivory plate,composite,perfect,False,control
+stim_65a64df2f4,img_0.8_7_6_1_0.4,candle,dark wood table,composite,perfect,True,illusory
+stim_ad767a0882,img_0.8_7_6_1_0.4,candle,dark wood table,composite,perfect,True,control
+stim_f2b73c9487,img_0.8_7_6_1_0.4,grapefruit,fruit basket,composite,perfect,True,illusory
+stim_ee790dceb2,img_0.8_7_6_1_0.4,grapefruit,fruit basket,composite,perfect,True,control
+stim_d5f0e238d8,img_0.8_7_6_1_0.4,Satellite dish,Black asphalt,composite,perfect,False,illusory
+stim_4147277578,img_0.8_7_6_1_0.4,Satellite dish,Black asphalt,composite,perfect,False,control

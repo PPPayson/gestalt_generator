@@ -40,11 +40,15 @@ def _build_world():
     silhouettes.produce_kanizsa(n_sides=3)
     silhouettes.produce_kanizsa(n_sides=4)
     from pipeline.geometry import separate_inducer_count
+    utils.SIL_CTRL.mkdir(parents=True, exist_ok=True)
     clean = []
     for f in sorted((REPO / "data" / "silhouettes").glob("img_*.png")):
         p = silhouettes.parse_gestalt_name(f.stem)
         if p and separate_inducer_count(f) == p["n_points"]:
             shutil.copy(f, utils.SIL / f.name); clean.append(f.name)
+            ctrl = REPO / "data" / "control" / f.name           # copy the paired control too
+            if ctrl.exists():
+                shutil.copy(ctrl, utils.SIL_CTRL / f.name)
         if len(clean) >= 3:
             break
     # fake assets (slug names): white/gray discs, black/white/gray backgrounds
