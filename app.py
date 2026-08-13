@@ -120,7 +120,8 @@ class LLM:
             self.model_id, torch_dtype=torch.bfloat16, cache_dir=CACHE).to("cuda")
 
     @modal.method()
-    def propose(self, illusion, inducer_shape, natural=True, n=12):
+    def propose(self, illusion, inducer_shape, natural=True, n=12, seed=0):
+        self.torch.manual_seed(seed)                     # reproducible sampling (same GPU/model)
         match = (
             "The object must PLAUSIBLY belong on that surface (ecologically/contextually natural) -- "
             "e.g. hay bales on a wheat field, lily pads on a pond, poker chips on green felt."

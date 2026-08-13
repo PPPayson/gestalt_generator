@@ -13,6 +13,13 @@ def _missing(objs, bgs):
 
 
 def run(cfg):
+    import shutil
+    from .utils import OUT
+    # start from a clean output so a re-run reproduces EXACTLY (manifest is not append-idempotent)
+    for sub in ("comp", "cn", "gt", "silhouettes"):
+        shutil.rmtree(OUT / sub, ignore_errors=True)
+    (OUT / "manifest.csv").unlink(missing_ok=True)
+
     print(f"== {cfg['name']} : pairs.source={cfg['pairs']['source']} ==")
     metas = silhouettes.build(cfg)
 

@@ -39,10 +39,10 @@ class HFApi:
         b = io.BytesIO(); remove(im).save(b, format="PNG"); return b.getvalue()
 
     # --- proposer ---
-    def propose(self, illusion, inducer_shape, natural=True, n=12):
+    def propose(self, illusion, inducer_shape, natural=True, n=12, seed=0):
         msgs = [{"role": "user", "content": base.propose_prompt(illusion, inducer_shape, natural, n)}]
         out = self.client.chat_completion(
-            messages=msgs, model=self.model,
+            messages=msgs, model=self.model, seed=int(seed),   # best-effort reproducibility
             max_tokens=self.params.get("max_new_tokens", 900),
             temperature=self.params.get("temperature", 0.9))
         return out.choices[0].message.content

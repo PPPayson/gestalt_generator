@@ -64,4 +64,5 @@ class ImageProvider(Protocol):
 
 @runtime_checkable
 class Proposer(Protocol):
-    def propose(self, illusion: str, inducer_shape: str, natural: bool = True, n: int = 12) -> str: ...
+    def propose(self, illusion: str, inducer_shape: str, natural: bool = True,
+                n: int = 12, seed: int = 0) -> str: ...

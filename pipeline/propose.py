@@ -5,11 +5,12 @@ from .utils import DATA
 
 def run(proposer, cfg, metas):
     n = cfg["propose"]["n_per"]
+    seed = cfg.get("seed", 0)                            # reproducible proposer sampling
     for natural in cfg["propose"]["natural"]:
         fn = DATA / ("candidates_nat.json" if natural else "candidates_any.json")
         cand = json.loads(fn.read_text()) if fn.exists() else {}
         for meta in metas:
-            resp = proposer.propose(meta["illusion"], meta["inducer_shape"], natural, n)
+            resp = proposer.propose(meta["illusion"], meta["inducer_shape"], natural, n, seed)
             mt = re.search(r"\[.*\]", resp, re.S)
             try:
                 items = json.loads(mt.group(0)) if mt else []

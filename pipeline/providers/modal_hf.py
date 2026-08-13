@@ -53,5 +53,5 @@ class ModalHF:
         return self._sdxl_h().dress_controlnet.remote(sil_png, prompt, scale, seed)
 
     # --- proposer ---
-    def propose(self, illusion, inducer_shape, natural=True, n=12):
-        return self._llm_h().propose.remote(illusion, inducer_shape, natural, n)
+    def propose(self, illusion, inducer_shape, natural=True, n=12, seed=0):
+        return self._llm_h().propose.remote(illusion, inducer_shape, natural, n, seed)

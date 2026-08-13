@@ -11,7 +11,7 @@ class _FakeClient:
     def text_to_image(self, prompt, model=None, seed=None):
         self.calls.append(("t2i", prompt, model, seed))
         return Image.new("RGB", (64, 64), (10, 120, 60))
-    def chat_completion(self, messages=None, model=None, max_tokens=None, temperature=None):
+    def chat_completion(self, messages=None, model=None, max_tokens=None, temperature=None, seed=None):
         self.calls.append(("chat", model))
         msg = types.SimpleNamespace(content='[{"object":"a","background":"b"}]')
         return types.SimpleNamespace(choices=[types.SimpleNamespace(message=msg)])

@@ -1,7 +1,9 @@
-# Generate N samples with our method, BOTH composite and controlnet.
-#   N = (#silhouettes) x (n_per_silhouette) = 10 x 10 = 100.
-# ControlNet needs the Modal provider:  modal deploy app.py  (once), then:
-#   python run.py configs/gen100.yaml
+# OUR benchmark set. Reproduce with:  python3 run.py configs/gen100.yaml
+#   N = (#silhouettes) x (n_per_silhouette) = 10 x 10 = 100 stimuli.
+# REPRODUCTION NEEDS NO GPU / API KEY / INTERNET: pairs.source=catalog and all catalog assets are
+# shipped in data/assets/, so NO provider is ever loaded (the models block below is unused here).
+# The models block only matters if you generate NEW textures (pairs.source=propose) or use the
+# ControlNet backend (dress.backends: [controlnet]) -- both need the Modal provider (modal deploy app.py).
 name: gen100
 seed: 1                     # change the seed -> different silhouettes + pairs
 
@@ -9,7 +11,7 @@ silhouettes:
   - type: gestalt
     params: {mode: existing, n: 10}   # 10 silhouettes (seed inherited)
 
-models:
+models:                     # UNUSED for reproduction (no provider loaded when assets are present)
   image:    {provider: modal_hf, model: "stabilityai/stable-diffusion-xl-base-1.0",
              controlnet: "diffusers/controlnet-canny-sdxl-1.0", gpu: "L4", secret: null}
   proposer: {provider: modal_hf, model: "Qwen/Qwen2.5-7B-Instruct", gpu: "L4", secret: null}

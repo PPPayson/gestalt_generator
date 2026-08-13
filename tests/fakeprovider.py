@@ -28,8 +28,8 @@ class FakeProvider:
         self.calls.append(("gen_bg", name, seed))
         return _png(name, seed, "RGB", None)
 
-    def propose(self, illusion, inducer_shape, natural=True, n=12):
-        self.calls.append(("propose", illusion, natural, n))
+    def propose(self, illusion, inducer_shape, natural=True, n=12, seed=0):
+        self.calls.append(("propose", illusion, natural, n, seed))
         items = [{"object": "white disc", "background": "black bg", "tone": "light"}]
         import json
         return json.dumps(items)
