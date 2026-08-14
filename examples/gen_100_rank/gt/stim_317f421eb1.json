@@ -1,0 +1,21 @@
+{
+  "id": "stim_317f421eb1",
+  "condition": "control",
+  "n_inducers": 3,
+  "has_illusion": false,
+  "has_visible_contour": true,
+  "illusory_shape": "irregular",
+  "polygon_vertices": 4,
+  "nonillusory_shapes": {
+    "real_life": [
+      "Satellite dish",
+      "Satellite dish",
+      "Satellite dish"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle"
+    ]
+  }
+}
