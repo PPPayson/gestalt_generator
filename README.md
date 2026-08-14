@@ -10,13 +10,10 @@
 
 **Gestalt Generator** produces benchmark stimuli that test perceptual grouping in vision models.
 Perceptual grouping — binding separate elements into a whole — underlies how we perceive objects and
-contours, and the *Kanizsa* figure is its classic probe: several "pac-man" inducers, arranged so their
-bitten edges align, evoke a shape whose contour is never drawn. We build these figures from **real
-objects** rather than abstract discs, and ship each figure in two matched conditions — **illusory** (no
-contour) and a positive-**control** with the shape's contour drawn — so a model that fails on the
-illusory version can be distinguished from one that simply cannot name or count the shape. Every
-stimulus carries a machine-readable answer key, and the set reproduces from a single command, offline,
-without a GPU or an API key.
+contours. One of the classic shapes is the *Kanizsa* figure where several "pac-man" objects are arranged such that their
+bitten edges evoke a shape of a triangle. We build these figures from novel configurations and add texture using **real
+objects** and **real backgrounds**. Each figure comes in two matched conditions — **illusory** (no
+contour) and a positive-**control** with the shape's contour drawn. In this way, we control the model's ability to match patterns based on shapes and configuration of the objects in the scene, as well as count or name shapes.
 
 ## Installation
 
