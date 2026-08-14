@@ -5,7 +5,6 @@ import mimetypes
 import argparse
 
 from ollama import chat, show
-from openai import OpenAI
 from pydantic import BaseModel
 
 from typing import Literal
@@ -42,7 +41,7 @@ def get_args_parser():
 
     parser.add_argument(
         "--provider",
-        choices=["ollama", "openai"],
+        choices=["ollama"],
         default="ollama",
     )
     parser.add_argument("--model", type=str, required=True)
@@ -57,27 +56,11 @@ def get_args_parser():
     parser.add_argument("--max_context", type=int, default=8192)
 
     # Ollama: enables thinking
-    # OpenAI: requests medium reasoning effort
     parser.add_argument("--thinking", action="store_true")
 
     parser.add_argument("--max_images", type=int, default=1000)
 
     return parser.parse_args()
-
-
-def image_to_data_url(image_path):
-    """
-    Convert a local image to a base64 data URL for the OpenAI API.
-    """
-    mime_type, _ = mimetypes.guess_type(image_path)
-
-    if mime_type is None or not mime_type.startswith("image/"):
-        mime_type = "image/png"
-
-    with open(image_path, "rb") as f:
-        encoded = base64.b64encode(f.read()).decode("utf-8")
-
-    return f"data:{mime_type};base64,{encoded}"
 
 def supports_thinking(model):
     info = show(model)
@@ -156,57 +139,6 @@ def get_ollama_response(
 
 
 # --------------------------------------------------
-# OpenAI
-# --------------------------------------------------
-
-def get_openai_response(
-    client,
-    model,
-    query,
-    image_path,
-    max_tokens=4000,
-    thinking=False,
-    temperature=0.0,
-):
-    request_args = {
-        "model": model,
-        "input": [
-            {
-                "role": "user",
-                "content": [
-                    {
-                        "type": "input_text",
-                        "text": query,
-                    },
-                    {
-                        "type": "input_image",
-                        "image_url": image_to_data_url(image_path),
-                    },
-                ],
-            }
-        ],
-        "text_format": ImageDescription,
-        "max_output_tokens": max_tokens,
-        "temperature": temperature,
-    }
-
-    if thinking:
-        request_args["reasoning"] = {
-            "effort": "medium"
-        }
-
-    response = client.responses.parse(**request_args)
-
-    if response.output_parsed is None:
-        raise ValueError(
-            f"OpenAI returned no parsed output for {image_path}.\n"
-            f"Raw output:\n{response.output_text}"
-        )
-
-    return response.output_parsed.model_dump()
-
-
-# --------------------------------------------------
 # Common interface
 # --------------------------------------------------
 
@@ -215,7 +147,6 @@ def get_model_response(
     model,
     query,
     image_path,
-    client=None,
     max_tokens=4000,
     thinking=False,
     temperature=0.0,
@@ -230,20 +161,6 @@ def get_model_response(
             thinking=thinking,
             temperature=temperature,
             max_context=max_context,
-        )
-
-    elif provider == "openai":
-        if client is None:
-            raise ValueError("OpenAI client was not initialized.")
-
-        return get_openai_response(
-            client=client,
-            model=model,
-            query=query,
-            image_path=image_path,
-            max_tokens=max_tokens,
-            thinking=thinking,
-            temperature=temperature,
         )
 
     else:
@@ -264,11 +181,7 @@ def run_model(args):
             form a human inspecting the image would perceive. Count repeated forms separately.
             Use a short conventional name for each form. Do not explain your answer.
             """,
-            "Insepct the image. Is there a true or illusory contour? Do not explain your answer."]
-
-    # Only instantiate the OpenAI client when needed.
-    # OPENAI_API_KEY is read automatically from the environment.
-    client = OpenAI() if args.provider == "openai" else None
+            "Inspect the image. Is there a true or illusory contour? Do not explain your answer."]
 
     image_names = [
         name
@@ -310,7 +223,6 @@ def run_model(args):
                 model=args.model,
                 query=query,
                 image_path=full_path,
-                client=client,
                 max_tokens=args.max_tokens,
                 thinking=args.thinking,
                 temperature=args.temperature,
@@ -341,7 +253,6 @@ def run_model(args):
                 model=args.model,
                 query=query,
                 image_path=full_path,
-                client=client,
                 max_tokens=args.max_tokens,
                 thinking=args.thinking,
                 temperature=args.temperature,
