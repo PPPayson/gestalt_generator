@@ -223,9 +223,8 @@
                 "has_illusion": true,
                 "n_objects": 6,
                 "visible_shapes": [
-                    "circular",
-                    "star",
-                    "tree"
+                    "tree",
+                    "moon"
                 ]
             },
             "1": {
@@ -233,8 +232,7 @@
                 "n_objects": 6,
                 "visible_shapes": [
                     "circular",
-                    "star",
-                    "tree"
+                    "star"
                 ]
             },
             "2": {
@@ -253,7 +251,7 @@
                 "n_objects": 4,
                 "visible_shapes": [
                     "candle",
-                    "wooden_board"
+                    "wooden_plank"
                 ]
             },
             "1": {
@@ -261,7 +259,7 @@
                 "n_objects": 4,
                 "visible_shapes": [
                     "candle",
-                    "wooden_board"
+                    "wooden_plank"
                 ]
             },
             "2": {
@@ -269,7 +267,7 @@
                 "n_objects": 4,
                 "visible_shapes": [
                     "candle",
-                    "wooden_plank"
+                    "wooden_board"
                 ]
             }
         },
@@ -311,16 +309,14 @@
                 "has_illusion": true,
                 "n_objects": 1,
                 "visible_shapes": [
-                    "basket",
-                    "fruit"
+                    "basket"
                 ]
             },
             "2": {
                 "has_illusion": true,
                 "n_objects": 1,
                 "visible_shapes": [
-                    "basket",
-                    "fruit"
+                    "basket"
                 ]
             }
         },
@@ -329,16 +325,14 @@
                 "has_illusion": true,
                 "n_objects": 5,
                 "visible_shapes": [
-                    "moon",
-                    "star"
+                    "moon"
                 ]
             },
             "1": {
                 "has_illusion": true,
                 "n_objects": 5,
                 "visible_shapes": [
-                    "moon",
-                    "star"
+                    "moon"
                 ]
             },
             "2": {
@@ -383,8 +377,7 @@
                 "has_illusion": true,
                 "n_objects": 7,
                 "visible_shapes": [
-                    "semicircles",
-                    "triangles"
+                    "semicircle"
                 ]
             },
             "1": {
@@ -399,7 +392,8 @@
                 "has_illusion": true,
                 "n_objects": 7,
                 "visible_shapes": [
-                    "semicircles"
+                    "semicircles",
+                    "triangles"
                 ]
             }
         },
@@ -409,9 +403,7 @@
                 "n_objects": 4,
                 "visible_shapes": [
                     "circular",
-                    "circular",
-                    "circular",
-                    "circular"
+                    "linear"
                 ]
             },
             "1": {
@@ -419,7 +411,9 @@
                 "n_objects": 4,
                 "visible_shapes": [
                     "circular",
-                    "linear"
+                    "circular",
+                    "circular",
+                    "circular"
                 ]
             },
             "2": {
@@ -491,9 +485,10 @@
         "stim_3823790eaa.jpg": {
             "0": {
                 "has_illusion": true,
-                "n_objects": 1,
+                "n_objects": 5,
                 "visible_shapes": [
-                    "plate"
+                    "circle",
+                    "line"
                 ]
             },
             "1": {
@@ -575,7 +570,7 @@
             },
             "1": {
                 "has_illusion": true,
-                "n_objects": 7,
+                "n_objects": 6,
                 "visible_shapes": [
                     "pearl",
                     "purple_satin"
@@ -583,7 +578,7 @@
             },
             "2": {
                 "has_illusion": true,
-                "n_objects": 6,
+                "n_objects": 7,
                 "visible_shapes": [
                     "pearl",
                     "purple_satin"
@@ -620,9 +615,7 @@
                 "visible_shapes": [
                     "pearl",
                     "curved",
-                    "flat",
-                    "curved",
-                    "flat"
+                    "semicircle"
                 ]
             },
             "1": {
@@ -630,8 +623,6 @@
                 "n_objects": 5,
                 "visible_shapes": [
                     "pearl",
-                    "curved",
-                    "semicircle",
                     "curved",
                     "semicircle"
                 ]
@@ -642,9 +633,7 @@
                 "visible_shapes": [
                     "pearl",
                     "curved",
-                    "semicircle",
-                    "curved",
-                    "semicircle"
+                    "flat"
                 ]
             }
         },
@@ -714,17 +703,17 @@
                 "has_illusion": true,
                 "n_objects": 7,
                 "visible_shapes": [
-                    "semicircle",
-                    "line"
+                    "leaf",
+                    "water",
+                    "grass"
                 ]
             },
             "2": {
                 "has_illusion": true,
                 "n_objects": 7,
                 "visible_shapes": [
-                    "leaf",
-                    "water",
-                    "grass"
+                    "semicircle",
+                    "line"
                 ]
             }
         },
@@ -785,27 +774,27 @@
                 "has_illusion": true,
                 "n_objects": 3,
                 "visible_shapes": [
-                    "circular",
-                    "circular",
-                    "circular"
+                    "circle",
+                    "circle",
+                    "circle"
                 ]
             },
             "1": {
                 "has_illusion": true,
                 "n_objects": 3,
                 "visible_shapes": [
-                    "circle",
-                    "circle",
-                    "circle"
+                    "circular",
+                    "circular",
+                    "circular"
                 ]
             },
             "2": {
                 "has_illusion": true,
                 "n_objects": 3,
                 "visible_shapes": [
-                    "circle",
-                    "circle",
-                    "circle"
+                    "circular",
+                    "circular",
+                    "circular"
                 ]
             }
         },
@@ -1158,16 +1147,16 @@
                 "has_illusion": true,
                 "n_objects": 4,
                 "visible_shapes": [
-                    "plate",
-                    "blueberries"
+                    "circle",
+                    "line"
                 ]
             },
             "1": {
                 "has_illusion": true,
                 "n_objects": 4,
                 "visible_shapes": [
-                    "plate",
-                    "blueberries"
+                    "circle",
+                    "line"
                 ]
             },
             "2": {
@@ -1192,8 +1181,7 @@
                 "has_illusion": true,
                 "n_objects": 7,
                 "visible_shapes": [
-                    "candle",
-                    "wooden_plank"
+                    "candle"
                 ]
             },
             "2": {
@@ -1262,6 +1250,8 @@
                 "has_illusion": true,
                 "n_objects": 3,
                 "visible_shapes": [
+                    "circular",
+                    "circular",
                     "circular"
                 ]
             },
@@ -1278,8 +1268,6 @@
                 "has_illusion": true,
                 "n_objects": 3,
                 "visible_shapes": [
-                    "circular",
-                    "circular",
                     "circular"
                 ]
             }
@@ -1379,8 +1367,7 @@
                 "has_illusion": true,
                 "n_objects": 5,
                 "visible_shapes": [
-                    "circular",
-                    "semicircular"
+                    "semicircles"
                 ]
             }
         },
@@ -1532,15 +1519,15 @@
                 "has_illusion": true,
                 "n_objects": 4,
                 "visible_shapes": [
-                    "moon"
+                    "moon",
+                    "star"
                 ]
             },
             "2": {
                 "has_illusion": true,
                 "n_objects": 4,
                 "visible_shapes": [
-                    "moon",
-                    "star"
+                    "moon"
                 ]
             }
         },
@@ -1627,7 +1614,8 @@
                 "has_illusion": true,
                 "n_objects": 7,
                 "visible_shapes": [
-                    "semicircle"
+                    "half_circles",
+                    "lines"
                 ]
             },
             "1": {
@@ -1677,9 +1665,7 @@
                 "n_objects": 7,
                 "visible_shapes": [
                     "circular",
-                    "semicircular",
-                    "star",
-                    "flower"
+                    "linear"
                 ]
             },
             "1": {
@@ -1695,7 +1681,7 @@
                 "n_objects": 7,
                 "visible_shapes": [
                     "circular",
-                    "non-circular"
+                    "linear"
                 ]
             }
         },
@@ -1757,7 +1743,8 @@
                 "n_objects": 3,
                 "visible_shapes": [
                     "circle",
-                    "half-circles"
+                    "circle",
+                    "circle"
                 ]
             },
             "1": {
@@ -1782,7 +1769,7 @@
                 "has_illusion": true,
                 "n_objects": 6,
                 "visible_shapes": [
-                    "semicircle"
+                    "semicircles"
                 ]
             },
             "1": {
@@ -1803,7 +1790,7 @@
         "stim_a41e3f2ae1.jpg": {
             "0": {
                 "has_illusion": true,
-                "n_objects": 4,
+                "n_objects": 3,
                 "visible_shapes": [
                     "circular",
                     "linear"
@@ -1868,7 +1855,8 @@
                 "has_illusion": true,
                 "n_objects": 6,
                 "visible_shapes": [
-                    "camera"
+                    "camera",
+                    "marble"
                 ]
             }
         },
@@ -1903,17 +1891,15 @@
                 "has_illusion": true,
                 "n_objects": 3,
                 "visible_shapes": [
-                    "semicircle",
-                    "semicircle",
-                    "semicircle"
+                    "crescent",
+                    "crescent",
+                    "crescent"
                 ]
             },
             "1": {
                 "has_illusion": true,
                 "n_objects": 3,
                 "visible_shapes": [
-                    "semicircle",
-                    "semicircle",
                     "semicircle"
                 ]
             },
@@ -1981,7 +1967,8 @@
                 "has_illusion": true,
                 "n_objects": 4,
                 "visible_shapes": [
-                    "moon"
+                    "moon",
+                    "star"
                 ]
             },
             "1": {
@@ -1996,8 +1983,7 @@
                 "has_illusion": true,
                 "n_objects": 4,
                 "visible_shapes": [
-                    "moon",
-                    "star"
+                    "moon"
                 ]
             }
         },
@@ -2067,7 +2053,7 @@
                 "n_objects": 6,
                 "visible_shapes": [
                     "square",
-                    "camera_lens"
+                    "lens"
                 ]
             },
             "2": {
@@ -2075,7 +2061,7 @@
                 "n_objects": 6,
                 "visible_shapes": [
                     "square",
-                    "camera_lens"
+                    "lens"
                 ]
             }
         },
@@ -2370,14 +2356,15 @@
                 "has_illusion": true,
                 "n_objects": 1,
                 "visible_shapes": [
-                    "basket",
-                    "fruit"
+                    "fruit",
+                    "baskets"
                 ]
             },
             "1": {
                 "has_illusion": true,
                 "n_objects": 1,
                 "visible_shapes": [
+                    "basket",
                     "fruit"
                 ]
             },
@@ -2554,7 +2541,8 @@
                 "has_illusion": true,
                 "n_objects": 7,
                 "visible_shapes": [
-                    "moon"
+                    "moon",
+                    "star"
                 ]
             }
         },
@@ -2711,20 +2699,18 @@
             },
             "1": {
                 "has_illusion": true,
-                "n_objects": 4,
+                "n_objects": 1,
                 "visible_shapes": [
                     "circles",
-                    "lines",
-                    "flowers"
+                    "lines"
                 ]
             },
             "2": {
                 "has_illusion": true,
-                "n_objects": 4,
+                "n_objects": 1,
                 "visible_shapes": [
                     "circles",
-                    "lines",
-                    "flowers"
+                    "lines"
                 ]
             }
         },
@@ -2873,20 +2859,16 @@
             },
             "1": {
                 "has_illusion": true,
-                "n_objects": 4,
+                "n_objects": 1,
                 "visible_shapes": [
-                    "circle",
-                    "triangle",
-                    "line"
+                    "plate"
                 ]
             },
             "2": {
                 "has_illusion": true,
-                "n_objects": 4,
+                "n_objects": 1,
                 "visible_shapes": [
-                    "circle",
-                    "triangle",
-                    "line"
+                    "plate"
                 ]
             }
         },
@@ -2921,7 +2903,8 @@
                 "has_illusion": true,
                 "n_objects": 1,
                 "visible_shapes": [
-                    "fruit_basket"
+                    "fruit",
+                    "baskets"
                 ]
             },
             "1": {
@@ -2935,8 +2918,7 @@
                 "has_illusion": true,
                 "n_objects": 1,
                 "visible_shapes": [
-                    "fruit",
-                    "baskets"
+                    "fruit_basket"
                 ]
             }
         },
@@ -2945,9 +2927,10 @@
                 "has_illusion": true,
                 "n_objects": 4,
                 "visible_shapes": [
-                    "camera_lenses",
+                    "square",
+                    "circle",
                     "marble",
-                    "square"
+                    "camera_lenses"
                 ]
             },
             "1": {
@@ -2965,7 +2948,8 @@
                 "visible_shapes": [
                     "camera_lenses",
                     "marble",
-                    "square"
+                    "camera_lenses",
+                    "marble"
                 ]
             }
         },
@@ -3093,8 +3077,8 @@
                 "has_illusion": true,
                 "n_objects": 3,
                 "visible_shapes": [
-                    "square",
-                    "triangle",
+                    "camera_lenses",
+                    "marble",
                     "triangle"
                 ]
             }
@@ -3131,14 +3115,6 @@
         "stim_3491531c14.jpg": {
             "0": {
                 "has_illusion": true,
-                "n_objects": 6,
-                "visible_shapes": [
-                    "circle",
-                    "line"
-                ]
-            },
-            "1": {
-                "has_illusion": true,
                 "n_objects": 7,
                 "visible_shapes": [
                     "circle",
@@ -3150,13 +3126,26 @@
                     "grass"
                 ]
             },
-            "2": {
+            "1": {
                 "has_illusion": true,
                 "n_objects": 7,
                 "visible_shapes": [
                     "circle",
                     "line",
                     "leaf"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circle",
+                    "line",
+                    "leaf",
+                    "water",
+                    "grass",
+                    "water",
+                    "grass"
                 ]
             }
         },
@@ -3189,10 +3178,10 @@
         "stim_3a725b5097.jpg": {
             "0": {
                 "has_illusion": true,
-                "n_objects": 6,
+                "n_objects": 7,
                 "visible_shapes": [
-                    "circular",
-                    "linear"
+                    "circle",
+                    "line"
                 ]
             },
             "1": {
@@ -3217,8 +3206,8 @@
                 "has_illusion": true,
                 "n_objects": 4,
                 "visible_shapes": [
-                    "circular",
-                    "linear"
+                    "circles",
+                    "lines"
                 ]
             },
             "1": {
@@ -3233,8 +3222,8 @@
                 "has_illusion": true,
                 "n_objects": 4,
                 "visible_shapes": [
-                    "circular",
-                    "linear"
+                    "circles",
+                    "lines"
                 ]
             }
         },
@@ -3420,7 +3409,11 @@
                 "visible_shapes": [
                     "circles",
                     "lines",
-                    "trees"
+                    "trees",
+                    "leaves",
+                    "bubbles",
+                    "circles",
+                    "lines"
                 ]
             },
             "2": {
@@ -3574,8 +3567,8 @@
                     "circle",
                     "triangle",
                     "square",
-                    "line",
-                    "star"
+                    "star",
+                    "line"
                 ]
             }
         },
@@ -3585,7 +3578,8 @@
                 "n_objects": 5,
                 "visible_shapes": [
                     "square",
-                    "circle"
+                    "circle",
+                    "line"
                 ]
             },
             "1": {
@@ -3593,7 +3587,8 @@
                 "n_objects": 5,
                 "visible_shapes": [
                     "square",
-                    "circle"
+                    "circle",
+                    "line"
                 ]
             },
             "2": {
@@ -3671,8 +3666,7 @@
                 "n_objects": 3,
                 "visible_shapes": [
                     "spheres",
-                    "spheres",
-                    "spheres"
+                    "circles"
                 ]
             },
             "2": {
@@ -3843,10 +3837,10 @@
         "stim_789cd2e8c6.jpg": {
             "0": {
                 "has_illusion": true,
-                "n_objects": 4,
+                "n_objects": 5,
                 "visible_shapes": [
                     "candle",
-                    "wood"
+                    "wooden_plank"
                 ]
             },
             "1": {
@@ -3854,12 +3848,12 @@
                 "n_objects": 5,
                 "visible_shapes": [
                     "candle",
-                    "wooden_plank"
+                    "wood"
                 ]
             },
             "2": {
                 "has_illusion": true,
-                "n_objects": 4,
+                "n_objects": 5,
                 "visible_shapes": [
                     "candle",
                     "wood"
@@ -3887,8 +3881,8 @@
                 "has_illusion": true,
                 "n_objects": 7,
                 "visible_shapes": [
-                    "plate",
-                    "blueberries"
+                    "circle",
+                    "line"
                 ]
             }
         },
@@ -3973,11 +3967,11 @@
         "stim_8a8c295af1.jpg": {
             "0": {
                 "has_illusion": true,
-                "n_objects": 4,
+                "n_objects": 1,
                 "visible_shapes": [
                     "circles",
                     "lines",
-                    "flowers"
+                    "leaves"
                 ]
             },
             "1": {
@@ -4060,8 +4054,8 @@
                 "n_objects": 3,
                 "visible_shapes": [
                     "pearl",
-                    "string",
-                    "fabric"
+                    "pearl",
+                    "pearl"
                 ]
             },
             "1": {
@@ -4088,14 +4082,14 @@
                 "has_illusion": true,
                 "n_objects": 1,
                 "visible_shapes": [
-                    "_square"
+                    "circle"
                 ]
             },
             "1": {
                 "has_illusion": true,
                 "n_objects": 1,
                 "visible_shapes": [
-                    "_square"
+                    "circle"
                 ]
             },
             "2": {
@@ -4261,8 +4255,8 @@
                 "has_illusion": true,
                 "n_objects": 4,
                 "visible_shapes": [
-                    "circular",
-                    "linear"
+                    "circle",
+                    "line"
                 ]
             },
             "2": {
@@ -4317,8 +4311,7 @@
                 "has_illusion": true,
                 "n_objects": 6,
                 "visible_shapes": [
-                    "candle",
-                    "string"
+                    "candle"
                 ]
             },
             "1": {
@@ -4340,7 +4333,7 @@
         "stim_b15f2be10e.jpg": {
             "0": {
                 "has_illusion": true,
-                "n_objects": 5,
+                "n_objects": 6,
                 "visible_shapes": [
                     "triangle",
                     "circle"
@@ -4376,8 +4369,8 @@
                 "has_illusion": true,
                 "n_objects": 5,
                 "visible_shapes": [
-                    "circular",
-                    "linear"
+                    "circles",
+                    "lines"
                 ]
             },
             "2": {
@@ -4394,8 +4387,7 @@
                 "has_illusion": true,
                 "n_objects": 1,
                 "visible_shapes": [
-                    "fruit",
-                    "baskets"
+                    "fruit"
                 ]
             },
             "1": {
@@ -4474,7 +4466,7 @@
         "stim_b80c6a1046.jpg": {
             "0": {
                 "has_illusion": true,
-                "n_objects": 5,
+                "n_objects": 4,
                 "visible_shapes": [
                     "pearl",
                     "string"
@@ -4535,7 +4527,7 @@
                 "n_objects": 6,
                 "visible_shapes": [
                     "candle",
-                    "wooden_table"
+                    "wooden_plank"
                 ]
             },
             "1": {
@@ -4551,7 +4543,7 @@
                 "n_objects": 6,
                 "visible_shapes": [
                     "candle",
-                    "wooden_table"
+                    "wooden_plank"
                 ]
             }
         },
@@ -4642,7 +4634,7 @@
         "stim_c25dae05b6.jpg": {
             "0": {
                 "has_illusion": true,
-                "n_objects": 7,
+                "n_objects": 6,
                 "visible_shapes": [
                     "triangle",
                     "circular"
@@ -4702,16 +4694,16 @@
                 "has_illusion": true,
                 "n_objects": 3,
                 "visible_shapes": [
-                    "circular",
-                    "triangular"
+                    "triangle",
+                    "circle"
                 ]
             },
             "1": {
                 "has_illusion": true,
                 "n_objects": 3,
                 "visible_shapes": [
-                    "triangle",
-                    "circle"
+                    "circular",
+                    "triangular"
                 ]
             },
             "2": {
@@ -4755,19 +4747,15 @@
                 "n_objects": 4,
                 "visible_shapes": [
                     "spheres",
-                    "ellipses",
-                    "lines",
-                    "circles"
+                    "ellipses"
                 ]
             },
             "1": {
                 "has_illusion": true,
-                "n_objects": 4,
+                "n_objects": 5,
                 "visible_shapes": [
                     "spheres",
-                    "lines",
-                    "circles",
-                    "stars"
+                    "ellipses"
                 ]
             },
             "2": {
@@ -4775,7 +4763,9 @@
                 "n_objects": 4,
                 "visible_shapes": [
                     "spheres",
-                    "ellipses"
+                    "ellipses",
+                    "lines",
+                    "circles"
                 ]
             }
         },
@@ -4824,7 +4814,7 @@
                 "has_illusion": true,
                 "n_objects": 1,
                 "visible_shapes": [
-                    "plate"
+                    "circle"
                 ]
             }
         },
@@ -4868,15 +4858,6 @@
                 "has_illusion": true,
                 "n_objects": 3,
                 "visible_shapes": [
-                    "circles",
-                    "lines",
-                    "stars"
-                ]
-            },
-            "2": {
-                "has_illusion": true,
-                "n_objects": 3,
-                "visible_shapes": [
                     "circular",
                     "circular",
                     "circular",
@@ -4898,6 +4879,15 @@
                     "circular",
                     "circular"
                 ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circles",
+                    "lines",
+                    "stars"
+                ]
             }
         },
         "stim_d6872938ae.jpg": {
@@ -4914,9 +4904,7 @@
                 "n_objects": 4,
                 "visible_shapes": [
                     "circle",
-                    "triangle",
-                    "circle",
-                    "circle"
+                    "triangle"
                 ]
             },
             "2": {
@@ -4924,7 +4912,9 @@
                 "n_objects": 4,
                 "visible_shapes": [
                     "circle",
-                    "triangle"
+                    "triangle",
+                    "circle",
+                    "circle"
                 ]
             }
         },
@@ -5060,7 +5050,8 @@
                 "n_objects": 7,
                 "visible_shapes": [
                     "circle",
-                    "line"
+                    "line",
+                    "rectangle"
                 ]
             }
         },
@@ -5185,28 +5176,10 @@
             },
             "1": {
                 "has_illusion": true,
-                "n_objects": 20,
+                "n_objects": 1,
                 "visible_shapes": [
-                    "circle",
-                    "rectangle",
-                    "triangle",
-                    "line",
-                    "apple",
-                    "orange",
-                    "grapefruit",
-                    "pear",
-                    "lemon",
-                    "lime",
-                    "peach",
-                    "plum",
-                    "cherry",
-                    "strawberry",
-                    "watermelon",
-                    "grape",
-                    "kiwi",
-                    "mango",
-                    "papaya",
-                    "pineapple"
+                    "fruit",
+                    "baskets"
                 ]
             },
             "2": {
@@ -5214,7 +5187,8 @@
                 "n_objects": 1,
                 "visible_shapes": [
                     "fruit",
-                    "baskets"
+                    "baskets",
+                    "wood"
                 ]
             }
         },
@@ -5247,7 +5221,7 @@
         "stim_f27c32c7ee.jpg": {
             "0": {
                 "has_illusion": true,
-                "n_objects": 6,
+                "n_objects": 7,
                 "visible_shapes": [
                     "rectangular",
                     "circular"
@@ -5263,7 +5237,7 @@
             },
             "2": {
                 "has_illusion": true,
-                "n_objects": 7,
+                "n_objects": 6,
                 "visible_shapes": [
                     "rectangular",
                     "circular"
@@ -5301,18 +5275,18 @@
                 "has_illusion": true,
                 "n_objects": 4,
                 "visible_shapes": [
-                    "circular",
-                    "circular",
-                    "circular",
-                    "circular"
+                    "circle",
+                    "triangle"
                 ]
             },
             "1": {
                 "has_illusion": true,
                 "n_objects": 4,
                 "visible_shapes": [
-                    "circle",
-                    "triangle"
+                    "circular",
+                    "circular",
+                    "circular",
+                    "circular"
                 ]
             },
             "2": {
@@ -5356,25 +5330,25 @@
                 "n_objects": 1,
                 "visible_shapes": [
                     "circle",
-                    "line",
-                    "triangle",
-                    "square",
                     "oval",
-                    "rectangle",
-                    "hexagon",
-                    "pentagon",
-                    "heptagon",
-                    "octagon",
-                    "nonagon",
-                    "decagon",
-                    "dodecagon",
-                    "tricilind",
-                    "quadrilind",
-                    "pentilind",
-                    "hexilind",
-                    "heptilind",
-                    "octilind",
-                    "nonilind"
+                    "rectangular",
+                    "triangular",
+                    "linear",
+                    "curvilinear",
+                    "circular",
+                    "cylindrical",
+                    "spherical",
+                    "elliptical",
+                    "irregular",
+                    "rectangular",
+                    "cylindrical",
+                    "circular",
+                    "cylindrical",
+                    "circular",
+                    "cylindrical",
+                    "circular",
+                    "cylindrical",
+                    "circular"
                 ]
             },
             "1": {
@@ -5389,26 +5363,8 @@
                 "has_illusion": true,
                 "n_objects": 1,
                 "visible_shapes": [
-                    "circle",
-                    "line",
-                    "triangle",
-                    "square",
-                    "oval",
-                    "rectangle",
-                    "hexagon",
-                    "pentagon",
-                    "heptagon",
-                    "octagon",
-                    "nonagon",
-                    "decagon",
-                    "dodecagon",
-                    "triclinic",
-                    "quadrilic",
-                    "pentalic",
-                    "hexilic",
-                    "heptilic",
-                    "octilic",
-                    "nonilic"
+                    "fruit",
+                    "baskets"
                 ]
             }
         },

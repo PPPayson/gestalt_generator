@@ -57,17 +57,10 @@ conda activate ../ollama_venv
 
 # Models to evaluate
 MODELS=(
-    "llama3.2-vision:11b"
-    "llama3.2-vision:90b"
-    "qwen3.6:35b"
-    "qwen3.5:35b"
-    "qwen3.5:122b"
+    # "llama3.2-vision:11b"
     "gemma4:26b"
     "gemma4:31b"
     "mistral-medium-3.5:128b"
-    "qwen3-vl:32b"
-    "qwen2.5vl:32b"
-    "qwen2.5vl:72b"
     "llama4:16x17b"
     "llama4:128x17b"
 )
