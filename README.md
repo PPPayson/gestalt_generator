@@ -18,8 +18,6 @@ illusory version can be distinguished from one that simply cannot name or count 
 stimulus carries a machine-readable answer key, and the set reproduces from a single command, offline,
 without a GPU or an API key.
 
-*This repository covers stimulus generation. An evaluation harness will follow separately.*
-
 ## Installation
 
 ```bash
