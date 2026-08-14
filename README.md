@@ -100,7 +100,8 @@ edit the fields below, and run `python3 run.py configs/your.yaml`.
 ```yaml
 seed: 1                                              # any seed gives a reproducible draw
 silhouettes:
-  - {type: gestalt, params: {mode: existing, n: 10}} # or  {type: kanizsa, params: {n_sides: 3}}
+  - {type: gestalt, params: {mode: rank, n: 10}}     # mode: rank picks the N best silhouettes;
+                                                     # random = seeded sample; or {type: kanizsa, params: {n_sides: 3}}
 pairs:
   source: catalog                                    # object/background pairs (pipeline/pairs_catalog.yaml)
   select: random
@@ -115,6 +116,14 @@ dress:
 
 The number of stimuli is `#silhouettes × n_per_silhouette × #conditions`. Textures are drawn from a
 catalog of 16 pre-validated object/background pairs.
+
+**Selecting silhouettes.** `mode: rank` keeps the `n` silhouettes with the crispest illusory contour
+and the most regular full-frame coverage — inducers evenly spaced around the centre, spanning all
+sides — scored geometrically from the mask (no model). `mode: random` takes a seeded random sample;
+`type: dropin` pins exact files. The ranking is shared with `tools/rank_silhouettes.py`, which prints
+the ordered list (`python3 tools/rank_silhouettes.py`). `configs/gen_100_rank.yaml` is a ready-made
+`mode: rank` set of 200 stimuli (100 figures); a rendered preview is committed under
+`examples/gen_100_rank/`.
 
 <details>
 <summary><b>Generate new objects and backgrounds (requires a model)</b></summary>

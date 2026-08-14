@@ -12,7 +12,7 @@ pairs:
   - {object: "grapefruit", background: "fruit basket", natural: true, contrast: 42.2, roundness: 0.97}
   - {object: "lens", background: "white marble slab", natural: false, contrast: 39.6, roundness: 1.02}
   - {object: "pear", background: "green leafy forest floor", natural: true, contrast: 38.8, roundness: 0.58}
-  - {object: "blueberry", background: "ivory plate", natural: false, contrast: 38.1, roundness: 0.88}
+  - {object: "blueberry", background: "white sand", natural: false, contrast: 42.8, roundness: 0.88}
   - {object: "Space pod", background: "Deep space", natural: false, contrast: 34.8, roundness: 1.02}
   - {object: "moon", background: "bright starry night sky", natural: false, contrast: 34.4, roundness: 1.01}
   - {object: "mushroom cap", background: "forest floor", natural: true, contrast: 32.1, roundness: 1.01}

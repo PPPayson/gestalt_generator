@@ -1,0 +1,39 @@
+# Rank-selected sharp-contour set. Reproduce with:  python3 run.py configs/gen_100_rank.yaml
+#   10 rank-selected silhouettes x 10 pairs x 2 conditions = 200 stimuli (100 figures).
+# The 10 silhouettes are auto-picked for (a) a crisp illusory contour (aligned inward bites, full-disc
+# inducers, low edginess/radius) and (b) regular full-frame coverage -- inducers evenly spaced around
+# the centre spanning all sides -- via tools/rank_silhouettes.py's metric.
+# REPRODUCTION NEEDS NO GPU / API KEY / INTERNET (pairs.source=catalog, assets shipped in data/assets/).
+name: gen_100_rank
+seed: 1
+
+silhouettes:
+  - type: gestalt
+    params: {mode: rank, n: 10}       # auto-pick the 10 best by tools/rank_silhouettes.py's metric
+                                      # (crisp contour + regular full-frame coverage). Use mode: random
+                                      # for a seeded random sample, or type: dropin to pin exact files.
+
+models:                     # UNUSED for reproduction (no provider loaded when assets are present)
+  image:    {provider: modal_hf, model: "stabilityai/stable-diffusion-xl-base-1.0",
+             controlnet: "diffusers/controlnet-canny-sdxl-1.0", gpu: "L4", secret: null}
+  proposer: {provider: modal_hf, model: "Qwen/Qwen2.5-7B-Instruct", gpu: "L4", secret: null}
+
+pairs:
+  source: catalog
+  select: random
+  n_per_silhouette: 10      # 10 silhouettes x 10 pairs x 2 conditions = 200 stimuli (100 figures)
+
+assets:
+  best_of: 3
+
+dress:
+  backends: [composite]
+  modes: [perfect]
+  conditions: [illusory, control]
+  contour: auto
+  shadow: 55
+  crop: true
+  feather: 1.5
+
+output:
+  contact_sheet: true
