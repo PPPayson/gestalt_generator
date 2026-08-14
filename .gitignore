@@ -18,3 +18,5 @@ data/silhouettes/*.json
 
 # NOTE: data/silhouettes/*.png is TRACKED on purpose — it holds the friend's generated
 # silhouettes (moved from out/). Do not ignore the PNGs.
+
+*.out
