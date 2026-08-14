@@ -931,7 +931,7 @@ def main():
 
     parser.add_argument(
         "--illusion_output",
-        default="has_illusion_metrics.png",
+        default="outs/has_illusion_metrics.png",
         help=(
             "Output path for has_illusion metrics plot"
         ),
@@ -939,7 +939,7 @@ def main():
 
     parser.add_argument(
         "--counting_output",
-        default="counting_accuracy.png",
+        default="outs/counting_accuracy.png",
         help=(
             "Output path for overall counting accuracy plot"
         ),
@@ -947,7 +947,7 @@ def main():
 
     parser.add_argument(
         "--counting_class_output",
-        default="counting_accuracy_by_class.png",
+        default="outs/counting_accuracy_by_class.png",
         help=(
             "Output path for counting accuracy "
             "by image class plot"
@@ -956,7 +956,7 @@ def main():
 
     parser.add_argument(
         "--counting_mae_output",
-        default="counting_mae.png",
+        default="outs/counting_mae.png",
         help=(
             "Output path for counting MAE plot"
         ),
