@@ -11,8 +11,8 @@ stim_90f4347eaf,img_0.4_6_3_0.1_0.2,white pearl,deep purple velvet,composite,per
 stim_1de8dd6940,img_0.4_6_3_0.1_0.2,white pearl,deep purple velvet,composite,perfect,False,control
 stim_363a36b77a,img_0.4_6_3_0.1_0.2,lily pad,pond,composite,perfect,True,illusory
 stim_53f4c2338b,img_0.4_6_3_0.1_0.2,lily pad,pond,composite,perfect,True,control
-stim_d5271c4831,img_0.4_6_3_0.1_0.2,blueberry,ivory plate,composite,perfect,False,illusory
-stim_9698b7930b,img_0.4_6_3_0.1_0.2,blueberry,ivory plate,composite,perfect,False,control
+stim_d5271c4831,img_0.4_6_3_0.1_0.2,blueberry,white sand,composite,perfect,False,illusory
+stim_9698b7930b,img_0.4_6_3_0.1_0.2,blueberry,white sand,composite,perfect,False,control
 stim_97d12f07db,img_0.4_6_3_0.1_0.2,candle,dark wood table,composite,perfect,True,illusory
 stim_1201025f4a,img_0.4_6_3_0.1_0.2,candle,dark wood table,composite,perfect,True,control
 stim_e102cb0bb7,img_0.4_6_3_0.1_0.2,grapefruit,fruit basket,composite,perfect,True,illusory
@@ -31,8 +31,8 @@ stim_6ddee81447,img_0_5_3_0.1_0.2,white pearl,deep purple velvet,composite,perfe
 stim_5a4a47ee84,img_0_5_3_0.1_0.2,white pearl,deep purple velvet,composite,perfect,False,control
 stim_89099473b9,img_0_5_3_0.1_0.2,lily pad,pond,composite,perfect,True,illusory
 stim_3546ea062f,img_0_5_3_0.1_0.2,lily pad,pond,composite,perfect,True,control
-stim_1428fc1607,img_0_5_3_0.1_0.2,blueberry,ivory plate,composite,perfect,False,illusory
-stim_59f0bdeeeb,img_0_5_3_0.1_0.2,blueberry,ivory plate,composite,perfect,False,control
+stim_1428fc1607,img_0_5_3_0.1_0.2,blueberry,white sand,composite,perfect,False,illusory
+stim_59f0bdeeeb,img_0_5_3_0.1_0.2,blueberry,white sand,composite,perfect,False,control
 stim_bf26c06637,img_0_5_3_0.1_0.2,candle,dark wood table,composite,perfect,True,illusory
 stim_80f1977d46,img_0_5_3_0.1_0.2,candle,dark wood table,composite,perfect,True,control
 stim_2828e0efb7,img_0_5_3_0.1_0.2,grapefruit,fruit basket,composite,perfect,True,illusory
@@ -51,8 +51,8 @@ stim_f3b64eaca4,img_0_8_5_0.1_0.1,white pearl,deep purple velvet,composite,perfe
 stim_225e48e387,img_0_8_5_0.1_0.1,white pearl,deep purple velvet,composite,perfect,False,control
 stim_63cf41cbdb,img_0_8_5_0.1_0.1,lily pad,pond,composite,perfect,True,illusory
 stim_5d2be67d29,img_0_8_5_0.1_0.1,lily pad,pond,composite,perfect,True,control
-stim_8f1a45fee6,img_0_8_5_0.1_0.1,blueberry,ivory plate,composite,perfect,False,illusory
-stim_07883a188b,img_0_8_5_0.1_0.1,blueberry,ivory plate,composite,perfect,False,control
+stim_8f1a45fee6,img_0_8_5_0.1_0.1,blueberry,white sand,composite,perfect,False,illusory
+stim_07883a188b,img_0_8_5_0.1_0.1,blueberry,white sand,composite,perfect,False,control
 stim_20dfa82bdc,img_0_8_5_0.1_0.1,candle,dark wood table,composite,perfect,True,illusory
 stim_00a31d4fdc,img_0_8_5_0.1_0.1,candle,dark wood table,composite,perfect,True,control
 stim_e9234e1259,img_0_8_5_0.1_0.1,grapefruit,fruit basket,composite,perfect,True,illusory
@@ -71,8 +71,8 @@ stim_6bc6c62e0b,img_1_6_3_0.1_0.2,white pearl,deep purple velvet,composite,perfe
 stim_75330188e2,img_1_6_3_0.1_0.2,white pearl,deep purple velvet,composite,perfect,False,control
 stim_4e5cadddd3,img_1_6_3_0.1_0.2,lily pad,pond,composite,perfect,True,illusory
 stim_3c13740310,img_1_6_3_0.1_0.2,lily pad,pond,composite,perfect,True,control
-stim_59811371ca,img_1_6_3_0.1_0.2,blueberry,ivory plate,composite,perfect,False,illusory
-stim_c71e35a6b2,img_1_6_3_0.1_0.2,blueberry,ivory plate,composite,perfect,False,control
+stim_59811371ca,img_1_6_3_0.1_0.2,blueberry,white sand,composite,perfect,False,illusory
+stim_c71e35a6b2,img_1_6_3_0.1_0.2,blueberry,white sand,composite,perfect,False,control
 stim_9412c624dc,img_1_6_3_0.1_0.2,candle,dark wood table,composite,perfect,True,illusory
 stim_b1dd560793,img_1_6_3_0.1_0.2,candle,dark wood table,composite,perfect,True,control
 stim_ac439a5e89,img_1_6_3_0.1_0.2,grapefruit,fruit basket,composite,perfect,True,illusory
@@ -91,8 +91,8 @@ stim_fca0127c91,img_0.4_5_3_0.1_0.1,white pearl,deep purple velvet,composite,per
 stim_085608df04,img_0.4_5_3_0.1_0.1,white pearl,deep purple velvet,composite,perfect,False,control
 stim_4d343a41de,img_0.4_5_3_0.1_0.1,lily pad,pond,composite,perfect,True,illusory
 stim_3b16190e0c,img_0.4_5_3_0.1_0.1,lily pad,pond,composite,perfect,True,control
-stim_b109047bc6,img_0.4_5_3_0.1_0.1,blueberry,ivory plate,composite,perfect,False,illusory
-stim_41e34faaa4,img_0.4_5_3_0.1_0.1,blueberry,ivory plate,composite,perfect,False,control
+stim_b109047bc6,img_0.4_5_3_0.1_0.1,blueberry,white sand,composite,perfect,False,illusory
+stim_41e34faaa4,img_0.4_5_3_0.1_0.1,blueberry,white sand,composite,perfect,False,control
 stim_64e4c5dbb5,img_0.4_5_3_0.1_0.1,candle,dark wood table,composite,perfect,True,illusory
 stim_0298ec2d9f,img_0.4_5_3_0.1_0.1,candle,dark wood table,composite,perfect,True,control
 stim_e363b4bfde,img_0.4_5_3_0.1_0.1,grapefruit,fruit basket,composite,perfect,True,illusory
@@ -111,8 +111,8 @@ stim_9d2340a9ac,img_0_8_4_0.1_0.2,white pearl,deep purple velvet,composite,perfe
 stim_09fc142561,img_0_8_4_0.1_0.2,white pearl,deep purple velvet,composite,perfect,False,control
 stim_945e8fdeb2,img_0_8_4_0.1_0.2,lily pad,pond,composite,perfect,True,illusory
 stim_11f748db62,img_0_8_4_0.1_0.2,lily pad,pond,composite,perfect,True,control
-stim_dd5b4bc5ad,img_0_8_4_0.1_0.2,blueberry,ivory plate,composite,perfect,False,illusory
-stim_ea6035e5ee,img_0_8_4_0.1_0.2,blueberry,ivory plate,composite,perfect,False,control
+stim_dd5b4bc5ad,img_0_8_4_0.1_0.2,blueberry,white sand,composite,perfect,False,illusory
+stim_ea6035e5ee,img_0_8_4_0.1_0.2,blueberry,white sand,composite,perfect,False,control
 stim_2de028bea7,img_0_8_4_0.1_0.2,candle,dark wood table,composite,perfect,True,illusory
 stim_97df57bf2f,img_0_8_4_0.1_0.2,candle,dark wood table,composite,perfect,True,control
 stim_977695afb1,img_0_8_4_0.1_0.2,grapefruit,fruit basket,composite,perfect,True,illusory
@@ -131,8 +131,8 @@ stim_c79de09ff1,img_1_4_3_0.1_0.2,white pearl,deep purple velvet,composite,perfe
 stim_77f753a1fe,img_1_4_3_0.1_0.2,white pearl,deep purple velvet,composite,perfect,False,control
 stim_133dd0f206,img_1_4_3_0.1_0.2,lily pad,pond,composite,perfect,True,illusory
 stim_bd191dd1d3,img_1_4_3_0.1_0.2,lily pad,pond,composite,perfect,True,control
-stim_420c1ba0f7,img_1_4_3_0.1_0.2,blueberry,ivory plate,composite,perfect,False,illusory
-stim_2ee5311a7d,img_1_4_3_0.1_0.2,blueberry,ivory plate,composite,perfect,False,control
+stim_420c1ba0f7,img_1_4_3_0.1_0.2,blueberry,white sand,composite,perfect,False,illusory
+stim_2ee5311a7d,img_1_4_3_0.1_0.2,blueberry,white sand,composite,perfect,False,control
 stim_8629408d75,img_1_4_3_0.1_0.2,candle,dark wood table,composite,perfect,True,illusory
 stim_21b532567a,img_1_4_3_0.1_0.2,candle,dark wood table,composite,perfect,True,control
 stim_db5543ec22,img_1_4_3_0.1_0.2,grapefruit,fruit basket,composite,perfect,True,illusory
@@ -151,8 +151,8 @@ stim_2cf7c5f156,img_0_8_4_0.1_0.1,white pearl,deep purple velvet,composite,perfe
 stim_9961b9d330,img_0_8_4_0.1_0.1,white pearl,deep purple velvet,composite,perfect,False,control
 stim_8c5a5dfde1,img_0_8_4_0.1_0.1,lily pad,pond,composite,perfect,True,illusory
 stim_699108c65e,img_0_8_4_0.1_0.1,lily pad,pond,composite,perfect,True,control
-stim_9b50e29033,img_0_8_4_0.1_0.1,blueberry,ivory plate,composite,perfect,False,illusory
-stim_a71edcc844,img_0_8_4_0.1_0.1,blueberry,ivory plate,composite,perfect,False,control
+stim_9b50e29033,img_0_8_4_0.1_0.1,blueberry,white sand,composite,perfect,False,illusory
+stim_a71edcc844,img_0_8_4_0.1_0.1,blueberry,white sand,composite,perfect,False,control
 stim_04da26f8c5,img_0_8_4_0.1_0.1,candle,dark wood table,composite,perfect,True,illusory
 stim_d271b951b3,img_0_8_4_0.1_0.1,candle,dark wood table,composite,perfect,True,control
 stim_0157067187,img_0_8_4_0.1_0.1,grapefruit,fruit basket,composite,perfect,True,illusory
@@ -171,8 +171,8 @@ stim_d542c81667,img_0.4_7_4_0.1_0.1,white pearl,deep purple velvet,composite,per
 stim_e480c6ca17,img_0.4_7_4_0.1_0.1,white pearl,deep purple velvet,composite,perfect,False,control
 stim_17247e3d38,img_0.4_7_4_0.1_0.1,lily pad,pond,composite,perfect,True,illusory
 stim_6bfa27cb81,img_0.4_7_4_0.1_0.1,lily pad,pond,composite,perfect,True,control
-stim_7718ec52e2,img_0.4_7_4_0.1_0.1,blueberry,ivory plate,composite,perfect,False,illusory
-stim_294314c663,img_0.4_7_4_0.1_0.1,blueberry,ivory plate,composite,perfect,False,control
+stim_7718ec52e2,img_0.4_7_4_0.1_0.1,blueberry,white sand,composite,perfect,False,illusory
+stim_294314c663,img_0.4_7_4_0.1_0.1,blueberry,white sand,composite,perfect,False,control
 stim_c07755d3a3,img_0.4_7_4_0.1_0.1,candle,dark wood table,composite,perfect,True,illusory
 stim_10edd0aabd,img_0.4_7_4_0.1_0.1,candle,dark wood table,composite,perfect,True,control
 stim_033c519e7c,img_0.4_7_4_0.1_0.1,grapefruit,fruit basket,composite,perfect,True,illusory
@@ -191,8 +191,8 @@ stim_724a8411e7,img_0_5_6_0.1_0.2,white pearl,deep purple velvet,composite,perfe
 stim_7aa7329836,img_0_5_6_0.1_0.2,white pearl,deep purple velvet,composite,perfect,False,control
 stim_11121eedbe,img_0_5_6_0.1_0.2,lily pad,pond,composite,perfect,True,illusory
 stim_921b8fb74b,img_0_5_6_0.1_0.2,lily pad,pond,composite,perfect,True,control
-stim_d3113b634b,img_0_5_6_0.1_0.2,blueberry,ivory plate,composite,perfect,False,illusory
-stim_9d4da196e6,img_0_5_6_0.1_0.2,blueberry,ivory plate,composite,perfect,False,control
+stim_d3113b634b,img_0_5_6_0.1_0.2,blueberry,white sand,composite,perfect,False,illusory
+stim_9d4da196e6,img_0_5_6_0.1_0.2,blueberry,white sand,composite,perfect,False,control
 stim_a5773e5d17,img_0_5_6_0.1_0.2,candle,dark wood table,composite,perfect,True,illusory
 stim_14176556ca,img_0_5_6_0.1_0.2,candle,dark wood table,composite,perfect,True,control
 stim_ff7db58068,img_0_5_6_0.1_0.2,grapefruit,fruit basket,composite,perfect,True,illusory
