@@ -130,7 +130,9 @@ the ordered list (`python3 tools/rank_silhouettes.py`). `configs/gen_100_rank.ya
 
 The catalog is fixed. To introduce new textures, name a provider in the configuration and supply its
 credentials; the rest of the pipeline is unchanged. New pairs are validated for round shape and colour
-contrast before use.
+contrast before use. Backgrounds are prompted as uniform full-frame material surfaces (stone, wood,
+sand, moss, felt, terrazzo, …) with no bounded objects or geometric patterns, so the background never
+confounds recognition of the illusory figure.
 
 - **`hf_api`** — HuggingFace Inference API. `pip install -r requirements-hf.txt`, `export HF_TOKEN=...`
 - **`modal_hf`** — SDXL on a Modal GPU. `pip install -r requirements-modal.txt`, `modal deploy app.py`

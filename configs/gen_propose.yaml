@@ -1,0 +1,39 @@
+# Propose a fresh pool of uniform-background object/background pairs via the Modal models, generate
+# their assets, and validate (round object + colour contrast). Run:  python3 run.py configs/gen_propose.yaml
+# Requires: modal deploy app.py  (provider=modal_hf). Output pool -> data/pairs.json + data/assets/.
+# This is the GENERATION pass; curate data/pairs.json into pipeline/pairs_catalog.yaml, then run the
+# reproducible set (configs/gen_100_rank.yaml, source=catalog) offline.
+name: gen_propose
+seed: 1
+
+silhouettes:
+  - type: gestalt
+    params: {mode: rank, n: 5}      # a few silhouettes drive proposals (pairs are shared); more = bigger pool
+
+models:
+  image:    {provider: modal_hf, model: "stabilityai/stable-diffusion-xl-base-1.0",
+             controlnet: "diffusers/controlnet-canny-sdxl-1.0", gpu: "L4", secret: null}
+  proposer: {provider: modal_hf, model: "Qwen/Qwen2.5-7B-Instruct", gpu: "L4", secret: null}
+
+pairs:
+  source: propose
+  select: contrast
+
+propose:
+  n_per: 10
+  natural: [true, false]
+
+assets:
+  best_of: 2
+
+select:
+  round_min: 0.72          # drop non-disc objects (leaf/heart) -- keep clean round discs only
+  delta_e_min: 30.0
+
+dress:
+  backends: [composite]
+  conditions: [illusory]
+  contour: auto
+
+output:
+  contact_sheet: false

@@ -87,8 +87,14 @@ class SDXL:
         from PIL import Image
         blank = Image.new("RGB", (1024, 1024), "white")
         img = self._run(
-            f"top-down flat-lay photo of a {name}, even soft light, plain, nothing on it",
-            "objects, food, clutter, text", blank, 0.0, 28, seed)
+            f"close-up flat-lay photograph of a {name} surface, seamless even texture filling the whole "
+            f"frame, subtle fine natural surface detail, soft even diffuse studio lighting, modern "
+            f"minimalist background for design, nothing placed on it",
+            "objects, container, plate, bowl, basket, tray, dish, slab, tile, grid, checkerboard, "
+            "geometric pattern, rectangle, square, edge, border, frame, seam, fold, folds, crease, "
+            "wrinkle, drapery, cast shadow, harsh shadow, vignette, depth of field, bokeh, blur, "
+            "tilted angle, 3d render, cgi, watermark, text",
+            blank, 0.0, 28, seed)
         b = io.BytesIO(); img.save(b, format="PNG"); return b.getvalue()
 
     @modal.method()
@@ -123,21 +129,27 @@ class LLM:
     def propose(self, illusion, inducer_shape, natural=True, n=12, seed=0):
         self.torch.manual_seed(seed)                     # reproducible sampling (same GPU/model)
         match = (
-            "The object must PLAUSIBLY belong on that surface (ecologically/contextually natural) -- "
-            "e.g. hay bales on a wheat field, lily pads on a pond, poker chips on green felt."
+            "Prefer a surface the object plausibly rests on (e.g. poker chip on green felt, "
+            "seashell on sand), but the surface must still be uniform and fill the whole frame."
             if natural else
-            "The surface can be ANYTHING, plausible or not -- be creative -- as long as contrast is "
-            "high and the object reads as a disc."
+            "The surface can be any uniform material, plausible or not -- be creative -- as long as "
+            "contrast is high and the object reads as a disc."
         )
         prompt = (
             f"Invent {n} DIFFERENT scenes for a '{illusion}' visual illusion. Each scene = a real "
-            f"DISC-SHAPED object placed on a BACKGROUND surface. Requirements:\n"
+            f"DISC-SHAPED object placed on a BACKGROUND SURFACE. Requirements:\n"
             f"1. Viewed straight from above the object is clearly round / circular, approximating the "
             f"inducer: {inducer_shape}. (avoid elongated / thin / multi-part things.)\n"
             f"2. The object stands out with HIGH CONTRAST against the surface (dark on light or light on dark).\n"
-            f"3. {match}\n"
-            f"Return ONLY a JSON array with keys: object (noun phrase), background (short scene/surface "
-            f"phrase), tone (dark|light|colorful)."
+            f"3. The BACKGROUND is a full-frame natural material SURFACE with rich texture (e.g. marble, "
+            f"granite, slate, sandstone, terrazzo, wood, sand, felt, velvet, moss, stone, concrete). "
+            f"Pick from a WIDE RANGE of materials and colours so the set is varied and visually "
+            f"interesting. It must FILL the whole frame and must NOT be an object or container (no "
+            f"plate, bowl, basket, tray, slab, tile, board) and must have NO geometric grid/tile "
+            f"pattern and no artificial folds or creases. Vary the material and colour widely, not dark.\n"
+            f"4. {match}\n"
+            f"Return ONLY a JSON array with keys: object (noun phrase), background (a uniform surface/"
+            f"material phrase), tone (dark|light|colorful)."
         )
         text = self.tok.apply_chat_template(
             [{"role": "user", "content": prompt}], tokenize=False, add_generation_prompt=True)

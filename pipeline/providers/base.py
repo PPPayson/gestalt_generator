@@ -29,30 +29,41 @@ def object_negative():
 
 
 def background_prompt(name):
-    return f"top-down flat-lay photo of a {name}, even soft light, plain, nothing on it"
+    return (f"close-up flat-lay photograph of a {name} surface, seamless even texture filling the whole "
+            f"frame, subtle fine natural surface detail, soft even diffuse studio lighting, modern "
+            f"minimalist background for design, nothing placed on it")
 
 
 def background_negative():
-    return "objects, food, clutter, text"
+    return ("objects, container, plate, bowl, basket, tray, dish, slab, tile, grid, checkerboard, "
+            "geometric pattern, rectangle, square, edge, border, frame, seam, fold, folds, crease, "
+            "wrinkle, drapery, cast shadow, harsh shadow, vignette, depth of field, bokeh, blur, "
+            "tilted angle, 3d render, cgi, watermark, text")
 
 
 def propose_prompt(illusion, inducer_shape, natural, n):
     match = (
-        "The object must PLAUSIBLY belong on that surface (ecologically/contextually natural) -- "
-        "e.g. hay bales on a wheat field, lily pads on a pond, poker chips on green felt."
+        "Prefer a surface the object plausibly rests on (e.g. poker chip on green felt, "
+        "seashell on sand), but the surface must still be uniform and fill the whole frame."
         if natural else
-        "The surface can be ANYTHING, plausible or not -- be creative -- as long as contrast is "
-        "high and the object reads as a disc."
+        "The surface can be any uniform material, plausible or not -- be creative -- as long as "
+        "contrast is high and the object reads as a disc."
     )
     return (
         f"Invent {n} DIFFERENT scenes for a '{illusion}' visual illusion. Each scene = a real "
-        f"DISC-SHAPED object placed on a BACKGROUND surface. Requirements:\n"
+        f"DISC-SHAPED object placed on a BACKGROUND SURFACE. Requirements:\n"
         f"1. Viewed straight from above the object is clearly round / circular, approximating the "
         f"inducer: {inducer_shape}. (avoid elongated / thin / multi-part things.)\n"
         f"2. The object stands out with HIGH CONTRAST against the surface (dark on light or light on dark).\n"
-        f"3. {match}\n"
-        f"Return ONLY a JSON array with keys: object (noun phrase), background (short scene/surface "
-        f"phrase), tone (dark|light|colorful)."
+        f"3. The BACKGROUND is a full-frame natural material SURFACE with rich texture (e.g. marble, "
+        f"granite, slate, sandstone, terrazzo, wood, sand, felt, velvet, moss, stone, concrete). Pick "
+        f"from a WIDE RANGE of materials and colours so the set is varied and visually interesting. It "
+        f"must FILL the whole frame and must NOT be an object or container (no plate, bowl, basket, "
+        f"tray, slab, tile, board) and must have NO geometric grid/tile pattern and no artificial "
+        f"folds or creases. Vary the material and colour widely across the {n} scenes, not mostly dark.\n"
+        f"4. {match}\n"
+        f"Return ONLY a JSON array with keys: object (noun phrase), background (a uniform surface/"
+        f"material phrase), tone (dark|light|colorful)."
     )
 
 

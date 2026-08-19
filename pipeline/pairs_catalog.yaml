@@ -1,19 +1,20 @@
 # Proposer-passed object/background pairs. contrast = perceptual colour contrast (CIELAB dE).
-# A pair passes only if the object is disc-shaped AND visibly stands out by colour.
+# Backgrounds are UNIFORM full-frame material surfaces (clean textures, no bounded shapes) so they
+# do not confound recognition of the illusory figure. Generated via configs/gen_propose.yaml.
 pairs:
-  - {object: "poker chip", background: "green felt", natural: true, contrast: 61.2, roundness: 1.02}
-  - {object: "white pearl", background: "deep purple velvet", natural: false, contrast: 58.9, roundness: 1.02}
-  - {object: "Frisbee", background: "Green grass", natural: false, contrast: 57.9, roundness: 1.02}
-  - {object: "Satellite dish", background: "Black asphalt", natural: false, contrast: 56.3, roundness: 1.01}
-  - {object: "Bullseye", background: "Dark forest floor", natural: false, contrast: 53.9, roundness: 1.02}
-  - {object: "target", background: "dark green forest floor", natural: false, contrast: 52.7, roundness: 1.02}
-  - {object: "chocolate", background: "white marble countertop", natural: true, contrast: 52.6, roundness: 0.77}
-  - {object: "candle", background: "dark wood table", natural: true, contrast: 47.4, roundness: 1.02}
-  - {object: "grapefruit", background: "fruit basket", natural: true, contrast: 42.2, roundness: 0.97}
-  - {object: "lens", background: "white marble slab", natural: false, contrast: 39.6, roundness: 1.02}
-  - {object: "pear", background: "green leafy forest floor", natural: true, contrast: 38.8, roundness: 0.58}
-  - {object: "blueberry", background: "white sand", natural: false, contrast: 42.8, roundness: 0.88}
-  - {object: "Space pod", background: "Deep space", natural: false, contrast: 34.8, roundness: 1.02}
-  - {object: "moon", background: "bright starry night sky", natural: false, contrast: 34.4, roundness: 1.01}
-  - {object: "mushroom cap", background: "forest floor", natural: true, contrast: 32.1, roundness: 1.01}
-  - {object: "lily pad", background: "pond", natural: true, contrast: 30.4, roundness: 0.98}
+  - {object: "poker chip", background: "bright green moss", natural: false, contrast: 63.4, roundness: 1.02}
+  - {object: "white pearl", background: "terracotta red clay", natural: false, contrast: 45.3, roundness: 1.02}
+  - {object: "Frisbee", background: "olive green felt", natural: false, contrast: 47.7, roundness: 1.02}
+  - {object: "Satellite dish", background: "orange sand", natural: false, contrast: 46.3, roundness: 1.01}
+  - {object: "Bullseye", background: "navy blue velvet", natural: false, contrast: 44.0, roundness: 1.02}
+  - {object: "target", background: "dark chocolate brown wood", natural: false, contrast: 47.1, roundness: 1.02}
+  - {object: "chocolate", background: "gray slate", natural: false, contrast: 35.8, roundness: 0.77}
+  - {object: "candle", background: "deep blue stone", natural: false, contrast: 47.8, roundness: 1.02}
+  - {object: "grapefruit", background: "deep green moss", natural: false, contrast: 73.1, roundness: 0.97}
+  - {object: "lens", background: "white concrete", natural: false, contrast: 53.4, roundness: 1.02}
+  - {object: "pear", background: "black marble", natural: false, contrast: 63.2, roundness: 0.58}
+  - {object: "blueberry", background: "tan sandstone", natural: false, contrast: 56.2, roundness: 0.88}
+  - {object: "Space pod", background: "orange terrazzo", natural: false, contrast: 45.6, roundness: 1.02}
+  - {object: "moon", background: "shiny black marble", natural: false, contrast: 51.3, roundness: 1.01}
+  - {object: "mushroom cap", background: "shiny black granite", natural: false, contrast: 46.3, roundness: 1.01}
+  - {object: "lily pad", background: "polished black granite", natural: false, contrast: 55.7, roundness: 0.98}
