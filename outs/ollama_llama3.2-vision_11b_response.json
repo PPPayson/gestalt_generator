@@ -1,0 +1,5398 @@
+{
+    "illusory": {
+        "stim_000ff7dd91.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "square",
+                    "circle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "square",
+                    "circle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "camera",
+                    "marble",
+                    "square"
+                ]
+            }
+        },
+        "stim_0141ef3bf2.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket",
+                    "fruit"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket",
+                    "fruit"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket",
+                    "fruit"
+                ]
+            }
+        },
+        "stim_0202aed10c.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "camera",
+                    "marble",
+                    "gray"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "camera",
+                    "marble",
+                    "gray"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "camera",
+                    "marble",
+                    "gray"
+                ]
+            }
+        },
+        "stim_0262b4edf9.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket",
+                    "fruit"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket",
+                    "fruits"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket",
+                    "fruits"
+                ]
+            }
+        },
+        "stim_03360d0c28.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circular",
+                    "circular",
+                    "circular"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circular",
+                    "circular",
+                    "circular"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circular",
+                    "circular",
+                    "circular"
+                ]
+            }
+        },
+        "stim_0368a5f324.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "plate",
+                    "blueberries"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "plate",
+                    "blueberries"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "plate",
+                    "blueberries"
+                ]
+            }
+        },
+        "stim_047d4f0c0b.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "pearl",
+                    "silk"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "pearl",
+                    "silk"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "pearl",
+                    "silk"
+                ]
+            }
+        },
+        "stim_05dbf73bc2.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "leaf",
+                    "water",
+                    "grass"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "leaf",
+                    "water",
+                    "grass"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "leaf",
+                    "water",
+                    "grass"
+                ]
+            }
+        },
+        "stim_16ba188a35.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "tree",
+                    "moon"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "circular",
+                    "star"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "circular",
+                    "star",
+                    "tree"
+                ]
+            }
+        },
+        "stim_1b196dbef6.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_board"
+                ]
+            }
+        },
+        "stim_1ba360932d.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "square",
+                    "circle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "square",
+                    "circle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "square",
+                    "circle"
+                ]
+            }
+        },
+        "stim_1dd57c7924.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket"
+                ]
+            }
+        },
+        "stim_1f29ff6fe7.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "moon"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "moon"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "moon"
+                ]
+            }
+        },
+        "stim_223e6b7f15.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "camera_lenses",
+                    "marble",
+                    "gray_marble"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "camera_lenses",
+                    "marble",
+                    "gray_marble"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "camera_lenses",
+                    "marble",
+                    "gray_marble"
+                ]
+            }
+        },
+        "stim_2350676d38.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "semicircle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "semicircles",
+                    "triangles"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "semicircles",
+                    "triangles"
+                ]
+            }
+        },
+        "stim_2ce1c772bd.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circular",
+                    "linear"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circular",
+                    "circular",
+                    "circular",
+                    "circular"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circular",
+                    "circular",
+                    "circular",
+                    "circular"
+                ]
+            }
+        },
+        "stim_34a5a3c3ee.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circular",
+                    "circular",
+                    "circular"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circular",
+                    "circular",
+                    "circular"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circular",
+                    "circular",
+                    "circular"
+                ]
+            }
+        },
+        "stim_34b72063e0.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circular",
+                    "rectangular"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circular",
+                    "rectangular"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circular",
+                    "rectangular"
+                ]
+            }
+        },
+        "stim_3823790eaa.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "plate"
+                ]
+            }
+        },
+        "stim_3fad2b2918.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket",
+                    "fruit"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket",
+                    "fruit"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket",
+                    "fruit"
+                ]
+            }
+        },
+        "stim_43da7db9d4.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "moon",
+                    "star"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "moon",
+                    "star"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "moon",
+                    "star"
+                ]
+            }
+        },
+        "stim_458d8cb050.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "pearl",
+                    "purple_satin"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "pearl",
+                    "purple_satin"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "pearl",
+                    "purple_satin"
+                ]
+            }
+        },
+        "stim_45db5f1030.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "plate"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "plate"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "plate"
+                ]
+            }
+        },
+        "stim_464fee43c9.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "pearl",
+                    "curved",
+                    "semicircle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "pearl",
+                    "curved",
+                    "semicircle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "pearl",
+                    "curved",
+                    "flat"
+                ]
+            }
+        },
+        "stim_473ec46a42.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            }
+        },
+        "stim_4847791a03.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            }
+        },
+        "stim_48e471e34a.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "leaf",
+                    "water",
+                    "grass"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "leaf",
+                    "water",
+                    "grass"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "semicircle",
+                    "line"
+                ]
+            }
+        },
+        "stim_48f6f3f420.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            }
+        },
+        "stim_4e4f5e60cc.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            }
+        },
+        "stim_4f6b866405.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circle",
+                    "circle",
+                    "circle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circular",
+                    "circular",
+                    "circular"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circular",
+                    "circular",
+                    "circular"
+                ]
+            }
+        },
+        "stim_53de936e45.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket",
+                    "fruit"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket",
+                    "fruit"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket",
+                    "fruit"
+                ]
+            }
+        },
+        "stim_548b0e4caf.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "line",
+                    "triangle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "line",
+                    "triangle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "line",
+                    "triangle"
+                ]
+            }
+        },
+        "stim_580aca61c8.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "line",
+                    "leaf"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "line",
+                    "leaf"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "line",
+                    "leaf"
+                ]
+            }
+        },
+        "stim_5a0b0b6c01.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circular",
+                    "circular",
+                    "circular"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circular",
+                    "circular",
+                    "circular"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circular",
+                    "circular",
+                    "circular"
+                ]
+            }
+        },
+        "stim_5ada6adc34.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "plate"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "plate"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "plate"
+                ]
+            }
+        },
+        "stim_5b4e41ad1b.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "semicircle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "semicircle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "semicircle"
+                ]
+            }
+        },
+        "stim_5bffdaec43.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "moon"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "moon"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "moon"
+                ]
+            }
+        },
+        "stim_5f20f7e314.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket"
+                ]
+            }
+        },
+        "stim_625d703ea6.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "leaf",
+                    "hair"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "leaf",
+                    "hair"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "leaf",
+                    "hair"
+                ]
+            }
+        },
+        "stim_64c57fae4c.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "crescent",
+                    "crescent",
+                    "crescent",
+                    "crescent"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "crescent",
+                    "crescent",
+                    "crescent",
+                    "crescent"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "crescent",
+                    "crescent",
+                    "crescent",
+                    "crescent"
+                ]
+            }
+        },
+        "stim_655d369a7c.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "plate",
+                    "blueberries"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "plate",
+                    "blueberries"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "plate",
+                    "blueberries"
+                ]
+            }
+        },
+        "stim_65b2ea230f.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "_leaf",
+                    "_water",
+                    "_grass"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "_leaf",
+                    "_water",
+                    "_grass"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "_leaf",
+                    "_water",
+                    "_grass"
+                ]
+            }
+        },
+        "stim_661d68bd74.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circular",
+                    "triangular"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circular",
+                    "triangular"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circular",
+                    "triangular"
+                ]
+            }
+        },
+        "stim_6706324430.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            }
+        },
+        "stim_68af6d3bb6.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "candle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            }
+        },
+        "stim_6c1af0f08f.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circular",
+                    "linear"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circular",
+                    "linear"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circular",
+                    "linear"
+                ]
+            }
+        },
+        "stim_6cac283b1c.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            }
+        },
+        "stim_6e0ec260ef.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circular",
+                    "circular",
+                    "circular"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circular",
+                    "circular",
+                    "circular"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circular"
+                ]
+            }
+        },
+        "stim_719cb4f44a.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            }
+        },
+        "stim_744ab68dd6.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "candle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "candle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "candle"
+                ]
+            }
+        },
+        "stim_753ecadc2b.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "pearl",
+                    "satiny"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "pearl",
+                    "satiny"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "pearl",
+                    "satiny"
+                ]
+            }
+        },
+        "stim_79be5216c2.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circular",
+                    "semicircular"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "semicircles"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "semicircles"
+                ]
+            }
+        },
+        "stim_80be5ffa60.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "pearl",
+                    "curved",
+                    "flat"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "pearl",
+                    "curved",
+                    "flat"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "pearl",
+                    "curved",
+                    "flat"
+                ]
+            }
+        },
+        "stim_85f7e85efd.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "semicircles",
+                    "stars"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "semicircles",
+                    "stars"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "semicircles",
+                    "stars"
+                ]
+            }
+        },
+        "stim_862d2ec2bb.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circular",
+                    "linear"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circular",
+                    "linear"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circular",
+                    "linear"
+                ]
+            }
+        },
+        "stim_87c1a3ac99.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "pearl",
+                    "curved",
+                    "flat"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "pearl",
+                    "curved",
+                    "flat"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "pearl",
+                    "curved",
+                    "flat"
+                ]
+            }
+        },
+        "stim_889236d195.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            }
+        },
+        "stim_88f43e6074.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "moon"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "moon",
+                    "star"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "moon"
+                ]
+            }
+        },
+        "stim_8fa9b46c6f.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "pearl",
+                    "purple_satin"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "pearl",
+                    "purple_satin"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "pearl",
+                    "purple_satin"
+                ]
+            }
+        },
+        "stim_9283651626.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "pearl",
+                    "pearl",
+                    "pearl"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "pearl",
+                    "pearl",
+                    "pearl"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "pearl",
+                    "pearl",
+                    "pearl"
+                ]
+            }
+        },
+        "stim_92be4ff503.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "moon"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "moon"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "moon"
+                ]
+            }
+        },
+        "stim_949b56f751.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "half_circles",
+                    "lines"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "semicircle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "semicircle"
+                ]
+            }
+        },
+        "stim_96432e4308.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket",
+                    "fruit"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket",
+                    "fruit"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket",
+                    "fruit"
+                ]
+            }
+        },
+        "stim_9b7eeb0ce2.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circular",
+                    "linear"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "circular",
+                    "non-circular"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circular",
+                    "linear"
+                ]
+            }
+        },
+        "stim_9bad0a36cf.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "camera_lenses",
+                    "marble"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "camera_lenses",
+                    "marble"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "camera_lenses",
+                    "marble"
+                ]
+            }
+        },
+        "stim_9de8460186.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "plate",
+                    "blueberries"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "plate",
+                    "blueberries"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "plate",
+                    "blueberries"
+                ]
+            }
+        },
+        "stim_a02fb04423.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circle",
+                    "circle",
+                    "circle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circle",
+                    "half-circles"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circle",
+                    "half-circles"
+                ]
+            }
+        },
+        "stim_a377a62bcd.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "semicircles"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "semicircles"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "semicircles"
+                ]
+            }
+        },
+        "stim_a41e3f2ae1.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circular",
+                    "linear"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circular",
+                    "linear"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circular",
+                    "linear"
+                ]
+            }
+        },
+        "stim_a59c237f1a.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "moon"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "moon"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "moon"
+                ]
+            }
+        },
+        "stim_a766d32960.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "camera"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "camera"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "camera",
+                    "marble"
+                ]
+            }
+        },
+        "stim_ae0cb4fee5.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circular",
+                    "linear"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circular",
+                    "linear"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circular",
+                    "linear"
+                ]
+            }
+        },
+        "stim_ae866cb005.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "crescent",
+                    "crescent",
+                    "crescent"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "semicircle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "semicircle",
+                    "semicircle",
+                    "semicircle"
+                ]
+            }
+        },
+        "stim_aea6c79ab4.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "camera_lenses",
+                    "marble"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "camera_lenses",
+                    "marble"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "camera_lenses",
+                    "marble"
+                ]
+            }
+        },
+        "stim_aec7f70b84.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "plate"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "plate"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "plate"
+                ]
+            }
+        },
+        "stim_afc3865968.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "moon",
+                    "star"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "moon",
+                    "star"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "moon"
+                ]
+            }
+        },
+        "stim_b493086b74.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "semicircle",
+                    "line"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "semicircle",
+                    "line"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "semicircle",
+                    "line"
+                ]
+            }
+        },
+        "stim_b7aacba3f4.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket",
+                    "fruit"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket",
+                    "fruit"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket",
+                    "fruit"
+                ]
+            }
+        },
+        "stim_b7ca7ae664.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "square",
+                    "lens"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "square",
+                    "lens"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "square",
+                    "lens"
+                ]
+            }
+        },
+        "stim_ba3574b599.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circular",
+                    "circular",
+                    "circular",
+                    "circular"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circular",
+                    "circular",
+                    "circular",
+                    "circular"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circular",
+                    "circular",
+                    "circular",
+                    "circular"
+                ]
+            }
+        },
+        "stim_bd6e95c080.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "leaf",
+                    "water",
+                    "grass"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "leaf",
+                    "water",
+                    "grass"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "leaf",
+                    "water",
+                    "grass"
+                ]
+            }
+        },
+        "stim_c6148b6ac8.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "moon"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "moon"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "moon"
+                ]
+            }
+        },
+        "stim_cddbde1436.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "moon",
+                    "star"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "moon",
+                    "star"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "moon",
+                    "star"
+                ]
+            }
+        },
+        "stim_cf9efa4e1c.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "tree"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "tree"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "tree"
+                ]
+            }
+        },
+        "stim_d286534568.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "plate",
+                    "blueberries"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "plate",
+                    "blueberries"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "plate",
+                    "blueberries"
+                ]
+            }
+        },
+        "stim_d86843b92b.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "candle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "candle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "candle"
+                ]
+            }
+        },
+        "stim_db98f6fc66.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "leaf",
+                    "water",
+                    "grass"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "leaf",
+                    "water",
+                    "grass"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "leaf",
+                    "water",
+                    "grass"
+                ]
+            }
+        },
+        "stim_dbde90a4d6.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "square",
+                    "circle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "square",
+                    "circle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "square",
+                    "circle"
+                ]
+            }
+        },
+        "stim_dcc9588bc6.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circular",
+                    "linear"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circular",
+                    "linear"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circular",
+                    "linear"
+                ]
+            }
+        },
+        "stim_e4b9055491.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "candle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "candle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "candle"
+                ]
+            }
+        },
+        "stim_e67e58ac16.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "fruit",
+                    "baskets"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket",
+                    "fruit"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket",
+                    "fruit"
+                ]
+            }
+        },
+        "stim_eb24de857a.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            }
+        },
+        "stim_ebf2b3600b.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "basket"
+                ]
+            }
+        },
+        "stim_ecb33be21c.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "tree",
+                    "tree",
+                    "tree",
+                    "tree",
+                    "tree",
+                    "tree",
+                    "tree"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "tree",
+                    "tree",
+                    "tree",
+                    "tree",
+                    "tree",
+                    "tree",
+                    "tree"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "tree",
+                    "tree",
+                    "tree",
+                    "tree",
+                    "tree",
+                    "tree",
+                    "tree"
+                ]
+            }
+        },
+        "stim_eede8db235.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "crescent",
+                    "crescent",
+                    "crescent"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "crescent",
+                    "crescent",
+                    "crescent"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "crescent",
+                    "crescent",
+                    "crescent"
+                ]
+            }
+        },
+        "stim_f062757e0a.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "pearl",
+                    "folded_satin"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "pearl",
+                    "folded_satin"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "pearl",
+                    "folded_satin"
+                ]
+            }
+        },
+        "stim_f080d61d90.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "moon"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "moon"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "moon",
+                    "star"
+                ]
+            }
+        },
+        "stim_f85f152e86.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "leaf",
+                    "water",
+                    "grass"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "leaf",
+                    "water",
+                    "grass"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "leaf",
+                    "water",
+                    "grass"
+                ]
+            }
+        },
+        "stim_f9047dbf73.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "pearl",
+                    "pearl",
+                    "pearl"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "pearl",
+                    "pearl",
+                    "pearl"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "pearl",
+                    "pearl",
+                    "pearl"
+                ]
+            }
+        },
+        "stim_fc5cca18ce.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "camera_lenses",
+                    "marble",
+                    "camera_lenses"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "camera_lenses",
+                    "marble",
+                    "camera_lenses"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "camera_lenses",
+                    "marble",
+                    "camera_lenses"
+                ]
+            }
+        }
+    },
+    "control": {
+        "stim_00316dcbdf.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "square",
+                    "circle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "square",
+                    "circle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "square",
+                    "circle"
+                ]
+            }
+        },
+        "stim_00a7b3315e.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "pearl",
+                    "string"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "pearl",
+                    "string"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "pearl",
+                    "string"
+                ]
+            }
+        },
+        "stim_01b44be243.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circles",
+                    "lines",
+                    "flowers"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "circles",
+                    "lines"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "circles",
+                    "lines"
+                ]
+            }
+        },
+        "stim_035932d5c4.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "square",
+                    "triangle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "square",
+                    "triangle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "square",
+                    "triangle"
+                ]
+            }
+        },
+        "stim_04d24a4d16.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "fruit",
+                    "baskets"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "fruit",
+                    "baskets"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "fruit",
+                    "baskets"
+                ]
+            }
+        },
+        "stim_0606afc382.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            }
+        },
+        "stim_0a090d2669.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circles",
+                    "lines"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circles",
+                    "lines"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circles",
+                    "lines"
+                ]
+            }
+        },
+        "stim_0a2bb3a026.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "candle",
+                    "candle",
+                    "candle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "candle",
+                    "candle",
+                    "candle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "candle",
+                    "candle",
+                    "candle"
+                ]
+            }
+        },
+        "stim_0a8a140dab.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "triangle",
+                    "line"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "plate"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "plate"
+                ]
+            }
+        },
+        "stim_0ed86c150d.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            }
+        },
+        "stim_104e84ccfd.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "fruit",
+                    "baskets"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "fruit_basket"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "fruit_basket"
+                ]
+            }
+        },
+        "stim_10756871c8.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "square",
+                    "circle",
+                    "marble",
+                    "camera_lenses"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "camera_lenses",
+                    "marble",
+                    "square"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "camera_lenses",
+                    "marble",
+                    "camera_lenses",
+                    "marble"
+                ]
+            }
+        },
+        "stim_10f573110c.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "fruit",
+                    "baskets"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "fruit",
+                    "baskets"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "fruit",
+                    "baskets"
+                ]
+            }
+        },
+        "stim_11bff3fd00.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circles",
+                    "lines"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circles",
+                    "lines"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circles",
+                    "lines"
+                ]
+            }
+        },
+        "stim_141f65d6b4.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "candle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "candle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "candle"
+                ]
+            }
+        },
+        "stim_2745ef0e9f.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "triangle",
+                    "circle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "triangle",
+                    "circle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "triangle",
+                    "circle"
+                ]
+            }
+        },
+        "stim_2842698611.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "camera_lenses",
+                    "marble",
+                    "triangle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "camera_lenses",
+                    "marble",
+                    "triangle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "camera_lenses",
+                    "marble",
+                    "triangle"
+                ]
+            }
+        },
+        "stim_2cb4167174.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "camera_lenses",
+                    "marble",
+                    "camera_lenses"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "camera_lenses",
+                    "marble",
+                    "camera_lenses"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "camera_lenses",
+                    "marble",
+                    "camera_lenses"
+                ]
+            }
+        },
+        "stim_3491531c14.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circle",
+                    "line",
+                    "leaf",
+                    "water",
+                    "grass",
+                    "water",
+                    "grass"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circle",
+                    "line",
+                    "leaf"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circle",
+                    "line",
+                    "leaf",
+                    "water",
+                    "grass",
+                    "water",
+                    "grass"
+                ]
+            }
+        },
+        "stim_3942606d19.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "rectangular",
+                    "circular"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "rectangular",
+                    "circular"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "rectangular",
+                    "circular"
+                ]
+            }
+        },
+        "stim_3a725b5097.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            }
+        },
+        "stim_3af89a8da9.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circles",
+                    "lines"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circles",
+                    "lines"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circles",
+                    "lines"
+                ]
+            }
+        },
+        "stim_3cf84c95c8.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "plate"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "plate"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "plate"
+                ]
+            }
+        },
+        "stim_404ff22d5d.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "fruit",
+                    "basket"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "fruit",
+                    "basket"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "fruit",
+                    "basket"
+                ]
+            }
+        },
+        "stim_4679d7c769.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "triangle",
+                    "spheres"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "triangle",
+                    "spheres"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "triangle",
+                    "spheres"
+                ]
+            }
+        },
+        "stim_4722d292b3.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "square",
+                    "square",
+                    "square"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "square",
+                    "square",
+                    "square"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "square",
+                    "square",
+                    "square"
+                ]
+            }
+        },
+        "stim_47a0cf0f62.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "line",
+                    "circle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "line",
+                    "circle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "line",
+                    "circle"
+                ]
+            }
+        },
+        "stim_4a57d4d935.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "pearl",
+                    "pearl",
+                    "pearl"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "pearl",
+                    "pearl",
+                    "pearl"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "pearl",
+                    "pearl",
+                    "pearl"
+                ]
+            }
+        },
+        "stim_4b158e5994.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circles",
+                    "lines",
+                    "trees",
+                    "leaves",
+                    "bubbles",
+                    "circles",
+                    "lines"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circles",
+                    "lines",
+                    "trees",
+                    "leaves",
+                    "bubbles",
+                    "circles",
+                    "lines"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circles",
+                    "lines",
+                    "trees",
+                    "leaves",
+                    "bubbles",
+                    "circles",
+                    "lines"
+                ]
+            }
+        },
+        "stim_4f084c65c9.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circle",
+                    "circle",
+                    "circle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circle",
+                    "circle",
+                    "circle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circle",
+                    "circle",
+                    "circle"
+                ]
+            }
+        },
+        "stim_4f5b976ab0.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circle",
+                    "triangle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circle",
+                    "triangle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circle",
+                    "triangle"
+                ]
+            }
+        },
+        "stim_50c5064f44.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "pearl",
+                    "string"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "pearl",
+                    "string"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "pearl",
+                    "string"
+                ]
+            }
+        },
+        "stim_556e44214e.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "triangle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "triangle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "triangle"
+                ]
+            }
+        },
+        "stim_5b56ffbc20.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circle",
+                    "triangle",
+                    "square",
+                    "star",
+                    "line"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circle",
+                    "triangle",
+                    "square",
+                    "star",
+                    "line"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circle",
+                    "triangle",
+                    "square",
+                    "star",
+                    "line"
+                ]
+            }
+        },
+        "stim_5de74d30ca.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "square",
+                    "circle",
+                    "line"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "square",
+                    "circle",
+                    "line"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "square",
+                    "circle"
+                ]
+            }
+        },
+        "stim_60a1ef0132.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "sphere",
+                    "line"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "sphere",
+                    "line"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "sphere",
+                    "line"
+                ]
+            }
+        },
+        "stim_614beec1fd.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            }
+        },
+        "stim_628dff2079.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "spheres",
+                    "circles"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "spheres",
+                    "circles"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "spheres",
+                    "circles"
+                ]
+            }
+        },
+        "stim_62a4774bc9.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            }
+        },
+        "stim_69d25d1eb1.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "square",
+                    "circle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "square",
+                    "circle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "square",
+                    "circle"
+                ]
+            }
+        },
+        "stim_6ac42aba67.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 2,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 2,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 2,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            }
+        },
+        "stim_6e09f2fcaf.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "hexagon"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "hexagon"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "hexagon"
+                ]
+            }
+        },
+        "stim_71efd3e746.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circle",
+                    "circle",
+                    "circle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circle",
+                    "hexagon",
+                    "circle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circle",
+                    "hexagon",
+                    "circle"
+                ]
+            }
+        },
+        "stim_75ce1aa032.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "circle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "circle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "circle"
+                ]
+            }
+        },
+        "stim_789cd2e8c6.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "candle",
+                    "wood"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "candle",
+                    "wood"
+                ]
+            }
+        },
+        "stim_7a4239fd88.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            }
+        },
+        "stim_7b0e290583.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "square",
+                    "circle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "square",
+                    "circle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "square",
+                    "circle"
+                ]
+            }
+        },
+        "stim_805655ed7b.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            }
+        },
+        "stim_865bf63772.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "triangle",
+                    "circular"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "triangle",
+                    "circular"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "triangle",
+                    "circular"
+                ]
+            }
+        },
+        "stim_8a8c295af1.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "circles",
+                    "lines",
+                    "leaves"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circles",
+                    "lines",
+                    "flowers"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circles",
+                    "lines",
+                    "flowers"
+                ]
+            }
+        },
+        "stim_8c27e51dfe.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "camera_lenses",
+                    "marble",
+                    "camera_lenses"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "camera_lenses",
+                    "marble",
+                    "camera_lenses"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "camera_lenses",
+                    "marble",
+                    "camera_lenses"
+                ]
+            }
+        },
+        "stim_8c75e91886.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "circle",
+                    "triangle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "circle",
+                    "triangle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "circle",
+                    "triangle"
+                ]
+            }
+        },
+        "stim_8cf8fbee35.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "pearl",
+                    "pearl",
+                    "pearl"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "pearl",
+                    "pearl",
+                    "pearl"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "pearl",
+                    "pearl",
+                    "pearl"
+                ]
+            }
+        },
+        "stim_90f16312c0.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "circle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "circle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "circle"
+                ]
+            }
+        },
+        "stim_91a4abb725.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "circle",
+                    "triangle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "circle",
+                    "triangle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "circle",
+                    "triangle"
+                ]
+            }
+        },
+        "stim_929cf9f39e.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            }
+        },
+        "stim_96c275aa40.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "plate"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "plate"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "plate"
+                ]
+            }
+        },
+        "stim_97604d9fd0.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "candle",
+                    "candle",
+                    "candle",
+                    "candle",
+                    "candle",
+                    "candle",
+                    "candle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "candle",
+                    "candle",
+                    "candle",
+                    "candle",
+                    "candle",
+                    "candle",
+                    "candle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "candle",
+                    "candle",
+                    "candle",
+                    "candle",
+                    "candle",
+                    "candle",
+                    "candle"
+                ]
+            }
+        },
+        "stim_a1245bcdf0.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circles",
+                    "rectangles"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circles",
+                    "rectangles"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circles",
+                    "rectangles"
+                ]
+            }
+        },
+        "stim_a3097b3e00.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circular",
+                    "linear"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circular",
+                    "linear"
+                ]
+            }
+        },
+        "stim_a5cb8c47ab.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "candle",
+                    "candle",
+                    "candle",
+                    "candle",
+                    "candle",
+                    "candle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "candle",
+                    "candle",
+                    "candle",
+                    "candle",
+                    "candle",
+                    "candle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "candle",
+                    "candle",
+                    "candle",
+                    "candle",
+                    "candle",
+                    "candle"
+                ]
+            }
+        },
+        "stim_ab4dcd9981.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "candle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "candle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "candle",
+                    "string"
+                ]
+            }
+        },
+        "stim_b15f2be10e.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "triangle",
+                    "circle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "triangle",
+                    "circle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "triangle",
+                    "circle"
+                ]
+            }
+        },
+        "stim_b3da039ade.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circles",
+                    "lines"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circles",
+                    "lines"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circles",
+                    "lines"
+                ]
+            }
+        },
+        "stim_b4be98a573.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "fruit"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "fruit"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "fruit"
+                ]
+            }
+        },
+        "stim_b613f93799.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circle",
+                    "square"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circle",
+                    "square"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circle",
+                    "square"
+                ]
+            }
+        },
+        "stim_b628f568fb.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 20,
+                "visible_shapes": [
+                    "circle",
+                    "triangle",
+                    "square",
+                    "fruit"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 20,
+                "visible_shapes": [
+                    "circle",
+                    "triangle",
+                    "square",
+                    "fruit"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 20,
+                "visible_shapes": [
+                    "circle",
+                    "triangle",
+                    "square",
+                    "fruit"
+                ]
+            }
+        },
+        "stim_b80c6a1046.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "pearl",
+                    "string"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "pearl",
+                    "string"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "pearl",
+                    "string"
+                ]
+            }
+        },
+        "stim_b858474a80.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "triangle",
+                    "circle",
+                    "circle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "triangle",
+                    "circle",
+                    "circle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "triangle",
+                    "circle",
+                    "circle"
+                ]
+            }
+        },
+        "stim_bbe81b5f3c.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "candle",
+                    "wooden_plank"
+                ]
+            }
+        },
+        "stim_bc0dfecfd9.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circle",
+                    "circle",
+                    "square"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circle",
+                    "circle",
+                    "square"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circle",
+                    "circle",
+                    "square"
+                ]
+            }
+        },
+        "stim_bec2bca3aa.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "triangle",
+                    "circle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "triangle",
+                    "circle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "triangle",
+                    "circle"
+                ]
+            }
+        },
+        "stim_bf30c924cf.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "camera_lenses",
+                    "marble",
+                    "camera_lenses"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "camera_lenses",
+                    "marble",
+                    "camera_lenses"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "camera_lenses",
+                    "marble",
+                    "camera_lenses"
+                ]
+            }
+        },
+        "stim_c25dae05b6.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "triangle",
+                    "circular"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "triangle",
+                    "circular"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "triangle",
+                    "circular"
+                ]
+            }
+        },
+        "stim_c793a389b7.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "fruit",
+                    "baskets",
+                    "wood",
+                    "grain"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "fruit",
+                    "baskets",
+                    "wood",
+                    "grain"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "fruit",
+                    "baskets",
+                    "wood",
+                    "grain"
+                ]
+            }
+        },
+        "stim_c7cbdaa514.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "triangle",
+                    "circle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circular",
+                    "triangular"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circular",
+                    "triangular"
+                ]
+            }
+        },
+        "stim_c873321944.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "pearl",
+                    "string"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "pearl",
+                    "string"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "pearl",
+                    "string"
+                ]
+            }
+        },
+        "stim_c9fb0210f6.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "spheres",
+                    "ellipses"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "spheres",
+                    "ellipses"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "spheres",
+                    "ellipses",
+                    "lines",
+                    "circles"
+                ]
+            }
+        },
+        "stim_ccf3d031e6.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "rectangular",
+                    "circular"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "rectangular",
+                    "circular"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "rectangular",
+                    "circular"
+                ]
+            }
+        },
+        "stim_cf88f4d86f.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "plate"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "plate"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "circle"
+                ]
+            }
+        },
+        "stim_cfbe404784.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            }
+        },
+        "stim_d5fa7a90dd.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circles",
+                    "lines",
+                    "stars"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circular",
+                    "circular",
+                    "circular",
+                    "circular",
+                    "circular",
+                    "circular",
+                    "circular",
+                    "circular",
+                    "circular",
+                    "circular",
+                    "circular",
+                    "circular",
+                    "circular",
+                    "circular",
+                    "circular",
+                    "circular",
+                    "circular",
+                    "circular",
+                    "circular",
+                    "circular"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circles",
+                    "lines",
+                    "stars"
+                ]
+            }
+        },
+        "stim_d6872938ae.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "triangle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "triangle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "triangle",
+                    "circle",
+                    "circle"
+                ]
+            }
+        },
+        "stim_de90fa9932.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "candle",
+                    "candle",
+                    "candle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "candle",
+                    "candle",
+                    "candle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "candle",
+                    "candle",
+                    "candle"
+                ]
+            }
+        },
+        "stim_df48afc9e3.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "pearl",
+                    "string"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "pearl",
+                    "string"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "pearl",
+                    "string"
+                ]
+            }
+        },
+        "stim_e209febd0b.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "pearl",
+                    "string"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "pearl",
+                    "string"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "pearl",
+                    "string"
+                ]
+            }
+        },
+        "stim_e288679a07.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circle",
+                    "line",
+                    "triangle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circle",
+                    "line",
+                    "triangle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circle",
+                    "line",
+                    "triangle"
+                ]
+            }
+        },
+        "stim_e31bc8a10f.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "circle",
+                    "line",
+                    "rectangle"
+                ]
+            }
+        },
+        "stim_e3f8b6326f.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            }
+        },
+        "stim_e6f63e4d51.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "pearl",
+                    "string"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "pearl",
+                    "string"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "pearl",
+                    "string"
+                ]
+            }
+        },
+        "stim_e9a29f1c1c.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "circle",
+                    "circle",
+                    "circle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "circle",
+                    "circle",
+                    "circle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "circle",
+                    "circle",
+                    "circle"
+                ]
+            }
+        },
+        "stim_ea4457329d.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "triangle",
+                    "circle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "triangle",
+                    "circle"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "triangle",
+                    "circle"
+                ]
+            }
+        },
+        "stim_eb72348d6b.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "fruit",
+                    "baskets"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "fruit",
+                    "baskets"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "fruit",
+                    "baskets",
+                    "wood"
+                ]
+            }
+        },
+        "stim_ed464664c7.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "pearl",
+                    "string"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "pearl",
+                    "string"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "pearl",
+                    "string"
+                ]
+            }
+        },
+        "stim_f27c32c7ee.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "rectangular",
+                    "circular"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 7,
+                "visible_shapes": [
+                    "rectangular",
+                    "circular"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 6,
+                "visible_shapes": [
+                    "rectangular",
+                    "circular"
+                ]
+            }
+        },
+        "stim_f674d8c5af.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 3,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            }
+        },
+        "stim_f6cf73e897.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "triangle"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circular",
+                    "circular",
+                    "circular",
+                    "circular"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 4,
+                "visible_shapes": [
+                    "circle",
+                    "triangle"
+                ]
+            }
+        },
+        "stim_f77aede279.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 5,
+                "visible_shapes": [
+                    "circle",
+                    "line"
+                ]
+            }
+        },
+        "stim_f952191005.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "circle",
+                    "oval",
+                    "rectangular",
+                    "triangular",
+                    "linear",
+                    "curvilinear",
+                    "circular",
+                    "cylindrical",
+                    "spherical",
+                    "elliptical",
+                    "irregular",
+                    "rectangular",
+                    "cylindrical",
+                    "circular",
+                    "cylindrical",
+                    "circular",
+                    "cylindrical",
+                    "circular",
+                    "cylindrical",
+                    "circular"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "fruit",
+                    "baskets"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "fruit",
+                    "baskets"
+                ]
+            }
+        },
+        "stim_fb4b719ce4.jpg": {
+            "0": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "fruit",
+                    "baskets"
+                ]
+            },
+            "1": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "fruit",
+                    "baskets"
+                ]
+            },
+            "2": {
+                "has_illusion": true,
+                "n_objects": 1,
+                "visible_shapes": [
+                    "fruit",
+                    "baskets"
+                ]
+            }
+        }
+    }
+}

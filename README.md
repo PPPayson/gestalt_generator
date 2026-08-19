@@ -10,15 +10,10 @@
 
 **Gestalt Generator** produces benchmark stimuli that test perceptual grouping in vision models.
 Perceptual grouping — binding separate elements into a whole — underlies how we perceive objects and
-contours, and the *Kanizsa* figure is its classic probe: several "pac-man" inducers, arranged so their
-bitten edges align, evoke a shape whose contour is never drawn. We build these figures from **real
-objects** rather than abstract discs, and ship each figure in two matched conditions — **illusory** (no
-contour) and a positive-**control** with the shape's contour drawn — so a model that fails on the
-illusory version can be distinguished from one that simply cannot name or count the shape. Every
-stimulus carries a machine-readable answer key, and the set reproduces from a single command, offline,
-without a GPU or an API key.
-
-*This repository covers stimulus generation. An evaluation harness will follow separately.*
+contours. One of the classic shapes is the *Kanizsa* figure where several "pac-man" objects are arranged such that their
+bitten edges evoke a shape of a triangle. We build these figures from novel configurations and add texture using **real
+objects** and **real backgrounds**. Each figure comes in two matched conditions — **illusory** (no
+contour) and a positive-**control** with the shape's contour drawn. In this way, we control the model's ability to match patterns based on shapes and configuration of the objects in the scene, as well as count or name shapes.
 
 ## Installation
 
@@ -92,6 +87,74 @@ The control is a positive control: it isolates perception of the illusory contou
 name and count the shape. The shipped set uses bezier figures, so `illusory_shape` is always
 `"irregular"`; for named shapes (`triangle`, `square`, …), use a Kanizsa configuration below.
 
+An example of running the tasks on models from Ollama:
+
+```bash
+python ollama_eval.py --model llama3.2-vision:11b
+```
+This script evaluates both the illusory and control images with two prompts and gets output in JSON format:
+
+```python
+"""
+Inspect the image. Report every visually distinc form a human inspecting the image would perceive.
+Count repeated forms separately. Use a short conventional name for each form. Do not explain your answer.
+"""
+"""
+Inspect the image. Is there a true or illusory contour? Do not explain your answer.
+"""
+
+Output format:
+```json
+{
+  "illusory": {
+    "img_name.jpg":{
+      "0": {
+        "has_illusion": true, # Whether there is an illusory contour.
+        "n_objects": 3 # Number of objects in the image, including the illusory shape. 
+        "visible_shapes": [ # Name the shapes counted in the objects
+          "square",
+          "circle",
+          ...
+        ]
+      }
+    }
+  }
+  "control":{
+  ...
+  }
+}
+```
+
+```
+
+Bash script to evaluate multiple models:
+
+```bash
+sh run.sh
+```
+
+## Evaluation
+We provide an example script for computing accuracy, precision, and recall across all model outputs in the outs folder. 
+The script will plot all model results in bar plots.
+
+```bash
+python evaluate.py
+````
+<p align="center">
+  <img src="outs/has_illusion_metrics.png" width="300">
+  <img src="outs/counting_accuracy.png" width="300">
+</p>
+<p align="center"><i>Results example</i></p>
+
+## Generate new silhouettes
+
+New silhouettes can be randomly generated with control over the number of vertices, number of inducers, and the smoothness of the illusory contour.
+
+```bash
+python create_template.py
+```
+Outputs grayscale illusory contour templates along with controls that draw the illusory contour explicitly.
+
 ## Make your own set
 
 Each benchmark is defined by one configuration file. To create your own, copy `configs/gen100.yaml`,
@@ -148,3 +211,5 @@ their frozen output: the proposed pairs that passed validation (`pipeline/pairs_
 rendered cutouts (`data/assets/`). Every remaining step — which silhouettes and pairs are selected, and
 how objects are composited — is seeded and deterministic, so `seed: 1` yields the identical set on any
 machine. The silhouettes and their matched controls are regenerated with `python3 main.py`.
+
+
