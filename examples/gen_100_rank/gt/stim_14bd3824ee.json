@@ -1,0 +1,25 @@
+{
+  "id": "stim_14bd3824ee",
+  "condition": "illusory",
+  "n_inducers": 5,
+  "has_illusion": true,
+  "has_visible_contour": false,
+  "illusory_shape": "irregular",
+  "polygon_vertices": 7,
+  "nonillusory_shapes": {
+    "real_life": [
+      "macaron",
+      "macaron",
+      "macaron",
+      "macaron",
+      "macaron"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  }
+}

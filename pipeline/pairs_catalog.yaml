@@ -8,12 +8,12 @@ pairs:
   - {object: "Satellite dish", background: "orange sand", natural: false, contrast: 46.3, roundness: 1.01}
   - {object: "Bullseye", background: "navy blue velvet", natural: false, contrast: 44.0, roundness: 1.02}
   - {object: "target", background: "dark chocolate brown wood", natural: false, contrast: 47.1, roundness: 1.02}
-  - {object: "chocolate", background: "soft white frosted quartz", natural: false, contrast: 60.0, roundness: 0.77}
+  - {object: "chocolate", background: "cream travertine", natural: false, contrast: 57.4, roundness: 0.77}
   - {object: "candle", background: "charcoal mottled plaster", natural: false, contrast: 37.4, roundness: 1.02}
   - {object: "grapefruit", background: "deep green moss", natural: false, contrast: 73.1, roundness: 0.97}
   - {object: "lens", background: "white concrete", natural: false, contrast: 53.4, roundness: 1.02}
   - {object: "round cracker", background: "muted teal mottled stone", natural: false, contrast: 39.3, roundness: 1.0}
-  - {object: "blueberry", background: "cream travertine", natural: false, contrast: 57.1, roundness: 0.88}
+  - {object: "macaron", background: "soft white frosted quartz", natural: false, contrast: 34.0, roundness: 1.02}
   - {object: "Space pod", background: "orange terrazzo", natural: false, contrast: 45.6, roundness: 1.02}
   - {object: "moon", background: "black basalt fine grain", natural: false, contrast: 44.8, roundness: 1.01}
   - {object: "mushroom cap", background: "shiny black granite", natural: false, contrast: 46.3, roundness: 1.01}
