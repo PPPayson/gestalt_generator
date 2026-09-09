@@ -162,13 +162,103 @@ def draw_shapes(points, mindist, shape=(1024, 1024), shape_type="circle"):
     return mask.astype(np.uint8)
 
 
+def support_ratio(discs, mask, contour_px=5):
+    """Fraction of the polygon's contour band physically traced by the inducer discs (pre-carve).
+    The classic difficulty measure: 1 = contour fully drawn by bites, 0 = fully interpolated."""
+    ring = (np.asarray(mask, dtype=np.uint8) - erode_mask(mask, contour_px)).astype(bool)
+    if not ring.any():
+        return 0.0
+    return float((np.asarray(discs, dtype=bool) & ring).sum() / ring.sum())
+
+
+def generate_one(randomness, n_vertices, n_points, edgy, rad, closeness=None,
+                 sil_dir="data/silhouettes", ctrl_dir="data/control",
+                 output_shape=(1024, 1024), polygon_shape=(700, 700), basedist=125,
+                 contour_px=5, seed=None):
+    """Render ONE figure: illusory mask (sil_dir) + paired control mask (ctrl_dir, outline drawn).
+    `closeness` IS the bite radius, normalized to [0,1]: radius = r_min + closeness*(r_max - r_min),
+    where r_min is the smallest bite that still reads as a bite and r_max the largest radius at
+    which all discs still fit on the contour without merging (found by a seeded search; the allowed
+    neighbour spacing shrinks 2.5r -> 2.05r as closeness -> 1, so at 1 the bites nearly touch).
+    <stem>.json records support_ratio and closeness_measured (mean nearest-point closeness 1-gap/d).
+    closeness=None keeps the legacy basedist/filename. Returns the stem, or None if placement fails."""
+    output_shape = list(output_shape); polygon_shape = list(polygon_shape)
+    stem = f"img_{randomness}_{n_vertices}_{n_points}_{edgy}_{rad}"
+    if closeness is not None:
+        # clamp + round so the value round-trips through the filename (no 1e-05 notation)
+        closeness = round(min(1.0, max(0.0, float(closeness))), 4)
+        stem += f"_{closeness}"
+    a = get_random_points(n=n_vertices, scale=0.8, randomness=randomness, seed=seed)
+    x, y, _ = get_bezier_curve(a, rad=rad, edgy=edgy)
+    x = np.int16(polygon_shape[0] * x)
+    y = np.int16(polygon_shape[1] * y)
+    coords = np.stack([x, y], axis=1)
+    mask, coords = padded_polygon_mask(coords, polygon_shape, output_shape)
+    feas = lambda m: sample_points(coords, n=n_points, mindist=m, seed=seed)
+    measured = None
+    if closeness is None:
+        mindist = int(basedist * 3.0 / n_points)
+        sampled = feas(mindist * 2.5)
+    else:
+        # closeness = fraction of the way from the smallest visible bites to the largest bites
+        # THIS figure can carry: 0 -> minimal bites at generous spacing (2.5r), 1 -> the maximal
+        # feasible radius with neighbours allowed to close up to nearly touching (2.05r).
+        # The realised mean nearest-point closeness between inducers (1 - gap/d, shape-general)
+        # is measured afterwards and recorded as closeness_measured.
+        sep = 2.5 - 0.45 * float(closeness)
+        feas = lambda r: sample_points(coords, n=n_points, mindist=r * sep, seed=seed)
+        r_lo = int(60 * 3.0 / n_points)
+        margin = int(min(coords.min(), min(output_shape) - 1 - coords.max()))
+        r_hi = max(r_lo, min(int(320 * 3.0 / n_points), margin))   # true frontier, no canvas clipping
+        if feas(r_lo) is None:                          # even the smallest discs won't fit
+            return None
+        if feas(r_hi) is not None:
+            r_max = r_hi
+        else:                                           # binary-search the feasibility frontier
+            lo, hi = r_lo, r_hi                         # invariant: lo feasible, hi not
+            while hi - lo > 1:
+                mid = (lo + hi) // 2
+                if feas(mid) is not None:
+                    lo = mid
+                else:
+                    hi = mid
+            r_max = lo
+        mindist = int(round(r_lo + float(closeness) * (r_max - r_lo)))
+        sampled = feas(mindist)
+        for _ in range(5):                              # oracle is not strictly monotone per seed
+            if sampled is not None:
+                break
+            mindist = max(r_lo, int(mindist * 0.95))
+            sampled = feas(mindist)
+        if sampled is not None:                         # measure the realised inter-inducer closeness
+            P = np.asarray(sampled, dtype=float)
+            D = np.linalg.norm(P[:, None] - P[None, :], axis=-1)
+            np.fill_diagonal(D, np.inf)
+            measured = round(float(np.mean(2.0 * mindist / D.min(1))), 4)
+    if sampled is None:
+        return None
+    out = draw_shapes(sampled, mindist=mindist, shape=output_shape, shape_type="circle")
+    support = support_ratio(out, mask, contour_px)      # measured BEFORE carving
+    out[mask] = 0                                       # carve the illusory polygon
+    plt.imsave(os.path.join(sil_dir, stem + ".png"), out, cmap="gray", vmin=0, vmax=1)
+    ring = mask - erode_mask(mask, contour_px)          # polygon outline
+    plt.imsave(os.path.join(ctrl_dir, stem + ".png"), out + ring, cmap="gray", vmin=0, vmax=1)
+    side = {"support_ratio": round(support, 4), "mindist": round(float(mindist), 1)}
+    if closeness is not None:
+        side["closeness"] = float(closeness)
+        side["closeness_measured"] = measured       # mean nearest-point closeness actually realised
+    with open(os.path.join(sil_dir, stem + ".json"), "w") as f:
+        f.write(json.dumps(side))
+    return stem
+
+
 def generate(sil_dir="data/silhouettes", ctrl_dir="data/control",
              output_shape=(1024, 1024), polygon_shape=(700, 700), basedist=125,
              rs=(0, 0.4, 0.8, 1), n_vs=(3, 4, 5, 6, 7, 8), n_ps=(3, 4, 5, 6),
-             es=(0.1, 0.5, 1), rads=(0.1, 0.2, 0.4), contour_px=5, seed=None):
-    """Render the silhouette grid. Each figure produces an illusory mask (sil_dir) and a paired
-    control mask (ctrl_dir) that additionally draws the polygon outline. Pass `seed` to reproduce."""
-    output_shape = list(output_shape); polygon_shape = list(polygon_shape)
+             es=(0.1, 0.5, 1), rads=(0.1, 0.2, 0.4), closenesses=(None,),
+             contour_px=5, seed=None):
+    """Render the silhouette grid (via generate_one). Pass `seed` to reproduce; add `closenesses`
+    values to also sweep the support-ratio knob (None = legacy radius + legacy filename)."""
     os.makedirs(sil_dir, exist_ok=True); os.makedirs(ctrl_dir, exist_ok=True)
     count = 0
     for randomness in rs:
@@ -176,23 +266,13 @@ def generate(sil_dir="data/silhouettes", ctrl_dir="data/control",
             for n_points in n_ps:
                 for edgy in es:
                     for rad in rads:
-                        mindist = int(basedist * 3.0 / n_points)
-                        fname = f"img_{randomness}_{n_vertices}_{n_points}_{edgy}_{rad}.png"
-                        a = get_random_points(n=n_vertices, scale=0.8, randomness=randomness, seed=seed)
-                        x, y, _ = get_bezier_curve(a, rad=rad, edgy=edgy)
-                        x = np.int16(polygon_shape[0] * x)
-                        y = np.int16(polygon_shape[1] * y)
-                        coords = np.stack([x, y], axis=1)
-                        mask, coords = padded_polygon_mask(coords, polygon_shape, output_shape)
-                        sampled = sample_points(coords, n=n_points, mindist=mindist * 2.5, seed=seed)
-                        if sampled is None:
-                            continue
-                        out = draw_shapes(sampled, mindist=mindist, shape=output_shape, shape_type="circle")
-                        out[mask] = 0                                  # carve the illusory polygon
-                        plt.imsave(os.path.join(sil_dir, fname), out, cmap="gray", vmin=0, vmax=1)
-                        ring = mask - erode_mask(mask, contour_px)     # polygon outline
-                        plt.imsave(os.path.join(ctrl_dir, fname), out + ring, cmap="gray", vmin=0, vmax=1)
-                        count += 1
+                        for closeness in closenesses:
+                            stem = generate_one(randomness, n_vertices, n_points, edgy, rad,
+                                                closeness=closeness, sil_dir=sil_dir, ctrl_dir=ctrl_dir,
+                                                output_shape=output_shape, polygon_shape=polygon_shape,
+                                                basedist=basedist, contour_px=contour_px, seed=seed)
+                            if stem is not None:
+                                count += 1
     return count
 
 

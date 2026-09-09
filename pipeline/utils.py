@@ -61,6 +61,24 @@ def roundness(img):
     return float(min(1.5, m.sum() / (np.pi * r * r + 1e-6)))
 
 
+def busyness(img):
+    """Background 'busyness': how many bounded, distractor-like shapes the surface contains.
+    Local deviation from a smoothed copy isolates speckles/chips from smooth material texture;
+    the score combines the count of speckle patches with the deviation's overall strength.
+    Returns (score, n_patches, dev_std) — raw parts kept so a cutoff can be revisited."""
+    from PIL import Image
+    from scipy import ndimage
+    im = img if isinstance(img, Image.Image) else Image.open(img)
+    a = np.array(im.convert("L").resize((256, 256))).astype(float)
+    dev = np.abs(a - ndimage.uniform_filter(a, 31))
+    lab, n = ndimage.label(dev > 25)
+    if n:
+        sizes = ndimage.sum(np.ones_like(lab), lab, range(1, n + 1))
+        n = int((sizes >= 4).sum())                  # bounded speckles, not lone pixels
+    dev_std = float(dev.std())
+    return float(n + 20 * dev_std), n, dev_std
+
+
 def load_all_candidates(data=DATA):
     """Merge natural + non-natural proposal files; tag each item with its `natural` flag."""
     out = {}

@@ -79,25 +79,92 @@ def _draw_contour(canvas, ring, style="auto", feather=1.6):
     return out
 
 
-def render(sil_path, o, b, shadow=55, mode="perfect", crop=True, pad_frac=0.10, feather=1.5,
-           control=None, contour="auto"):
+_LUM = np.array([0.2126, 0.7152, 0.0722])
+
+
+def _contrast_shift(canvas, obj_rgb, contrast, info=None):
+    """Camouflage recolor. `contrast` 0 = leave the background's native colors untouched;
+    1 = move the background's mean RGB all the way to the OBJECT'S mean color, so figure-ground
+    separation (hue AND lightness) vanishes and only the object's own detail/shadow remain.
+    Texture detail is preserved by re-centering it around the new mean (compressed only as far as
+    0..255 headroom requires, never clipped flat). `info` gets `lum_gap`: the REMAINING
+    mean-luminance gap between background and object, in [0,1]."""
+    a = np.array(canvas).astype(float)
+    rgb = a[..., :3]
+    bg_mean = rgb.reshape(-1, 3).mean(0)
+    obj_rgb = np.asarray(obj_rgb, dtype=float)
+    target = np.clip(bg_mean + contrast * (obj_rgb - bg_mean), 0, 255)
+    detail = rgb - bg_mean
+    hi = np.percentile(detail, 99, axis=(0, 1))     # robust headroom: ignore extreme outliers
+    lo = np.percentile(detail, 1, axis=(0, 1))
+    k = 1.0
+    for c in range(3):
+        if hi[c] > 1e-6:
+            k = min(k, (255.0 - target[c]) / hi[c])
+        if lo[c] < -1e-6:
+            k = min(k, (0.0 - target[c]) / lo[c])
+    k = max(0.0, min(1.0, k))
+    a[..., :3] = np.clip(target + detail * k, 0, 255)
+    got = float(a[..., :3].reshape(-1, 3).mean(0) @ _LUM / 255.0)
+    if info is not None:
+        info["lum_gap"] = round(abs(got - float(_LUM @ obj_rgb) / 255.0), 4)
+    return Image.fromarray(a.astype(np.uint8), "RGBA")
+
+
+def render(sil_path, o, b, shadow=0, mode="perfect", crop=True, pad_frac=0.10, feather=1.5,
+           control=None, contour="auto", texture=2, contrast=None, info=None):
     """Return (RGB image, canvas_size). `crop` trims the silhouette margin so objects fill the frame;
     `feather` softens the cutout edge. If `control` (a paired control silhouette) is given, the
-    illusory shape's drawn outline is added as a positive control."""
+    illusory shape's drawn outline is added as a positive control.
+    Difficulty knobs: `texture` has 4 discrete levels: 0 = flat black inducers on a flat fill (no
+    objects/backgrounds); 1 = solid-color chips (the object's mean color, no texture) on a solid
+    canvas (the BG image's mean color); 2 = real object cutouts on the solid canvas; 3 = real
+    objects on the real background image (the legacy look).
+    `contrast` in [0,1] is a CAMOUFLAGE knob: 0/None = the pair's native colors, 1 = background
+    recolored to the object's mean color (figure-ground separation gone); `info` (a dict)
+    receives `lum_gap`, the remaining background-object mean-luminance gap."""
     from .geometry import crop_box
     sil_img = sil_path if isinstance(sil_path, Image.Image) else Image.open(sil_path)
     sil_img = sil_img.convert("RGBA")
     box = crop_box(sil_img, pad_frac) if crop else (0, 0, sil_img.width, sil_img.height)
     sil = sil_img.crop(box)
     lab, n, (TW, TH) = inducer_labels(sil)
-    obj = Image.open(OBJ / f"{slug(o)}.png").convert("RGBA")
-    obj = obj.crop(obj.getbbox())
-    canvas = ImageOps.fit(Image.open(BG / f"{slug(b)}.png").convert("RGBA"), (TW, TH))
+    texture = int(texture)
+    if texture >= 1:
+        obj = Image.open(OBJ / f"{slug(o)}.png").convert("RGBA")
+        obj = obj.crop(obj.getbbox())
+        oa = np.array(obj).astype(float)
+        om = oa[..., 3] > 128
+        obj_rgb = oa[..., :3][om].mean(0) if om.any() else np.full(3, 255.0)
+        if texture == 1:                            # solid-color chip: object's mean color, no texture
+            oa[..., :3] = obj_rgb
+            obj = Image.fromarray(np.clip(oa, 0, 255).astype(np.uint8), "RGBA")
+        bg_img = Image.open(BG / f"{slug(b)}.png").convert("RGBA")
+        mean = np.array(bg_img.convert("RGB")).reshape(-1, 3).mean(0)
+        if texture <= 2:                            # solid canvas: BG image's mean color
+            canvas = Image.new("RGBA", (TW, TH), tuple(int(v) for v in mean) + (255,))
+        else:                                       # texture 3: the real background image
+            canvas = ImageOps.fit(bg_img, (TW, TH))
+        if contrast is not None:
+            canvas = _contrast_shift(canvas, obj_rgb, contrast, info)
+    else:                                           # texture 0: black inducers on a flat gray fill
+        g = 255 if contrast is None else int(round((1.0 - contrast) * 255))   # camouflage: 1 -> black
+        canvas = Image.new("RGBA", (TW, TH), (g, g, g, 255))
+        if info is not None and contrast is not None:
+            info["lum_gap"] = round(g / 255.0, 4)
     cys, cxs = np.where(lab > 0)
     Cx, Cy = cxs.mean(), cys.mean()
     for lb in range(1, n + 1):
         mask = lab == lb
         if mask.sum() < 200:
+            continue
+        if texture == 0:                            # flat: paint the region itself, feathered black
+            reg = Image.fromarray((mask * 255).astype(np.uint8), "L")
+            if feather > 0:
+                reg = reg.filter(ImageFilter.GaussianBlur(feather))
+            ink = Image.new("RGBA", (TW, TH), (0, 0, 0, 255))
+            ink.putalpha(reg)
+            canvas.alpha_composite(ink)
             continue
         # the inducer's disc = the minimum enclosing circle of the region (disc-minus-bite)
         ys, xs = np.where(mask)
@@ -134,11 +201,13 @@ def render(sil_path, o, b, shadow=55, mode="perfect", crop=True, pad_frac=0.10, 
 
 
 def run(cfg, metas, pairs):
-    shadow = cfg["dress"].get("shadow", 55)
+    shadow = cfg["dress"].get("shadow", 0)
     crop = cfg["dress"].get("crop", True)
     feather = cfg["dress"].get("feather", 1.5)
     conditions = cfg["dress"].get("conditions", ["illusory"])
     contour = cfg["dress"].get("contour", "auto")
+    texture = cfg["dress"].get("texture", 3)
+    contrast = cfg["dress"].get("contrast")
     out = OUT / "comp"
     for cond in conditions:
         (out / cond).mkdir(parents=True, exist_ok=True)   # out/comp/illusory, out/comp/control
@@ -153,12 +222,16 @@ def run(cfg, metas, pairs):
                         print(f"  ! no control silhouette for {meta['stem']}; skipping control")
                         continue                        # never emit a 'control' without a drawn contour
                     ctrl = cp if cond == "control" else None
+                    info = {}
                     img, _ = render(sp, it["object"], it["background"], shadow, mode, crop,
-                                    feather=feather, control=ctrl, contour=contour)
+                                    feather=feather, control=ctrl, contour=contour,
+                                    texture=texture, contrast=contrast, info=info)
                     i = sid(meta["stem"], it["object"], "composite", f"{mode}_{cond}")
                     img.save(out / cond / f"{i}.png")
                     append_manifest([i, meta["stem"], it["object"], it["background"],
                                      "composite", mode, it.get("natural", True), cond])
-                    gt.write(i, meta, it, "composite", mode, condition=cond)
+                    gt.write(i, meta, it, "composite", mode, condition=cond,
+                             texture=texture, contrast=contrast,
+                             lum_gap=info.get("lum_gap"))
                     k += 1
     print(f"  composite: {k} stimuli")

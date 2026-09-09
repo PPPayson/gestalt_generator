@@ -9,7 +9,7 @@ from PIL import Image, ImageDraw
 from .utils import SIL
 
 POLY = {3: "triangle", 4: "square", 5: "pentagon", 6: "hexagon"}
-GESTALT_RE = re.compile(r"img_([0-9.]+)_(\d+)_(\d+)_([0-9.]+)_([0-9.]+)")
+GESTALT_RE = re.compile(r"img_([0-9.]+)_(\d+)_(\d+)_([0-9.]+)_([0-9.]+)(?:_([0-9.]+))?$")
 
 
 # --- kanizsa registry -------------------------------------------------------
@@ -49,17 +49,22 @@ REGISTRY = {"kanizsa": produce_kanizsa}
 
 # --- gestalt source (friend's silhouettes) ----------------------------------
 def parse_gestalt_name(stem):
-    """img_{randomness}_{n_vertices}_{n_points}_{edgy}_{rad} -> params dict, or None."""
+    """img_{randomness}_{n_vertices}_{n_points}_{edgy}_{rad}[_{closeness}] -> params dict, or None.
+    `closeness` (the support-ratio knob) is included only when the suffix is present."""
     m = GESTALT_RE.match(stem)
     if not m:
         return None
-    randomness, n_vertices, n_points, edgy, rad = m.groups()
-    return {"randomness": float(randomness), "n_vertices": int(n_vertices),
-            "n_points": int(n_points), "edgy": float(edgy), "rad": float(rad)}
+    randomness, n_vertices, n_points, edgy, rad, closeness = m.groups()
+    p = {"randomness": float(randomness), "n_vertices": int(n_vertices),
+         "n_points": int(n_points), "edgy": float(edgy), "rad": float(rad)}
+    if closeness is not None:
+        p["closeness"] = float(closeness)
+    return p
 
 
-def _gestalt_sidecar(stem, p):
-    """Write meta parsed from the filename so GT/propose have real values."""
+def _gestalt_sidecar(stem, p, src=None):
+    """Write meta parsed from the filename so GT/propose have real values. If the generator left a
+    sidecar next to the source PNG (support_ratio, closeness), merge it in instead of losing it."""
     meta = {
         "illusion": stem,
         "inducer_shape": "a disc with a bezier-polygon bite (gestalt inducer)",
@@ -69,6 +74,14 @@ def _gestalt_sidecar(stem, p):
         "polygon_vertices": p["n_vertices"],
         "randomness": p["randomness"], "edgy": p["edgy"], "rad": p["rad"],
     }
+    if p.get("closeness") is not None:
+        meta["closeness"] = p["closeness"]
+    gen = (src or SIL) / f"{stem}.json"
+    if gen.exists():
+        try:
+            meta = {**json.loads(gen.read_text()), **meta}
+        except (json.JSONDecodeError, OSError):
+            pass
     (SIL / f"{stem}.json").write_text(json.dumps(meta))
 
 
@@ -206,7 +219,7 @@ def use_gestalt(mode="random", n=20, seed=0, src_dir=None, regenerate=None, indu
     for stem in chosen:                              # materialise: copy into SIL + write sidecar meta
         if src != SIL:
             Image.open(src / f"{stem}.png").save(SIL / f"{stem}.png")
-        _gestalt_sidecar(stem, parse_gestalt_name(stem))
+        _gestalt_sidecar(stem, parse_gestalt_name(stem), src=src)
     print(f"  gestalt: selected {len(chosen)} clean silhouettes "
           f"(mode={mode}, {checked} checked, seed={seed})")
     return chosen
@@ -223,14 +236,13 @@ def use_dropin(files=None, glob=None):
         if not (SIL / f"{stem}.png").exists():
             print(f"  ! dropin: {stem}.png not found"); continue
         sc = SIL / f"{stem}.json"
-        if not sc.exists():
-            p = parse_gestalt_name(stem)
-            if p:
-                _gestalt_sidecar(stem, p)
-            else:
-                sc.write_text(json.dumps(
-                    {"illusion": stem, "inducer_shape": "a round disc-shaped object",
-                     "illusory_shape": "irregular", "primitive": "circle"}))
+        p = parse_gestalt_name(stem)
+        if p:                                    # (re)write full meta, merging any generation sidecar
+            _gestalt_sidecar(stem, p)
+        elif not sc.exists():
+            sc.write_text(json.dumps(
+                {"illusion": stem, "inducer_shape": "a round disc-shaped object",
+                 "illusory_shape": "irregular", "primitive": "circle"}))
         stems.append(stem)
     return stems
 

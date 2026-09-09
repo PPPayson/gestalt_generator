@@ -29,7 +29,7 @@ dress:
   modes: [perfect]
   conditions: [illusory, control]   # matched pairs: illusory (no contour) + control (contour drawn)
   contour: auto            # control-outline colour: auto (per-image high contrast) | white | black
-  shadow: 55               # light inward shadow
+  shadow: 0                # no shadow by default (set e.g. 55 to add an inward depth cue)
   crop: true               # trim dead silhouette margin so objects fill the frame
   feather: 1.5             # soft cutout edge
 

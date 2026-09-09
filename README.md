@@ -77,6 +77,9 @@ Each field states one question the model should answer:
 | `nonillusory_shapes.real_life` | what the real objects are |
 | `nonillusory_shapes.primitive` | their geometric primitive |
 
+The answer key also carries a `difficulty` block recording how hard the stimulus was made to be —
+see [Difficulty knobs](#difficulty-knobs).
+
 Each figure appears in two `condition`s that share the same objects, count, and shape, differing only
 in whether the contour is drawn:
 
@@ -173,12 +176,58 @@ dress:
   backends: [composite]                              # composite real objects into the figure
   conditions: [illusory, control]                    # matched pair per figure (drop control for illusory-only)
   contour: auto                                      # control-outline colour: auto | white | black
-  shadow: 55
+  texture: 3                                         # difficulty knob, see below
+  contrast: null                                     # difficulty knob, see below (null = native colours)
+  shadow: 0                                          # optional inward depth cue (e.g. 55)
   feather: 1.5
 ```
 
 The number of stimuli is `#silhouettes × n_per_silhouette × #conditions`. Textures are drawn from a
-catalog of 16 pre-validated object/background pairs.
+catalog of 15 pre-validated object/background pairs.
+
+## Difficulty knobs
+
+We control the difficulty of a stimulus with three parameters. Each parameter varies one property
+of the image and holds the rest fixed. The sweep below shows each parameter on one figure: one row
+per parameter, easy on the left, hard on the right. To re-render it, run
+`python3 tools/make_difficulty_examples.py`.
+
+<p align="center">
+  <img src="examples/difficulty_examples.png" width="900">
+</p>
+<p align="center"><i>Per-parameter sweeps: texture (rendering realism), closeness (inducer size), and contrast (background recolored toward the object). The row labels list the values held fixed.</i></p>
+
+| Parameter | Range | What it controls |
+|---|---|---|
+| `closeness` | [0, 1] | The size of the inducers. We set the inducer radius to `min + closeness·(max − min)`, where `max` is the largest radius at which the inducers fit on the contour without touching. Larger inducers leave smaller gaps along the illusory contour, so the illusion is easier to see. |
+| `texture` | {0, 1, 2, 3} | The realism of the rendering. 0: black inducers on a flat background. 1: solid-color inducers on a solid background. 2: real objects on a solid background. 3: real objects on a real background. |
+| `contrast` | [0, 1] | How far the background is recolored toward the object's color. At 0 (the default, `null`), the pair keeps its native colors. At 1, the background matches the object's mean color and the inducers nearly disappear. |
+
+`closeness` is set at silhouette generation (`main.generate`); `texture` and `contrast` are set at
+dressing time (`dress.texture`, `dress.contrast`). A fourth setting, `dress.shadow` (default 0),
+adds a drop shadow under each inducer; the shadow is a depth cue that makes the figure easier to
+see at any difficulty.
+
+Each answer key records the parameter values and the quantities they induce in a `difficulty`
+block. We report `closeness_measured`, the mean closeness between neighboring inducers (1 =
+touching); `support_ratio`, the fraction of the illusory contour traced by the inducers; and
+`lum_gap`, the remaining luminance gap between the background and the objects.
+
+```json
+"difficulty": {
+  "texture": 3,
+  "closeness": 0.5,
+  "closeness_measured": 0.55,
+  "support_ratio": 0.47,
+  "contrast": 0.25,
+  "lum_gap": 0.11
+}
+```
+
+To generate silhouettes at chosen closeness values, pass `closenesses: [0.25, 0.5, 1.0]` to
+`main.generate`, or call `main.generate_one` directly (see `tools/make_difficulty_examples.py`).
+The closeness value is appended to the silhouette filename, and each silhouette gets a JSON
+sidecar with its measured values.
 
 **Selecting silhouettes.** `mode: rank` keeps the `n` silhouettes with the crispest illusory contour
 and the most regular full-frame coverage — inducers evenly spaced around the centre, spanning all

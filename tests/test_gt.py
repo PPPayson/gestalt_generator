@@ -12,7 +12,9 @@ def test_gt_schema_and_values():
     item = {"object": "moon", "background": "sky", "natural": True}
     g = gt.write("stim_x", meta, item, "composite", "perfect")
     assert set(g) == {"id", "condition", "n_inducers", "has_illusion", "has_visible_contour",
-                      "illusory_shape", "polygon_vertices", "nonillusory_shapes"}
+                      "illusory_shape", "polygon_vertices", "nonillusory_shapes", "difficulty"}
+    assert set(g["difficulty"]) == {"texture", "closeness", "closeness_measured",
+                                    "support_ratio", "contrast", "lum_gap"}
     assert g["id"] == "stim_x" and g["condition"] == "illusory"
     assert g["has_illusion"] is True and g["has_visible_contour"] is False
     assert g["illusory_shape"] == "triangle" and g["n_inducers"] == 3

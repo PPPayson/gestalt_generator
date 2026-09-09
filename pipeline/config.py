@@ -25,10 +25,13 @@ DEFAULTS = {
               "explicit": []},              # [{object, background, natural}] when source=explicit
     "propose": {"n_per": 12, "natural": [True, False]},
     "assets": {"best_of": 3},
-    "dress": {"backends": ["composite"], "modes": ["perfect"], "shadow": 55,
+    "dress": {"backends": ["composite"], "modes": ["perfect"],
+              "shadow": 0,                      # OFF by default; set >0 (e.g. 55) for an inward depth cue
               "crop": True, "feather": 1.5,
               "conditions": ["illusory"],       # illusory | control (control draws the shape's outline)
-              "contour": "auto"},               # control outline colour: auto | white | black
+              "contour": "auto",                # control outline colour: auto | white | black
+              "texture": 3,                     # 0 flat b/w | 1 color chips | 2 objects on solid | 3 full
+              "contrast": None},                # camouflage [0,1]: 0/None native colors, 1 bg = obj color
     "select": {"round_min": 0.55, "delta_e_min": 30.0},   # disc shape + min perceptual colour contrast
     "output": {"contact_sheet": True},
 }
