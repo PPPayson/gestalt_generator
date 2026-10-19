@@ -1,0 +1,46 @@
+{
+  "id": "stim_5a40b259ba",
+  "condition": "illusory",
+  "n_inducers": 5,
+  "has_illusion": true,
+  "has_visible_contour": false,
+  "illusory_shape": "irregular",
+  "polygon_vertices": 8,
+  "nonillusory_shapes": {
+    "real_life": [
+      "candle",
+      "candle",
+      "candle",
+      "candle",
+      "candle"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  },
+  "difficulty": {
+    "texture": 3,
+    "closeness": 0.75,
+    "closeness_measured": 0.8019,
+    "support_ratio": 0.6983,
+    "contrast": 0.0,
+    "lum_gap": 0.3541
+  },
+  "figure": "f015",
+  "file": "texture_illusory/f015_texture_illusory.jpg",
+  "variant": "texture",
+  "object": "candle",
+  "background": "charcoal mottled plaster",
+  "texture": 3,
+  "closeness": 0.75,
+  "closeness_measured": 0.8019,
+  "support_ratio": 0.6983,
+  "contrast": 0.0,
+  "lum_gap": 0.3541,
+  "silhouette": "img_0_8_5_0.1_0.1_0.75_s1",
+  "stim_id": "stim_5a40b259ba"
+}

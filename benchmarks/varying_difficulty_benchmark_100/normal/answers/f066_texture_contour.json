@@ -1,0 +1,46 @@
+{
+  "id": "stim_a6c8dabc6d",
+  "condition": "contour",
+  "n_inducers": 5,
+  "has_illusion": false,
+  "has_visible_contour": true,
+  "illusory_shape": "irregular",
+  "polygon_vertices": 7,
+  "nonillusory_shapes": {
+    "real_life": [
+      "poker chip",
+      "poker chip",
+      "poker chip",
+      "poker chip",
+      "poker chip"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  },
+  "difficulty": {
+    "texture": 3,
+    "closeness": 0.5,
+    "closeness_measured": 0.6299,
+    "support_ratio": 0.4994,
+    "contrast": 0.0,
+    "lum_gap": 0.1366
+  },
+  "figure": "f066",
+  "file": "texture_contour/f066_texture_contour.jpg",
+  "variant": "texture",
+  "object": "poker chip",
+  "background": "bright green moss",
+  "texture": 3,
+  "closeness": 0.5,
+  "closeness_measured": 0.6299,
+  "support_ratio": 0.4994,
+  "contrast": 0.0,
+  "lum_gap": 0.1366,
+  "silhouette": "img_1_7_5_0.1_0.1_0.5_s1",
+  "stim_id": "stim_a6c8dabc6d"
+}

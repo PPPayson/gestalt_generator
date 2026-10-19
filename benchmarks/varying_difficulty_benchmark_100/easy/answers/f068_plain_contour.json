@@ -1,0 +1,44 @@
+{
+  "id": "stim_da9f15b3f5",
+  "condition": "contour",
+  "n_inducers": 4,
+  "has_illusion": false,
+  "has_visible_contour": true,
+  "illusory_shape": "irregular",
+  "polygon_vertices": 7,
+  "nonillusory_shapes": {
+    "real_life": [
+      "Satellite dish",
+      "Satellite dish",
+      "Satellite dish",
+      "Satellite dish"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  },
+  "difficulty": {
+    "texture": 0,
+    "closeness": 0.75,
+    "closeness_measured": 0.729,
+    "support_ratio": 0.6348,
+    "contrast": 0.0,
+    "lum_gap": 1.0
+  },
+  "figure": "f068",
+  "file": "plain_contour/f068_plain_contour.jpg",
+  "variant": "plain",
+  "object": "Satellite dish",
+  "background": "orange sand",
+  "texture": 0,
+  "closeness": 0.75,
+  "closeness_measured": 0.729,
+  "support_ratio": 0.6348,
+  "contrast": 0.0,
+  "lum_gap": 1.0,
+  "silhouette": "img_0.8_7_4_0.1_0.1_0.75_s4",
+  "stim_id": "stim_da9f15b3f5"
+}

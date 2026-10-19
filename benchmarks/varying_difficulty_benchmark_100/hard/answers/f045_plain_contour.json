@@ -1,0 +1,44 @@
+{
+  "id": "stim_6da6be23dc",
+  "condition": "contour",
+  "n_inducers": 4,
+  "has_illusion": false,
+  "has_visible_contour": true,
+  "illusory_shape": "irregular",
+  "polygon_vertices": 7,
+  "nonillusory_shapes": {
+    "real_life": [
+      "chocolate",
+      "chocolate",
+      "chocolate",
+      "chocolate"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  },
+  "difficulty": {
+    "texture": 0,
+    "closeness": 0.25,
+    "closeness_measured": 0.7821,
+    "support_ratio": 0.3644,
+    "contrast": 0.5,
+    "lum_gap": 0.502
+  },
+  "figure": "f045",
+  "file": "plain_contour/f045_plain_contour.jpg",
+  "variant": "plain",
+  "object": "chocolate",
+  "background": "cream travertine",
+  "texture": 0,
+  "closeness": 0.25,
+  "closeness_measured": 0.7821,
+  "support_ratio": 0.3644,
+  "contrast": 0.5,
+  "lum_gap": 0.502,
+  "silhouette": "img_0.4_7_4_0.1_0.1_0.25_s3",
+  "stim_id": "stim_6da6be23dc"
+}

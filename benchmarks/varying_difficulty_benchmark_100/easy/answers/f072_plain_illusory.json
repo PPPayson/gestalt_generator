@@ -1,0 +1,46 @@
+{
+  "id": "stim_5cbf54b49e",
+  "condition": "illusory",
+  "n_inducers": 5,
+  "has_illusion": true,
+  "has_visible_contour": false,
+  "illusory_shape": "irregular",
+  "polygon_vertices": 7,
+  "nonillusory_shapes": {
+    "real_life": [
+      "lens",
+      "lens",
+      "lens",
+      "lens",
+      "lens"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  },
+  "difficulty": {
+    "texture": 0,
+    "closeness": 0.75,
+    "closeness_measured": 0.8628,
+    "support_ratio": 0.7052,
+    "contrast": 0.0,
+    "lum_gap": 1.0
+  },
+  "figure": "f072",
+  "file": "plain_illusory/f072_plain_illusory.jpg",
+  "variant": "plain",
+  "object": "lens",
+  "background": "white concrete",
+  "texture": 0,
+  "closeness": 0.75,
+  "closeness_measured": 0.8628,
+  "support_ratio": 0.7052,
+  "contrast": 0.0,
+  "lum_gap": 1.0,
+  "silhouette": "img_0_7_5_0.1_0.1_0.75_s1",
+  "stim_id": "stim_5cbf54b49e"
+}

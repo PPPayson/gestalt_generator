@@ -1,0 +1,44 @@
+{
+  "id": "stim_f5fd089bc4",
+  "condition": "contour",
+  "n_inducers": 4,
+  "has_illusion": false,
+  "has_visible_contour": true,
+  "illusory_shape": "irregular",
+  "polygon_vertices": 5,
+  "nonillusory_shapes": {
+    "real_life": [
+      "target",
+      "target",
+      "target",
+      "target"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  },
+  "difficulty": {
+    "texture": 0,
+    "closeness": 0.25,
+    "closeness_measured": 0.5228,
+    "support_ratio": 0.3775,
+    "contrast": 0.5,
+    "lum_gap": 0.502
+  },
+  "figure": "f063",
+  "file": "plain_contour/f063_plain_contour.jpg",
+  "variant": "plain",
+  "object": "target",
+  "background": "dark chocolate brown wood",
+  "texture": 0,
+  "closeness": 0.25,
+  "closeness_measured": 0.5228,
+  "support_ratio": 0.3775,
+  "contrast": 0.5,
+  "lum_gap": 0.502,
+  "silhouette": "img_0.4_5_4_0.1_0.1_0.25_s2",
+  "stim_id": "stim_f5fd089bc4"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "stim_b58b94b63b",
+  "condition": "contour",
+  "n_inducers": 3,
+  "has_illusion": false,
+  "has_visible_contour": true,
+  "illusory_shape": "irregular",
+  "polygon_vertices": 8,
+  "nonillusory_shapes": {
+    "real_life": [
+      "Frisbee",
+      "Frisbee",
+      "Frisbee"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle"
+    ]
+  },
+  "difficulty": {
+    "texture": 0,
+    "closeness": 0.25,
+    "closeness_measured": 0.658,
+    "support_ratio": 0.3559,
+    "contrast": 0.5,
+    "lum_gap": 0.502
+  },
+  "figure": "f027",
+  "file": "plain_contour/f027_plain_contour.jpg",
+  "variant": "plain",
+  "object": "Frisbee",
+  "background": "olive green felt",
+  "texture": 0,
+  "closeness": 0.25,
+  "closeness_measured": 0.658,
+  "support_ratio": 0.3559,
+  "contrast": 0.5,
+  "lum_gap": 0.502,
+  "silhouette": "img_0.4_8_3_0.1_0.1_0.25_s1",
+  "stim_id": "stim_b58b94b63b"
+}

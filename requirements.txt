@@ -11,4 +11,5 @@ scipy==1.18.0
 Pillow==12.3.0
 matplotlib==3.11.1        # main.py (silhouette generator)
 scikit-image==0.26.0      # main.py (polygon2mask)
+tqdm==4.67.3              # progress bars (optional: pipeline falls back to log lines)
 pytest==8.3.4             # tests
