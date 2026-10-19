@@ -1,0 +1,46 @@
+{
+  "id": "stim_31b92e11e8",
+  "condition": "contour",
+  "n_inducers": 5,
+  "has_illusion": false,
+  "has_visible_contour": true,
+  "illusory_shape": "irregular",
+  "polygon_vertices": 6,
+  "nonillusory_shapes": {
+    "real_life": [
+      "white pearl",
+      "white pearl",
+      "white pearl",
+      "white pearl",
+      "white pearl"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  },
+  "difficulty": {
+    "texture": 3,
+    "closeness": 0.75,
+    "closeness_measured": 0.8059,
+    "support_ratio": 0.7045,
+    "contrast": 0.0,
+    "lum_gap": 0.3295
+  },
+  "figure": "f006",
+  "file": "texture_contour/f006_texture_contour.jpg",
+  "variant": "texture",
+  "object": "white pearl",
+  "background": "charcoal grey cork",
+  "texture": 3,
+  "closeness": 0.75,
+  "closeness_measured": 0.8059,
+  "support_ratio": 0.7045,
+  "contrast": 0.0,
+  "lum_gap": 0.3295,
+  "silhouette": "img_0.4_6_5_0.1_0.1_0.75_s3",
+  "stim_id": "stim_31b92e11e8"
+}

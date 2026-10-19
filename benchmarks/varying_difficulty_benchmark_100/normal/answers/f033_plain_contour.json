@@ -1,0 +1,46 @@
+{
+  "id": "stim_b5dac4ab61",
+  "condition": "contour",
+  "n_inducers": 5,
+  "has_illusion": false,
+  "has_visible_contour": true,
+  "illusory_shape": "irregular",
+  "polygon_vertices": 7,
+  "nonillusory_shapes": {
+    "real_life": [
+      "macaron",
+      "macaron",
+      "macaron",
+      "macaron",
+      "macaron"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  },
+  "difficulty": {
+    "texture": 0,
+    "closeness": 0.5,
+    "closeness_measured": 0.6655,
+    "support_ratio": 0.5299,
+    "contrast": 0.0,
+    "lum_gap": 1.0
+  },
+  "figure": "f033",
+  "file": "plain_contour/f033_plain_contour.jpg",
+  "variant": "plain",
+  "object": "macaron",
+  "background": "soft white frosted quartz",
+  "texture": 0,
+  "closeness": 0.5,
+  "closeness_measured": 0.6655,
+  "support_ratio": 0.5299,
+  "contrast": 0.0,
+  "lum_gap": 1.0,
+  "silhouette": "img_0.8_7_5_0.1_0.1_0.5_s3",
+  "stim_id": "stim_b5dac4ab61"
+}

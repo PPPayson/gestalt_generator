@@ -3,8 +3,8 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 
 <p align="center">
-  <img src="examples/gen100/images/illusory/stim_2350676d38.jpg" width="300">
-  <img src="examples/gen100/images/control/stim_bec2bca3aa.jpg" width="300">
+  <img src="benchmarks/gen100/images/illusory/stim_2350676d38.jpg" width="300">
+  <img src="benchmarks/gen100/images/control/stim_bec2bca3aa.jpg" width="300">
 </p>
 <p align="center"><i>Left: illusory condition (the triangle is only implied). Right: matched control (the same figure with its contour drawn).</i></p>
 
@@ -43,7 +43,7 @@ out/silhouettes/  out/control/   the source silhouettes used, split like the inp
 ```
 
 Filenames are opaque hashes, so the answer is not encoded in the name; each image is joined to its
-answer key by `id`. A rendered preview of the set is committed under `examples/gen100/`.
+answer key by `id`. A rendered preview of the set is committed under `benchmarks/gen100/`.
 
 ## The task
 
@@ -235,7 +235,58 @@ sides — scored geometrically from the mask (no model). `mode: random` takes a 
 `type: dropin` pins exact files. The ranking is shared with `tools/rank_silhouettes.py`, which prints
 the ordered list (`python3 tools/rank_silhouettes.py`). `configs/gen_100_rank.yaml` is a ready-made
 `mode: rank` set of 200 stimuli (100 figures); a rendered preview is committed under
-`examples/gen_100_rank/`.
+`benchmarks/gen_100_rank/`.
+
+**Filtering.** We keep a silhouette only if it passes a geometric test on its mask
+(`rank_score` in `pipeline/silhouettes.py`). We check three things. The mask must contain exactly as
+many separate blobs as declared inducers. Each inducer must have a concave bite: we measure the ratio
+of its area to the area of its convex hull, and reject the figure if more than `max_flat_frac` of
+its inducers exceed `flat_solidity`, which means they were cut by a straight edge rather than bitten
+(the default allows none; the difficulty set allows one in five or six). The inducers must
+surround the figure: with `all_sides: true` they must fall in all four quadrants around their
+centroid; with `all_sides: false` no two neighbours may be more than `max_gap` times the even spacing
+apart. Figures that pass are ranked by how evenly they are spaced, how equidistant they are from the
+centroid, how much of the frame they cover, and how deep their bites are. These thresholds are a
+`filter: {...}` field on the spec; the defaults reproduce the ranking used for `gen_100_rank`.
+
+**Generating until enough pass.** `type: generate` renders figures fresh at a chosen `closeness`
+and keeps drawing new seeds until `n` figures pass the filter, in the requested inducer-count mix
+(`quota`; default 3:15% 4:35% 5:35% 6:15%):
+
+```yaml
+silhouettes:
+  - type: generate
+    params: {n: 100, closeness: 0.5, quota: {3: 0.15, 4: 0.35, 5: 0.35, 6: 0.15},
+             filter: {min_inducers: 3, all_sides: false, max_flat_frac: 0.2},
+             grid: {randomness: [0, 0.4, 0.8, 1], n_vertices: [3, 4, 5, 6, 7, 8], edgy: [0.1, 0.5], rad: [0.1, 0.2]}}
+```
+
+Passing `figures: [[randomness, n_vertices, n_points, edgy, rad, seed], ...]` instead of `n` pins
+an explicit list.
+
+**Matched multi-level sets.** To test the *same* figures at several difficulty levels, pick the
+figures once, judged at the middle level and required to be feasible at the others, then write one
+config per level with the same figure list:
+
+```bash
+python3 tools/pick_difficulty_figures.py --n 100 --judge 0.5 --levels 0.25 0.75     # -> out/difficulty_figures.yaml
+python3 tools/make_difficulty_configs.py --name varying_difficulty_benchmark_100 --levels easy=0.75,0.0 normal=0.5,0.0 hard=0.25,0.5
+python3 tools/run_difficulty_set.py --name varying_difficulty_benchmark_100                     # -> out/varying_difficulty_benchmark_100/<level>/
+python3 tools/export_benchmark.py out/varying_difficulty_benchmark_100 varying_difficulty_benchmark_100   # -> benchmarks/varying_difficulty_benchmark_100/
+```
+
+Every stage shows a progress bar with an ETA (nested per level, stage, and figure); when output is
+not a terminal the bars become one log line per 5%, and `GESTALT_PROGRESS=0` silences them.
+
+Each level config uses `pairs: {select: distinct}` (one catalog pair per figure, round-robin) and
+`dress: {texture: [0, 3]}`; a texture list writes `comp/<plain|texture>/<illusory|control>/` and
+records the level in the manifest's `texture` column. The export lays a set out for people:
+`benchmarks/<name>/<level>/<plain|texture>_<illusory|contour>/f017_texture_illusory.jpg`, where
+`f017` is the same figure in every level, variant and condition, with `answers.csv` per level and a
+`preview_<level>.png` per level. `benchmarks/varying_difficulty_benchmark_100/` is the first-pass evaluation set: 100
+matched figures × {plain, texture} × {illusory, contour} = 400 images per level, built from
+`configs/varying_difficulty_benchmark_100_{easy,normal,hard}.yaml`. Evaluate one level with
+`python3 ollama_eval.py --model <m> --data_dir benchmarks/varying_difficulty_benchmark_100/hard --variant texture`.
 
 <details>
 <summary><b>Generate new objects and backgrounds (requires a model)</b></summary>

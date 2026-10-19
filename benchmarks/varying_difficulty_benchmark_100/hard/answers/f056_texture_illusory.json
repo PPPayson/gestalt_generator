@@ -1,0 +1,44 @@
+{
+  "id": "stim_78bfd8b86f",
+  "condition": "illusory",
+  "n_inducers": 4,
+  "has_illusion": true,
+  "has_visible_contour": false,
+  "illusory_shape": "irregular",
+  "polygon_vertices": 8,
+  "nonillusory_shapes": {
+    "real_life": [
+      "mushroom cap",
+      "mushroom cap",
+      "mushroom cap",
+      "mushroom cap"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  },
+  "difficulty": {
+    "texture": 3,
+    "closeness": 0.25,
+    "closeness_measured": 0.5031,
+    "support_ratio": 0.3523,
+    "contrast": 0.5,
+    "lum_gap": 0.2082
+  },
+  "figure": "f056",
+  "file": "texture_illusory/f056_texture_illusory.jpg",
+  "variant": "texture",
+  "object": "mushroom cap",
+  "background": "shiny black granite",
+  "texture": 3,
+  "closeness": 0.25,
+  "closeness_measured": 0.5031,
+  "support_ratio": 0.3523,
+  "contrast": 0.5,
+  "lum_gap": 0.2082,
+  "silhouette": "img_0.8_8_4_0.1_0.2_0.25_s4",
+  "stim_id": "stim_78bfd8b86f"
+}

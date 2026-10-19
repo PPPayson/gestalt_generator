@@ -174,20 +174,23 @@ def support_ratio(discs, mask, contour_px=5):
 def generate_one(randomness, n_vertices, n_points, edgy, rad, closeness=None,
                  sil_dir="data/silhouettes", ctrl_dir="data/control",
                  output_shape=(1024, 1024), polygon_shape=(700, 700), basedist=125,
-                 contour_px=5, seed=None):
+                 contour_px=5, seed=None, tag_seed=False):
     """Render ONE figure: illusory mask (sil_dir) + paired control mask (ctrl_dir, outline drawn).
     `closeness` IS the bite radius, normalized to [0,1]: radius = r_min + closeness*(r_max - r_min),
     where r_min is the smallest bite that still reads as a bite and r_max the largest radius at
     which all discs still fit on the contour without merging (found by a seeded search; the allowed
     neighbour spacing shrinks 2.5r -> 2.05r as closeness -> 1, so at 1 the bites nearly touch).
     <stem>.json records support_ratio and closeness_measured (mean nearest-point closeness 1-gap/d).
-    closeness=None keeps the legacy basedist/filename. Returns the stem, or None if placement fails."""
+    closeness=None keeps the legacy basedist/filename; `tag_seed` appends `_s<seed>` so the same
+    params generated from different seeds coexist. Returns the stem, or None if placement fails."""
     output_shape = list(output_shape); polygon_shape = list(polygon_shape)
     stem = f"img_{randomness}_{n_vertices}_{n_points}_{edgy}_{rad}"
     if closeness is not None:
         # clamp + round so the value round-trips through the filename (no 1e-05 notation)
         closeness = round(min(1.0, max(0.0, float(closeness))), 4)
         stem += f"_{closeness}"
+    if tag_seed and seed is not None:                   # same params, different seed -> distinct stem
+        stem += f"_s{int(seed)}"
     a = get_random_points(n=n_vertices, scale=0.8, randomness=randomness, seed=seed)
     x, y, _ = get_bezier_curve(a, rad=rad, edgy=edgy)
     x = np.int16(polygon_shape[0] * x)

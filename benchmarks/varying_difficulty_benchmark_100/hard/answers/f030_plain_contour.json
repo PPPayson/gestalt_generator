@@ -1,0 +1,46 @@
+{
+  "id": "stim_33c2f3a434",
+  "condition": "contour",
+  "n_inducers": 5,
+  "has_illusion": false,
+  "has_visible_contour": true,
+  "illusory_shape": "irregular",
+  "polygon_vertices": 6,
+  "nonillusory_shapes": {
+    "real_life": [
+      "grapefruit",
+      "grapefruit",
+      "grapefruit",
+      "grapefruit",
+      "grapefruit"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  },
+  "difficulty": {
+    "texture": 0,
+    "closeness": 0.25,
+    "closeness_measured": 0.5604,
+    "support_ratio": 0.3689,
+    "contrast": 0.5,
+    "lum_gap": 0.502
+  },
+  "figure": "f030",
+  "file": "plain_contour/f030_plain_contour.jpg",
+  "variant": "plain",
+  "object": "grapefruit",
+  "background": "deep green moss",
+  "texture": 0,
+  "closeness": 0.25,
+  "closeness_measured": 0.5604,
+  "support_ratio": 0.3689,
+  "contrast": 0.5,
+  "lum_gap": 0.502,
+  "silhouette": "img_0.8_6_5_0.1_0.1_0.25_s1",
+  "stim_id": "stim_33c2f3a434"
+}
