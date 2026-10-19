@@ -1,0 +1,46 @@
+{
+  "id": "stim_b703fdd85b",
+  "condition": "contour",
+  "n_inducers": 5,
+  "has_illusion": false,
+  "has_visible_contour": true,
+  "illusory_shape": "irregular",
+  "polygon_vertices": 8,
+  "nonillusory_shapes": {
+    "real_life": [
+      "round cracker",
+      "round cracker",
+      "round cracker",
+      "round cracker",
+      "round cracker"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  },
+  "difficulty": {
+    "texture": 0,
+    "closeness": 0.75,
+    "closeness_measured": 0.8747,
+    "support_ratio": 0.6973,
+    "contrast": 0.0,
+    "lum_gap": 1.0
+  },
+  "figure": "f032",
+  "file": "plain_contour/f032_plain_contour.jpg",
+  "variant": "plain",
+  "object": "round cracker",
+  "background": "muted teal mottled stone",
+  "texture": 0,
+  "closeness": 0.75,
+  "closeness_measured": 0.8747,
+  "support_ratio": 0.6973,
+  "contrast": 0.0,
+  "lum_gap": 1.0,
+  "silhouette": "img_0_8_5_0.1_0.1_0.75_s3",
+  "stim_id": "stim_b703fdd85b"
+}

@@ -1,0 +1,401 @@
+figure,file,variant,condition,n_inducers,has_illusion,has_visible_contour,illusory_shape,polygon_vertices,object,background,texture,closeness,closeness_measured,support_ratio,contrast,lum_gap,silhouette,stim_id
+f001,plain_contour/f001_plain_contour.jpg,plain,contour,4,False,True,irregular,8,candle,charcoal mottled plaster,0,0.5,0.6754,0.5235,0.0,1.0,img_0.4_8_4_0.1_0.1_0.5_s3,stim_9aab96bb32
+f001,plain_illusory/f001_plain_illusory.jpg,plain,illusory,4,True,False,irregular,8,candle,charcoal mottled plaster,0,0.5,0.6754,0.5235,0.0,1.0,img_0.4_8_4_0.1_0.1_0.5_s3,stim_852e524596
+f001,texture_contour/f001_texture_contour.jpg,texture,contour,4,False,True,irregular,8,candle,charcoal mottled plaster,3,0.5,0.6754,0.5235,0.0,0.3534,img_0.4_8_4_0.1_0.1_0.5_s3,stim_af88b7c331
+f001,texture_illusory/f001_texture_illusory.jpg,texture,illusory,4,True,False,irregular,8,candle,charcoal mottled plaster,3,0.5,0.6754,0.5235,0.0,0.3534,img_0.4_8_4_0.1_0.1_0.5_s3,stim_1a5dd0b7f7
+f002,plain_contour/f002_plain_contour.jpg,plain,contour,6,False,True,irregular,5,Satellite dish,orange sand,0,0.5,0.6197,0.5043,0.0,1.0,img_0.4_5_6_0.5_0.1_0.5_s3,stim_41782fe926
+f002,plain_illusory/f002_plain_illusory.jpg,plain,illusory,6,True,False,irregular,5,Satellite dish,orange sand,0,0.5,0.6197,0.5043,0.0,1.0,img_0.4_5_6_0.5_0.1_0.5_s3,stim_5e2da66c41
+f002,texture_contour/f002_texture_contour.jpg,texture,contour,6,False,True,irregular,5,Satellite dish,orange sand,3,0.5,0.6197,0.5043,0.0,0.1509,img_0.4_5_6_0.5_0.1_0.5_s3,stim_96a4ef3b80
+f002,texture_illusory/f002_texture_illusory.jpg,texture,illusory,6,True,False,irregular,5,Satellite dish,orange sand,3,0.5,0.6197,0.5043,0.0,0.1509,img_0.4_5_6_0.5_0.1_0.5_s3,stim_e2dafbeb55
+f003,plain_contour/f003_plain_contour.jpg,plain,contour,5,False,True,irregular,6,round cracker,muted teal mottled stone,0,0.5,0.7085,0.5393,0.0,1.0,img_0.4_6_5_0.1_0.1_0.5_s1,stim_4dbdd8858d
+f003,plain_illusory/f003_plain_illusory.jpg,plain,illusory,5,True,False,irregular,6,round cracker,muted teal mottled stone,0,0.5,0.7085,0.5393,0.0,1.0,img_0.4_6_5_0.1_0.1_0.5_s1,stim_7da45d6c2b
+f003,texture_contour/f003_texture_contour.jpg,texture,contour,5,False,True,irregular,6,round cracker,muted teal mottled stone,3,0.5,0.7085,0.5393,0.0,0.0821,img_0.4_6_5_0.1_0.1_0.5_s1,stim_5526618b12
+f003,texture_illusory/f003_texture_illusory.jpg,texture,illusory,5,True,False,irregular,6,round cracker,muted teal mottled stone,3,0.5,0.7085,0.5393,0.0,0.0821,img_0.4_6_5_0.1_0.1_0.5_s1,stim_848ed4d738
+f004,plain_contour/f004_plain_contour.jpg,plain,contour,5,False,True,irregular,5,lily pad,polished black granite,0,0.5,0.604,0.5533,0.0,1.0,img_0.4_5_5_0.1_0.1_0.5_s3,stim_14f5afa5ca
+f004,plain_illusory/f004_plain_illusory.jpg,plain,illusory,5,True,False,irregular,5,lily pad,polished black granite,0,0.5,0.604,0.5533,0.0,1.0,img_0.4_5_5_0.1_0.1_0.5_s3,stim_5dfc2335b0
+f004,texture_contour/f004_texture_contour.jpg,texture,contour,5,False,True,irregular,5,lily pad,polished black granite,3,0.5,0.604,0.5533,0.0,0.3493,img_0.4_5_5_0.1_0.1_0.5_s3,stim_83ba53a359
+f004,texture_illusory/f004_texture_illusory.jpg,texture,illusory,5,True,False,irregular,5,lily pad,polished black granite,3,0.5,0.604,0.5533,0.0,0.3493,img_0.4_5_5_0.1_0.1_0.5_s3,stim_00fbaef039
+f005,plain_contour/f005_plain_contour.jpg,plain,contour,5,False,True,irregular,8,Bullseye,navy blue velvet,0,0.5,0.6708,0.5091,0.0,1.0,img_0.8_8_5_0.1_0.2_0.5_s2,stim_f097817a9b
+f005,plain_illusory/f005_plain_illusory.jpg,plain,illusory,5,True,False,irregular,8,Bullseye,navy blue velvet,0,0.5,0.6708,0.5091,0.0,1.0,img_0.8_8_5_0.1_0.2_0.5_s2,stim_43543a32af
+f005,texture_contour/f005_texture_contour.jpg,texture,contour,5,False,True,irregular,8,Bullseye,navy blue velvet,3,0.5,0.6708,0.5091,0.0,0.4141,img_0.8_8_5_0.1_0.2_0.5_s2,stim_f45ac94371
+f005,texture_illusory/f005_texture_illusory.jpg,texture,illusory,5,True,False,irregular,8,Bullseye,navy blue velvet,3,0.5,0.6708,0.5091,0.0,0.4141,img_0.8_8_5_0.1_0.2_0.5_s2,stim_82e183f6c6
+f006,plain_contour/f006_plain_contour.jpg,plain,contour,5,False,True,irregular,6,white pearl,charcoal grey cork,0,0.5,0.7292,0.5236,0.0,1.0,img_0.4_6_5_0.1_0.1_0.5_s3,stim_e51c8f1cce
+f006,plain_illusory/f006_plain_illusory.jpg,plain,illusory,5,True,False,irregular,6,white pearl,charcoal grey cork,0,0.5,0.7292,0.5236,0.0,1.0,img_0.4_6_5_0.1_0.1_0.5_s3,stim_94ce8a62b9
+f006,texture_contour/f006_texture_contour.jpg,texture,contour,5,False,True,irregular,6,white pearl,charcoal grey cork,3,0.5,0.7292,0.5236,0.0,0.3295,img_0.4_6_5_0.1_0.1_0.5_s3,stim_185e7cf518
+f006,texture_illusory/f006_texture_illusory.jpg,texture,illusory,5,True,False,irregular,6,white pearl,charcoal grey cork,3,0.5,0.7292,0.5236,0.0,0.3295,img_0.4_6_5_0.1_0.1_0.5_s3,stim_494ec6da23
+f007,plain_contour/f007_plain_contour.jpg,plain,contour,4,False,True,irregular,4,target,dark chocolate brown wood,0,0.5,0.6648,0.5268,0.0,1.0,img_0.4_4_4_0.1_0.1_0.5_s4,stim_3ae48933b9
+f007,plain_illusory/f007_plain_illusory.jpg,plain,illusory,4,True,False,irregular,4,target,dark chocolate brown wood,0,0.5,0.6648,0.5268,0.0,1.0,img_0.4_4_4_0.1_0.1_0.5_s4,stim_d4cd66f669
+f007,texture_contour/f007_texture_contour.jpg,texture,contour,4,False,True,irregular,4,target,dark chocolate brown wood,3,0.5,0.6648,0.5268,0.0,0.4476,img_0.4_4_4_0.1_0.1_0.5_s4,stim_efdff404bd
+f007,texture_illusory/f007_texture_illusory.jpg,texture,illusory,4,True,False,irregular,4,target,dark chocolate brown wood,3,0.5,0.6648,0.5268,0.0,0.4476,img_0.4_4_4_0.1_0.1_0.5_s4,stim_7df83ab103
+f008,plain_contour/f008_plain_contour.jpg,plain,contour,5,False,True,irregular,7,mushroom cap,shiny black granite,0,0.5,0.6705,0.5245,0.0,1.0,img_1_7_5_0.1_0.1_0.5_s2,stim_55871514da
+f008,plain_illusory/f008_plain_illusory.jpg,plain,illusory,5,True,False,irregular,7,mushroom cap,shiny black granite,0,0.5,0.6705,0.5245,0.0,1.0,img_1_7_5_0.1_0.1_0.5_s2,stim_f1e7ee286b
+f008,texture_contour/f008_texture_contour.jpg,texture,contour,5,False,True,irregular,7,mushroom cap,shiny black granite,3,0.5,0.6705,0.5245,0.0,0.4164,img_1_7_5_0.1_0.1_0.5_s2,stim_e8f26699a5
+f008,texture_illusory/f008_texture_illusory.jpg,texture,illusory,5,True,False,irregular,7,mushroom cap,shiny black granite,3,0.5,0.6705,0.5245,0.0,0.4164,img_1_7_5_0.1_0.1_0.5_s2,stim_edb19bfb94
+f009,plain_contour/f009_plain_contour.jpg,plain,contour,3,False,True,irregular,8,grapefruit,deep green moss,0,0.5,0.6249,0.4212,0.0,1.0,img_1_8_3_0.1_0.1_0.5_s1,stim_e4cc98c224
+f009,plain_illusory/f009_plain_illusory.jpg,plain,illusory,3,True,False,irregular,8,grapefruit,deep green moss,0,0.5,0.6249,0.4212,0.0,1.0,img_1_8_3_0.1_0.1_0.5_s1,stim_44b7ba4f51
+f009,texture_contour/f009_texture_contour.jpg,texture,contour,3,False,True,irregular,8,grapefruit,deep green moss,3,0.5,0.6249,0.4212,0.0,0.1695,img_1_8_3_0.1_0.1_0.5_s1,stim_db8ebd9272
+f009,texture_illusory/f009_texture_illusory.jpg,texture,illusory,3,True,False,irregular,8,grapefruit,deep green moss,3,0.5,0.6249,0.4212,0.0,0.1695,img_1_8_3_0.1_0.1_0.5_s1,stim_50eec78224
+f010,plain_contour/f010_plain_contour.jpg,plain,contour,4,False,True,irregular,4,white pearl,charcoal grey cork,0,0.5,0.5962,0.5732,0.0,1.0,img_0_4_4_0.1_0.1_0.5_s4,stim_dd438b890e
+f010,plain_illusory/f010_plain_illusory.jpg,plain,illusory,4,True,False,irregular,4,white pearl,charcoal grey cork,0,0.5,0.5962,0.5732,0.0,1.0,img_0_4_4_0.1_0.1_0.5_s4,stim_180145159a
+f010,texture_contour/f010_texture_contour.jpg,texture,contour,4,False,True,irregular,4,white pearl,charcoal grey cork,3,0.5,0.5962,0.5732,0.0,0.3299,img_0_4_4_0.1_0.1_0.5_s4,stim_e4597721b8
+f010,texture_illusory/f010_texture_illusory.jpg,texture,illusory,4,True,False,irregular,4,white pearl,charcoal grey cork,3,0.5,0.5962,0.5732,0.0,0.3299,img_0_4_4_0.1_0.1_0.5_s4,stim_68dd4839e4
+f011,plain_contour/f011_plain_contour.jpg,plain,contour,4,False,True,irregular,7,target,dark chocolate brown wood,0,0.5,0.6051,0.5164,0.0,1.0,img_0.4_7_4_0.1_0.1_0.5_s4,stim_c994fe3ec6
+f011,plain_illusory/f011_plain_illusory.jpg,plain,illusory,4,True,False,irregular,7,target,dark chocolate brown wood,0,0.5,0.6051,0.5164,0.0,1.0,img_0.4_7_4_0.1_0.1_0.5_s4,stim_d1ee43015e
+f011,texture_contour/f011_texture_contour.jpg,texture,contour,4,False,True,irregular,7,target,dark chocolate brown wood,3,0.5,0.6051,0.5164,0.0,0.4483,img_0.4_7_4_0.1_0.1_0.5_s4,stim_9ebbb71dad
+f011,texture_illusory/f011_texture_illusory.jpg,texture,illusory,4,True,False,irregular,7,target,dark chocolate brown wood,3,0.5,0.6051,0.5164,0.0,0.4483,img_0.4_7_4_0.1_0.1_0.5_s4,stim_918dcffa04
+f012,plain_contour/f012_plain_contour.jpg,plain,contour,5,False,True,irregular,6,Satellite dish,orange sand,0,0.5,0.6481,0.5244,0.0,1.0,img_0_6_5_0.1_0.1_0.5_s1,stim_5e6be60c7d
+f012,plain_illusory/f012_plain_illusory.jpg,plain,illusory,5,True,False,irregular,6,Satellite dish,orange sand,0,0.5,0.6481,0.5244,0.0,1.0,img_0_6_5_0.1_0.1_0.5_s1,stim_7f467b9961
+f012,texture_contour/f012_texture_contour.jpg,texture,contour,5,False,True,irregular,6,Satellite dish,orange sand,3,0.5,0.6481,0.5244,0.0,0.1509,img_0_6_5_0.1_0.1_0.5_s1,stim_c12168c3d3
+f012,texture_illusory/f012_texture_illusory.jpg,texture,illusory,5,True,False,irregular,6,Satellite dish,orange sand,3,0.5,0.6481,0.5244,0.0,0.1509,img_0_6_5_0.1_0.1_0.5_s1,stim_2a36516715
+f013,plain_contour/f013_plain_contour.jpg,plain,contour,3,False,True,irregular,4,poker chip,bright green moss,0,0.5,0.6509,0.4923,0.0,1.0,img_0_4_3_0.1_0.2_0.5_s1,stim_16675fca4a
+f013,plain_illusory/f013_plain_illusory.jpg,plain,illusory,3,True,False,irregular,4,poker chip,bright green moss,0,0.5,0.6509,0.4923,0.0,1.0,img_0_4_3_0.1_0.2_0.5_s1,stim_35be2013eb
+f013,texture_contour/f013_texture_contour.jpg,texture,contour,3,False,True,irregular,4,poker chip,bright green moss,3,0.5,0.6509,0.4923,0.0,0.1364,img_0_4_3_0.1_0.2_0.5_s1,stim_2839e780ee
+f013,texture_illusory/f013_texture_illusory.jpg,texture,illusory,3,True,False,irregular,4,poker chip,bright green moss,3,0.5,0.6509,0.4923,0.0,0.1364,img_0_4_3_0.1_0.2_0.5_s1,stim_7acc25b586
+f014,plain_contour/f014_plain_contour.jpg,plain,contour,5,False,True,irregular,7,moon,black basalt fine grain,0,0.5,0.6335,0.5035,0.0,1.0,img_0.8_7_5_0.1_0.1_0.5_s1,stim_5e138d063d
+f014,plain_illusory/f014_plain_illusory.jpg,plain,illusory,5,True,False,irregular,7,moon,black basalt fine grain,0,0.5,0.6335,0.5035,0.0,1.0,img_0.8_7_5_0.1_0.1_0.5_s1,stim_e7787e29d4
+f014,texture_contour/f014_texture_contour.jpg,texture,contour,5,False,True,irregular,7,moon,black basalt fine grain,3,0.5,0.6335,0.5035,0.0,0.4233,img_0.8_7_5_0.1_0.1_0.5_s1,stim_82e9f45c37
+f014,texture_illusory/f014_texture_illusory.jpg,texture,illusory,5,True,False,irregular,7,moon,black basalt fine grain,3,0.5,0.6335,0.5035,0.0,0.4233,img_0.8_7_5_0.1_0.1_0.5_s1,stim_fa0110860c
+f015,plain_contour/f015_plain_contour.jpg,plain,contour,5,False,True,irregular,8,candle,charcoal mottled plaster,0,0.5,0.7076,0.5248,0.0,1.0,img_0_8_5_0.1_0.1_0.5_s1,stim_e5f5730411
+f015,plain_illusory/f015_plain_illusory.jpg,plain,illusory,5,True,False,irregular,8,candle,charcoal mottled plaster,0,0.5,0.7076,0.5248,0.0,1.0,img_0_8_5_0.1_0.1_0.5_s1,stim_d49f25c71d
+f015,texture_contour/f015_texture_contour.jpg,texture,contour,5,False,True,irregular,8,candle,charcoal mottled plaster,3,0.5,0.7076,0.5248,0.0,0.3528,img_0_8_5_0.1_0.1_0.5_s1,stim_af06a27319
+f015,texture_illusory/f015_texture_illusory.jpg,texture,illusory,5,True,False,irregular,8,candle,charcoal mottled plaster,3,0.5,0.7076,0.5248,0.0,0.3528,img_0_8_5_0.1_0.1_0.5_s1,stim_8f35534f84
+f016,plain_contour/f016_plain_contour.jpg,plain,contour,3,False,True,irregular,5,macaron,soft white frosted quartz,0,0.5,0.649,0.5022,0.0,1.0,img_0.4_5_3_0.1_0.2_0.5_s2,stim_674b8b1ea7
+f016,plain_illusory/f016_plain_illusory.jpg,plain,illusory,3,True,False,irregular,5,macaron,soft white frosted quartz,0,0.5,0.649,0.5022,0.0,1.0,img_0.4_5_3_0.1_0.2_0.5_s2,stim_9081de7ee4
+f016,texture_contour/f016_texture_contour.jpg,texture,contour,3,False,True,irregular,5,macaron,soft white frosted quartz,3,0.5,0.649,0.5022,0.0,0.2049,img_0.4_5_3_0.1_0.2_0.5_s2,stim_748184c014
+f016,texture_illusory/f016_texture_illusory.jpg,texture,illusory,3,True,False,irregular,5,macaron,soft white frosted quartz,3,0.5,0.649,0.5022,0.0,0.2049,img_0.4_5_3_0.1_0.2_0.5_s2,stim_c1493879ac
+f017,plain_contour/f017_plain_contour.jpg,plain,contour,5,False,True,irregular,8,target,dark chocolate brown wood,0,0.5,0.7075,0.5216,0.0,1.0,img_0.8_8_5_0.1_0.1_0.5_s3,stim_d0da629b08
+f017,plain_illusory/f017_plain_illusory.jpg,plain,illusory,5,True,False,irregular,8,target,dark chocolate brown wood,0,0.5,0.7075,0.5216,0.0,1.0,img_0.8_8_5_0.1_0.1_0.5_s3,stim_f1b917fc84
+f017,texture_contour/f017_texture_contour.jpg,texture,contour,5,False,True,irregular,8,target,dark chocolate brown wood,3,0.5,0.7075,0.5216,0.0,0.4477,img_0.8_8_5_0.1_0.1_0.5_s3,stim_05bfee9c4b
+f017,texture_illusory/f017_texture_illusory.jpg,texture,illusory,5,True,False,irregular,8,target,dark chocolate brown wood,3,0.5,0.7075,0.5216,0.0,0.4477,img_0.8_8_5_0.1_0.1_0.5_s3,stim_77952071a3
+f018,plain_contour/f018_plain_contour.jpg,plain,contour,4,False,True,irregular,6,grapefruit,deep green moss,0,0.5,0.6179,0.5041,0.0,1.0,img_1_6_4_0.1_0.2_0.5_s1,stim_0550fd9965
+f018,plain_illusory/f018_plain_illusory.jpg,plain,illusory,4,True,False,irregular,6,grapefruit,deep green moss,0,0.5,0.6179,0.5041,0.0,1.0,img_1_6_4_0.1_0.2_0.5_s1,stim_1e93a22fc1
+f018,texture_contour/f018_texture_contour.jpg,texture,contour,4,False,True,irregular,6,grapefruit,deep green moss,3,0.5,0.6179,0.5041,0.0,0.1692,img_1_6_4_0.1_0.2_0.5_s1,stim_b44a6de7c1
+f018,texture_illusory/f018_texture_illusory.jpg,texture,illusory,4,True,False,irregular,6,grapefruit,deep green moss,3,0.5,0.6179,0.5041,0.0,0.1692,img_1_6_4_0.1_0.2_0.5_s1,stim_74b34460bd
+f019,plain_contour/f019_plain_contour.jpg,plain,contour,4,False,True,irregular,8,lily pad,polished black granite,0,0.5,0.6283,0.5252,0.0,1.0,img_0_8_4_0.1_0.1_0.5_s3,stim_69200de051
+f019,plain_illusory/f019_plain_illusory.jpg,plain,illusory,4,True,False,irregular,8,lily pad,polished black granite,0,0.5,0.6283,0.5252,0.0,1.0,img_0_8_4_0.1_0.1_0.5_s3,stim_62097816ba
+f019,texture_contour/f019_texture_contour.jpg,texture,contour,4,False,True,irregular,8,lily pad,polished black granite,3,0.5,0.6283,0.5252,0.0,0.3483,img_0_8_4_0.1_0.1_0.5_s3,stim_b73d402005
+f019,texture_illusory/f019_texture_illusory.jpg,texture,illusory,4,True,False,irregular,8,lily pad,polished black granite,3,0.5,0.6283,0.5252,0.0,0.3483,img_0_8_4_0.1_0.1_0.5_s3,stim_994e46f5ca
+f020,plain_contour/f020_plain_contour.jpg,plain,contour,6,False,True,irregular,6,poker chip,bright green moss,0,0.5,0.6385,0.5639,0.0,1.0,img_0_6_6_0.1_0.1_0.5_s2,stim_2279fee854
+f020,plain_illusory/f020_plain_illusory.jpg,plain,illusory,6,True,False,irregular,6,poker chip,bright green moss,0,0.5,0.6385,0.5639,0.0,1.0,img_0_6_6_0.1_0.1_0.5_s2,stim_c0216a753b
+f020,texture_contour/f020_texture_contour.jpg,texture,contour,6,False,True,irregular,6,poker chip,bright green moss,3,0.5,0.6385,0.5639,0.0,0.1367,img_0_6_6_0.1_0.1_0.5_s2,stim_7ab1fc491f
+f020,texture_illusory/f020_texture_illusory.jpg,texture,illusory,6,True,False,irregular,6,poker chip,bright green moss,3,0.5,0.6385,0.5639,0.0,0.1367,img_0_6_6_0.1_0.1_0.5_s2,stim_afa26f113c
+f021,plain_contour/f021_plain_contour.jpg,plain,contour,5,False,True,irregular,7,moon,black basalt fine grain,0,0.5,0.7245,0.5232,0.0,1.0,img_0.4_7_5_0.1_0.1_0.5_s3,stim_2ee08a4942
+f021,plain_illusory/f021_plain_illusory.jpg,plain,illusory,5,True,False,irregular,7,moon,black basalt fine grain,0,0.5,0.7245,0.5232,0.0,1.0,img_0.4_7_5_0.1_0.1_0.5_s3,stim_4a3a2a3a1d
+f021,texture_contour/f021_texture_contour.jpg,texture,contour,5,False,True,irregular,7,moon,black basalt fine grain,3,0.5,0.7245,0.5232,0.0,0.4232,img_0.4_7_5_0.1_0.1_0.5_s3,stim_445a9194f4
+f021,texture_illusory/f021_texture_illusory.jpg,texture,illusory,5,True,False,irregular,7,moon,black basalt fine grain,3,0.5,0.7245,0.5232,0.0,0.4232,img_0.4_7_5_0.1_0.1_0.5_s3,stim_1682e7aa4e
+f022,plain_contour/f022_plain_contour.jpg,plain,contour,5,False,True,irregular,5,white pearl,charcoal grey cork,0,0.5,0.6364,0.536,0.0,1.0,img_0.4_5_5_0.1_0.1_0.5_s2,stim_410533a354
+f022,plain_illusory/f022_plain_illusory.jpg,plain,illusory,5,True,False,irregular,5,white pearl,charcoal grey cork,0,0.5,0.6364,0.536,0.0,1.0,img_0.4_5_5_0.1_0.1_0.5_s2,stim_72541457e5
+f022,texture_contour/f022_texture_contour.jpg,texture,contour,5,False,True,irregular,5,white pearl,charcoal grey cork,3,0.5,0.6364,0.536,0.0,0.3292,img_0.4_5_5_0.1_0.1_0.5_s2,stim_0f931b0e1a
+f022,texture_illusory/f022_texture_illusory.jpg,texture,illusory,5,True,False,irregular,5,white pearl,charcoal grey cork,3,0.5,0.6364,0.536,0.0,0.3292,img_0.4_5_5_0.1_0.1_0.5_s2,stim_aae25862a3
+f023,plain_contour/f023_plain_contour.jpg,plain,contour,4,False,True,irregular,8,grapefruit,deep green moss,0,0.5,0.5706,0.5184,0.0,1.0,img_0.4_8_4_0.1_0.1_0.5_s4,stim_b6c8ced24d
+f023,plain_illusory/f023_plain_illusory.jpg,plain,illusory,4,True,False,irregular,8,grapefruit,deep green moss,0,0.5,0.5706,0.5184,0.0,1.0,img_0.4_8_4_0.1_0.1_0.5_s4,stim_9847f9b819
+f023,texture_contour/f023_texture_contour.jpg,texture,contour,4,False,True,irregular,8,grapefruit,deep green moss,3,0.5,0.5706,0.5184,0.0,0.1694,img_0.4_8_4_0.1_0.1_0.5_s4,stim_91ca941979
+f023,texture_illusory/f023_texture_illusory.jpg,texture,illusory,4,True,False,irregular,8,grapefruit,deep green moss,3,0.5,0.5706,0.5184,0.0,0.1694,img_0.4_8_4_0.1_0.1_0.5_s4,stim_34d6b762c6
+f024,plain_contour/f024_plain_contour.jpg,plain,contour,4,False,True,irregular,6,round cracker,muted teal mottled stone,0,0.5,0.6522,0.5298,0.0,1.0,img_0.4_6_4_0.1_0.1_0.5_s1,stim_a65744e428
+f024,plain_illusory/f024_plain_illusory.jpg,plain,illusory,4,True,False,irregular,6,round cracker,muted teal mottled stone,0,0.5,0.6522,0.5298,0.0,1.0,img_0.4_6_4_0.1_0.1_0.5_s1,stim_3ff6f1bae7
+f024,texture_contour/f024_texture_contour.jpg,texture,contour,4,False,True,irregular,6,round cracker,muted teal mottled stone,3,0.5,0.6522,0.5298,0.0,0.0824,img_0.4_6_4_0.1_0.1_0.5_s1,stim_156b77c035
+f024,texture_illusory/f024_texture_illusory.jpg,texture,illusory,4,True,False,irregular,6,round cracker,muted teal mottled stone,3,0.5,0.6522,0.5298,0.0,0.0824,img_0.4_6_4_0.1_0.1_0.5_s1,stim_6bc0d41774
+f025,plain_contour/f025_plain_contour.jpg,plain,contour,6,False,True,irregular,5,candle,charcoal mottled plaster,0,0.5,0.6387,0.5203,0.0,1.0,img_0_5_6_0.1_0.1_0.5_s2,stim_cc5f295d8d
+f025,plain_illusory/f025_plain_illusory.jpg,plain,illusory,6,True,False,irregular,5,candle,charcoal mottled plaster,0,0.5,0.6387,0.5203,0.0,1.0,img_0_5_6_0.1_0.1_0.5_s2,stim_9a3b2a40be
+f025,texture_contour/f025_texture_contour.jpg,texture,contour,6,False,True,irregular,5,candle,charcoal mottled plaster,3,0.5,0.6387,0.5203,0.0,0.3527,img_0_5_6_0.1_0.1_0.5_s2,stim_e44b6e0519
+f025,texture_illusory/f025_texture_illusory.jpg,texture,illusory,6,True,False,irregular,5,candle,charcoal mottled plaster,3,0.5,0.6387,0.5203,0.0,0.3527,img_0_5_6_0.1_0.1_0.5_s2,stim_93b4804640
+f026,plain_contour/f026_plain_contour.jpg,plain,contour,4,False,True,irregular,5,macaron,soft white frosted quartz,0,0.5,0.6236,0.4889,0.0,1.0,img_0.8_5_4_0.1_0.1_0.5_s3,stim_c956f7555d
+f026,plain_illusory/f026_plain_illusory.jpg,plain,illusory,4,True,False,irregular,5,macaron,soft white frosted quartz,0,0.5,0.6236,0.4889,0.0,1.0,img_0.8_5_4_0.1_0.1_0.5_s3,stim_34890c4d82
+f026,texture_contour/f026_texture_contour.jpg,texture,contour,4,False,True,irregular,5,macaron,soft white frosted quartz,3,0.5,0.6236,0.4889,0.0,0.2055,img_0.8_5_4_0.1_0.1_0.5_s3,stim_83fd7c0c9d
+f026,texture_illusory/f026_texture_illusory.jpg,texture,illusory,4,True,False,irregular,5,macaron,soft white frosted quartz,3,0.5,0.6236,0.4889,0.0,0.2055,img_0.8_5_4_0.1_0.1_0.5_s3,stim_3f80fe3c8a
+f027,plain_contour/f027_plain_contour.jpg,plain,contour,3,False,True,irregular,8,Frisbee,olive green felt,0,0.5,0.6777,0.4893,0.0,1.0,img_0.4_8_3_0.1_0.1_0.5_s1,stim_8e4de7e8a0
+f027,plain_illusory/f027_plain_illusory.jpg,plain,illusory,3,True,False,irregular,8,Frisbee,olive green felt,0,0.5,0.6777,0.4893,0.0,1.0,img_0.4_8_3_0.1_0.1_0.5_s1,stim_cd924dbdae
+f027,texture_contour/f027_texture_contour.jpg,texture,contour,3,False,True,irregular,8,Frisbee,olive green felt,3,0.5,0.6777,0.4893,0.0,0.3207,img_0.4_8_3_0.1_0.1_0.5_s1,stim_a00102498e
+f027,texture_illusory/f027_texture_illusory.jpg,texture,illusory,3,True,False,irregular,8,Frisbee,olive green felt,3,0.5,0.6777,0.4893,0.0,0.3207,img_0.4_8_3_0.1_0.1_0.5_s1,stim_7f2557e3a2
+f028,plain_contour/f028_plain_contour.jpg,plain,contour,3,False,True,irregular,5,chocolate,cream travertine,0,0.5,0.7238,0.5271,0.0,1.0,img_0.8_5_3_0.1_0.1_0.5_s2,stim_c323d586d6
+f028,plain_illusory/f028_plain_illusory.jpg,plain,illusory,3,True,False,irregular,5,chocolate,cream travertine,0,0.5,0.7238,0.5271,0.0,1.0,img_0.8_5_3_0.1_0.1_0.5_s2,stim_0a53d9b1e9
+f028,texture_contour/f028_texture_contour.jpg,texture,contour,3,False,True,irregular,5,chocolate,cream travertine,3,0.5,0.7238,0.5271,0.0,0.5665,img_0.8_5_3_0.1_0.1_0.5_s2,stim_b8d3340b75
+f028,texture_illusory/f028_texture_illusory.jpg,texture,illusory,3,True,False,irregular,5,chocolate,cream travertine,3,0.5,0.7238,0.5271,0.0,0.5665,img_0.8_5_3_0.1_0.1_0.5_s2,stim_c57064074a
+f029,plain_contour/f029_plain_contour.jpg,plain,contour,6,False,True,irregular,8,macaron,soft white frosted quartz,0,0.5,0.6915,0.5237,0.0,1.0,img_0_8_6_0.1_0.1_0.5_s2,stim_8aa5ac48bf
+f029,plain_illusory/f029_plain_illusory.jpg,plain,illusory,6,True,False,irregular,8,macaron,soft white frosted quartz,0,0.5,0.6915,0.5237,0.0,1.0,img_0_8_6_0.1_0.1_0.5_s2,stim_77198d0014
+f029,texture_contour/f029_texture_contour.jpg,texture,contour,6,False,True,irregular,8,macaron,soft white frosted quartz,3,0.5,0.6915,0.5237,0.0,0.2048,img_0_8_6_0.1_0.1_0.5_s2,stim_0b77961e50
+f029,texture_illusory/f029_texture_illusory.jpg,texture,illusory,6,True,False,irregular,8,macaron,soft white frosted quartz,3,0.5,0.6915,0.5237,0.0,0.2048,img_0_8_6_0.1_0.1_0.5_s2,stim_ff3feaa980
+f030,plain_contour/f030_plain_contour.jpg,plain,contour,5,False,True,irregular,6,grapefruit,deep green moss,0,0.5,0.6705,0.5345,0.0,1.0,img_0.8_6_5_0.1_0.1_0.5_s1,stim_5ff94a3062
+f030,plain_illusory/f030_plain_illusory.jpg,plain,illusory,5,True,False,irregular,6,grapefruit,deep green moss,0,0.5,0.6705,0.5345,0.0,1.0,img_0.8_6_5_0.1_0.1_0.5_s1,stim_43c5b32805
+f030,texture_contour/f030_texture_contour.jpg,texture,contour,5,False,True,irregular,6,grapefruit,deep green moss,3,0.5,0.6705,0.5345,0.0,0.1693,img_0.8_6_5_0.1_0.1_0.5_s1,stim_0c58ad390b
+f030,texture_illusory/f030_texture_illusory.jpg,texture,illusory,5,True,False,irregular,6,grapefruit,deep green moss,3,0.5,0.6705,0.5345,0.0,0.1693,img_0.8_6_5_0.1_0.1_0.5_s1,stim_d17229400a
+f031,plain_contour/f031_plain_contour.jpg,plain,contour,6,False,True,irregular,7,target,dark chocolate brown wood,0,0.5,0.726,0.515,0.0,1.0,img_1_7_6_0.1_0.1_0.5_s3,stim_0c4bbf72a9
+f031,plain_illusory/f031_plain_illusory.jpg,plain,illusory,6,True,False,irregular,7,target,dark chocolate brown wood,0,0.5,0.726,0.515,0.0,1.0,img_1_7_6_0.1_0.1_0.5_s3,stim_38d7997edb
+f031,texture_contour/f031_texture_contour.jpg,texture,contour,6,False,True,irregular,7,target,dark chocolate brown wood,3,0.5,0.726,0.515,0.0,0.4496,img_1_7_6_0.1_0.1_0.5_s3,stim_777ab53284
+f031,texture_illusory/f031_texture_illusory.jpg,texture,illusory,6,True,False,irregular,7,target,dark chocolate brown wood,3,0.5,0.726,0.515,0.0,0.4496,img_1_7_6_0.1_0.1_0.5_s3,stim_233f82fff1
+f032,plain_contour/f032_plain_contour.jpg,plain,contour,5,False,True,irregular,8,round cracker,muted teal mottled stone,0,0.5,0.6514,0.5227,0.0,1.0,img_0_8_5_0.1_0.1_0.5_s3,stim_2362141d97
+f032,plain_illusory/f032_plain_illusory.jpg,plain,illusory,5,True,False,irregular,8,round cracker,muted teal mottled stone,0,0.5,0.6514,0.5227,0.0,1.0,img_0_8_5_0.1_0.1_0.5_s3,stim_6d2dc9e288
+f032,texture_contour/f032_texture_contour.jpg,texture,contour,5,False,True,irregular,8,round cracker,muted teal mottled stone,3,0.5,0.6514,0.5227,0.0,0.0822,img_0_8_5_0.1_0.1_0.5_s3,stim_a7ee70c057
+f032,texture_illusory/f032_texture_illusory.jpg,texture,illusory,5,True,False,irregular,8,round cracker,muted teal mottled stone,3,0.5,0.6514,0.5227,0.0,0.0822,img_0_8_5_0.1_0.1_0.5_s3,stim_f4f4494232
+f033,plain_contour/f033_plain_contour.jpg,plain,contour,5,False,True,irregular,7,macaron,soft white frosted quartz,0,0.5,0.6655,0.5299,0.0,1.0,img_0.8_7_5_0.1_0.1_0.5_s3,stim_b5dac4ab61
+f033,plain_illusory/f033_plain_illusory.jpg,plain,illusory,5,True,False,irregular,7,macaron,soft white frosted quartz,0,0.5,0.6655,0.5299,0.0,1.0,img_0.8_7_5_0.1_0.1_0.5_s3,stim_bd86aacdcf
+f033,texture_contour/f033_texture_contour.jpg,texture,contour,5,False,True,irregular,7,macaron,soft white frosted quartz,3,0.5,0.6655,0.5299,0.0,0.205,img_0.8_7_5_0.1_0.1_0.5_s3,stim_ad689271f2
+f033,texture_illusory/f033_texture_illusory.jpg,texture,illusory,5,True,False,irregular,7,macaron,soft white frosted quartz,3,0.5,0.6655,0.5299,0.0,0.205,img_0.8_7_5_0.1_0.1_0.5_s3,stim_107055a34c
+f034,plain_contour/f034_plain_contour.jpg,plain,contour,6,False,True,irregular,8,mushroom cap,shiny black granite,0,0.5,0.6963,0.528,0.0,1.0,img_1_8_6_0.1_0.1_0.5_s3,stim_a76af85161
+f034,plain_illusory/f034_plain_illusory.jpg,plain,illusory,6,True,False,irregular,8,mushroom cap,shiny black granite,0,0.5,0.6963,0.528,0.0,1.0,img_1_8_6_0.1_0.1_0.5_s3,stim_19eb0e2e01
+f034,texture_contour/f034_texture_contour.jpg,texture,contour,6,False,True,irregular,8,mushroom cap,shiny black granite,3,0.5,0.6963,0.528,0.0,0.4164,img_1_8_6_0.1_0.1_0.5_s3,stim_34882fe387
+f034,texture_illusory/f034_texture_illusory.jpg,texture,illusory,6,True,False,irregular,8,mushroom cap,shiny black granite,3,0.5,0.6963,0.528,0.0,0.4164,img_1_8_6_0.1_0.1_0.5_s3,stim_50d2ebef3f
+f035,plain_contour/f035_plain_contour.jpg,plain,contour,5,False,True,irregular,5,chocolate,cream travertine,0,0.5,0.6063,0.52,0.0,1.0,img_1_5_5_0.1_0.1_0.5_s3,stim_f399524002
+f035,plain_illusory/f035_plain_illusory.jpg,plain,illusory,5,True,False,irregular,5,chocolate,cream travertine,0,0.5,0.6063,0.52,0.0,1.0,img_1_5_5_0.1_0.1_0.5_s3,stim_83f67d768d
+f035,texture_contour/f035_texture_contour.jpg,texture,contour,5,False,True,irregular,5,chocolate,cream travertine,3,0.5,0.6063,0.52,0.0,0.567,img_1_5_5_0.1_0.1_0.5_s3,stim_21e68bfec7
+f035,texture_illusory/f035_texture_illusory.jpg,texture,illusory,5,True,False,irregular,5,chocolate,cream travertine,3,0.5,0.6063,0.52,0.0,0.567,img_1_5_5_0.1_0.1_0.5_s3,stim_8316102248
+f036,plain_contour/f036_plain_contour.jpg,plain,contour,5,False,True,irregular,4,lily pad,polished black granite,0,0.5,0.6842,0.5227,0.0,1.0,img_0.8_4_5_0.1_0.2_0.5_s1,stim_275cd06dd1
+f036,plain_illusory/f036_plain_illusory.jpg,plain,illusory,5,True,False,irregular,4,lily pad,polished black granite,0,0.5,0.6842,0.5227,0.0,1.0,img_0.8_4_5_0.1_0.2_0.5_s1,stim_2259c53ef9
+f036,texture_contour/f036_texture_contour.jpg,texture,contour,5,False,True,irregular,4,lily pad,polished black granite,3,0.5,0.6842,0.5227,0.0,0.3489,img_0.8_4_5_0.1_0.2_0.5_s1,stim_7af6be0537
+f036,texture_illusory/f036_texture_illusory.jpg,texture,illusory,5,True,False,irregular,4,lily pad,polished black granite,3,0.5,0.6842,0.5227,0.0,0.3489,img_0.8_4_5_0.1_0.2_0.5_s1,stim_f73ef3cd9f
+f037,plain_contour/f037_plain_contour.jpg,plain,contour,6,False,True,irregular,5,Bullseye,navy blue velvet,0,0.5,0.6376,0.5348,0.0,1.0,img_0.8_5_6_0.1_0.1_0.5_s3,stim_5a8b32bf7b
+f037,plain_illusory/f037_plain_illusory.jpg,plain,illusory,6,True,False,irregular,5,Bullseye,navy blue velvet,0,0.5,0.6376,0.5348,0.0,1.0,img_0.8_5_6_0.1_0.1_0.5_s3,stim_3871373fa8
+f037,texture_contour/f037_texture_contour.jpg,texture,contour,6,False,True,irregular,5,Bullseye,navy blue velvet,3,0.5,0.6376,0.5348,0.0,0.4152,img_0.8_5_6_0.1_0.1_0.5_s3,stim_f52ecb5767
+f037,texture_illusory/f037_texture_illusory.jpg,texture,illusory,6,True,False,irregular,5,Bullseye,navy blue velvet,3,0.5,0.6376,0.5348,0.0,0.4152,img_0.8_5_6_0.1_0.1_0.5_s3,stim_eaf7cbb08c
+f038,plain_contour/f038_plain_contour.jpg,plain,contour,4,False,True,irregular,7,Frisbee,olive green felt,0,0.5,0.6902,0.5302,0.0,1.0,img_1_7_4_0.1_0.1_0.5_s2,stim_7b71ea4f31
+f038,plain_illusory/f038_plain_illusory.jpg,plain,illusory,4,True,False,irregular,7,Frisbee,olive green felt,0,0.5,0.6902,0.5302,0.0,1.0,img_1_7_4_0.1_0.1_0.5_s2,stim_4ac1b306cb
+f038,texture_contour/f038_texture_contour.jpg,texture,contour,4,False,True,irregular,7,Frisbee,olive green felt,3,0.5,0.6902,0.5302,0.0,0.3203,img_1_7_4_0.1_0.1_0.5_s2,stim_57aac05de0
+f038,texture_illusory/f038_texture_illusory.jpg,texture,illusory,4,True,False,irregular,7,Frisbee,olive green felt,3,0.5,0.6902,0.5302,0.0,0.3203,img_1_7_4_0.1_0.1_0.5_s2,stim_879b217a67
+f039,plain_contour/f039_plain_contour.jpg,plain,contour,3,False,True,irregular,8,Bullseye,navy blue velvet,0,0.5,0.6603,0.4623,0.0,1.0,img_0.8_8_3_0.1_0.1_0.5_s1,stim_9d4c33372f
+f039,plain_illusory/f039_plain_illusory.jpg,plain,illusory,3,True,False,irregular,8,Bullseye,navy blue velvet,0,0.5,0.6603,0.4623,0.0,1.0,img_0.8_8_3_0.1_0.1_0.5_s1,stim_2bd4ed06ac
+f039,texture_contour/f039_texture_contour.jpg,texture,contour,3,False,True,irregular,8,Bullseye,navy blue velvet,3,0.5,0.6603,0.4623,0.0,0.4141,img_0.8_8_3_0.1_0.1_0.5_s1,stim_464f52950f
+f039,texture_illusory/f039_texture_illusory.jpg,texture,illusory,3,True,False,irregular,8,Bullseye,navy blue velvet,3,0.5,0.6603,0.4623,0.0,0.4141,img_0.8_8_3_0.1_0.1_0.5_s1,stim_186c457419
+f040,plain_contour/f040_plain_contour.jpg,plain,contour,4,False,True,irregular,7,chocolate,cream travertine,0,0.5,0.6676,0.5232,0.0,1.0,img_0.4_7_4_0.1_0.1_0.5_s2,stim_609320c4d0
+f040,plain_illusory/f040_plain_illusory.jpg,plain,illusory,4,True,False,irregular,7,chocolate,cream travertine,0,0.5,0.6676,0.5232,0.0,1.0,img_0.4_7_4_0.1_0.1_0.5_s2,stim_4fe277758f
+f040,texture_contour/f040_texture_contour.jpg,texture,contour,4,False,True,irregular,7,chocolate,cream travertine,3,0.5,0.6676,0.5232,0.0,0.5661,img_0.4_7_4_0.1_0.1_0.5_s2,stim_9a1022934e
+f040,texture_illusory/f040_texture_illusory.jpg,texture,illusory,4,True,False,irregular,7,chocolate,cream travertine,3,0.5,0.6676,0.5232,0.0,0.5661,img_0.4_7_4_0.1_0.1_0.5_s2,stim_1f637bdc9b
+f041,plain_contour/f041_plain_contour.jpg,plain,contour,6,False,True,irregular,8,round cracker,muted teal mottled stone,0,0.5,0.6657,0.5251,0.0,1.0,img_0_8_6_0.5_0.2_0.5_s1,stim_1413d3f3a7
+f041,plain_illusory/f041_plain_illusory.jpg,plain,illusory,6,True,False,irregular,8,round cracker,muted teal mottled stone,0,0.5,0.6657,0.5251,0.0,1.0,img_0_8_6_0.5_0.2_0.5_s1,stim_63053a8a94
+f041,texture_contour/f041_texture_contour.jpg,texture,contour,6,False,True,irregular,8,round cracker,muted teal mottled stone,3,0.5,0.6657,0.5251,0.0,0.0822,img_0_8_6_0.5_0.2_0.5_s1,stim_24fa036146
+f041,texture_illusory/f041_texture_illusory.jpg,texture,illusory,6,True,False,irregular,8,round cracker,muted teal mottled stone,3,0.5,0.6657,0.5251,0.0,0.0822,img_0_8_6_0.5_0.2_0.5_s1,stim_78e10cb4dc
+f042,plain_contour/f042_plain_contour.jpg,plain,contour,4,False,True,irregular,7,grapefruit,deep green moss,0,0.5,0.6794,0.5125,0.0,1.0,img_0_7_4_0.1_0.2_0.5_s3,stim_eb68a57799
+f042,plain_illusory/f042_plain_illusory.jpg,plain,illusory,4,True,False,irregular,7,grapefruit,deep green moss,0,0.5,0.6794,0.5125,0.0,1.0,img_0_7_4_0.1_0.2_0.5_s3,stim_c2b11d5d04
+f042,texture_contour/f042_texture_contour.jpg,texture,contour,4,False,True,irregular,7,grapefruit,deep green moss,3,0.5,0.6794,0.5125,0.0,0.1694,img_0_7_4_0.1_0.2_0.5_s3,stim_43ad96b82d
+f042,texture_illusory/f042_texture_illusory.jpg,texture,illusory,4,True,False,irregular,7,grapefruit,deep green moss,3,0.5,0.6794,0.5125,0.0,0.1694,img_0_7_4_0.1_0.2_0.5_s3,stim_8a8cc2024b
+f043,plain_contour/f043_plain_contour.jpg,plain,contour,4,False,True,irregular,5,mushroom cap,shiny black granite,0,0.5,0.6617,0.5353,0.0,1.0,img_0.4_5_4_0.1_0.1_0.5_s3,stim_3840358e73
+f043,plain_illusory/f043_plain_illusory.jpg,plain,illusory,4,True,False,irregular,5,mushroom cap,shiny black granite,0,0.5,0.6617,0.5353,0.0,1.0,img_0.4_5_4_0.1_0.1_0.5_s3,stim_5db681940d
+f043,texture_contour/f043_texture_contour.jpg,texture,contour,4,False,True,irregular,5,mushroom cap,shiny black granite,3,0.5,0.6617,0.5353,0.0,0.4161,img_0.4_5_4_0.1_0.1_0.5_s3,stim_3894c9801a
+f043,texture_illusory/f043_texture_illusory.jpg,texture,illusory,4,True,False,irregular,5,mushroom cap,shiny black granite,3,0.5,0.6617,0.5353,0.0,0.4161,img_0.4_5_4_0.1_0.1_0.5_s3,stim_9c2f560575
+f044,plain_contour/f044_plain_contour.jpg,plain,contour,6,False,True,irregular,7,lily pad,polished black granite,0,0.5,0.6346,0.5193,0.0,1.0,img_0.4_7_6_0.1_0.1_0.5_s2,stim_d5e9b306a5
+f044,plain_illusory/f044_plain_illusory.jpg,plain,illusory,6,True,False,irregular,7,lily pad,polished black granite,0,0.5,0.6346,0.5193,0.0,1.0,img_0.4_7_6_0.1_0.1_0.5_s2,stim_e8233ea255
+f044,texture_contour/f044_texture_contour.jpg,texture,contour,6,False,True,irregular,7,lily pad,polished black granite,3,0.5,0.6346,0.5193,0.0,0.3483,img_0.4_7_6_0.1_0.1_0.5_s2,stim_22acdacde2
+f044,texture_illusory/f044_texture_illusory.jpg,texture,illusory,6,True,False,irregular,7,lily pad,polished black granite,3,0.5,0.6346,0.5193,0.0,0.3483,img_0.4_7_6_0.1_0.1_0.5_s2,stim_8b2094ef36
+f045,plain_contour/f045_plain_contour.jpg,plain,contour,4,False,True,irregular,7,chocolate,cream travertine,0,0.5,0.6774,0.5164,0.0,1.0,img_0.4_7_4_0.1_0.1_0.5_s3,stim_5fa99cdd0f
+f045,plain_illusory/f045_plain_illusory.jpg,plain,illusory,4,True,False,irregular,7,chocolate,cream travertine,0,0.5,0.6774,0.5164,0.0,1.0,img_0.4_7_4_0.1_0.1_0.5_s3,stim_e16ed1d84d
+f045,texture_contour/f045_texture_contour.jpg,texture,contour,4,False,True,irregular,7,chocolate,cream travertine,3,0.5,0.6774,0.5164,0.0,0.566,img_0.4_7_4_0.1_0.1_0.5_s3,stim_3885685c00
+f045,texture_illusory/f045_texture_illusory.jpg,texture,illusory,4,True,False,irregular,7,chocolate,cream travertine,3,0.5,0.6774,0.5164,0.0,0.566,img_0.4_7_4_0.1_0.1_0.5_s3,stim_59a4470af3
+f046,plain_contour/f046_plain_contour.jpg,plain,contour,6,False,True,irregular,7,white pearl,charcoal grey cork,0,0.5,0.6845,0.5173,0.0,1.0,img_0.4_7_6_0.1_0.1_0.5_s4,stim_9cb94a6d18
+f046,plain_illusory/f046_plain_illusory.jpg,plain,illusory,6,True,False,irregular,7,white pearl,charcoal grey cork,0,0.5,0.6845,0.5173,0.0,1.0,img_0.4_7_6_0.1_0.1_0.5_s4,stim_44b52489a6
+f046,texture_contour/f046_texture_contour.jpg,texture,contour,6,False,True,irregular,7,white pearl,charcoal grey cork,3,0.5,0.6845,0.5173,0.0,0.3296,img_0.4_7_6_0.1_0.1_0.5_s4,stim_8db1cd515b
+f046,texture_illusory/f046_texture_illusory.jpg,texture,illusory,6,True,False,irregular,7,white pearl,charcoal grey cork,3,0.5,0.6845,0.5173,0.0,0.3296,img_0.4_7_6_0.1_0.1_0.5_s4,stim_696ec55833
+f047,plain_contour/f047_plain_contour.jpg,plain,contour,4,False,True,irregular,5,round cracker,muted teal mottled stone,0,0.5,0.6717,0.5128,0.0,1.0,img_0.8_5_4_0.1_0.2_0.5_s4,stim_f0bfe82787
+f047,plain_illusory/f047_plain_illusory.jpg,plain,illusory,4,True,False,irregular,5,round cracker,muted teal mottled stone,0,0.5,0.6717,0.5128,0.0,1.0,img_0.8_5_4_0.1_0.2_0.5_s4,stim_fb2bb0fca0
+f047,texture_contour/f047_texture_contour.jpg,texture,contour,4,False,True,irregular,5,round cracker,muted teal mottled stone,3,0.5,0.6717,0.5128,0.0,0.0824,img_0.8_5_4_0.1_0.2_0.5_s4,stim_621011518f
+f047,texture_illusory/f047_texture_illusory.jpg,texture,illusory,4,True,False,irregular,5,round cracker,muted teal mottled stone,3,0.5,0.6717,0.5128,0.0,0.0824,img_0.8_5_4_0.1_0.2_0.5_s4,stim_37e18fa3eb
+f048,plain_contour/f048_plain_contour.jpg,plain,contour,4,False,True,irregular,8,poker chip,bright green moss,0,0.5,0.7044,0.5295,0.0,1.0,img_0_8_4_0.1_0.1_0.5_s1,stim_ac7b229113
+f048,plain_illusory/f048_plain_illusory.jpg,plain,illusory,4,True,False,irregular,8,poker chip,bright green moss,0,0.5,0.7044,0.5295,0.0,1.0,img_0_8_4_0.1_0.1_0.5_s1,stim_e4d930abd3
+f048,texture_contour/f048_texture_contour.jpg,texture,contour,4,False,True,irregular,8,poker chip,bright green moss,3,0.5,0.7044,0.5295,0.0,0.1363,img_0_8_4_0.1_0.1_0.5_s1,stim_15b80f3ae1
+f048,texture_illusory/f048_texture_illusory.jpg,texture,illusory,4,True,False,irregular,8,poker chip,bright green moss,3,0.5,0.7044,0.5295,0.0,0.1363,img_0_8_4_0.1_0.1_0.5_s1,stim_a8f67d5afa
+f049,plain_contour/f049_plain_contour.jpg,plain,contour,5,False,True,irregular,5,mushroom cap,shiny black granite,0,0.5,0.6551,0.5614,0.0,1.0,img_0_5_5_0.1_0.1_0.5_s2,stim_ad98a750da
+f049,plain_illusory/f049_plain_illusory.jpg,plain,illusory,5,True,False,irregular,5,mushroom cap,shiny black granite,0,0.5,0.6551,0.5614,0.0,1.0,img_0_5_5_0.1_0.1_0.5_s2,stim_0566985c96
+f049,texture_contour/f049_texture_contour.jpg,texture,contour,5,False,True,irregular,5,mushroom cap,shiny black granite,3,0.5,0.6551,0.5614,0.0,0.416,img_0_5_5_0.1_0.1_0.5_s2,stim_e0fa5c2ab1
+f049,texture_illusory/f049_texture_illusory.jpg,texture,illusory,5,True,False,irregular,5,mushroom cap,shiny black granite,3,0.5,0.6551,0.5614,0.0,0.416,img_0_5_5_0.1_0.1_0.5_s2,stim_802939319e
+f050,plain_contour/f050_plain_contour.jpg,plain,contour,6,False,True,irregular,6,lens,white concrete,0,0.5,0.6492,0.5354,0.0,1.0,img_0_6_6_0.1_0.2_0.5_s3,stim_0191930c9d
+f050,plain_illusory/f050_plain_illusory.jpg,plain,illusory,6,True,False,irregular,6,lens,white concrete,0,0.5,0.6492,0.5354,0.0,1.0,img_0_6_6_0.1_0.2_0.5_s3,stim_a1b67f00c0
+f050,texture_contour/f050_texture_contour.jpg,texture,contour,6,False,True,irregular,6,lens,white concrete,3,0.5,0.6492,0.5354,0.0,0.5403,img_0_6_6_0.1_0.2_0.5_s3,stim_4cab4b7c8c
+f050,texture_illusory/f050_texture_illusory.jpg,texture,illusory,6,True,False,irregular,6,lens,white concrete,3,0.5,0.6492,0.5354,0.0,0.5403,img_0_6_6_0.1_0.2_0.5_s3,stim_b196ca728b
+f051,plain_contour/f051_plain_contour.jpg,plain,contour,5,False,True,irregular,7,round cracker,muted teal mottled stone,0,0.5,0.7415,0.528,0.0,1.0,img_0_7_5_0.5_0.2_0.5_s3,stim_d6695bf295
+f051,plain_illusory/f051_plain_illusory.jpg,plain,illusory,5,True,False,irregular,7,round cracker,muted teal mottled stone,0,0.5,0.7415,0.528,0.0,1.0,img_0_7_5_0.5_0.2_0.5_s3,stim_58bf074c0c
+f051,texture_contour/f051_texture_contour.jpg,texture,contour,5,False,True,irregular,7,round cracker,muted teal mottled stone,3,0.5,0.7415,0.528,0.0,0.0827,img_0_7_5_0.5_0.2_0.5_s3,stim_529f4a11a6
+f051,texture_illusory/f051_texture_illusory.jpg,texture,illusory,5,True,False,irregular,7,round cracker,muted teal mottled stone,3,0.5,0.7415,0.528,0.0,0.0827,img_0_7_5_0.5_0.2_0.5_s3,stim_8ad910f757
+f052,plain_contour/f052_plain_contour.jpg,plain,contour,3,False,True,irregular,3,target,dark chocolate brown wood,0,0.5,0.7518,0.6483,0.0,1.0,img_0_3_3_0.1_0.1_0.5_s1,stim_9cd8d6d3e9
+f052,plain_illusory/f052_plain_illusory.jpg,plain,illusory,3,True,False,irregular,3,target,dark chocolate brown wood,0,0.5,0.7518,0.6483,0.0,1.0,img_0_3_3_0.1_0.1_0.5_s1,stim_5596cb9e74
+f052,texture_contour/f052_texture_contour.jpg,texture,contour,3,False,True,irregular,3,target,dark chocolate brown wood,3,0.5,0.7518,0.6483,0.0,0.4497,img_0_3_3_0.1_0.1_0.5_s1,stim_de678e2c8d
+f052,texture_illusory/f052_texture_illusory.jpg,texture,illusory,3,True,False,irregular,3,target,dark chocolate brown wood,3,0.5,0.7518,0.6483,0.0,0.4497,img_0_3_3_0.1_0.1_0.5_s1,stim_bfece9dcd5
+f053,plain_contour/f053_plain_contour.jpg,plain,contour,4,False,True,irregular,7,lens,white concrete,0,0.5,0.6414,0.5133,0.0,1.0,img_0_7_4_0.1_0.1_0.5_s4,stim_3d6eab29a6
+f053,plain_illusory/f053_plain_illusory.jpg,plain,illusory,4,True,False,irregular,7,lens,white concrete,0,0.5,0.6414,0.5133,0.0,1.0,img_0_7_4_0.1_0.1_0.5_s4,stim_4a8397d66d
+f053,texture_contour/f053_texture_contour.jpg,texture,contour,4,False,True,irregular,7,lens,white concrete,3,0.5,0.6414,0.5133,0.0,0.5403,img_0_7_4_0.1_0.1_0.5_s4,stim_04a8bdc153
+f053,texture_illusory/f053_texture_illusory.jpg,texture,illusory,4,True,False,irregular,7,lens,white concrete,3,0.5,0.6414,0.5133,0.0,0.5403,img_0_7_4_0.1_0.1_0.5_s4,stim_8c4582914f
+f054,plain_contour/f054_plain_contour.jpg,plain,contour,5,False,True,irregular,8,lily pad,polished black granite,0,0.5,0.6696,0.5234,0.0,1.0,img_0.4_8_5_0.1_0.1_0.5_s3,stim_ea2e36f194
+f054,plain_illusory/f054_plain_illusory.jpg,plain,illusory,5,True,False,irregular,8,lily pad,polished black granite,0,0.5,0.6696,0.5234,0.0,1.0,img_0.4_8_5_0.1_0.1_0.5_s3,stim_f7282b474f
+f054,texture_contour/f054_texture_contour.jpg,texture,contour,5,False,True,irregular,8,lily pad,polished black granite,3,0.5,0.6696,0.5234,0.0,0.3484,img_0.4_8_5_0.1_0.1_0.5_s3,stim_43d19ce2ce
+f054,texture_illusory/f054_texture_illusory.jpg,texture,illusory,5,True,False,irregular,8,lily pad,polished black granite,3,0.5,0.6696,0.5234,0.0,0.3484,img_0.4_8_5_0.1_0.1_0.5_s3,stim_d7070f8414
+f055,plain_contour/f055_plain_contour.jpg,plain,contour,5,False,True,irregular,8,macaron,soft white frosted quartz,0,0.5,0.6668,0.4955,0.0,1.0,img_1_8_5_0.1_0.2_0.5_s2,stim_ce723f1803
+f055,plain_illusory/f055_plain_illusory.jpg,plain,illusory,5,True,False,irregular,8,macaron,soft white frosted quartz,0,0.5,0.6668,0.4955,0.0,1.0,img_1_8_5_0.1_0.2_0.5_s2,stim_516c06f396
+f055,texture_contour/f055_texture_contour.jpg,texture,contour,5,False,True,irregular,8,macaron,soft white frosted quartz,3,0.5,0.6668,0.4955,0.0,0.2048,img_1_8_5_0.1_0.2_0.5_s2,stim_b518640d12
+f055,texture_illusory/f055_texture_illusory.jpg,texture,illusory,5,True,False,irregular,8,macaron,soft white frosted quartz,3,0.5,0.6668,0.4955,0.0,0.2048,img_1_8_5_0.1_0.2_0.5_s2,stim_e3f831c010
+f056,plain_contour/f056_plain_contour.jpg,plain,contour,4,False,True,irregular,8,mushroom cap,shiny black granite,0,0.5,0.5832,0.5053,0.0,1.0,img_0.8_8_4_0.1_0.2_0.5_s4,stim_f16650fe1b
+f056,plain_illusory/f056_plain_illusory.jpg,plain,illusory,4,True,False,irregular,8,mushroom cap,shiny black granite,0,0.5,0.5832,0.5053,0.0,1.0,img_0.8_8_4_0.1_0.2_0.5_s4,stim_6d7c39889b
+f056,texture_contour/f056_texture_contour.jpg,texture,contour,4,False,True,irregular,8,mushroom cap,shiny black granite,3,0.5,0.5832,0.5053,0.0,0.416,img_0.8_8_4_0.1_0.2_0.5_s4,stim_7e4cfe4071
+f056,texture_illusory/f056_texture_illusory.jpg,texture,illusory,4,True,False,irregular,8,mushroom cap,shiny black granite,3,0.5,0.5832,0.5053,0.0,0.416,img_0.8_8_4_0.1_0.2_0.5_s4,stim_fdcebcde83
+f057,plain_contour/f057_plain_contour.jpg,plain,contour,4,False,True,irregular,8,lens,white concrete,0,0.5,0.6757,0.5069,0.0,1.0,img_1_8_4_0.1_0.2_0.5_s2,stim_dcb8ab8eae
+f057,plain_illusory/f057_plain_illusory.jpg,plain,illusory,4,True,False,irregular,8,lens,white concrete,0,0.5,0.6757,0.5069,0.0,1.0,img_1_8_4_0.1_0.2_0.5_s2,stim_9ed511112c
+f057,texture_contour/f057_texture_contour.jpg,texture,contour,4,False,True,irregular,8,lens,white concrete,3,0.5,0.6757,0.5069,0.0,0.5404,img_1_8_4_0.1_0.2_0.5_s2,stim_6c32b3fe49
+f057,texture_illusory/f057_texture_illusory.jpg,texture,illusory,4,True,False,irregular,8,lens,white concrete,3,0.5,0.6757,0.5069,0.0,0.5404,img_1_8_4_0.1_0.2_0.5_s2,stim_761cada32d
+f058,plain_contour/f058_plain_contour.jpg,plain,contour,4,False,True,irregular,4,Frisbee,olive green felt,0,0.5,0.6558,0.5446,0.0,1.0,img_0.4_4_4_0.1_0.1_0.5_s1,stim_755af4a722
+f058,plain_illusory/f058_plain_illusory.jpg,plain,illusory,4,True,False,irregular,4,Frisbee,olive green felt,0,0.5,0.6558,0.5446,0.0,1.0,img_0.4_4_4_0.1_0.1_0.5_s1,stim_a386787729
+f058,texture_contour/f058_texture_contour.jpg,texture,contour,4,False,True,irregular,4,Frisbee,olive green felt,3,0.5,0.6558,0.5446,0.0,0.3209,img_0.4_4_4_0.1_0.1_0.5_s1,stim_a004048f6f
+f058,texture_illusory/f058_texture_illusory.jpg,texture,illusory,4,True,False,irregular,4,Frisbee,olive green felt,3,0.5,0.6558,0.5446,0.0,0.3209,img_0.4_4_4_0.1_0.1_0.5_s1,stim_6f059d8f56
+f059,plain_contour/f059_plain_contour.jpg,plain,contour,5,False,True,irregular,7,poker chip,bright green moss,0,0.5,0.6771,0.5202,0.0,1.0,img_0_7_5_0.1_0.1_0.5_s2,stim_9b287e0e0a
+f059,plain_illusory/f059_plain_illusory.jpg,plain,illusory,5,True,False,irregular,7,poker chip,bright green moss,0,0.5,0.6771,0.5202,0.0,1.0,img_0_7_5_0.1_0.1_0.5_s2,stim_51de58c097
+f059,texture_contour/f059_texture_contour.jpg,texture,contour,5,False,True,irregular,7,poker chip,bright green moss,3,0.5,0.6771,0.5202,0.0,0.1368,img_0_7_5_0.1_0.1_0.5_s2,stim_7431a25f41
+f059,texture_illusory/f059_texture_illusory.jpg,texture,illusory,5,True,False,irregular,7,poker chip,bright green moss,3,0.5,0.6771,0.5202,0.0,0.1368,img_0_7_5_0.1_0.1_0.5_s2,stim_5d63232a4f
+f060,plain_contour/f060_plain_contour.jpg,plain,contour,3,False,True,irregular,6,moon,black basalt fine grain,0,0.5,0.6647,0.5081,0.0,1.0,img_0.8_6_3_0.1_0.1_0.5_s1,stim_286f4fe7fb
+f060,plain_illusory/f060_plain_illusory.jpg,plain,illusory,3,True,False,irregular,6,moon,black basalt fine grain,0,0.5,0.6647,0.5081,0.0,1.0,img_0.8_6_3_0.1_0.1_0.5_s1,stim_749f4aebf1
+f060,texture_contour/f060_texture_contour.jpg,texture,contour,3,False,True,irregular,6,moon,black basalt fine grain,3,0.5,0.6647,0.5081,0.0,0.4222,img_0.8_6_3_0.1_0.1_0.5_s1,stim_c35396a3da
+f060,texture_illusory/f060_texture_illusory.jpg,texture,illusory,3,True,False,irregular,6,moon,black basalt fine grain,3,0.5,0.6647,0.5081,0.0,0.4222,img_0.8_6_3_0.1_0.1_0.5_s1,stim_c271cee3c8
+f061,plain_contour/f061_plain_contour.jpg,plain,contour,5,False,True,irregular,5,Frisbee,olive green felt,0,0.5,0.6286,0.5669,0.0,1.0,img_0_5_5_0.1_0.1_0.5_s3,stim_880f131f9d
+f061,plain_illusory/f061_plain_illusory.jpg,plain,illusory,5,True,False,irregular,5,Frisbee,olive green felt,0,0.5,0.6286,0.5669,0.0,1.0,img_0_5_5_0.1_0.1_0.5_s3,stim_c4210accb2
+f061,texture_contour/f061_texture_contour.jpg,texture,contour,5,False,True,irregular,5,Frisbee,olive green felt,3,0.5,0.6286,0.5669,0.0,0.3209,img_0_5_5_0.1_0.1_0.5_s3,stim_d30abf420b
+f061,texture_illusory/f061_texture_illusory.jpg,texture,illusory,5,True,False,irregular,5,Frisbee,olive green felt,3,0.5,0.6286,0.5669,0.0,0.3209,img_0_5_5_0.1_0.1_0.5_s3,stim_d603c52c41
+f062,plain_contour/f062_plain_contour.jpg,plain,contour,5,False,True,irregular,7,Frisbee,olive green felt,0,0.5,0.6731,0.5274,0.0,1.0,img_1_7_5_0.1_0.1_0.5_s3,stim_e022e6c3f1
+f062,plain_illusory/f062_plain_illusory.jpg,plain,illusory,5,True,False,irregular,7,Frisbee,olive green felt,0,0.5,0.6731,0.5274,0.0,1.0,img_1_7_5_0.1_0.1_0.5_s3,stim_279affe5a5
+f062,texture_contour/f062_texture_contour.jpg,texture,contour,5,False,True,irregular,7,Frisbee,olive green felt,3,0.5,0.6731,0.5274,0.0,0.3202,img_1_7_5_0.1_0.1_0.5_s3,stim_3b419001f5
+f062,texture_illusory/f062_texture_illusory.jpg,texture,illusory,5,True,False,irregular,7,Frisbee,olive green felt,3,0.5,0.6731,0.5274,0.0,0.3202,img_1_7_5_0.1_0.1_0.5_s3,stim_8227458396
+f063,plain_contour/f063_plain_contour.jpg,plain,contour,4,False,True,irregular,5,target,dark chocolate brown wood,0,0.5,0.7274,0.5352,0.0,1.0,img_0.4_5_4_0.1_0.1_0.5_s2,stim_811b0339a9
+f063,plain_illusory/f063_plain_illusory.jpg,plain,illusory,4,True,False,irregular,5,target,dark chocolate brown wood,0,0.5,0.7274,0.5352,0.0,1.0,img_0.4_5_4_0.1_0.1_0.5_s2,stim_b8539d869b
+f063,texture_contour/f063_texture_contour.jpg,texture,contour,4,False,True,irregular,5,target,dark chocolate brown wood,3,0.5,0.7274,0.5352,0.0,0.4508,img_0.4_5_4_0.1_0.1_0.5_s2,stim_9045445359
+f063,texture_illusory/f063_texture_illusory.jpg,texture,illusory,4,True,False,irregular,5,target,dark chocolate brown wood,3,0.5,0.7274,0.5352,0.0,0.4508,img_0.4_5_4_0.1_0.1_0.5_s2,stim_18783359dd
+f064,plain_contour/f064_plain_contour.jpg,plain,contour,4,False,True,irregular,8,Bullseye,navy blue velvet,0,0.5,0.6635,0.4936,0.0,1.0,img_1_8_4_0.1_0.1_0.5_s4,stim_425487e1a0
+f064,plain_illusory/f064_plain_illusory.jpg,plain,illusory,4,True,False,irregular,8,Bullseye,navy blue velvet,0,0.5,0.6635,0.4936,0.0,1.0,img_1_8_4_0.1_0.1_0.5_s4,stim_bb24c03e6f
+f064,texture_contour/f064_texture_contour.jpg,texture,contour,4,False,True,irregular,8,Bullseye,navy blue velvet,3,0.5,0.6635,0.4936,0.0,0.4142,img_1_8_4_0.1_0.1_0.5_s4,stim_22967de7cc
+f064,texture_illusory/f064_texture_illusory.jpg,texture,illusory,4,True,False,irregular,8,Bullseye,navy blue velvet,3,0.5,0.6635,0.4936,0.0,0.4142,img_1_8_4_0.1_0.1_0.5_s4,stim_0c363f979f
+f065,plain_contour/f065_plain_contour.jpg,plain,contour,4,False,True,irregular,5,white pearl,charcoal grey cork,0,0.5,0.648,0.5273,0.0,1.0,img_0_5_4_0.1_0.1_0.5_s3,stim_8cfe35fca1
+f065,plain_illusory/f065_plain_illusory.jpg,plain,illusory,4,True,False,irregular,5,white pearl,charcoal grey cork,0,0.5,0.648,0.5273,0.0,1.0,img_0_5_4_0.1_0.1_0.5_s3,stim_413c696832
+f065,texture_contour/f065_texture_contour.jpg,texture,contour,4,False,True,irregular,5,white pearl,charcoal grey cork,3,0.5,0.648,0.5273,0.0,0.3295,img_0_5_4_0.1_0.1_0.5_s3,stim_6d12139d83
+f065,texture_illusory/f065_texture_illusory.jpg,texture,illusory,4,True,False,irregular,5,white pearl,charcoal grey cork,3,0.5,0.648,0.5273,0.0,0.3295,img_0_5_4_0.1_0.1_0.5_s3,stim_23c58fe1a6
+f066,plain_contour/f066_plain_contour.jpg,plain,contour,5,False,True,irregular,7,poker chip,bright green moss,0,0.5,0.6299,0.4994,0.0,1.0,img_1_7_5_0.1_0.1_0.5_s1,stim_015c17cd8a
+f066,plain_illusory/f066_plain_illusory.jpg,plain,illusory,5,True,False,irregular,7,poker chip,bright green moss,0,0.5,0.6299,0.4994,0.0,1.0,img_1_7_5_0.1_0.1_0.5_s1,stim_8800e4ad49
+f066,texture_contour/f066_texture_contour.jpg,texture,contour,5,False,True,irregular,7,poker chip,bright green moss,3,0.5,0.6299,0.4994,0.0,0.1366,img_1_7_5_0.1_0.1_0.5_s1,stim_a6c8dabc6d
+f066,texture_illusory/f066_texture_illusory.jpg,texture,illusory,5,True,False,irregular,7,poker chip,bright green moss,3,0.5,0.6299,0.4994,0.0,0.1366,img_1_7_5_0.1_0.1_0.5_s1,stim_16354d8607
+f067,plain_contour/f067_plain_contour.jpg,plain,contour,5,False,True,irregular,8,grapefruit,deep green moss,0,0.5,0.7035,0.5189,0.0,1.0,img_0.4_8_5_0.1_0.2_0.5_s2,stim_71a49e1e5b
+f067,plain_illusory/f067_plain_illusory.jpg,plain,illusory,5,True,False,irregular,8,grapefruit,deep green moss,0,0.5,0.7035,0.5189,0.0,1.0,img_0.4_8_5_0.1_0.2_0.5_s2,stim_fa26a11004
+f067,texture_contour/f067_texture_contour.jpg,texture,contour,5,False,True,irregular,8,grapefruit,deep green moss,3,0.5,0.7035,0.5189,0.0,0.1693,img_0.4_8_5_0.1_0.2_0.5_s2,stim_a1e27f964f
+f067,texture_illusory/f067_texture_illusory.jpg,texture,illusory,5,True,False,irregular,8,grapefruit,deep green moss,3,0.5,0.7035,0.5189,0.0,0.1693,img_0.4_8_5_0.1_0.2_0.5_s2,stim_fae603e268
+f068,plain_contour/f068_plain_contour.jpg,plain,contour,4,False,True,irregular,7,Satellite dish,orange sand,0,0.5,0.5807,0.5043,0.0,1.0,img_0.8_7_4_0.1_0.1_0.5_s4,stim_5b6f42d4e1
+f068,plain_illusory/f068_plain_illusory.jpg,plain,illusory,4,True,False,irregular,7,Satellite dish,orange sand,0,0.5,0.5807,0.5043,0.0,1.0,img_0.8_7_4_0.1_0.1_0.5_s4,stim_8d3125f287
+f068,texture_contour/f068_texture_contour.jpg,texture,contour,4,False,True,irregular,7,Satellite dish,orange sand,3,0.5,0.5807,0.5043,0.0,0.1511,img_0.8_7_4_0.1_0.1_0.5_s4,stim_081fe0ed89
+f068,texture_illusory/f068_texture_illusory.jpg,texture,illusory,4,True,False,irregular,7,Satellite dish,orange sand,3,0.5,0.5807,0.5043,0.0,0.1511,img_0.8_7_4_0.1_0.1_0.5_s4,stim_a1be13ea44
+f069,plain_contour/f069_plain_contour.jpg,plain,contour,3,False,True,irregular,5,round cracker,muted teal mottled stone,0,0.5,0.649,0.4807,0.0,1.0,img_0_5_3_0.1_0.2_0.5_s2,stim_9b4741976a
+f069,plain_illusory/f069_plain_illusory.jpg,plain,illusory,3,True,False,irregular,5,round cracker,muted teal mottled stone,0,0.5,0.649,0.4807,0.0,1.0,img_0_5_3_0.1_0.2_0.5_s2,stim_7334f4a126
+f069,texture_contour/f069_texture_contour.jpg,texture,contour,3,False,True,irregular,5,round cracker,muted teal mottled stone,3,0.5,0.649,0.4807,0.0,0.082,img_0_5_3_0.1_0.2_0.5_s2,stim_bf1927fb18
+f069,texture_illusory/f069_texture_illusory.jpg,texture,illusory,3,True,False,irregular,5,round cracker,muted teal mottled stone,3,0.5,0.649,0.4807,0.0,0.082,img_0_5_3_0.1_0.2_0.5_s2,stim_8d42555277
+f070,plain_contour/f070_plain_contour.jpg,plain,contour,4,False,True,irregular,7,Satellite dish,orange sand,0,0.5,0.6693,0.5174,0.0,1.0,img_1_7_4_0.1_0.1_0.5_s3,stim_05d34ae167
+f070,plain_illusory/f070_plain_illusory.jpg,plain,illusory,4,True,False,irregular,7,Satellite dish,orange sand,0,0.5,0.6693,0.5174,0.0,1.0,img_1_7_4_0.1_0.1_0.5_s3,stim_b823a64029
+f070,texture_contour/f070_texture_contour.jpg,texture,contour,4,False,True,irregular,7,Satellite dish,orange sand,3,0.5,0.6693,0.5174,0.0,0.151,img_1_7_4_0.1_0.1_0.5_s3,stim_0f2d8a6251
+f070,texture_illusory/f070_texture_illusory.jpg,texture,illusory,4,True,False,irregular,7,Satellite dish,orange sand,3,0.5,0.6693,0.5174,0.0,0.151,img_1_7_4_0.1_0.1_0.5_s3,stim_815a96d411
+f071,plain_contour/f071_plain_contour.jpg,plain,contour,3,False,True,irregular,8,mushroom cap,shiny black granite,0,0.5,0.6845,0.4874,0.0,1.0,img_0_8_3_0.1_0.1_0.5_s1,stim_01c08b5f6d
+f071,plain_illusory/f071_plain_illusory.jpg,plain,illusory,3,True,False,irregular,8,mushroom cap,shiny black granite,0,0.5,0.6845,0.4874,0.0,1.0,img_0_8_3_0.1_0.1_0.5_s1,stim_4a29ad387a
+f071,texture_contour/f071_texture_contour.jpg,texture,contour,3,False,True,irregular,8,mushroom cap,shiny black granite,3,0.5,0.6845,0.4874,0.0,0.4159,img_0_8_3_0.1_0.1_0.5_s1,stim_c8fdd7754d
+f071,texture_illusory/f071_texture_illusory.jpg,texture,illusory,3,True,False,irregular,8,mushroom cap,shiny black granite,3,0.5,0.6845,0.4874,0.0,0.4159,img_0_8_3_0.1_0.1_0.5_s1,stim_06abffc677
+f072,plain_contour/f072_plain_contour.jpg,plain,contour,5,False,True,irregular,7,lens,white concrete,0,0.5,0.6948,0.5302,0.0,1.0,img_0_7_5_0.1_0.1_0.5_s1,stim_70c391e2a7
+f072,plain_illusory/f072_plain_illusory.jpg,plain,illusory,5,True,False,irregular,7,lens,white concrete,0,0.5,0.6948,0.5302,0.0,1.0,img_0_7_5_0.1_0.1_0.5_s1,stim_c31b906796
+f072,texture_contour/f072_texture_contour.jpg,texture,contour,5,False,True,irregular,7,lens,white concrete,3,0.5,0.6948,0.5302,0.0,0.5408,img_0_7_5_0.1_0.1_0.5_s1,stim_ff29169b05
+f072,texture_illusory/f072_texture_illusory.jpg,texture,illusory,5,True,False,irregular,7,lens,white concrete,3,0.5,0.6948,0.5302,0.0,0.5408,img_0_7_5_0.1_0.1_0.5_s1,stim_e5b9d3d32a
+f073,plain_contour/f073_plain_contour.jpg,plain,contour,3,False,True,irregular,6,lens,white concrete,0,0.5,0.6611,0.5051,0.0,1.0,img_0_6_3_0.1_0.1_0.5_s1,stim_af58eb7013
+f073,plain_illusory/f073_plain_illusory.jpg,plain,illusory,3,True,False,irregular,6,lens,white concrete,0,0.5,0.6611,0.5051,0.0,1.0,img_0_6_3_0.1_0.1_0.5_s1,stim_2f527750bc
+f073,texture_contour/f073_texture_contour.jpg,texture,contour,3,False,True,irregular,6,lens,white concrete,3,0.5,0.6611,0.5051,0.0,0.5403,img_0_6_3_0.1_0.1_0.5_s1,stim_8f6caeed8d
+f073,texture_illusory/f073_texture_illusory.jpg,texture,illusory,3,True,False,irregular,6,lens,white concrete,3,0.5,0.6611,0.5051,0.0,0.5403,img_0_6_3_0.1_0.1_0.5_s1,stim_5d8e6bba61
+f074,plain_contour/f074_plain_contour.jpg,plain,contour,5,False,True,irregular,7,Satellite dish,orange sand,0,0.5,0.692,0.5281,0.0,1.0,img_0.8_7_5_0.1_0.1_0.5_s2,stim_3b265e3a5d
+f074,plain_illusory/f074_plain_illusory.jpg,plain,illusory,5,True,False,irregular,7,Satellite dish,orange sand,0,0.5,0.692,0.5281,0.0,1.0,img_0.8_7_5_0.1_0.1_0.5_s2,stim_7b2ba9ca0c
+f074,texture_contour/f074_texture_contour.jpg,texture,contour,5,False,True,irregular,7,Satellite dish,orange sand,3,0.5,0.692,0.5281,0.0,0.151,img_0.8_7_5_0.1_0.1_0.5_s2,stim_b4bfc48719
+f074,texture_illusory/f074_texture_illusory.jpg,texture,illusory,5,True,False,irregular,7,Satellite dish,orange sand,3,0.5,0.692,0.5281,0.0,0.151,img_0.8_7_5_0.1_0.1_0.5_s2,stim_6d1e7aaf60
+f075,plain_contour/f075_plain_contour.jpg,plain,contour,3,False,True,irregular,6,Satellite dish,orange sand,0,0.5,0.6364,0.5058,0.0,1.0,img_0.4_6_3_0.1_0.1_0.5_s1,stim_c896210c00
+f075,plain_illusory/f075_plain_illusory.jpg,plain,illusory,3,True,False,irregular,6,Satellite dish,orange sand,0,0.5,0.6364,0.5058,0.0,1.0,img_0.4_6_3_0.1_0.1_0.5_s1,stim_6ea246efd7
+f075,texture_contour/f075_texture_contour.jpg,texture,contour,3,False,True,irregular,6,Satellite dish,orange sand,3,0.5,0.6364,0.5058,0.0,0.1509,img_0.4_6_3_0.1_0.1_0.5_s1,stim_4c5246fd43
+f075,texture_illusory/f075_texture_illusory.jpg,texture,illusory,3,True,False,irregular,6,Satellite dish,orange sand,3,0.5,0.6364,0.5058,0.0,0.1509,img_0.4_6_3_0.1_0.1_0.5_s1,stim_baf56210ca
+f076,plain_contour/f076_plain_contour.jpg,plain,contour,5,False,True,irregular,8,mushroom cap,shiny black granite,0,0.5,0.7582,0.5234,0.0,1.0,img_0_8_5_0.1_0.2_0.5_s2,stim_5364a1d8df
+f076,plain_illusory/f076_plain_illusory.jpg,plain,illusory,5,True,False,irregular,8,mushroom cap,shiny black granite,0,0.5,0.7582,0.5234,0.0,1.0,img_0_8_5_0.1_0.2_0.5_s2,stim_9e6978dcf4
+f076,texture_contour/f076_texture_contour.jpg,texture,contour,5,False,True,irregular,8,mushroom cap,shiny black granite,3,0.5,0.7582,0.5234,0.0,0.416,img_0_8_5_0.1_0.2_0.5_s2,stim_f821988cfb
+f076,texture_illusory/f076_texture_illusory.jpg,texture,illusory,5,True,False,irregular,8,mushroom cap,shiny black granite,3,0.5,0.7582,0.5234,0.0,0.416,img_0_8_5_0.1_0.2_0.5_s2,stim_e6d12e3ab9
+f077,plain_contour/f077_plain_contour.jpg,plain,contour,4,False,True,irregular,7,candle,charcoal mottled plaster,0,0.5,0.6812,0.5218,0.0,1.0,img_0.8_7_4_0.1_0.1_0.5_s3,stim_37d67ba851
+f077,plain_illusory/f077_plain_illusory.jpg,plain,illusory,4,True,False,irregular,7,candle,charcoal mottled plaster,0,0.5,0.6812,0.5218,0.0,1.0,img_0.8_7_4_0.1_0.1_0.5_s3,stim_e10c7f526c
+f077,texture_contour/f077_texture_contour.jpg,texture,contour,4,False,True,irregular,7,candle,charcoal mottled plaster,3,0.5,0.6812,0.5218,0.0,0.353,img_0.8_7_4_0.1_0.1_0.5_s3,stim_9d924fe192
+f077,texture_illusory/f077_texture_illusory.jpg,texture,illusory,4,True,False,irregular,7,candle,charcoal mottled plaster,3,0.5,0.6812,0.5218,0.0,0.353,img_0.8_7_4_0.1_0.1_0.5_s3,stim_a165246f20
+f078,plain_contour/f078_plain_contour.jpg,plain,contour,5,False,True,irregular,7,Bullseye,navy blue velvet,0,0.5,0.6847,0.5224,0.0,1.0,img_0.4_7_5_0.1_0.1_0.5_s2,stim_0840cf0750
+f078,plain_illusory/f078_plain_illusory.jpg,plain,illusory,5,True,False,irregular,7,Bullseye,navy blue velvet,0,0.5,0.6847,0.5224,0.0,1.0,img_0.4_7_5_0.1_0.1_0.5_s2,stim_bbfc08bba2
+f078,texture_contour/f078_texture_contour.jpg,texture,contour,5,False,True,irregular,7,Bullseye,navy blue velvet,3,0.5,0.6847,0.5224,0.0,0.4139,img_0.4_7_5_0.1_0.1_0.5_s2,stim_4fd4366717
+f078,texture_illusory/f078_texture_illusory.jpg,texture,illusory,5,True,False,irregular,7,Bullseye,navy blue velvet,3,0.5,0.6847,0.5224,0.0,0.4139,img_0.4_7_5_0.1_0.1_0.5_s2,stim_e369ec5d54
+f079,plain_contour/f079_plain_contour.jpg,plain,contour,4,False,True,irregular,8,Bullseye,navy blue velvet,0,0.5,0.6705,0.5231,0.0,1.0,img_0_8_4_0.1_0.1_0.5_s2,stim_f9945caca1
+f079,plain_illusory/f079_plain_illusory.jpg,plain,illusory,4,True,False,irregular,8,Bullseye,navy blue velvet,0,0.5,0.6705,0.5231,0.0,1.0,img_0_8_4_0.1_0.1_0.5_s2,stim_db8febbe95
+f079,texture_contour/f079_texture_contour.jpg,texture,contour,4,False,True,irregular,8,Bullseye,navy blue velvet,3,0.5,0.6705,0.5231,0.0,0.4141,img_0_8_4_0.1_0.1_0.5_s2,stim_21909c7a3b
+f079,texture_illusory/f079_texture_illusory.jpg,texture,illusory,4,True,False,irregular,8,Bullseye,navy blue velvet,3,0.5,0.6705,0.5231,0.0,0.4141,img_0_8_4_0.1_0.1_0.5_s2,stim_8aec3547c5
+f080,plain_contour/f080_plain_contour.jpg,plain,contour,4,False,True,irregular,7,moon,black basalt fine grain,0,0.5,0.689,0.5115,0.0,1.0,img_0_7_4_0.1_0.1_0.5_s2,stim_ac88932c21
+f080,plain_illusory/f080_plain_illusory.jpg,plain,illusory,4,True,False,irregular,7,moon,black basalt fine grain,0,0.5,0.689,0.5115,0.0,1.0,img_0_7_4_0.1_0.1_0.5_s2,stim_f79aa3f1f0
+f080,texture_contour/f080_texture_contour.jpg,texture,contour,4,False,True,irregular,7,moon,black basalt fine grain,3,0.5,0.689,0.5115,0.0,0.4232,img_0_7_4_0.1_0.1_0.5_s2,stim_ab34628ec7
+f080,texture_illusory/f080_texture_illusory.jpg,texture,illusory,4,True,False,irregular,7,moon,black basalt fine grain,3,0.5,0.689,0.5115,0.0,0.4232,img_0_7_4_0.1_0.1_0.5_s2,stim_063b8ef756
+f081,plain_contour/f081_plain_contour.jpg,plain,contour,5,False,True,irregular,5,lens,white concrete,0,0.5,0.6053,0.5124,0.0,1.0,img_0.8_5_5_0.1_0.1_0.5_s2,stim_4659c9c787
+f081,plain_illusory/f081_plain_illusory.jpg,plain,illusory,5,True,False,irregular,5,lens,white concrete,0,0.5,0.6053,0.5124,0.0,1.0,img_0.8_5_5_0.1_0.1_0.5_s2,stim_5b5e59ec78
+f081,texture_contour/f081_texture_contour.jpg,texture,contour,5,False,True,irregular,5,lens,white concrete,3,0.5,0.6053,0.5124,0.0,0.5408,img_0.8_5_5_0.1_0.1_0.5_s2,stim_1e94a65e21
+f081,texture_illusory/f081_texture_illusory.jpg,texture,illusory,5,True,False,irregular,5,lens,white concrete,3,0.5,0.6053,0.5124,0.0,0.5408,img_0.8_5_5_0.1_0.1_0.5_s2,stim_4bd9394b47
+f082,plain_contour/f082_plain_contour.jpg,plain,contour,4,False,True,irregular,8,macaron,soft white frosted quartz,0,0.5,0.5853,0.5212,0.0,1.0,img_0_8_4_0.1_0.1_0.5_s4,stim_8b04d5712b
+f082,plain_illusory/f082_plain_illusory.jpg,plain,illusory,4,True,False,irregular,8,macaron,soft white frosted quartz,0,0.5,0.5853,0.5212,0.0,1.0,img_0_8_4_0.1_0.1_0.5_s4,stim_7bce83c5e8
+f082,texture_contour/f082_texture_contour.jpg,texture,contour,4,False,True,irregular,8,macaron,soft white frosted quartz,3,0.5,0.5853,0.5212,0.0,0.2041,img_0_8_4_0.1_0.1_0.5_s4,stim_86ebc68ed5
+f082,texture_illusory/f082_texture_illusory.jpg,texture,illusory,4,True,False,irregular,8,macaron,soft white frosted quartz,3,0.5,0.5853,0.5212,0.0,0.2041,img_0_8_4_0.1_0.1_0.5_s4,stim_87f5df355b
+f083,plain_contour/f083_plain_contour.jpg,plain,contour,5,False,True,irregular,6,Frisbee,olive green felt,0,0.5,0.6821,0.523,0.0,1.0,img_0.4_6_5_0.1_0.1_0.5_s2,stim_de2a69f679
+f083,plain_illusory/f083_plain_illusory.jpg,plain,illusory,5,True,False,irregular,6,Frisbee,olive green felt,0,0.5,0.6821,0.523,0.0,1.0,img_0.4_6_5_0.1_0.1_0.5_s2,stim_3373bf2cce
+f083,texture_contour/f083_texture_contour.jpg,texture,contour,5,False,True,irregular,6,Frisbee,olive green felt,3,0.5,0.6821,0.523,0.0,0.3202,img_0.4_6_5_0.1_0.1_0.5_s2,stim_6162eeeed2
+f083,texture_illusory/f083_texture_illusory.jpg,texture,illusory,5,True,False,irregular,6,Frisbee,olive green felt,3,0.5,0.6821,0.523,0.0,0.3202,img_0.4_6_5_0.1_0.1_0.5_s2,stim_50690a9da2
+f084,plain_contour/f084_plain_contour.jpg,plain,contour,3,False,True,irregular,5,lily pad,polished black granite,0,0.5,0.7122,0.558,0.0,1.0,img_1_5_3_0.1_0.1_0.5_s2,stim_c03ac9e6f8
+f084,plain_illusory/f084_plain_illusory.jpg,plain,illusory,3,True,False,irregular,5,lily pad,polished black granite,0,0.5,0.7122,0.558,0.0,1.0,img_1_5_3_0.1_0.1_0.5_s2,stim_1fdbac9172
+f084,texture_contour/f084_texture_contour.jpg,texture,contour,3,False,True,irregular,5,lily pad,polished black granite,3,0.5,0.7122,0.558,0.0,0.35,img_1_5_3_0.1_0.1_0.5_s2,stim_8a231c20a3
+f084,texture_illusory/f084_texture_illusory.jpg,texture,illusory,3,True,False,irregular,5,lily pad,polished black granite,3,0.5,0.7122,0.558,0.0,0.35,img_1_5_3_0.1_0.1_0.5_s2,stim_24258d5d66
+f085,plain_contour/f085_plain_contour.jpg,plain,contour,4,False,True,irregular,6,poker chip,bright green moss,0,0.5,0.6206,0.5078,0.0,1.0,img_0.8_6_4_0.1_0.2_0.5_s1,stim_5cede71a66
+f085,plain_illusory/f085_plain_illusory.jpg,plain,illusory,4,True,False,irregular,6,poker chip,bright green moss,0,0.5,0.6206,0.5078,0.0,1.0,img_0.8_6_4_0.1_0.2_0.5_s1,stim_f893f9132f
+f085,texture_contour/f085_texture_contour.jpg,texture,contour,4,False,True,irregular,6,poker chip,bright green moss,3,0.5,0.6206,0.5078,0.0,0.1363,img_0.8_6_4_0.1_0.2_0.5_s1,stim_cb81beac65
+f085,texture_illusory/f085_texture_illusory.jpg,texture,illusory,4,True,False,irregular,6,poker chip,bright green moss,3,0.5,0.6206,0.5078,0.0,0.1363,img_0.8_6_4_0.1_0.2_0.5_s1,stim_45ec7a6138
+f086,plain_contour/f086_plain_contour.jpg,plain,contour,5,False,True,irregular,7,target,dark chocolate brown wood,0,0.5,0.6421,0.5161,0.0,1.0,img_0.4_7_5_0.1_0.1_0.5_s1,stim_04f0bc7426
+f086,plain_illusory/f086_plain_illusory.jpg,plain,illusory,5,True,False,irregular,7,target,dark chocolate brown wood,0,0.5,0.6421,0.5161,0.0,1.0,img_0.4_7_5_0.1_0.1_0.5_s1,stim_df3f6d100b
+f086,texture_contour/f086_texture_contour.jpg,texture,contour,5,False,True,irregular,7,target,dark chocolate brown wood,3,0.5,0.6421,0.5161,0.0,0.4488,img_0.4_7_5_0.1_0.1_0.5_s1,stim_42329c74d5
+f086,texture_illusory/f086_texture_illusory.jpg,texture,illusory,5,True,False,irregular,7,target,dark chocolate brown wood,3,0.5,0.6421,0.5161,0.0,0.4488,img_0.4_7_5_0.1_0.1_0.5_s1,stim_c4d1059f47
+f087,plain_contour/f087_plain_contour.jpg,plain,contour,5,False,True,irregular,6,candle,charcoal mottled plaster,0,0.5,0.6625,0.5317,0.0,1.0,img_0_6_5_0.1_0.1_0.5_s2,stim_cab029dd8d
+f087,plain_illusory/f087_plain_illusory.jpg,plain,illusory,5,True,False,irregular,6,candle,charcoal mottled plaster,0,0.5,0.6625,0.5317,0.0,1.0,img_0_6_5_0.1_0.1_0.5_s2,stim_19fae7fe69
+f087,texture_contour/f087_texture_contour.jpg,texture,contour,5,False,True,irregular,6,candle,charcoal mottled plaster,3,0.5,0.6625,0.5317,0.0,0.353,img_0_6_5_0.1_0.1_0.5_s2,stim_21e984ca1f
+f087,texture_illusory/f087_texture_illusory.jpg,texture,illusory,5,True,False,irregular,6,candle,charcoal mottled plaster,3,0.5,0.6625,0.5317,0.0,0.353,img_0_6_5_0.1_0.1_0.5_s2,stim_3e5e15c409
+f088,plain_contour/f088_plain_contour.jpg,plain,contour,6,False,True,irregular,8,moon,black basalt fine grain,0,0.5,0.6004,0.5317,0.0,1.0,img_0.4_8_6_0.1_0.1_0.5_s3,stim_6a37253eaa
+f088,plain_illusory/f088_plain_illusory.jpg,plain,illusory,6,True,False,irregular,8,moon,black basalt fine grain,0,0.5,0.6004,0.5317,0.0,1.0,img_0.4_8_6_0.1_0.1_0.5_s3,stim_e7fe00ce58
+f088,texture_contour/f088_texture_contour.jpg,texture,contour,6,False,True,irregular,8,moon,black basalt fine grain,3,0.5,0.6004,0.5317,0.0,0.4232,img_0.4_8_6_0.1_0.1_0.5_s3,stim_4b8dccb634
+f088,texture_illusory/f088_texture_illusory.jpg,texture,illusory,6,True,False,irregular,8,moon,black basalt fine grain,3,0.5,0.6004,0.5317,0.0,0.4232,img_0.4_8_6_0.1_0.1_0.5_s3,stim_89028ca3b9
+f089,plain_contour/f089_plain_contour.jpg,plain,contour,6,False,True,irregular,7,chocolate,cream travertine,0,0.5,0.6689,0.5391,0.0,1.0,img_0_7_6_0.1_0.1_0.5_s4,stim_39b8af75e5
+f089,plain_illusory/f089_plain_illusory.jpg,plain,illusory,6,True,False,irregular,7,chocolate,cream travertine,0,0.5,0.6689,0.5391,0.0,1.0,img_0_7_6_0.1_0.1_0.5_s4,stim_5d46557b19
+f089,texture_contour/f089_texture_contour.jpg,texture,contour,6,False,True,irregular,7,chocolate,cream travertine,3,0.5,0.6689,0.5391,0.0,0.566,img_0_7_6_0.1_0.1_0.5_s4,stim_f0c05bdeef
+f089,texture_illusory/f089_texture_illusory.jpg,texture,illusory,6,True,False,irregular,7,chocolate,cream travertine,3,0.5,0.6689,0.5391,0.0,0.566,img_0_7_6_0.1_0.1_0.5_s4,stim_32eb411ab8
+f090,plain_contour/f090_plain_contour.jpg,plain,contour,4,False,True,irregular,8,white pearl,charcoal grey cork,0,0.5,0.6612,0.4567,0.0,1.0,img_0.8_8_4_0.1_0.1_0.5_s3,stim_e0188470ec
+f090,plain_illusory/f090_plain_illusory.jpg,plain,illusory,4,True,False,irregular,8,white pearl,charcoal grey cork,0,0.5,0.6612,0.4567,0.0,1.0,img_0.8_8_4_0.1_0.1_0.5_s3,stim_8fca107b4e
+f090,texture_contour/f090_texture_contour.jpg,texture,contour,4,False,True,irregular,8,white pearl,charcoal grey cork,3,0.5,0.6612,0.4567,0.0,0.3292,img_0.8_8_4_0.1_0.1_0.5_s3,stim_b2ac017388
+f090,texture_illusory/f090_texture_illusory.jpg,texture,illusory,4,True,False,irregular,8,white pearl,charcoal grey cork,3,0.5,0.6612,0.4567,0.0,0.3292,img_0.8_8_4_0.1_0.1_0.5_s3,stim_f3f93ab577
+f091,plain_contour/f091_plain_contour.jpg,plain,contour,3,False,True,irregular,6,white pearl,charcoal grey cork,0,0.5,0.637,0.5023,0.0,1.0,img_0_6_3_0.1_0.1_0.5_s2,stim_dc5516385f
+f091,plain_illusory/f091_plain_illusory.jpg,plain,illusory,3,True,False,irregular,6,white pearl,charcoal grey cork,0,0.5,0.637,0.5023,0.0,1.0,img_0_6_3_0.1_0.1_0.5_s2,stim_f51b4c8abe
+f091,texture_contour/f091_texture_contour.jpg,texture,contour,3,False,True,irregular,6,white pearl,charcoal grey cork,3,0.5,0.637,0.5023,0.0,0.3296,img_0_6_3_0.1_0.1_0.5_s2,stim_4698c7ed3e
+f091,texture_illusory/f091_texture_illusory.jpg,texture,illusory,3,True,False,irregular,6,white pearl,charcoal grey cork,3,0.5,0.637,0.5023,0.0,0.3296,img_0_6_3_0.1_0.1_0.5_s2,stim_6317689c37
+f092,plain_contour/f092_plain_contour.jpg,plain,contour,4,False,True,irregular,7,moon,black basalt fine grain,0,0.5,0.679,0.5273,0.0,1.0,img_0.8_7_4_0.1_0.1_0.5_s2,stim_642eae0d0f
+f092,plain_illusory/f092_plain_illusory.jpg,plain,illusory,4,True,False,irregular,7,moon,black basalt fine grain,0,0.5,0.679,0.5273,0.0,1.0,img_0.8_7_4_0.1_0.1_0.5_s2,stim_af9ea533c5
+f092,texture_contour/f092_texture_contour.jpg,texture,contour,4,False,True,irregular,7,moon,black basalt fine grain,3,0.5,0.679,0.5273,0.0,0.423,img_0.8_7_4_0.1_0.1_0.5_s2,stim_caecfbb8a5
+f092,texture_illusory/f092_texture_illusory.jpg,texture,illusory,4,True,False,irregular,7,moon,black basalt fine grain,3,0.5,0.679,0.5273,0.0,0.423,img_0.8_7_4_0.1_0.1_0.5_s2,stim_541bd47cf8
+f093,plain_contour/f093_plain_contour.jpg,plain,contour,3,False,True,irregular,3,candle,charcoal mottled plaster,0,0.5,0.7756,0.6358,0.0,1.0,img_0_3_3_0.1_0.1_0.5_s2,stim_75e899c501
+f093,plain_illusory/f093_plain_illusory.jpg,plain,illusory,3,True,False,irregular,3,candle,charcoal mottled plaster,0,0.5,0.7756,0.6358,0.0,1.0,img_0_3_3_0.1_0.1_0.5_s2,stim_39c978f320
+f093,texture_contour/f093_texture_contour.jpg,texture,contour,3,False,True,irregular,3,candle,charcoal mottled plaster,3,0.5,0.7756,0.6358,0.0,0.354,img_0_3_3_0.1_0.1_0.5_s2,stim_4852471671
+f093,texture_illusory/f093_texture_illusory.jpg,texture,illusory,3,True,False,irregular,3,candle,charcoal mottled plaster,3,0.5,0.7756,0.6358,0.0,0.354,img_0_3_3_0.1_0.1_0.5_s2,stim_6898baf16a
+f094,plain_contour/f094_plain_contour.jpg,plain,contour,4,False,True,irregular,6,macaron,soft white frosted quartz,0,0.5,0.6668,0.51,0.0,1.0,img_0_6_4_0.1_0.1_0.5_s2,stim_823e466f46
+f094,plain_illusory/f094_plain_illusory.jpg,plain,illusory,4,True,False,irregular,6,macaron,soft white frosted quartz,0,0.5,0.6668,0.51,0.0,1.0,img_0_6_4_0.1_0.1_0.5_s2,stim_eec73bad8e
+f094,texture_contour/f094_texture_contour.jpg,texture,contour,4,False,True,irregular,6,macaron,soft white frosted quartz,3,0.5,0.6668,0.51,0.0,0.2043,img_0_6_4_0.1_0.1_0.5_s2,stim_e23de888e5
+f094,texture_illusory/f094_texture_illusory.jpg,texture,illusory,4,True,False,irregular,6,macaron,soft white frosted quartz,3,0.5,0.6668,0.51,0.0,0.2043,img_0_6_4_0.1_0.1_0.5_s2,stim_d603f39a03
+f095,plain_contour/f095_plain_contour.jpg,plain,contour,6,False,True,irregular,6,grapefruit,deep green moss,0,0.5,0.666,0.5485,0.0,1.0,img_0_6_6_0.1_0.1_0.5_s1,stim_b9e2dfd075
+f095,plain_illusory/f095_plain_illusory.jpg,plain,illusory,6,True,False,irregular,6,grapefruit,deep green moss,0,0.5,0.666,0.5485,0.0,1.0,img_0_6_6_0.1_0.1_0.5_s1,stim_efabc83472
+f095,texture_contour/f095_texture_contour.jpg,texture,contour,6,False,True,irregular,6,grapefruit,deep green moss,3,0.5,0.666,0.5485,0.0,0.1693,img_0_6_6_0.1_0.1_0.5_s1,stim_1f38381fff
+f095,texture_illusory/f095_texture_illusory.jpg,texture,illusory,6,True,False,irregular,6,grapefruit,deep green moss,3,0.5,0.666,0.5485,0.0,0.1693,img_0_6_6_0.1_0.1_0.5_s1,stim_100d194129
+f096,plain_contour/f096_plain_contour.jpg,plain,contour,5,False,True,irregular,5,chocolate,cream travertine,0,0.5,0.6291,0.553,0.0,1.0,img_0.8_5_5_0.1_0.1_0.5_s3,stim_dd435fe7ab
+f096,plain_illusory/f096_plain_illusory.jpg,plain,illusory,5,True,False,irregular,5,chocolate,cream travertine,0,0.5,0.6291,0.553,0.0,1.0,img_0.8_5_5_0.1_0.1_0.5_s3,stim_5a4da35b8d
+f096,texture_contour/f096_texture_contour.jpg,texture,contour,5,False,True,irregular,5,chocolate,cream travertine,3,0.5,0.6291,0.553,0.0,0.5668,img_0.8_5_5_0.1_0.1_0.5_s3,stim_bbe3d34d70
+f096,texture_illusory/f096_texture_illusory.jpg,texture,illusory,5,True,False,irregular,5,chocolate,cream travertine,3,0.5,0.6291,0.553,0.0,0.5668,img_0.8_5_5_0.1_0.1_0.5_s3,stim_8fb03eaaa6
+f097,plain_contour/f097_plain_contour.jpg,plain,contour,4,False,True,irregular,5,lily pad,polished black granite,0,0.5,0.661,0.5155,0.0,1.0,img_0.4_5_4_0.1_0.2_0.5_s4,stim_81cfb2b353
+f097,plain_illusory/f097_plain_illusory.jpg,plain,illusory,4,True,False,irregular,5,lily pad,polished black granite,0,0.5,0.661,0.5155,0.0,1.0,img_0.4_5_4_0.1_0.2_0.5_s4,stim_3adec9db97
+f097,texture_contour/f097_texture_contour.jpg,texture,contour,4,False,True,irregular,5,lily pad,polished black granite,3,0.5,0.661,0.5155,0.0,0.3484,img_0.4_5_4_0.1_0.2_0.5_s4,stim_4f537148ec
+f097,texture_illusory/f097_texture_illusory.jpg,texture,illusory,4,True,False,irregular,5,lily pad,polished black granite,3,0.5,0.661,0.5155,0.0,0.3484,img_0.4_5_4_0.1_0.2_0.5_s4,stim_7c8c55359b
+f098,plain_contour/f098_plain_contour.jpg,plain,contour,4,False,True,irregular,4,Bullseye,navy blue velvet,0,0.5,0.6159,0.5781,0.0,1.0,img_0_4_4_0.1_0.1_0.5_s1,stim_1631f97bc6
+f098,plain_illusory/f098_plain_illusory.jpg,plain,illusory,4,True,False,irregular,4,Bullseye,navy blue velvet,0,0.5,0.6159,0.5781,0.0,1.0,img_0_4_4_0.1_0.1_0.5_s1,stim_fe6222ccd3
+f098,texture_contour/f098_texture_contour.jpg,texture,contour,4,False,True,irregular,4,Bullseye,navy blue velvet,3,0.5,0.6159,0.5781,0.0,0.414,img_0_4_4_0.1_0.1_0.5_s1,stim_92166833a4
+f098,texture_illusory/f098_texture_illusory.jpg,texture,illusory,4,True,False,irregular,4,Bullseye,navy blue velvet,3,0.5,0.6159,0.5781,0.0,0.414,img_0_4_4_0.1_0.1_0.5_s1,stim_62051f1958
+f099,plain_contour/f099_plain_contour.jpg,plain,contour,5,False,True,irregular,8,Satellite dish,orange sand,0,0.5,0.6619,0.4622,0.0,1.0,img_1_8_5_0.1_0.1_0.5_s3,stim_2c16c4bdf0
+f099,plain_illusory/f099_plain_illusory.jpg,plain,illusory,5,True,False,irregular,8,Satellite dish,orange sand,0,0.5,0.6619,0.4622,0.0,1.0,img_1_8_5_0.1_0.1_0.5_s3,stim_3a43e005fa
+f099,texture_contour/f099_texture_contour.jpg,texture,contour,5,False,True,irregular,8,Satellite dish,orange sand,3,0.5,0.6619,0.4622,0.0,0.1511,img_1_8_5_0.1_0.1_0.5_s3,stim_d5925c924c
+f099,texture_illusory/f099_texture_illusory.jpg,texture,illusory,5,True,False,irregular,8,Satellite dish,orange sand,3,0.5,0.6619,0.4622,0.0,0.1511,img_1_8_5_0.1_0.1_0.5_s3,stim_91d0a438c5
+f100,plain_contour/f100_plain_contour.jpg,plain,contour,6,False,True,irregular,8,Frisbee,olive green felt,0,0.5,0.671,0.5146,0.0,1.0,img_0.8_8_6_0.1_0.1_0.5_s3,stim_efbb941c1b
+f100,plain_illusory/f100_plain_illusory.jpg,plain,illusory,6,True,False,irregular,8,Frisbee,olive green felt,0,0.5,0.671,0.5146,0.0,1.0,img_0.8_8_6_0.1_0.1_0.5_s3,stim_f47adfbac2
+f100,texture_contour/f100_texture_contour.jpg,texture,contour,6,False,True,irregular,8,Frisbee,olive green felt,3,0.5,0.671,0.5146,0.0,0.3211,img_0.8_8_6_0.1_0.1_0.5_s3,stim_8d0253e0ab
+f100,texture_illusory/f100_texture_illusory.jpg,texture,illusory,6,True,False,irregular,8,Frisbee,olive green felt,3,0.5,0.671,0.5146,0.0,0.3211,img_0.8_8_6_0.1_0.1_0.5_s3,stim_494ee33bd7

@@ -13,6 +13,91 @@ BG = DATA / "assets" / "bg"
 OUT = pathlib.Path(os.environ.get("GESTALT_OUT", ROOT / "out"))   # benchmark output (stimuli, gt, manifest)
 
 
+# --- progress bars -----------------------------------------------------------------------------
+# Nested tqdm bars on a terminal; one log line per 5% when output is not a TTY (log files, Slurm);
+# GESTALT_PROGRESS=0 disables them. Nesting is automatic: each open bar sits one row below its
+# parent. GESTALT_PROGRESS_DEPTH lets a driver (tools/run_difficulty_set.py) push child-process
+# bars below its own.
+import sys
+_PROGRESS_ON = os.environ.get("GESTALT_PROGRESS", "1") != "0"
+_DEPTH = [int(os.environ.get("GESTALT_PROGRESS_DEPTH", "0"))]
+
+
+class _LogBar:
+    """Non-TTY / no-tqdm bar: prints `desc: 25% (100/400) postfix` at every 5% step."""
+    def __init__(self, total, desc, step=0.05):
+        self.total, self.desc, self.n, self.post = total, desc, 0, ""
+        self.step = max(1, round((total or 0) * step)) if total else 1   # integer item threshold
+        self._next = 0
+        self._emit()
+
+    def update(self, k=1):
+        if k <= 0:
+            return
+        self.n += k
+        if self.n >= self._next or (self.total and self.n >= self.total):
+            self._emit()
+
+    def _emit(self):
+        if self.total:
+            print(f"  {self.desc}: {int(100 * self.n / self.total):3d}% ({self.n}/{self.total}) "
+                  f"{self.post}".rstrip(), flush=True)
+            self._next = (self.n // self.step + 1) * self.step
+        else:                                        # unknown total: a line every 50 items
+            print(f"  {self.desc}: {self.n} {self.post}".rstrip(), flush=True)
+            self._next = self.n + 50
+
+    def set_postfix_str(self, s): self.post = s
+    def set_description(self, d): self.desc = d
+    def close(self): pass
+
+
+class _NoBar:
+    def update(self, k=1): pass
+    def set_postfix_str(self, s): pass
+    def set_description(self, d): pass
+    def close(self): pass
+
+
+def bar(total, desc="", unit="fig", keep=None):
+    """A manual progress bar (`update(k)`, `set_postfix_str`, `set_description`, `close`).
+    Outermost bar stays on screen; nested bars vanish when closed (`keep` overrides)."""
+    if not _PROGRESS_ON:
+        return _NoBar()
+    depth = _DEPTH[0]
+    _DEPTH[0] += 1
+    leave = keep if keep is not None else depth == 0
+    try:
+        from tqdm import tqdm
+        if not sys.stderr.isatty():
+            raise ImportError
+        b = tqdm(total=total, desc=f"  {desc}", unit=unit, position=depth, leave=leave, ncols=100)
+    except ImportError:
+        b = _LogBar(total, desc)
+    close = b.close
+
+    def _close():
+        _DEPTH[0] -= 1
+        close()
+    b.close = _close
+    return b
+
+
+def progress(it, desc="", total=None, unit="fig"):
+    """Wrap an iterable in a bar (nested automatically). Drop-in for `for x in it`."""
+    if not _PROGRESS_ON:
+        yield from it
+        return
+    total = total if total is not None else (len(it) if hasattr(it, "__len__") else None)
+    b = bar(total, desc, unit)
+    try:
+        for x in it:
+            yield x
+            b.update(1)
+    finally:
+        b.close()
+
+
 def slug(s):
     return re.sub(r"[^a-z0-9]+", "_", s.lower()).strip("_")
 
@@ -99,5 +184,20 @@ def append_manifest(row, out=OUT):
     with open(p, "a", newline="") as f:
         w = csv.writer(f)
         if new:
-            w.writerow(["id", "silhouette", "object", "background", "backend", "mode", "natural", "condition"])
+            cols = ["id", "silhouette", "object", "background", "backend", "mode", "natural", "condition"]
+            if len(row) > len(cols):                 # texture column only for multi-texture runs
+                cols.append("texture")               # (single-texture manifests stay byte-identical)
+            w.writerow(cols)
         w.writerow(row)
+
+
+TEXTURE_DIRS = {0: "plain", 1: "chips", 2: "objects", 3: "texture"}   # folder per texture level
+
+
+def stim_path(out, texture, cond, multi):
+    """Where a composite stimulus lives: out/comp/<cond>/ for a single-texture run, or
+    out/comp/<plain|chips|objects|texture>/<cond>/ when several texture levels are rendered."""
+    d = out / "comp"
+    if multi:
+        d = d / TEXTURE_DIRS[int(texture)]
+    return d / cond

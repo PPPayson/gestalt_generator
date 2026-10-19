@@ -3,7 +3,7 @@ Polarity-agnostic, aspect-preserving, object clipped EXACTLY to the region, inwa
 import numpy as np
 from PIL import Image, ImageFilter, ImageOps
 from scipy import ndimage
-from .utils import OBJ, BG, OUT, SIL, SIL_CTRL, slug, sid, append_manifest
+from .utils import OBJ, BG, OUT, SIL, SIL_CTRL, slug, sid, append_manifest, stim_path
 from .geometry import inducer_labels, crop_to_content
 from . import gt
 
@@ -207,12 +207,15 @@ def run(cfg, metas, pairs):
     conditions = cfg["dress"].get("conditions", ["illusory"])
     contour = cfg["dress"].get("contour", "auto")
     texture = cfg["dress"].get("texture", 3)
+    multi = isinstance(texture, (list, tuple))      # several texture levels in one run
+    textures = list(texture) if multi else [texture]
     contrast = cfg["dress"].get("contrast")
-    out = OUT / "comp"
-    for cond in conditions:
-        (out / cond).mkdir(parents=True, exist_ok=True)   # out/comp/illusory, out/comp/control
+    for cond in conditions:                           # out/comp/[<texture>/]illusory|control
+        for tex in textures:
+            stim_path(OUT, tex, cond, multi).mkdir(parents=True, exist_ok=True)
+    from .utils import progress
     k = 0
-    for meta in metas:
+    for meta in progress(metas, desc="composite"):
         sp = SIL / f"{meta['stem']}.png"
         cp = SIL_CTRL / f"{meta['stem']}.png"
         for it in pairs.get(meta["stem"], []):
@@ -222,16 +225,19 @@ def run(cfg, metas, pairs):
                         print(f"  ! no control silhouette for {meta['stem']}; skipping control")
                         continue                        # never emit a 'control' without a drawn contour
                     ctrl = cp if cond == "control" else None
-                    info = {}
-                    img, _ = render(sp, it["object"], it["background"], shadow, mode, crop,
-                                    feather=feather, control=ctrl, contour=contour,
-                                    texture=texture, contrast=contrast, info=info)
-                    i = sid(meta["stem"], it["object"], "composite", f"{mode}_{cond}")
-                    img.save(out / cond / f"{i}.png")
-                    append_manifest([i, meta["stem"], it["object"], it["background"],
-                                     "composite", mode, it.get("natural", True), cond])
-                    gt.write(i, meta, it, "composite", mode, condition=cond,
-                             texture=texture, contrast=contrast,
-                             lum_gap=info.get("lum_gap"))
-                    k += 1
+                    for tex in textures:
+                        info = {}
+                        img, _ = render(sp, it["object"], it["background"], shadow, mode, crop,
+                                        feather=feather, control=ctrl, contour=contour,
+                                        texture=tex, contrast=contrast, info=info)
+                        tag = f"{mode}_{cond}" + (f"_t{tex}" if multi else "")   # scalar: legacy ids
+                        i = sid(meta["stem"], it["object"], "composite", tag)
+                        img.save(stim_path(OUT, tex, cond, multi) / f"{i}.png")
+                        append_manifest([i, meta["stem"], it["object"], it["background"],
+                                         "composite", mode, it.get("natural", True), cond]
+                                        + ([tex] if multi else []))
+                        gt.write(i, meta, it, "composite", mode, condition=cond,
+                                 texture=tex, contrast=contrast,
+                                 lum_gap=info.get("lum_gap"))
+                        k += 1
     print(f"  composite: {k} stimuli")

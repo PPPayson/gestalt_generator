@@ -21,7 +21,12 @@ def run(cfg):
     (OUT / "manifest.csv").unlink(missing_ok=True)
 
     print(f"== {cfg['name']} : pairs.source={cfg['pairs']['source']} ==")
+    from .utils import bar
+    stages = ["silhouettes", "pairs + assets", "dress", "contact sheet"]
+    top = bar(len(stages), f"run {cfg['name']}", unit="stage")
+    top.set_postfix_str(stages[0])
     metas = silhouettes.build(cfg)
+    top.update(1); top.set_postfix_str(stages[1])
 
     if cfg["pairs"]["source"] == "propose":
         proposer = providers.load_proposer(cfg)
@@ -41,6 +46,7 @@ def run(cfg):
         else:
             print("  assets: all present (offline, no provider loaded)")
 
+    top.update(1); top.set_postfix_str(stages[2])
     backends = cfg["dress"]["backends"]
     if "composite" in backends:
         dress_composite.run(cfg, metas, prs)
@@ -52,9 +58,11 @@ def run(cfg):
             prov = cfg["models"]["image"]["provider"]
             print(f"  ! WARNING: provider '{prov}' can't do ControlNet (no dress()). "
                   f"Skipping controlnet — use provider modal_hf, or drop it from dress.backends.")
+    top.update(1); top.set_postfix_str(stages[3])
     _copy_silhouettes(metas)
     if cfg["output"]["contact_sheet"]:
         contact.run(cfg)
+    top.update(1); top.set_postfix_str("done"); top.close()
     from .utils import OUT
     print(f"DONE -> {OUT} (stimuli + gt + manifest + silhouettes)")
 

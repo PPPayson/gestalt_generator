@@ -134,7 +134,7 @@ def load_ground_truth_counts(gt_folder):
     """
     Load ground-truth object counts from files like:
 
-        examples/gen100/gt/stim_0a2bb3a026.json
+        benchmarks/gen100/gt/stim_0a2bb3a026.json
 
     Ground-truth count is:
 
@@ -922,10 +922,10 @@ def main():
 
     parser.add_argument(
         "--gt_folder",
-        default="examples/gen100/gt",
+        default="benchmarks/gen100/gt",
         help=(
             "Folder containing ground-truth JSON files "
-            "(default: examples/gen100/gt)"
+            "(default: benchmarks/gen100/gt)"
         ),
     )
 
