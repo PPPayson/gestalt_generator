@@ -3,7 +3,7 @@ Polarity-agnostic, aspect-preserving, object clipped EXACTLY to the region, inwa
 import numpy as np
 from PIL import Image, ImageFilter, ImageOps
 from scipy import ndimage
-from .utils import OBJ, BG, OUT, SIL, SIL_CTRL, slug, sid, append_manifest, stim_path
+from .utils import OBJ, BG, OUT, SIL, SIL_CTRL, slug, sid, append_manifest, stim_path, progress
 from .geometry import inducer_labels, crop_to_content
 from . import gt
 
@@ -213,7 +213,6 @@ def run(cfg, metas, pairs):
     for cond in conditions:                           # out/comp/[<texture>/]illusory|control
         for tex in textures:
             stim_path(OUT, tex, cond, multi).mkdir(parents=True, exist_ok=True)
-    from .utils import progress
     k = 0
     for meta in progress(metas, desc="composite"):
         sp = SIL / f"{meta['stem']}.png"

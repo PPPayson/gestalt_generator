@@ -284,7 +284,7 @@ Each level config uses `pairs: {select: distinct}` (one catalog pair per figure,
 records the level in the manifest's `texture` column. The export lays a set out for people:
 `benchmarks/<name>/<level>/<plain|texture>_<illusory|contour>/f017_texture_illusory.jpg`, where
 `f017` is the same figure in every level, variant and condition, with `answers.csv` per level and a
-`preview_<level>.png` per level. `benchmarks/varying_difficulty_benchmark_100/` is the first-pass evaluation set: 100
+`preview_<level>.jpg` per level. `benchmarks/varying_difficulty_benchmark_100/` is the first-pass evaluation set: 100
 matched figures × {plain, texture} × {illusory, contour} = 400 images per level, built from
 `configs/varying_difficulty_benchmark_100_{easy,normal,hard}.yaml`. Evaluate one level with
 `python3 ollama_eval.py --model <m> --data_dir benchmarks/varying_difficulty_benchmark_100/hard --variant texture`.

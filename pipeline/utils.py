@@ -1,7 +1,7 @@
 """Shared helpers: paths, slug, robust metrics, opaque IDs, manifest, candidate loading.
 
 Paths honor GESTALT_DATA / GESTALT_OUT env vars so tests (and users) can redirect I/O."""
-import os, re, hashlib, csv, json, pathlib
+import os, re, hashlib, csv, json, pathlib, sys
 import numpy as np
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -18,7 +18,6 @@ OUT = pathlib.Path(os.environ.get("GESTALT_OUT", ROOT / "out"))   # benchmark ou
 # GESTALT_PROGRESS=0 disables them. Nesting is automatic: each open bar sits one row below its
 # parent. GESTALT_PROGRESS_DEPTH lets a driver (tools/run_difficulty_set.py) push child-process
 # bars below its own.
-import sys
 _PROGRESS_ON = os.environ.get("GESTALT_PROGRESS", "1") != "0"
 _DEPTH = [int(os.environ.get("GESTALT_PROGRESS_DEPTH", "0"))]
 

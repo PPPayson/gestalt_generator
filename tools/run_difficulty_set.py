@@ -11,6 +11,7 @@ silence all bars (e.g. in a batch job log).
 import sys, os, pathlib, argparse, subprocess
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
+from pipeline.utils import bar  # noqa: E402
 
 
 def main():
@@ -21,7 +22,6 @@ def main():
     ap.add_argument("--configs", default="configs")
     ap.add_argument("--out", default=None, help="output root (default out/<name>)")
     args = ap.parse_args()
-    from pipeline.utils import bar
     args.out = args.out or f"out/{args.name}"
     top = bar(len(args.levels), "levels", unit="level")
     failed = []

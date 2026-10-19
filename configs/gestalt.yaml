@@ -3,15 +3,13 @@ name: gestalt_demo
 
 # Gestalt silhouettes come from main.py's output in data/silhouettes/.
 #   mode: existing    -> sample N of the already-generated silhouettes (seeded)
-#   mode: regenerate  -> run main.generate(...) first, then sample N
 silhouettes:
   - type: gestalt
     params:
-      mode: existing        # existing | regenerate
+      mode: existing        # existing (seeded random) | rank
       n: 20                 # how many silhouettes to dress
       seed: 0               # reproducible random selection
       # src_dir: data/silhouettes   # override pool location if needed
-      # regenerate: {n_vs: [4, 5, 6], rs: [0.4, 0.8]}   # subset grid when mode: regenerate
 
 pairs:
   source: catalog

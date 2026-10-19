@@ -1,4 +1,5 @@
 """Difficulty knobs: closeness (support ratio), texture level, background-recolor contrast."""
+import csv
 import json
 import numpy as np
 import pytest
@@ -235,7 +236,6 @@ def test_distinct_pairs_round_robin(cfg, use_fixture_catalog):
 
 
 def test_texture_list_emits_one_stimulus_per_level(cfg):
-    import csv
     stem = _gen(0.5, seed=4)                                 # gestalt figure WITH a control silhouette
     metas = S.build({"silhouettes": [{"type": "dropin", "params": {"files": [f"{stem}.png"]}}]})
     pairs = {stem: [{"object": "white disc", "background": "black bg", "natural": False}]}
@@ -245,35 +245,50 @@ def test_texture_list_emits_one_stimulus_per_level(cfg):
     assert len(pngs) == 4 and len({q.stem for q in pngs}) == 4          # distinct ids
     assert {str(q.parent.relative_to(OUT / "comp")) for q in pngs} == {
         "plain/illusory", "plain/control", "texture/illusory", "texture/control"}
-    import csv
     assert {r["texture"] for r in csv.DictReader(open(OUT / "manifest.csv"))} == {"0", "3"}
     tex = sorted(json.loads(g.read_text())["difficulty"]["texture"] for g in (OUT / "gt").glob("*.json"))
     assert tex == [0, 0, 3, 3]
 
 
-def test_rank_score_filter_thresholds_are_parameters():
-    """flat_solidity / max_gap / min_inducers can be loosened or tightened per call."""
+def _three_inducer_figure_with_flat_cap():
+    """A 3-inducer figure where one inducer has solidity 0.95 (a flat cap)."""
     stem = main.generate_one(0, 3, 3, 0.1, 0.1, closeness=0.5,
-                             sil_dir=str(SIL), ctrl_dir=str(SIL_CTRL), seed=3)   # has a 0.95-solidity cap
-    meta = S.parse_gestalt_name(stem)
-    p = SIL / f"{stem}.png"
-    assert S.rank_score(p, meta, min_inducers=3, all_sides=False) == -1.0            # default 0.90 rejects
-    assert S.rank_score(p, meta, min_inducers=3, all_sides=False, flat_solidity=None) >= 0
-    assert S.rank_score(p, meta, min_inducers=3, all_sides=False, flat_solidity=0.99) >= 0
-    assert S.rank_score(p, meta, **{"min_inducers": 3, "all_sides": False, "max_gap": 1.0}) == -1.0
-    assert S.rank_score(p, meta, min_inducers=3, all_sides=False, max_flat_frac=0.34) >= 0   # 1 of 3 flat ok
-    assert S.rank_score(p, meta, min_inducers=3, all_sides=False, max_flat_frac=0.2) == -1.0
+                             sil_dir=str(SIL), ctrl_dir=str(SIL_CTRL), seed=3)
+    return SIL / f"{stem}.png", S.parse_gestalt_name(stem)
 
 
-def test_quota_counts_fractions_and_absolute():
-    assert S._quota_counts(100, None) == {3: 15, 4: 35, 5: 35, 6: 15}
+@pytest.mark.parametrize("overrides, passes", [
+    ({}, False),                                   # default flat_solidity 0.90 rejects the cap
+    ({"flat_solidity": None}, True),               # flat-cap test off
+    ({"flat_solidity": 0.99}, True),               # threshold above the cap's solidity
+    ({"max_gap": 1.0}, False),                     # no angular slack -> reject
+    ({"max_flat_frac": 0.34}, True),               # one of three flat allowed
+    ({"max_flat_frac": 0.2}, False),               # one of three is more than 20%
+])
+def test_rank_score_filter_thresholds(overrides, passes):
+    p, meta = _three_inducer_figure_with_flat_cap()
+    score = S.rank_score(p, meta, min_inducers=3, all_sides=False, **overrides)
+    assert (score >= 0) == passes
+
+
+@pytest.mark.parametrize("n, quota, expected", [
+    (100, None, {3: 15, 4: 35, 5: 35, 6: 15}),     # default mix
+    (10, {4: 0.5, 5: 0.3}, {4: 6, 5: 4}),          # fractions renormalised, largest remainder
+    (5, {4: 3, 5: 2}, {4: 3, 5: 2}),               # explicit counts
+    (0, {4: 3, 5: 2}, {4: 3, 5: 2}),               # n=0: counts taken as given
+])
+def test_quota_counts(n, quota, expected):
+    assert S._quota_counts(n, quota) == expected
+
+
+def test_quota_counts_fractions_sum_to_n():
     assert sum(S._quota_counts(7, {4: 0.5, 5: 0.5}).values()) == 7
-    assert S._quota_counts(10, {4: 0.5, 5: 0.3}) == {4: 6, 5: 4}        # fractions renormalised
-    assert S._quota_counts(5, {4: 3, 5: 2}) == {4: 3, 5: 2}             # explicit counts
-    assert S._quota_counts(0, {4: 3, 5: 2}) == {4: 3, 5: 2}             # n=0: counts taken as given
-    for bad in ({4: 3, 5: 2}, {4: 0}, {}):
-        with pytest.raises(ValueError):
-            S._quota_counts(4, bad)
+
+
+@pytest.mark.parametrize("quota", [{4: 3, 5: 2}, {4: 0}, {}])
+def test_quota_counts_rejects_mismatched_or_empty(quota):
+    with pytest.raises(ValueError):
+        S._quota_counts(4, quota)
 
 
 def test_rank_score_rejects_unknown_filter_key():
@@ -285,7 +300,6 @@ def test_rank_score_rejects_unknown_filter_key():
 
 
 def test_manifest_texture_column_only_for_texture_lists(cfg):
-    import csv
     stem = _gen(0.5, seed=4)
     metas = S.build({"silhouettes": [{"type": "dropin", "params": {"files": [f"{stem}.png"]}}]})
     pairs = {stem: [{"object": "white disc", "background": "black bg", "natural": False}]}
@@ -309,6 +323,7 @@ def test_contact_sheet_finds_single_element_texture_list(cfg):
     assert (a < 128).mean() > 0.05                                      # a stimulus was pasted, not an empty cell
 
 
+@pytest.mark.slow
 def test_generate_n_runs_under_run_py(tmp_path):
     """The README config form (`type: generate` + `n`) must work through run.py: with the spawn start
     method every pool worker re-imports __main__, so run.py needs its guard and the sampler a safe pool."""
