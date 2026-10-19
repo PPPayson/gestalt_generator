@@ -9,5 +9,6 @@ Default is hf_api (pure HuggingFace). modal_hf is the maintainer's option and se
 import sys
 from pipeline import config as C, orchestrate
 
-cfg = C.load(sys.argv[1] if len(sys.argv) > 1 else "configs/example.yaml")
-orchestrate.run(cfg)
+if __name__ == "__main__":          # guard: multiprocessing (spawn) re-imports __main__ in workers
+    cfg = C.load(sys.argv[1] if len(sys.argv) > 1 else "configs/example.yaml")
+    orchestrate.run(cfg)

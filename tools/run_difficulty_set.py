@@ -9,7 +9,8 @@ stage bars nest under this script's level bar (GESTALT_PROGRESS_DEPTH). Set GEST
 silence all bars (e.g. in a batch job log).
 """
 import sys, os, pathlib, argparse, subprocess
-sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
 
 
 def main():
@@ -26,10 +27,10 @@ def main():
     failed = []
     for lvl in args.levels:
         top.set_postfix_str(lvl)
-        cfg = pathlib.Path(args.configs) / f"{args.name}_{lvl}.yaml"
-        env = {**os.environ, "GESTALT_OUT": str(pathlib.Path(args.out) / lvl),
+        cfg = (ROOT / args.configs / f"{args.name}_{lvl}.yaml").resolve()
+        env = {**os.environ, "GESTALT_OUT": str((ROOT / args.out / lvl).resolve()),
                "GESTALT_PROGRESS_DEPTH": str(int(os.environ.get("GESTALT_PROGRESS_DEPTH", "0")) + 1)}
-        rc = subprocess.call([sys.executable, "run.py", str(cfg)], env=env)
+        rc = subprocess.call([sys.executable, str(ROOT / "run.py"), str(cfg)], env=env, cwd=ROOT)
         if rc != 0:
             failed.append(lvl)
             print(f"  ! level {lvl} failed (exit {rc})")

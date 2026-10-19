@@ -268,7 +268,74 @@ def test_rank_score_filter_thresholds_are_parameters():
 def test_quota_counts_fractions_and_absolute():
     assert S._quota_counts(100, None) == {3: 15, 4: 35, 5: 35, 6: 15}
     assert sum(S._quota_counts(7, {4: 0.5, 5: 0.5}).values()) == 7
-    assert S._quota_counts(0, {4: 3, 5: 2}) == {4: 3, 5: 2}
+    assert S._quota_counts(10, {4: 0.5, 5: 0.3}) == {4: 6, 5: 4}        # fractions renormalised
+    assert S._quota_counts(5, {4: 3, 5: 2}) == {4: 3, 5: 2}             # explicit counts
+    assert S._quota_counts(0, {4: 3, 5: 2}) == {4: 3, 5: 2}             # n=0: counts taken as given
+    for bad in ({4: 3, 5: 2}, {4: 0}, {}):
+        with pytest.raises(ValueError):
+            S._quota_counts(4, bad)
+
+
+def test_rank_score_rejects_unknown_filter_key():
+    stem = _gen(0.5, seed=4)
+    with pytest.raises(ValueError, match="unknown filter"):
+        S.rank_score(SIL / f"{stem}.png", S.parse_gestalt_name(stem), min_inducer=3)
+    with pytest.raises(ValueError, match="unknown filter"):
+        S.sample_figures(1, filter={"min_inducer": 3}, jobs=1, log=lambda *a: None)
+
+
+def test_manifest_texture_column_only_for_texture_lists(cfg):
+    import csv
+    stem = _gen(0.5, seed=4)
+    metas = S.build({"silhouettes": [{"type": "dropin", "params": {"files": [f"{stem}.png"]}}]})
+    pairs = {stem: [{"object": "white disc", "background": "black bg", "natural": False}]}
+    DC.run(cfg(dress={"conditions": ["illusory"], "texture": 3, "shadow": 0}), metas, pairs)
+    hdr = next(csv.reader(open(OUT / "manifest.csv")))
+    assert hdr[-1] == "condition" and len(hdr) == 8                     # legacy manifest unchanged
+    (OUT / "manifest.csv").unlink()
+    DC.run(cfg(dress={"conditions": ["illusory"], "texture": [3], "shadow": 0}), metas, pairs)
+    hdr = next(csv.reader(open(OUT / "manifest.csv")))
+    assert hdr[-1] == "texture" and len(hdr) == 9
+
+
+def test_contact_sheet_finds_single_element_texture_list(cfg):
+    from pipeline import contact
+    stem = _gen(0.5, seed=4)
+    metas = S.build({"silhouettes": [{"type": "dropin", "params": {"files": [f"{stem}.png"]}}]})
+    pairs = {stem: [{"object": "white disc", "background": "black bg", "natural": False}]}
+    DC.run(cfg(dress={"conditions": ["illusory"], "texture": [3], "shadow": 0}), metas, pairs)
+    contact.run(cfg())
+    a = np.asarray(Image.open(OUT / "contact_sheet.png").convert("L"))
+    assert (a < 128).mean() > 0.05                                      # a stimulus was pasted, not an empty cell
+
+
+def test_generate_n_runs_under_run_py(tmp_path):
+    """The README config form (`type: generate` + `n`) must work through run.py: with the spawn start
+    method every pool worker re-imports __main__, so run.py needs its guard and the sampler a safe pool."""
+    import subprocess, sys, os, textwrap, pathlib
+    root = pathlib.Path(__file__).resolve().parent.parent
+    data = tmp_path / "data"; (data / "assets").mkdir(parents=True)
+    import shutil
+    shutil.copytree(root / "data" / "assets", data / "assets", dirs_exist_ok=True)
+    cfg = tmp_path / "gen.yaml"
+    cfg.write_text(textwrap.dedent("""
+        name: spawn_check
+        seed: 1
+        silhouettes:
+          - type: generate
+            params: {n: 2, closeness: 0.5, quota: {4: 2}, max_seeds: 12,
+                     grid: {randomness: [0], n_vertices: [4], edgy: [0.1], rad: [0.1]},
+                     filter: {min_inducers: 3, all_sides: false}}
+        pairs: {source: catalog, select: distinct}
+        dress: {conditions: [illusory], texture: 0, shadow: 0}
+        output: {contact_sheet: false}
+    """))
+    env = {**os.environ, "GESTALT_DATA": str(data), "GESTALT_OUT": str(tmp_path / "out"),
+           "GESTALT_PROGRESS": "0"}
+    r = subprocess.run([sys.executable, str(root / "run.py"), str(cfg)], cwd=root, env=env,
+                       capture_output=True, text=True, timeout=600)
+    assert r.returncode == 0, r.stderr[-2000:]
+    assert len(list((tmp_path / "out" / "comp").rglob("*.png"))) == 2
 
 
 def test_sample_figures_fills_quota_across_seeds():

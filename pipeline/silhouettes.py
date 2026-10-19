@@ -159,6 +159,9 @@ def rank_score(path, meta, min_inducers=_UNSET, all_sides=_UNSET, flat_solidity=
           bounded max gap), at a uniform radius, centred and filling the frame;
       (4) crisp contour params (low edgy/rad). Deeper bites score higher.
     Returns -1.0 if blobs are unclean, there are <4 inducers, or any inducer is a flat cap."""
+    unknown = set(filt) - set(FILTER_DEFAULTS)
+    if unknown:
+        raise ValueError(f"unknown filter keys {sorted(unknown)}; known: {sorted(FILTER_DEFAULTS)}")
     f = {**FILTER_DEFAULTS, **{k: v for k, v in dict(min_inducers=min_inducers, all_sides=all_sides,
                                                    flat_solidity=flat_solidity, max_gap=max_gap,
                                                    max_flat_frac=max_flat_frac,
@@ -289,14 +292,24 @@ GRID_DEFAULT = {"randomness": [0, 0.4, 0.8, 1], "n_vertices": [3, 4, 5, 6, 7, 8]
 
 
 def _quota_counts(n, quota):
-    """{n_points: count}. `quota` may hold fractions (sum ~1) or absolute counts; None -> default mix."""
-    q = {int(k): float(v) for k, v in (quota or QUOTA_DEFAULT).items()}
-    if abs(sum(q.values()) - 1.0) < 1e-6:                          # fractions -> counts, remainder to largest
-        counts = {k: int(n * v) for k, v in q.items()}
-        for k in sorted(q, key=lambda k: -q[k])[: n - sum(counts.values())]:
-            counts[k] += 1
-        return counts
-    return {k: int(v) for k, v in q.items()}
+    """{n_points: count}. `quota` values all <= 1 are FRACTIONS (renormalised to sum 1, remainder
+    to the largest); otherwise they are absolute counts and must sum to `n`. None -> default mix."""
+    q = {int(k): float(v) for k, v in (QUOTA_DEFAULT if quota is None else quota).items()}
+    if not q or sum(q.values()) <= 0:
+        raise ValueError(f"quota must request at least one figure: {quota}")
+    if all(v <= 1.0 for v in q.values()):                           # fractions -> counts
+        tot = sum(q.values())
+        exact = {k: n * v / tot for k, v in q.items()}
+        counts = {k: int(x) for k, x in exact.items()}
+        for k in sorted(q, key=lambda k: -(exact[k] - counts[k]))[: n - sum(counts.values())]:
+            counts[k] += 1                                              # largest-remainder rounding
+    else:
+        counts = {k: int(v) for k, v in q.items()}
+        if n and sum(counts.values()) != n:
+            raise ValueError(f"quota counts {counts} sum to {sum(counts.values())}, not n={n}")
+    if sum(counts.values()) == 0:
+        raise ValueError(f"quota {quota} yields no figures for n={n}")
+    return counts
 
 
 def _eval_candidate(job):
@@ -325,6 +338,14 @@ def _eval_candidate(job):
         shutil.rmtree(work, ignore_errors=True)
 
 
+class _Serial:
+    """Pool stand-in for jobs == 1: runs in-process (no multiprocessing at all)."""
+    def imap_unordered(self, fn, items, chunksize=1):
+        return map(fn, items)
+    def __enter__(self): return self
+    def __exit__(self, *a): return False
+
+
 def sample_figures(n, closeness=0.5, quota=None, grid=None, filter=None, seed=0,
                    also_closeness=(), max_seeds=200, jobs=None, log=print):
     """Keep drawing figures until `n` PASS the filter, in the requested inducer-count mix.
@@ -342,13 +363,19 @@ def sample_figures(n, closeness=0.5, quota=None, grid=None, filter=None, seed=0,
     levels = [closeness] + list(also_closeness)
     have = {k: [] for k in need}
     jobs = jobs or max(1, mp.cpu_count() - 1)
+    unknown = set(filt) - set(FILTER_DEFAULTS)
+    if unknown:
+        raise ValueError(f"unknown filter keys {sorted(unknown)}; known: {sorted(FILTER_DEFAULTS)}")
     done = lambda: all(len(have[k]) >= need[k] for k in need)
     log(f"  sample: need {need} at closeness={closeness} (+{list(also_closeness)}), filter={filt}")
     passed = lambda: sum(min(len(have[k]), need[k]) for k in need)
     short_str = lambda: " ".join(f"{k}:{min(len(have[k]), need[k])}/{need[k]}" for k in need)
     top = bar(n, f"figures passed (closeness={closeness})")     # persists across seed rounds
     top.set_postfix_str(short_str())
-    with mp.Pool(jobs) as pool:
+    # NOTE: the default start method (spawn on macOS/Windows) re-imports the caller's __main__ in
+    # every worker, so entry scripts must be guarded (run.py is); fork is not used because forking
+    # a process with live BLAS/tqdm threads deadlocks on macOS. jobs == 1 never forks or spawns.
+    with (mp.Pool(jobs) if jobs > 1 else _Serial()) as pool:
         for rnd in range(max_seeds):
             s = seed + rnd
             short = [k for k in need if len(have[k]) < need[k]]
