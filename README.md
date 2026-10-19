@@ -194,7 +194,7 @@ per parameter, easy on the left, hard on the right. To re-render it, run
 `python3 tools/make_difficulty_examples.py`.
 
 <p align="center">
-  <img src="examples/difficulty_examples.png" width="900">
+  <img src="docs/difficulty_examples.png" width="900">
 </p>
 <p align="center"><i>Per-parameter sweeps: texture (rendering realism), closeness (inducer size), and contrast (background recolored toward the object). The row labels list the values held fixed.</i></p>
 
