@@ -29,6 +29,17 @@ def resolve(cfg, metas):
                 items, min(cfg["pairs"]["n_per_silhouette"], len(items)))
         else:                                             # highest contrast first
             items = sorted(items, key=lambda x: -x.get("contrast", 0))
+    if src != "explicit" and cfg["pairs"].get("select") == "distinct":
+        # round-robin: silhouette i gets ONE pair, items[i % len] of a seeded shuffle, so pairs
+        # are spread as evenly as possible across figures and neighbours never share one
+        seed = cfg["pairs"].get("seed")
+        if seed is None:
+            seed = cfg.get("seed", 0)
+        random.Random(seed).shuffle(items)
+        pairs = {m["stem"]: [dict(items[i % len(items)])] for i, m in enumerate(metas)}
+        (DATA / "pairs.json").write_text(json.dumps(pairs, indent=2))
+        print(f"  pairs[{src}]: distinct round-robin over {len(items)} pairs, 1 per silhouette")
+        return pairs
     items = items[: cfg["pairs"]["n_per_silhouette"]]
     pairs = {m["stem"]: [dict(i) for i in items] for m in metas}
     (DATA / "pairs.json").write_text(json.dumps(pairs, indent=2))

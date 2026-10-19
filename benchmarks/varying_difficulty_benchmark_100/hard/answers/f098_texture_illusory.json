@@ -1,0 +1,44 @@
+{
+  "id": "stim_3707b32d8c",
+  "condition": "illusory",
+  "n_inducers": 4,
+  "has_illusion": true,
+  "has_visible_contour": false,
+  "illusory_shape": "irregular",
+  "polygon_vertices": 4,
+  "nonillusory_shapes": {
+    "real_life": [
+      "Bullseye",
+      "Bullseye",
+      "Bullseye",
+      "Bullseye"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  },
+  "difficulty": {
+    "texture": 3,
+    "closeness": 0.25,
+    "closeness_measured": 0.7976,
+    "support_ratio": 0.4032,
+    "contrast": 0.5,
+    "lum_gap": 0.2082
+  },
+  "figure": "f098",
+  "file": "texture_illusory/f098_texture_illusory.jpg",
+  "variant": "texture",
+  "object": "Bullseye",
+  "background": "navy blue velvet",
+  "texture": 3,
+  "closeness": 0.25,
+  "closeness_measured": 0.7976,
+  "support_ratio": 0.4032,
+  "contrast": 0.5,
+  "lum_gap": 0.2082,
+  "silhouette": "img_0_4_4_0.1_0.1_0.25_s1",
+  "stim_id": "stim_3707b32d8c"
+}

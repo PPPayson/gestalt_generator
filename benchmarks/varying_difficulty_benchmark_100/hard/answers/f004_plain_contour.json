@@ -1,0 +1,46 @@
+{
+  "id": "stim_b7c82aa0f2",
+  "condition": "contour",
+  "n_inducers": 5,
+  "has_illusion": false,
+  "has_visible_contour": true,
+  "illusory_shape": "irregular",
+  "polygon_vertices": 5,
+  "nonillusory_shapes": {
+    "real_life": [
+      "lily pad",
+      "lily pad",
+      "lily pad",
+      "lily pad",
+      "lily pad"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  },
+  "difficulty": {
+    "texture": 0,
+    "closeness": 0.25,
+    "closeness_measured": 0.4282,
+    "support_ratio": 0.3846,
+    "contrast": 0.5,
+    "lum_gap": 0.502
+  },
+  "figure": "f004",
+  "file": "plain_contour/f004_plain_contour.jpg",
+  "variant": "plain",
+  "object": "lily pad",
+  "background": "polished black granite",
+  "texture": 0,
+  "closeness": 0.25,
+  "closeness_measured": 0.4282,
+  "support_ratio": 0.3846,
+  "contrast": 0.5,
+  "lum_gap": 0.502,
+  "silhouette": "img_0.4_5_5_0.1_0.1_0.25_s3",
+  "stim_id": "stim_b7c82aa0f2"
+}

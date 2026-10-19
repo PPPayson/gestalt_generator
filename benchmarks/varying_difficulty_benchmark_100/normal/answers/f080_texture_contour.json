@@ -1,0 +1,44 @@
+{
+  "id": "stim_ab34628ec7",
+  "condition": "contour",
+  "n_inducers": 4,
+  "has_illusion": false,
+  "has_visible_contour": true,
+  "illusory_shape": "irregular",
+  "polygon_vertices": 7,
+  "nonillusory_shapes": {
+    "real_life": [
+      "moon",
+      "moon",
+      "moon",
+      "moon"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  },
+  "difficulty": {
+    "texture": 3,
+    "closeness": 0.5,
+    "closeness_measured": 0.689,
+    "support_ratio": 0.5115,
+    "contrast": 0.0,
+    "lum_gap": 0.4232
+  },
+  "figure": "f080",
+  "file": "texture_contour/f080_texture_contour.jpg",
+  "variant": "texture",
+  "object": "moon",
+  "background": "black basalt fine grain",
+  "texture": 3,
+  "closeness": 0.5,
+  "closeness_measured": 0.689,
+  "support_ratio": 0.5115,
+  "contrast": 0.0,
+  "lum_gap": 0.4232,
+  "silhouette": "img_0_7_4_0.1_0.1_0.5_s2",
+  "stim_id": "stim_ab34628ec7"
+}

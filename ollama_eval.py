@@ -46,7 +46,11 @@ def get_args_parser():
     )
     parser.add_argument("--model", type=str, required=True)
     parser.add_argument("--out_dir", type=str, default="outs/")
-    parser.add_argument("--data_dir", type=str, default="examples/gen100/images")
+    parser.add_argument("--data_dir", type=str, default="benchmarks/gen100/images")
+    parser.add_argument("--variant", type=str, default=None, choices=["plain", "texture"],
+                        help="benchmark levels hold <variant>_illusory/ and <variant>_contour/ "
+                             "(e.g. benchmarks/varying_difficulty_benchmark_100/hard); omit for "
+                             "sets laid out as illusory/ and control/")
 
     parser.add_argument("--temperature", type=float, default=0.0)
     parser.add_argument("--reps", type=int, default=3)
@@ -183,16 +187,18 @@ def run_model(args):
             """,
             "Inspect the image. Is there a true or illusory contour? Do not explain your answer."]
 
+    ill_dir = f"{args.variant}_illusory" if args.variant else "illusory"
+    ctl_dir = f"{args.variant}_contour" if args.variant else "control"
     image_names = [
         name
-        for name in sorted(os.listdir(os.path.join(args.data_dir, 'illusory')))
-        if os.path.isfile(os.path.join(args.data_dir, 'illusory', name))
+        for name in sorted(os.listdir(os.path.join(args.data_dir, ill_dir)))
+        if os.path.isfile(os.path.join(args.data_dir, ill_dir, name))
     ]
 
     control_image_names = [
         name
-        for name in sorted(os.listdir(os.path.join(args.data_dir, 'control')))
-        if os.path.isfile(os.path.join(args.data_dir, 'control', name))
+        for name in sorted(os.listdir(os.path.join(args.data_dir, ctl_dir)))
+        if os.path.isfile(os.path.join(args.data_dir, ctl_dir, name))
     ]
 
 
@@ -212,7 +218,7 @@ def run_model(args):
 
         full_path = os.path.join(
             args.data_dir,
-            'illusory',
+            ill_dir,
             image_name,
         )
 
@@ -242,7 +248,7 @@ def run_model(args):
 
         full_path = os.path.join(
             args.data_dir,
-            'control',
+            ctl_dir,
             image_name,
         )
 

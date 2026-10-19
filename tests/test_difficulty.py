@@ -195,3 +195,95 @@ def test_gt_carries_difficulty_block(cfg):
     d = gt["difficulty"]
     assert d["texture"] == 1 and d["contrast"] == 0.5 and d["closeness"] == 0.5
     assert 0 < d["support_ratio"] < 1 and abs(d["lum_gap"] - 0.5) < 0.05
+
+
+# --- difficulty eval set: generate spec, distinct pairs, texture list ---------------------------
+
+def test_generate_spec_materialises_matched_figures():
+    """`type: generate` renders png + sidecar + control for each figure at the given closeness;
+    the same figures+seeds at another closeness give the same stems bar the closeness suffix."""
+    figs = [[0, 4, 4, 0.1, 0.1, 3], [0, 5, 5, 0.1, 0.1, 3]]
+    a = S.build({"silhouettes": [{"type": "generate", "params": {"figures": figs, "closeness": 0.5}}]})
+    b = S.build({"silhouettes": [{"type": "generate", "params": {"figures": figs, "closeness": 0.75}}]})
+    assert [m["stem"] for m in a] == ["img_0_4_4_0.1_0.1_0.5_s3", "img_0_5_5_0.1_0.1_0.5_s3"]
+    base = lambda ms: [m["stem"].rsplit("_", 2)[0] for m in ms]
+    assert base(a) == base(b)                                   # matched figures, closeness suffix apart
+    for m in a + b:
+        assert (SIL / f"{m['stem']}.png").exists() and (SIL_CTRL / f"{m['stem']}.png").exists()
+        assert 0 < m["support_ratio"] < 1
+    assert a[0]["closeness"] == 0.5 and b[0]["closeness"] == 0.75 and a[0]["n_inducers"] == 4
+
+
+def test_rank_score_loosened_accepts_three_inducers():
+    stem = main.generate_one(0, 3, 3, 0.1, 0.1, closeness=0.5,
+                             sil_dir=str(SIL), ctrl_dir=str(SIL_CTRL), seed=1)
+    assert stem is not None
+    meta = S.parse_gestalt_name(stem)
+    assert S.rank_score(SIL / f"{stem}.png", meta) == -1.0                      # strict default
+    assert S.rank_score(SIL / f"{stem}.png", meta, min_inducers=3, all_sides=False) >= 0
+
+
+def test_distinct_pairs_round_robin(cfg, use_fixture_catalog):
+    from pipeline import pairs as P
+    metas = [{"stem": f"s{i}"} for i in range(5)]
+    prs = P.resolve(cfg(seed=1, pairs={"source": "catalog", "select": "distinct"}), metas)
+    assert all(len(v) == 1 for v in prs.values())
+    objs = [prs[m["stem"]][0]["object"] for m in metas]
+    n_cat = len(set(objs))                                  # fixture catalog is small; wraps around
+    assert n_cat > 1 and all(o == objs[i % n_cat] for i, o in enumerate(objs))   # round-robin
+    assert objs[0] != objs[1]
+
+
+def test_texture_list_emits_one_stimulus_per_level(cfg):
+    import csv
+    stem = _gen(0.5, seed=4)                                 # gestalt figure WITH a control silhouette
+    metas = S.build({"silhouettes": [{"type": "dropin", "params": {"files": [f"{stem}.png"]}}]})
+    pairs = {stem: [{"object": "white disc", "background": "black bg", "natural": False}]}
+    DC.run(cfg(dress={"conditions": ["illusory", "control"], "texture": [0, 3], "contrast": 0.0,
+                      "shadow": 0}), metas, pairs)
+    pngs = list((OUT / "comp").rglob("*.png"))
+    assert len(pngs) == 4 and len({q.stem for q in pngs}) == 4          # distinct ids
+    assert {str(q.parent.relative_to(OUT / "comp")) for q in pngs} == {
+        "plain/illusory", "plain/control", "texture/illusory", "texture/control"}
+    import csv
+    assert {r["texture"] for r in csv.DictReader(open(OUT / "manifest.csv"))} == {"0", "3"}
+    tex = sorted(json.loads(g.read_text())["difficulty"]["texture"] for g in (OUT / "gt").glob("*.json"))
+    assert tex == [0, 0, 3, 3]
+
+
+def test_rank_score_filter_thresholds_are_parameters():
+    """flat_solidity / max_gap / min_inducers can be loosened or tightened per call."""
+    stem = main.generate_one(0, 3, 3, 0.1, 0.1, closeness=0.5,
+                             sil_dir=str(SIL), ctrl_dir=str(SIL_CTRL), seed=3)   # has a 0.95-solidity cap
+    meta = S.parse_gestalt_name(stem)
+    p = SIL / f"{stem}.png"
+    assert S.rank_score(p, meta, min_inducers=3, all_sides=False) == -1.0            # default 0.90 rejects
+    assert S.rank_score(p, meta, min_inducers=3, all_sides=False, flat_solidity=None) >= 0
+    assert S.rank_score(p, meta, min_inducers=3, all_sides=False, flat_solidity=0.99) >= 0
+    assert S.rank_score(p, meta, **{"min_inducers": 3, "all_sides": False, "max_gap": 1.0}) == -1.0
+    assert S.rank_score(p, meta, min_inducers=3, all_sides=False, max_flat_frac=0.34) >= 0   # 1 of 3 flat ok
+    assert S.rank_score(p, meta, min_inducers=3, all_sides=False, max_flat_frac=0.2) == -1.0
+
+
+def test_quota_counts_fractions_and_absolute():
+    assert S._quota_counts(100, None) == {3: 15, 4: 35, 5: 35, 6: 15}
+    assert sum(S._quota_counts(7, {4: 0.5, 5: 0.5}).values()) == 7
+    assert S._quota_counts(0, {4: 3, 5: 2}) == {4: 3, 5: 2}
+
+
+def test_sample_figures_fills_quota_across_seeds():
+    """Keeps drawing seeds until the requested number of PASSING figures is reached."""
+    figs = S.sample_figures(3, closeness=0.5, quota={4: 3},
+                            grid={"randomness": [0], "n_vertices": [4], "edgy": [0.1], "rad": [0.1]},
+                            filter={"min_inducers": 3, "all_sides": False}, seed=1, max_seeds=12,
+                            jobs=2, log=lambda *a: None)
+    assert len(figs) == 3 and all(f[2] == 4 for f in figs)
+    assert len({f[5] for f in figs}) == 3                          # one grid cell -> 3 different seeds
+
+
+def test_generate_spec_with_n_renders_passing_figures():
+    metas = S.build({"seed": 1, "silhouettes": [{"type": "generate", "params": {
+        "n": 2, "closeness": 0.5, "quota": {4: 2},
+        "grid": {"randomness": [0], "n_vertices": [4], "edgy": [0.1], "rad": [0.1]},
+        "filter": {"min_inducers": 3, "all_sides": False}, "max_seeds": 12}}]})
+    assert len(metas) == 2 and all(m["n_inducers"] == 4 and m["seed"] >= 1 for m in metas)

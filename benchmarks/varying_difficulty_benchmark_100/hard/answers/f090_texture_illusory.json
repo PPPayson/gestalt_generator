@@ -1,0 +1,44 @@
+{
+  "id": "stim_47727b965c",
+  "condition": "illusory",
+  "n_inducers": 4,
+  "has_illusion": true,
+  "has_visible_contour": false,
+  "illusory_shape": "irregular",
+  "polygon_vertices": 8,
+  "nonillusory_shapes": {
+    "real_life": [
+      "white pearl",
+      "white pearl",
+      "white pearl",
+      "white pearl"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  },
+  "difficulty": {
+    "texture": 3,
+    "closeness": 0.25,
+    "closeness_measured": 0.4959,
+    "support_ratio": 0.341,
+    "contrast": 0.5,
+    "lum_gap": 0.1645
+  },
+  "figure": "f090",
+  "file": "texture_illusory/f090_texture_illusory.jpg",
+  "variant": "texture",
+  "object": "white pearl",
+  "background": "charcoal grey cork",
+  "texture": 3,
+  "closeness": 0.25,
+  "closeness_measured": 0.4959,
+  "support_ratio": 0.341,
+  "contrast": 0.5,
+  "lum_gap": 0.1645,
+  "silhouette": "img_0.8_8_4_0.1_0.1_0.25_s3",
+  "stim_id": "stim_47727b965c"
+}
