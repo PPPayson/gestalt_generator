@@ -2,7 +2,7 @@
 
     benchmarks/<name>/
       README.md                               what the set is + how to read a filename
-      preview_<level>.png                     the level's contact sheet
+      preview_<level>.jpg                     the level's contact sheet (half size)
       <level>/
         plain_illusory/    f001_plain_illusory.jpg ...     black inducers on a flat fill, no contour
         plain_contour/     f001_plain_contour.jpg ...      same, contour drawn
@@ -23,6 +23,7 @@ import sys, csv, json, shutil, pathlib, argparse, random
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
 from pipeline.utils import TEXTURE_DIRS, progress
 from pipeline.silhouettes import GESTALT_RE
+from PIL import Image
 
 COND = {"illusory": "illusory", "control": "contour"}
 ANSWER_COLS = ["figure", "file", "variant", "condition", "n_inducers", "has_illusion",
@@ -40,8 +41,14 @@ def _source(src, r, multi):
     return None
 
 
+def save_preview(sheet_png, out_jpg, scale=0.5, quality=80):
+    """Contact sheets are 1330 x 26000 px PNGs (10-14 MB); the committed preview is a half-size JPEG."""
+    im = Image.open(sheet_png).convert("RGB")
+    im = im.resize((max(1, int(im.width * scale)), max(1, int(im.height * scale))), Image.LANCZOS)
+    im.save(out_jpg, quality=quality, optimize=True)
+
+
 def export_level(src, dst, numbers, quality):
-    from PIL import Image
     rows = list(csv.DictReader(open(src / "manifest.csv")))
     for r in rows:
         if r.get("texture") in (None, ""):
@@ -75,7 +82,7 @@ def export_level(src, dst, numbers, quality):
     with open(dst / "answers.csv", "w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=ANSWER_COLS); w.writeheader(); w.writerows(out_rows)
     if (src / "contact_sheet.png").exists():
-        shutil.copy(src / "contact_sheet.png", dst.parent / f"preview_{dst.name}.png")
+        save_preview(src / "contact_sheet.png", dst.parent / f"preview_{dst.name}.jpg")
     print(f"  exported {len(out_rows)} images -> {dst}")
     return out_rows
 
@@ -128,7 +135,7 @@ def _write_readme(dst, name, summary):
               "- `plain_*`: black inducers on a flat fill (texture 0). `texture_*`: real object on a real background (texture 3).",
               "- `*_illusory`: no contour drawn (`has_illusion: true`). `*_contour`: the shape's outline drawn (positive control).",
               "- `answers.csv`: one row per image with the answer key and the difficulty parameters; `answers/<stem>.json` is the same per image.",
-              "- `preview_<level>.png`: contact sheet of the level.", "",
+              "- `preview_<level>.jpg`: contact sheet of the level (half size).", "",
               "Regenerate: `python3 tools/run_difficulty_set.py --name " + name + "` then "
               "`python3 tools/export_benchmark.py out/" + name + " " + name + "`."]
     (dst / "README.md").write_text("\n".join(lines) + "\n")

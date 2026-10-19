@@ -11,6 +11,6 @@
 - `plain_*`: black inducers on a flat fill (texture 0). `texture_*`: real object on a real background (texture 3).
 - `*_illusory`: no contour drawn (`has_illusion: true`). `*_contour`: the shape's outline drawn (positive control).
 - `answers.csv`: one row per image with the answer key and the difficulty parameters; `answers/<stem>.json` is the same per image.
-- `preview_<level>.png`: contact sheet of the level.
+- `preview_<level>.jpg`: contact sheet of the level.
 
 Regenerate: `python3 tools/run_difficulty_set.py --name varying_difficulty_benchmark_100` then `python3 tools/export_benchmark.py out/varying_difficulty_benchmark_100 varying_difficulty_benchmark_100`.

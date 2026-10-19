@@ -3,7 +3,7 @@ A generation provider is loaded ONLY when needed (missing assets / propose / con
 assets are already present (offline), no provider is loaded at all."""
 from . import (silhouettes, pairs as P, assets, validate, dress_composite,
                dress_controlnet, contact, providers)
-from .utils import OBJ, BG, slug, load_all_candidates
+from .utils import OBJ, BG, slug, load_all_candidates, bar
 
 
 def _missing(objs, bgs):
@@ -21,7 +21,6 @@ def run(cfg):
     (OUT / "manifest.csv").unlink(missing_ok=True)
 
     print(f"== {cfg['name']} : pairs.source={cfg['pairs']['source']} ==")
-    from .utils import bar
     stages = ["silhouettes", "pairs + assets", "dress", "contact sheet"]
     top = bar(len(stages), f"run {cfg['name']}", unit="stage")
     top.set_postfix_str(stages[0])

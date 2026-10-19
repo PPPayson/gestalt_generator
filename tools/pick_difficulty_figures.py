@@ -15,6 +15,7 @@ A config can do the same for ONE level with no tool at all:
 """
 import sys, pathlib, argparse, json
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
+from pipeline.silhouettes import sample_figures  # noqa: E402
 
 
 def _kv(items, cast):
@@ -48,7 +49,6 @@ def main():
     ap.add_argument("--max-seeds", type=int, default=200)
     ap.add_argument("--out", default="out/difficulty_figures.yaml")
     args = ap.parse_args()
-    from pipeline.silhouettes import sample_figures
     quota = {k: float(v) for k, v in _kv(args.quota, int).items()}
     filt = {k: _val(v) for k, v in _kv(args.filter, str).items()}
     figs = sample_figures(args.n, closeness=args.judge, quota=quota, filter=filt, seed=args.seed,

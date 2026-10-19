@@ -1,12 +1,24 @@
 """Silhouettes come from config specs only. Three spec types:
   - kanizsa : built-in registry producer (clean illusory n-gons)
-  - gestalt : select N (seeded) from PPPayson/gestalt_generator output, or regenerate via main.generate
+  - gestalt : select N (seeded) from PPPayson/gestalt_generator output
   - dropin  : explicit PNG file(s) already in data/silhouettes/
+  - generate: render figures fresh at a chosen closeness (pinned list, or sample until N pass)
 The friend's generator (main.py) writes into data/silhouettes/, which is also our store."""
-import json, math, re, random
+import itertools
+import json
+import math
+import multiprocessing as mp
+import os
+import random
+import re
+import shutil
+import tempfile
+from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw
-from .utils import SIL, SIL_CTRL
+import main
+from .geometry import separate_inducer_count
+from .utils import SIL, SIL_CTRL, bar, progress
 
 POLY = {3: "triangle", 4: "square", 5: "pentagon", 6: "hexagon"}
 GESTALT_RE = re.compile(r"img_([0-9.]+)_(\d+)_(\d+)_([0-9.]+)_([0-9.]+)(?:_([0-9.]+))?(?:_s(\d+))?$")
@@ -143,11 +155,7 @@ FILTER_DEFAULTS = {
 }
 
 
-_UNSET = object()
-
-
-def rank_score(path, meta, min_inducers=_UNSET, all_sides=_UNSET, flat_solidity=_UNSET,
-               max_gap=_UNSET, max_flat_frac=_UNSET, **filt):
+def rank_score(path, meta, **overrides):
     """Higher = a hero-like Kanizsa figure. Thresholds default to FILTER_DEFAULTS; pass them as
     kwargs (or a `filter` dict in a config) to loosen or tighten what passes. With all_sides=False
     the 4-quadrant test is replaced by a bounded max angular gap (3-inducer figures can never
@@ -159,13 +167,10 @@ def rank_score(path, meta, min_inducers=_UNSET, all_sides=_UNSET, flat_solidity=
           bounded max gap), at a uniform radius, centred and filling the frame;
       (4) crisp contour params (low edgy/rad). Deeper bites score higher.
     Returns -1.0 if blobs are unclean, there are <4 inducers, or any inducer is a flat cap."""
-    unknown = set(filt) - set(FILTER_DEFAULTS)
+    unknown = set(overrides) - set(FILTER_DEFAULTS)
     if unknown:
         raise ValueError(f"unknown filter keys {sorted(unknown)}; known: {sorted(FILTER_DEFAULTS)}")
-    f = {**FILTER_DEFAULTS, **{k: v for k, v in dict(min_inducers=min_inducers, all_sides=all_sides,
-                                                   flat_solidity=flat_solidity, max_gap=max_gap,
-                                                   max_flat_frac=max_flat_frac,
-                                                   **filt).items() if v is not _UNSET}}
+    f = {**FILTER_DEFAULTS, **overrides}
     img = np.array(Image.open(path).convert("L"))
     H, W = img.shape
     c = _blob_centroids(img)
@@ -203,21 +208,13 @@ def rank_score(path, meta, min_inducers=_UNSET, all_sides=_UNSET, flat_solidity=
     return geom * sharp * (0.4 + 0.6 * bite)                           # reward clear inward bites
 
 
-def use_gestalt(mode="random", n=20, seed=0, src_dir=None, regenerate=None, inducers=None,
-                filter=None):
+def use_gestalt(mode="random", n=20, seed=0, src_dir=None, inducers=None, filter=None):
     """Return N gestalt silhouettes, keeping only CLEAN ones (all inducers separate). `mode`:
       "random" (seeded random sample; alias "existing"),
-      "rank"   (top-N by rank_score: crispest contour + most regular full-frame coverage),
-      "regenerate" (run main.generate first, then random-select).
-    `inducers` optionally restricts the inducer count from the filename, e.g. [3, 4]."""
-    from pathlib import Path
-    from .geometry import separate_inducer_count
+      "rank"   (top-N by rank_score: crispest contour + most regular full-frame coverage).
+    `inducers` optionally restricts the inducer count from the filename, e.g. [3, 4]; `filter`
+    overrides FILTER_DEFAULTS for mode rank."""
     src = Path(src_dir) if src_dir else SIL
-    if mode == "regenerate":
-        import main                                  # his generator (loop extracted into generate())
-        print(f"  gestalt: regenerating into {src} ...")
-        main.generate(output_folder=str(src), seed=seed, **(regenerate or {}))
-        mode = "random"                             # then select randomly from the fresh grid
     # legacy pool only: closeness-suffixed figures (type: generate) would otherwise shift the
     # seeded draw of every existing config
     pool = [p.stem for p in src.glob("img_*.png")
@@ -315,8 +312,6 @@ def _quota_counts(n, quota):
 def _eval_candidate(job):
     """Worker: generate one candidate at every closeness in `levels`; the FIRST level is judged
     with the filter, the rest only need to be feasible + clean. -> (score, fig) or None."""
-    import main, tempfile, shutil
-    from .geometry import separate_inducer_count
     fig, levels, filt = job
     r, nv, np_, e, rad, seed = fig
     work = tempfile.mkdtemp(prefix="gestalt_sample_")
@@ -324,7 +319,7 @@ def _eval_candidate(job):
         score = None
         for i, c in enumerate(levels):
             sd, cd = f"{work}/s{i}", f"{work}/c{i}"
-            import os; os.makedirs(sd); os.makedirs(cd)
+            os.makedirs(sd); os.makedirs(cd)
             stem = main.generate_one(r, nv, np_, e, rad, closeness=c, sil_dir=sd, ctrl_dir=cd,
                                      seed=seed, tag_seed=True)
             if stem is None or separate_inducer_count(f"{sd}/{stem}.png") != np_:
@@ -355,8 +350,6 @@ def sample_figures(n, closeness=0.5, quota=None, grid=None, filter=None, seed=0,
     when every quota is met or `max_seeds` rounds are exhausted (then returns what it has, with a
     warning). Returns [[randomness, n_vertices, n_points, edgy, rad, seed], ...] best-first per
     inducer count. Parallel over `jobs` workers (default: all cores but one)."""
-    import itertools, multiprocessing as mp
-    from .utils import progress, bar
     g = {**GRID_DEFAULT, **(grid or {})}
     filt = {**FILTER_DEFAULTS, **(filter or {})}
     need = _quota_counts(n, quota)
@@ -426,10 +419,7 @@ def _render_figures(figures, closeness, seed=None):
     `figures` = [[randomness, n_vertices, n_points, edgy, rad, (seed)], ...]; a per-figure seed
     overrides `seed`. The same figures + seeds at another closeness give a matched figure (same
     polygon rotation, resized bites). Unclean or infeasible figures are skipped with a warning."""
-    import main
-    from .geometry import separate_inducer_count
     SIL.mkdir(parents=True, exist_ok=True); SIL_CTRL.mkdir(parents=True, exist_ok=True)
-    from .utils import progress
     stems = []
     for fig in progress(figures, desc=f"generate closeness={closeness}"):
         randomness, n_vertices, n_points, edgy, rad = fig[:5]
