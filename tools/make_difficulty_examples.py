@@ -1,7 +1,8 @@
 """Render per-lever sweep examples: one fixed figure, three rows, each row moving ONE difficulty
 lever (texture / closeness / contrast-camouflage) easy -> hard while the other two sit at the
-baseline (texture=3, closeness=0.5, contrast=0). Output: out/difficulty_examples.png. Silhouettes are
-generated fresh into out/difficulty/ so the shipped store in data/ is untouched.
+baseline (texture=3, closeness=0.5, contrast=0). Output: docs/difficulty_examples.png, the figure
+the README embeds. Silhouettes are generated fresh into out/difficulty/ so the shipped store in
+data/ is untouched.
 
 Run from the repo root:  python3 tools/make_difficulty_examples.py
 """
@@ -12,7 +13,7 @@ import yaml
 from PIL import Image, ImageDraw, ImageFont
 import main
 from pipeline import dress_composite as DC
-from pipeline.utils import OUT, OBJ, slug
+from pipeline.utils import ROOT, OUT, OBJ, slug
 
 
 def _font(size):
@@ -90,7 +91,7 @@ def build_sheet():
                    fill="black", font=f_big, anchor="mm")
             print(f"  {label}: {lever}={val} stem={stem} support={support:.2f} "
                   f"lum_gap={info.get('lum_gap')}")
-    out = OUT / "difficulty_examples.png"
+    out = ROOT / "docs" / "difficulty_examples.png"
     sheet.save(out)
     print(f"wrote {out}  (figure: {NV}-gon, {NP} inducers, seed {SEED}; "
           f"pair: {pair['object']} / {pair['background']})")
