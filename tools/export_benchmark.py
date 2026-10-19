@@ -22,6 +22,7 @@ single-level output (out/) is exported as one level named "all".
 import sys, csv, json, shutil, pathlib, argparse, random
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
 from pipeline.utils import TEXTURE_DIRS, progress
+from pipeline.silhouettes import GESTALT_RE
 
 COND = {"illusory": "illusory", "control": "contour"}
 ANSWER_COLS = ["figure", "file", "variant", "condition", "n_inducers", "has_illusion",
@@ -92,7 +93,12 @@ def main():
         sorted((p for p in src.iterdir() if p.is_dir() and (p / "manifest.csv").exists()),
                key=lambda p: (order.get(p.name, 9), p.name))
     # figure numbers: shared across levels, keyed on the silhouette with its closeness suffix removed
-    base = lambda stem: stem.rsplit("_", 2)[0] + "_" + stem.rsplit("_", 1)[1] if "_s" in stem else stem
+    def base(stem):                                   # figure identity = params + seed, closeness dropped
+        m = GESTALT_RE.match(stem)
+        if not m:
+            return stem
+        params, seed = m.groups()[:5], m.group(7)
+        return "img_" + "_".join(params) + (f"_s{seed}" if seed else "")
     figs = sorted({base(r["silhouette"]) for lv in levels
                    for r in csv.DictReader(open(lv / "manifest.csv"))})
     random.Random(a.seed).shuffle(figs)

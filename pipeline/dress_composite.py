@@ -234,7 +234,8 @@ def run(cfg, metas, pairs):
                         i = sid(meta["stem"], it["object"], "composite", tag)
                         img.save(stim_path(OUT, tex, cond, multi) / f"{i}.png")
                         append_manifest([i, meta["stem"], it["object"], it["background"],
-                                         "composite", mode, it.get("natural", True), cond, tex])
+                                         "composite", mode, it.get("natural", True), cond]
+                                        + ([tex] if multi else []))
                         gt.write(i, meta, it, "composite", mode, condition=cond,
                                  texture=tex, contrast=contrast,
                                  lum_gap=info.get("lum_gap"))

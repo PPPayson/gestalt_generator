@@ -294,7 +294,8 @@ if __name__ == "__main__":
 
     output_file = os.path.join(
         args.out_dir,
-        f"{args.provider}_{safe_model}_response.json",
+        f"{args.provider}_{safe_model}_{os.path.basename(os.path.normpath(args.data_dir))}"
+        f"_{args.variant or 'all'}_response.json",
     )
 
     with open(

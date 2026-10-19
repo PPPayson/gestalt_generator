@@ -26,19 +26,26 @@ _DEPTH = [int(os.environ.get("GESTALT_PROGRESS_DEPTH", "0"))]
 class _LogBar:
     """Non-TTY / no-tqdm bar: prints `desc: 25% (100/400) postfix` at every 5% step."""
     def __init__(self, total, desc, step=0.05):
-        self.total, self.desc, self.n, self.step, self._next, self.post = total, desc, 0, step, 0.0, ""
+        self.total, self.desc, self.n, self.post = total, desc, 0, ""
+        self.step = max(1, round((total or 0) * step)) if total else 1   # integer item threshold
+        self._next = 0
         self._emit()
 
     def update(self, k=1):
+        if k <= 0:
+            return
         self.n += k
-        frac = self.n / self.total if self.total else 1.0
-        if frac >= self._next or self.n == self.total:
+        if self.n >= self._next or (self.total and self.n >= self.total):
             self._emit()
 
     def _emit(self):
-        frac = self.n / self.total if self.total else 1.0
-        print(f"  {self.desc}: {int(100 * frac):3d}% ({self.n}/{self.total}) {self.post}".rstrip(), flush=True)
-        self._next = (int(frac / self.step) + 1) * self.step
+        if self.total:
+            print(f"  {self.desc}: {int(100 * self.n / self.total):3d}% ({self.n}/{self.total}) "
+                  f"{self.post}".rstrip(), flush=True)
+            self._next = (self.n // self.step + 1) * self.step
+        else:                                        # unknown total: a line every 50 items
+            print(f"  {self.desc}: {self.n} {self.post}".rstrip(), flush=True)
+            self._next = self.n + 50
 
     def set_postfix_str(self, s): self.post = s
     def set_description(self, d): self.desc = d
@@ -177,8 +184,10 @@ def append_manifest(row, out=OUT):
     with open(p, "a", newline="") as f:
         w = csv.writer(f)
         if new:
-            w.writerow(["id", "silhouette", "object", "background", "backend", "mode", "natural",
-                        "condition", "texture"])
+            cols = ["id", "silhouette", "object", "background", "backend", "mode", "natural", "condition"]
+            if len(row) > len(cols):                 # texture column only for multi-texture runs
+                cols.append("texture")               # (single-texture manifests stay byte-identical)
+            w.writerow(cols)
         w.writerow(row)
 
 

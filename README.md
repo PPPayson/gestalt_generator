@@ -141,7 +141,8 @@ We provide an example script for computing accuracy, precision, and recall acros
 The script will plot all model results in bar plots.
 
 ```bash
-python evaluate.py
+python evaluate.py                                   # gen100: answer keys in benchmarks/gen100/gt
+python evaluate.py --gt_folder benchmarks/varying_difficulty_benchmark_100/hard/answers   # a benchmark level
 ````
 <p align="center">
   <img src="outs/has_illusion_metrics.png" width="300">
