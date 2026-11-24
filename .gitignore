@@ -9,6 +9,9 @@ out/
 # Intermediates (regenerable)
 data/candidates_*.json
 data/pairs.json
+data/control
+data/negative
+data/positive
 
 # NOTE: data/assets/ is TRACKED — it ships the catalog asset pack so `provider: local`/offline
 # works with no generation. New assets you generate land here too; commit or ignore as you like.
