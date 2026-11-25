@@ -1,5 +1,5 @@
 # Rank-selected sharp-contour set. Reproduce with:  python3 run.py configs/gen_100_rank.yaml
-#   10 rank-selected silhouettes x 10 pairs x 2 conditions = 200 stimuli (100 figures).
+#   10 rank-selected silhouettes x 10 pairs x 3 conditions = 300 stimuli (100 figures).
 # The 10 silhouettes are auto-picked for (a) a crisp illusory contour (aligned inward bites, full-disc
 # inducers, low edginess/radius) and (b) regular full-frame coverage -- inducers evenly spaced around
 # the centre spanning all sides -- via tools/rank_silhouettes.py's metric.
@@ -21,7 +21,7 @@ models:                     # UNUSED for reproduction (no provider loaded when a
 pairs:
   source: catalog
   select: random
-  n_per_silhouette: 10      # 10 silhouettes x 10 pairs x 2 conditions = 200 stimuli (100 figures)
+  n_per_silhouette: 10      # 10 silhouettes x 10 pairs x 3 conditions = 300 stimuli (100 figures)
 
 assets:
   best_of: 3
@@ -29,7 +29,7 @@ assets:
 dress:
   backends: [composite]
   modes: [perfect]
-  conditions: [illusory, control]
+  conditions: [illusory, control, negative]
   contour: auto
   shadow: 55
   crop: true

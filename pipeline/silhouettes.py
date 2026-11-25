@@ -1,9 +1,11 @@
-"""Silhouettes come from config specs only. Three spec types:
+"""Silhouettes come from config specs only. Four spec types:
   - kanizsa : built-in registry producer (clean illusory n-gons)
-  - gestalt : select N (seeded) from PPPayson/gestalt_generator output
+  - gestalt : select N (seeded) from the stored pool in data/silhouettes/
   - dropin  : explicit PNG file(s) already in data/silhouettes/
-  - generate: render figures fresh at a chosen closeness (pinned list, or sample until N pass)
-The friend's generator (main.py) writes into data/silhouettes/, which is also our store."""
+  - generate: render figures fresh (pinned rows, sample until N pass the filter, or an exhaustive
+              sweep of every parameter combination); see use_generate for every parameter
+Every silhouette in the store has a paired control (outline drawn, data/control/) and a negative
+(inducers shuffled so they share no contour, data/negative/)."""
 import itertools
 import json
 import math
@@ -18,7 +20,7 @@ import numpy as np
 from PIL import Image, ImageDraw
 import main
 from .geometry import separate_inducer_count
-from .utils import SIL, SIL_CTRL, bar, progress
+from .utils import SIL, SIL_CTRL, SIL_NEG, bar, progress
 
 POLY = {3: "triangle", 4: "square", 5: "pentagon", 6: "hexagon"}
 GESTALT_RE = re.compile(r"img_([0-9.]+)_(\d+)_(\d+)_([0-9.]+)_([0-9.]+)(?:_([0-9.]+))?(?:_s(\d+))?$")
@@ -282,18 +284,55 @@ def use_dropin(files=None, glob=None):
     return stems
 
 
-# --- generate at a chosen closeness ----------------------------------------
-QUOTA_DEFAULT = {3: 0.15, 4: 0.35, 5: 0.35, 6: 0.15}      # inducer-count mix: peaked, not uniform
+# --- generate: render figures fresh ------------------------------------------------------
+# Config names for the five figure knobs -> the internal names main.py / filenames use.
+KNOBS = {"polygon_randomness": "randomness", "n_vertices": "n_vertices", "n_inducers": "n_points",
+         "corner_sharpness": "edgy", "side_bulge": "rad"}
+# The SHARED value grid: the legacy silhouette pool, the closure sweep and `type: generate` all draw
+# from these lists unless a config narrows them (`space`).
 GRID_DEFAULT = {"randomness": [0, 0.4, 0.8, 1], "n_vertices": [3, 4, 5, 6, 7, 8],
-                "edgy": [0.1, 0.5], "rad": [0.1, 0.2]}       # main.generate's grid minus n_points
+                "n_points": [3, 4, 5, 6], "edgy": [0.1, 0.5, 1], "rad": [0.1, 0.2, 0.4]}
 
 
-def _quota_counts(n, quota):
-    """{n_points: count}. `quota` values all <= 1 are FRACTIONS (renormalised to sum 1, remainder
-    to the largest); otherwise they are absolute counts and must sum to `n`. None -> default mix."""
-    q = {int(k): float(v) for k, v in (QUOTA_DEFAULT if quota is None else quota).items()}
+def _space(space):
+    """Normalise a config `space` (new or internal knob names; list or {min, max} per knob) to
+    internal names. Missing knobs -> GRID_DEFAULT. Ranges stay dicts for the sampler."""
+    out = dict(GRID_DEFAULT)
+    for k, v in (space or {}).items():
+        key = KNOBS.get(k, k)
+        if key not in GRID_DEFAULT:
+            raise ValueError(f"unknown space knob {k!r}; known: {sorted(KNOBS)}")
+        if isinstance(v, dict):
+            if set(v) != {"min", "max"}:
+                raise ValueError(f"space.{k}: a range is {{min, max}}, got {v}")
+            out[key] = {"min": float(v["min"]), "max": float(v["max"])}
+        else:
+            out[key] = list(v) if isinstance(v, (list, tuple)) else [v]
+    return out
+
+
+def _lists_only(g, what):
+    bad = [k for k, v in g.items() if isinstance(v, dict)]
+    if bad:
+        raise ValueError(f"{what} needs lists in space, not ranges: {bad}")
+
+
+def _draw_knob(v, rng, integer):
+    """One value for a knob: pick from a list or sample a {min, max} range."""
+    if isinstance(v, dict):
+        x = rng.uniform(v["min"], v["max"])
+        return int(round(x)) if integer else round(float(x), 3)
+    return v[rng.integers(len(v))]
+
+
+def _quota_counts(n, quota, n_points_list=(3, 4, 5, 6)):
+    """{n_points: count}. quota None/"uniform" -> equal shares over `n_points_list`; values all <= 1
+    are FRACTIONS (renormalised, remainder to the largest); otherwise absolute counts summing to n."""
+    if quota is None or quota == "uniform":
+        quota = {int(k): 1.0 / len(n_points_list) for k in n_points_list}
+    q = {int(k): float(v) for k, v in quota.items()}
     if not q or sum(q.values()) <= 0:
-        raise ValueError(f"quota must request at least one figure: {quota}")
+        raise ValueError(f"inducer_count_mix must request at least one figure: {quota}")
     if all(v <= 1.0 for v in q.values()):                           # fractions -> counts
         tot = sum(q.values())
         exact = {k: n * v / tot for k, v in q.items()}
@@ -303,28 +342,40 @@ def _quota_counts(n, quota):
     else:
         counts = {k: int(v) for k, v in q.items()}
         if n and sum(counts.values()) != n:
-            raise ValueError(f"quota counts {counts} sum to {sum(counts.values())}, not n={n}")
+            raise ValueError(f"inducer_count_mix counts {counts} sum to {sum(counts.values())}, not {n}")
     if sum(counts.values()) == 0:
-        raise ValueError(f"quota {quota} yields no figures for n={n}")
+        raise ValueError(f"inducer_count_mix {quota} yields no figures for n={n}")
     return counts
+
+
+def _filter(quality_filter):
+    """quality_filter: True -> FILTER_DEFAULTS, False -> None (keep every clean figure), dict -> overrides."""
+    if quality_filter is True or quality_filter is None:
+        return dict(FILTER_DEFAULTS)
+    if quality_filter is False:
+        return None
+    unknown = set(quality_filter) - set(FILTER_DEFAULTS)
+    if unknown:
+        raise ValueError(f"unknown filter keys {sorted(unknown)}; known: {sorted(FILTER_DEFAULTS)}")
+    return {**FILTER_DEFAULTS, **quality_filter}
 
 
 def _eval_candidate(job):
     """Worker: generate one candidate at every closeness in `levels`; the FIRST level is judged
-    with the filter, the rest only need to be feasible + clean. -> (score, fig) or None."""
-    fig, levels, filt = job
+    with the filter (None = no filter), the rest only need to be feasible + clean. -> (score, fig) or None."""
+    fig, levels, filt, geom = job
     r, nv, np_, e, rad, seed = fig
     work = tempfile.mkdtemp(prefix="gestalt_sample_")
     try:
-        score = None
+        score = 0.0
         for i, c in enumerate(levels):
             sd, cd = f"{work}/s{i}", f"{work}/c{i}"
             os.makedirs(sd); os.makedirs(cd)
             stem = main.generate_one(r, nv, np_, e, rad, closeness=c, sil_dir=sd, ctrl_dir=cd,
-                                     seed=seed, tag_seed=True)
+                                     seed=seed, tag_seed=True, **geom)
             if stem is None or separate_inducer_count(f"{sd}/{stem}.png") != np_:
                 return None
-            if i == 0:
+            if i == 0 and filt is not None:
                 score = rank_score(f"{sd}/{stem}.png", parse_gestalt_name(stem), **filt)
                 if score < 0:
                     return None
@@ -342,29 +393,37 @@ class _Serial:
 
 
 def sample_figures(n, closeness=0.5, quota=None, grid=None, filter=None, seed=0,
-                   also_closeness=(), max_seeds=200, jobs=None, log=print):
+                   also_closeness=(), max_seeds=200, jobs=None, log=print, geom=None):
     """Keep drawing figures until `n` PASS the filter, in the requested inducer-count mix.
-    Draws the parameter `grid` (x n_points from the quota) under seed, seed+1, ... ; each candidate
-    is rendered at `closeness` (judged by rank_score with `filter`) and, if `also_closeness` is
-    given, at those levels too (must be feasible + clean there: matched multi-level sets). Stops
-    when every quota is met or `max_seeds` rounds are exhausted (then returns what it has, with a
-    warning). Returns [[randomness, n_vertices, n_points, edgy, rad, seed], ...] best-first per
-    inducer count. Parallel over `jobs` workers (default: all cores but one)."""
-    g = {**GRID_DEFAULT, **(grid or {})}
-    filt = {**FILTER_DEFAULTS, **(filter or {})}
-    need = _quota_counts(n, quota)
+    `grid` is a normalised space (lists or {min,max} ranges per knob, internal names); each round
+    enumerates the list knobs under seed, seed+1, ... and samples the range knobs once per cell.
+    Each candidate is rendered at `closeness` (judged by rank_score with `filter`; filter None keeps
+    every clean figure) and, if `also_closeness` is given, at those levels too (must be feasible +
+    clean there: matched multi-level sets). Stops when every quota is met or `max_seeds` rounds are
+    exhausted (then returns what it has, with a warning). Returns
+    [[randomness, n_vertices, n_points, edgy, rad, seed], ...] best-first per inducer count.
+    Parallel over `jobs` workers (default: all cores but one)."""
+    g = _space(grid)                                   # partial / old-name grids are fine
+    filt = filter
+    if isinstance(g["n_points"], dict):
+        raise ValueError("space.n_inducers must be a list (the inducer-count mix needs discrete counts)")
+    counts = g["n_points"]
+    if quota in (None, "uniform") and filt is not None and filt.get("min_inducers"):
+        # the default mix only covers counts the filter can pass (3-inducer figures never pass
+        # min_inducers 4 / all_sides, and would stall the draw for max_seeds rounds)
+        counts = [k for k in counts if k >= filt["min_inducers"]] or counts
+    need = _quota_counts(n, quota, counts)
     levels = [closeness] + list(also_closeness)
     have = {k: [] for k in need}
     jobs = jobs or max(1, mp.cpu_count() - 1)
-    unknown = set(filt) - set(FILTER_DEFAULTS)
-    if unknown:
-        raise ValueError(f"unknown filter keys {sorted(unknown)}; known: {sorted(FILTER_DEFAULTS)}")
+    geom = geom or {}
     done = lambda: all(len(have[k]) >= need[k] for k in need)
     log(f"  sample: need {need} at closeness={closeness} (+{list(also_closeness)}), filter={filt}")
     passed = lambda: sum(min(len(have[k]), need[k]) for k in need)
     short_str = lambda: " ".join(f"{k}:{min(len(have[k]), need[k])}/{need[k]}" for k in need)
     top = bar(n, f"figures passed (closeness={closeness})")     # persists across seed rounds
     top.set_postfix_str(short_str())
+    lists = {k: (v if isinstance(v, list) else [None]) for k, v in g.items()}   # None = range, drawn per cell
     # NOTE: the default start method (spawn on macOS/Windows) re-imports the caller's __main__ in
     # every worker, so entry scripts must be guarded (run.py is); fork is not used because forking
     # a process with live BLAS/tqdm threads deadlocks on macOS. jobs == 1 never forks or spawns.
@@ -372,10 +431,17 @@ def sample_figures(n, closeness=0.5, quota=None, grid=None, filter=None, seed=0,
         for rnd in range(max_seeds):
             s = seed + rnd
             short = [k for k in need if len(have[k]) < need[k]]
-            combos = [[r, nv, np_, e, rad, s] for r, nv, np_, e, rad in itertools.product(
-                g["randomness"], g["n_vertices"], short, g["edgy"], g["rad"])]
+            combos = []
+            for j, (r, nv, np_, e, rad) in enumerate(itertools.product(
+                    lists["randomness"], lists["n_vertices"], short, lists["edgy"], lists["rad"])):
+                cell_rng = np.random.default_rng([s, j])
+                r = _draw_knob(g["randomness"], cell_rng, False) if r is None else r
+                nv = _draw_knob(g["n_vertices"], cell_rng, True) if nv is None else nv
+                e = _draw_knob(g["edgy"], cell_rng, False) if e is None else e
+                rad = _draw_knob(g["rad"], cell_rng, False) if rad is None else rad
+                combos.append([r, nv, np_, e, rad, s])
             before = passed()
-            for res in progress(pool.imap_unordered(_eval_candidate, [(f, levels, filt) for f in combos]),
+            for res in progress(pool.imap_unordered(_eval_candidate, [(f, levels, filt, geom) for f in combos]),
                                 desc=f"round {rnd + 1} (seed {s})", total=len(combos)):
                 if res:
                     have[res[1][2]].append(res)
@@ -402,19 +468,156 @@ def sample_figures(n, closeness=0.5, quota=None, grid=None, filter=None, seed=0,
     return out
 
 
-def use_generate(figures=None, closeness=0.5, seed=None, n=None, quota=None, grid=None,
-                 filter=None, also_closeness=(), max_seeds=200):
-    """`type: generate`. Either pin `figures` (explicit [[randomness, n_vertices, n_points, edgy,
-    rad, seed], ...]) or ask for `n` figures that pass the filter (sample_figures: quota / grid /
-    filter / also_closeness as above). Figures are then rendered at `closeness` into the store."""
+def _sweep_combos(g, inducer_radius, inducer_scale):
+    """Every combination of the space lists, loop order randomness > n_vertices > n_inducers > edgy
+    > rad > radius. `inducer_radius`: "derived" -> one radius per cell, 3 * inducer_scale /
+    n_inducers; a list -> every listed radius not larger than the derived one (bigger discs would
+    overlap at that count). Returns [(randomness, n_vertices, n_points, edgy, rad, radius), ...]."""
+    _lists_only(g, "n_figures: all")
+    out = []
+    for r in g["randomness"]:
+        for nv in g["n_vertices"]:
+            for np_ in g["n_points"]:
+                derived = int(inducer_scale * 3.0) / np_
+                radii = [derived] if inducer_radius == "derived" else \
+                        [float(x) for x in inducer_radius if float(x) <= derived + 1e-9]
+                for e in g["edgy"]:
+                    for rad in g["rad"]:
+                        for radius in radii:
+                            out.append((r, int(nv), int(np_), e, rad, radius))
+    return out
+
+
+def _sweep_cell(job):
+    """Worker: render one sweep figure (illusory, control, negative) at an explicit disc radius.
+    rng "shared": ONE stream `default_rng(seed + idx)` feeds polygon, placement and negative, with up
+    to `attempts` re-draws of the whole figure when placement or the negative fails.
+    rng "fresh": polygon and placement each restart from `seed + idx` (main.py's convention), the
+    negative draws from a fresh stream of the same seed. Returns (idx, stem) or (idx, None)."""
+    idx, combo, seed, rng_mode, polygon_shape, output_shape, contour_px, attempts, dirs = job
+    r, nv, np_, e, rad, radius = combo
+    sil_dir, ctrl_dir, neg_dir = dirs
+    figure_seed = seed + idx
+    rng = np.random.default_rng(figure_seed) if rng_mode == "shared" else None
+    pos = neg = ring = None
+    for _ in range(attempts if rng_mode == "shared" else 1):
+        kw = {"rng": rng} if rng is not None else {"seed": figure_seed}
+        a = main.get_random_points(n=nv, scale=0.8, randomness=r, **kw)
+        x, y, _ = main.get_bezier_curve(a, rad=rad, edgy=e)
+        x = np.int16(polygon_shape[0] * x); y = np.int16(polygon_shape[1] * y)
+        coords = np.stack([x, y], axis=1)
+        mask, coords = main.padded_polygon_mask(coords, polygon_shape, output_shape)
+        sampled = main.sample_points(coords, n=np_, mindist=radius * 2.5, **kw)
+        if sampled is None:
+            continue
+        out = main.draw_shapes(sampled, mindist=radius, shape=output_shape, shape_type="circle")
+        out[mask] = 0                                               # carve the illusory polygon
+        nrng = rng if rng is not None else np.random.default_rng(figure_seed)
+        neg = main.shuffle_discs(out, sampled, mindist=radius, shape=output_shape, shape_type="circle", rng=nrng)
+        if neg is None:
+            continue
+        ring = mask - main.erode_mask(mask, contour_px)                # polygon outline
+        pos = out
+        break
+    if pos is None:
+        return idx, None
+    stem = f"gen_s{seed}_{idx:05d}"
+    save = lambda d, arr: Image.fromarray((np.asarray(arr, dtype=np.uint8) * 255)).save(Path(d) / f"{stem}.png")
+    save(sil_dir, pos); save(ctrl_dir, np.clip(pos + ring, 0, 1)); save(neg_dir, neg)
+    meta = {"illusion": stem, "inducer_shape": "a disc with a bezier-polygon bite (gestalt inducer)",
+            "illusory_shape": "irregular", "primitive": "circle", "n_inducers": np_,
+            "polygon_vertices": nv, "randomness": r, "edgy": e, "rad": rad,
+            "inducer_radius": radius, "seed": figure_seed, "sweep_index": idx, "rng": rng_mode,
+            "support_ratio": round(main.support_ratio(main.draw_shapes(sampled, mindist=radius, shape=output_shape), mask, contour_px), 4)}
+    (Path(sil_dir) / f"{stem}.json").write_text(json.dumps(meta))
+    return idx, stem
+
+
+def render_sweep(seed=0, space=None, figures_per_combination=1, inducer_radius="derived",
+                 inducer_scale=125, polygon_size=(700, 700), output_shape=(1024, 1024), contour_px=5,
+                 rng="fresh", attempts=100, indices=None, jobs=None, dirs=None, log=print):
+    """`n_figures: all`: render EVERY combination of the space lists (x `figures_per_combination`
+    random draws each) at an explicit disc radius, with illusory + control + negative written side by
+    side. Figure idx -> combination idx % len(combos), seed `seed + idx`. `indices` restricts to a
+    subset of idx (partial sweeps, tests). Returns the stems in idx order."""
+    g = _space(space)
+    combos = _sweep_combos(g, inducer_radius, inducer_scale)
+    total = len(combos) * int(figures_per_combination)
+    idxs = list(range(total)) if indices is None else [int(i) for i in indices]
+    dirs = dirs or (SIL, SIL_CTRL, SIL_NEG)
+    for d in dirs:
+        Path(d).mkdir(parents=True, exist_ok=True)
+    jobs = jobs or max(1, mp.cpu_count() - 1)
+    polygon_shape = list(polygon_size); output_shape = list(output_shape)
+    jobs_list = [(i, combos[i % len(combos)], int(seed), rng, polygon_shape, output_shape, int(contour_px),
+                  int(attempts), tuple(str(d) for d in dirs)) for i in idxs]
+    log(f"  sweep: {len(combos)} combinations x {figures_per_combination} = {total} figures"
+        + (f" (rendering {len(idxs)})" if indices is not None else "") + f", rng={rng}")
+    got = {}
+    with (mp.Pool(jobs) if jobs > 1 and len(jobs_list) > 1 else _Serial()) as pool:
+        for i, stem in progress(pool.imap_unordered(_sweep_cell, jobs_list, chunksize=4),
+                                desc="sweep", total=len(jobs_list)):
+            if stem is None:
+                log(f"  ! sweep: figure {i} failed placement after {attempts} attempts; skipping")
+            else:
+                got[i] = stem
+    return [got[i] for i in idxs if i in got]
+
+
+def use_generate(figures=None, seed=None, space=None, n_figures=None, figures_per_combination=1,
+                 inducer_count_mix="uniform", inducer_closeness=0.5, also_closeness=(),
+                 quality_filter=True, max_seeds=200, polygon_size=(700, 700), inducer_scale=125,
+                 inducer_radius="derived", contour_px=5, rng="fresh", jobs=None, indices=None,
+                 # old names, still accepted
+                 n=None, grid=None, quota=None, filter=None, closeness=None,
+                 polygon_shape=None, basedist=None):
+    """`type: generate`: render figures fresh into the store. Three ways to say WHICH figures:
+      figures            pinned rows [[randomness, n_vertices, n_points, edgy, rad, seed], ...]
+      n_figures: <int>   draw from `space` until that many pass `quality_filter`, in the
+                         `inducer_count_mix` (default equal shares over space.n_inducers)
+      n_figures: all     every combination of the space lists, `figures_per_combination` draws each,
+                         no filter (an exhaustive sweep)
+    HOW they are drawn: `polygon_size` (px, inside a 1024 canvas), `inducer_scale` (disc radius =
+    3 * inducer_scale / n_inducers when `inducer_radius` is "derived"; a list of px radii sweeps disc
+    size as its own factor and is honoured for `n_figures: all`), `inducer_closeness` (bite depth,
+    0 far .. 1 nearly touching; used when the radius is derived), `contour_px` (control outline),
+    `rng` ("fresh": restart from the seed per step, so the same seed gives the same polygon at every
+    closeness; "shared": one stream per figure for polygon, placement and negative).
+    `indices` (with n_figures: all) renders only those sweep positions, e.g. a few figures to dress;
+    `max_seeds` caps how many seeds a numeric n_figures tries per row before giving up.
+    Old names n/grid/quota/filter/closeness/polygon_shape/basedist are accepted as aliases."""
+    n_figures = n if n_figures is None else n_figures
+    space = dict((grid if space is None else space) or {})
+    if "inducer_radius" in space:                      # the radius knob may be written inside `space`
+        inducer_radius = space.pop("inducer_radius")
+    inducer_count_mix = quota if quota is not None else inducer_count_mix
+    quality_filter = filter if filter is not None else quality_filter
+    inducer_closeness = closeness if closeness is not None else inducer_closeness
+    polygon_size = polygon_shape or polygon_size
+    inducer_scale = basedist or inducer_scale
+    if rng not in ("fresh", "shared"):
+        raise ValueError(f"rng must be 'fresh' or 'shared', got {rng!r}")
+    seed = 0 if seed is None else int(seed)
+    geom = {"polygon_shape": tuple(polygon_size), "basedist": inducer_scale, "contour_px": contour_px}
+    if n_figures == "all":
+        if quality_filter is not False:
+            print("  ! generate: n_figures: all renders every combination; quality_filter is not applied")
+        return render_sweep(seed=seed, space=space, figures_per_combination=figures_per_combination,
+                            inducer_radius=inducer_radius, inducer_scale=inducer_scale,
+                            polygon_size=polygon_size, contour_px=contour_px, rng=rng,
+                            indices=indices, jobs=jobs)
+    if inducer_radius != "derived":
+        raise ValueError("a list of inducer_radius is only used with n_figures: all; "
+                         "numeric n_figures and pinned figures size discs by inducer_closeness")
     if figures is None:
-        assert n, "type: generate needs `figures` or `n`"
-        figures = sample_figures(n, closeness=closeness, quota=quota, grid=grid, filter=filter,
-                                 seed=seed or 0, also_closeness=also_closeness, max_seeds=max_seeds)
-    return _render_figures(figures, closeness, seed)
+        assert n_figures, "type: generate needs `figures` or `n_figures`"
+        figures = sample_figures(int(n_figures), closeness=inducer_closeness, quota=inducer_count_mix,
+                                 grid=_space(space), filter=_filter(quality_filter), seed=seed,
+                                 also_closeness=also_closeness, max_seeds=max_seeds, jobs=jobs, geom=geom)
+    return _render_figures(figures, inducer_closeness, seed, geom=geom)
 
 
-def _render_figures(figures, closeness, seed=None):
+def _render_figures(figures, closeness, seed=None, geom=None):
     """Render figures fresh via main.generate_one at ONE `closeness` into the store (SIL + SIL_CTRL).
     `figures` = [[randomness, n_vertices, n_points, edgy, rad, (seed)], ...]; a per-figure seed
     overrides `seed`. The same figures + seeds at another closeness give a matched figure (same
@@ -426,7 +629,7 @@ def _render_figures(figures, closeness, seed=None):
         s = fig[5] if len(fig) > 5 else seed
         stem = main.generate_one(randomness, int(n_vertices), int(n_points), edgy, rad,
                                  closeness=closeness, sil_dir=str(SIL), ctrl_dir=str(SIL_CTRL),
-                                 seed=s, tag_seed=True)
+                                 seed=s, tag_seed=True, **(geom or {}))
         if stem is None:
             print(f"  ! generate: placement failed for {fig} at closeness={closeness}; skipping"); continue
         if separate_inducer_count(SIL / f"{stem}.png") != int(n_points):
@@ -459,6 +662,8 @@ def build(cfg):
     for s in stems:                                 # dedupe, preserve order
         if s not in seen:
             seen.add(s); uniq.append(s)
+    from .negative import ensure_negatives
+    ensure_negatives(uniq, seed=cfg.get("seed", 0))     # every silhouette gets a seeded negative
     metas = [json.loads((SIL / f"{s}.json").read_text()) | {"stem": s} for s in uniq]
     print(f"  silhouettes: {len(metas)} ({', '.join(uniq[:6])}{' ...' if len(uniq) > 6 else ''})")
     return metas

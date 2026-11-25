@@ -3,6 +3,8 @@ opaque id (kept in out/gt/, separate from the images so filenames stay uninforma
 
 Task = the model names the illusory shape and counts inducers, so GT holds exactly:
   n_inducers, has_illusion, illusory_shape, nonillusory_shapes{real_life, primitive}.
+Conditions: illusory (figure implied), control (figure outlined), negative (same inducers shuffled,
+no figure: has_illusion false, has_visible_contour false).
 Provenance (object/background/backend/mode) lives in out/manifest.csv, joined by id.
 """
 import json
@@ -26,9 +28,9 @@ def write(stim_id, meta, item, backend, mode, condition="illusory",
     control = condition == "control"                        # the illusory shape's contour is DRAWN
     gt = {
         "id": stim_id,
-        "condition": condition,                             # illusory | control
+        "condition": condition,                             # illusory | control | negative
         "n_inducers": n,
-        "has_illusion": not control,                        # control shows a real (drawn) contour, not illusory
+        "has_illusion": condition == "illusory",            # control: a real drawn contour; negative: none
         "has_visible_contour": control,
         "illusory_shape": _illusory_shape(meta),
         "polygon_vertices": meta.get("polygon_vertices"),   # deterministic shape descriptor (gestalt)

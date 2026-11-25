@@ -1,0 +1,33 @@
+{
+  "id": "stim_8ee26137ac",
+  "condition": "control",
+  "n_inducers": 5,
+  "has_illusion": false,
+  "has_visible_contour": true,
+  "illusory_shape": "irregular",
+  "polygon_vertices": 7,
+  "nonillusory_shapes": {
+    "real_life": [
+      "Frisbee",
+      "Frisbee",
+      "Frisbee",
+      "Frisbee",
+      "Frisbee"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  },
+  "difficulty": {
+    "texture": 3,
+    "closeness": null,
+    "closeness_measured": null,
+    "support_ratio": null,
+    "contrast": null,
+    "lum_gap": null
+  }
+}

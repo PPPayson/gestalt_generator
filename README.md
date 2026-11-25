@@ -6,14 +6,22 @@
   <img src="benchmarks/gen100/images/illusory/stim_2350676d38.jpg" width="300">
   <img src="benchmarks/gen100/images/control/stim_bec2bca3aa.jpg" width="300">
 </p>
-<p align="center"><i>Left: illusory condition (the triangle is only implied). Right: matched control (the same figure with its contour drawn).</i></p>
+<p align="center"><i>Left: illusory condition, the figure is only implied. Right: control, the same figure with its contour drawn.</i></p>
 
-**Gestalt Generator** produces benchmark stimuli that test perceptual grouping in vision models.
-Perceptual grouping — binding separate elements into a whole — underlies how we perceive objects and
-contours. One of the classic shapes is the *Kanizsa* figure where several "pac-man" objects are arranged such that their
-bitten edges evoke a shape of a triangle. We build these figures from novel configurations and add texture using **real
-objects** and **real backgrounds**. Each figure comes in two matched conditions — **illusory** (no
-contour) and a positive-**control** with the shape's contour drawn. In this way, we control the model's ability to match patterns based on shapes and configuration of the objects in the scene, as well as count or name shapes.
+Gestalt Generator makes benchmark images that test whether a vision model groups separate parts into
+one figure. We arrange real objects, cut like the "pac-men" of a Kanizsa figure, so that their bites
+line up on a hidden polygon. A viewer sees the polygon although no pixel draws it. Every figure comes
+in three matched conditions that share the same objects, count and arrangement:
+
+| condition | what the image shows | `has_illusion` | `has_visible_contour` |
+|---|---|---|---|
+| `illusory` | the bites line up, the figure is implied | true | false |
+| `control` | the same figure with its contour drawn | false | true |
+| `negative` | the same objects moved to each other's places, so the bites share no contour | false | false |
+
+The control shows that a model can name and count the shape when it is drawn. The negative shows
+whether a model that reports a figure does so because the parts align, not because bitten discs are
+present.
 
 ## Installation
 
@@ -21,34 +29,41 @@ contour) and a positive-**control** with the shape's contour drawn. In this way,
 pip install -r requirements.txt
 ```
 
-The reproduction path is pure Python and needs no GPU, API key, or internet connection.
+Reproducing any shipped set is pure Python. It needs no GPU, API key or internet connection.
 
 ## Quick start
-
-We ship a fixed set of 200 stimuli — 100 figures, each in the illusory and control conditions. To
-regenerate it exactly — the configuration pins `seed: 1` — run:
 
 ```bash
 python3 run.py configs/gen100.yaml
 ```
 
-This writes to `out/`:
+This renders the shipped set: 10 figures, each dressed with 10 object pairs, in 3 conditions, for
+300 images. The run writes:
 
 ```
-out/comp/illusory/<id>.png    100 illusory stimuli
-out/comp/control/<id>.png     100 control stimuli (contour drawn)
-out/gt/<id>.json              one answer key per image (carries `condition`)
-out/manifest.csv              id -> silhouette / object / background / condition
-out/silhouettes/  out/control/   the source silhouettes used, split like the input
+out/comp/<condition>/<id>.png    the images, one folder per condition
+out/gt/<id>.json                 the answer key of each image
+out/manifest.csv                 id -> silhouette, object, background, condition
+out/silhouettes/ out/control/ out/negative/   the source silhouettes used
 ```
 
-Filenames are opaque hashes, so the answer is not encoded in the name; each image is joined to its
-answer key by `id`. A rendered preview of the set is committed under `benchmarks/gen100/`.
+Filenames are opaque hashes, so a name never encodes the answer.
+
+**Shipped sets.** Each folder under `benchmarks/` is the output of one command, and running it
+again gives the same files.
+
+| set | command | images |
+|---|---|---|
+| `benchmarks/gen_100_rank/` | `python3 run.py configs/gen_100_rank.yaml` | 300: 10 ranked figures × 10 pairs × 3 conditions |
+| `benchmarks/varying_difficulty_benchmark_100/` | `python3 tools/run_difficulty_set.py` then `python3 tools/export_benchmark.py out/varying_difficulty_benchmark_100 varying_difficulty_benchmark_100` | 1,800: 100 figures × 2 textures × 3 conditions × 3 levels |
+| `out/` after `python3 run.py configs/closure_sweep.yaml` | the exhaustive 21,600-figure sweep for the closure score, not committed | 64,800 masks |
+
+`benchmarks/gen100/` is an earlier rendering of the quick-start set, made with a previous object
+catalog, in the illusory and control conditions only. It is kept as is and cannot be regenerated.
 
 ## The task
 
-We consider a task where a model, shown a stimulus, must report what is recorded in its answer key
-`out/gt/<id>.json`:
+A model shown an image reports what the answer key records:
 
 ```json
 {
@@ -59,258 +74,193 @@ We consider a task where a model, shown a stimulus, must report what is recorded
   "has_visible_contour": true,
   "illusory_shape": "irregular",
   "polygon_vertices": 3,
-  "nonillusory_shapes": {
-    "real_life": ["satellite dish", "satellite dish", "satellite dish", "satellite dish", "satellite dish", "satellite dish"],
-    "primitive": ["circle", "circle", "circle", "circle", "circle", "circle"]
-  }
+  "nonillusory_shapes": {"real_life": ["satellite dish", "..."], "primitive": ["circle", "..."]},
+  "difficulty": {"texture": 3, "closeness": 0.5, "closeness_measured": 0.55,
+                 "support_ratio": 0.47, "contrast": 0.25, "lum_gap": 0.11}
 }
 ```
 
-Each field states one question the model should answer:
-
-| Field | Question |
+| field | question it answers |
 |---|---|
 | `n_inducers` | how many objects are present |
-| `has_illusion` | whether an illusory figure appears |
-| `illusory_shape` | what the illusory figure is (`irregular` for bezier figures) |
-| `polygon_vertices` | the figure's vertex count — a deterministic shape descriptor |
-| `nonillusory_shapes.real_life` | what the real objects are |
-| `nonillusory_shapes.primitive` | their geometric primitive |
-
-The answer key also carries a `difficulty` block recording how hard the stimulus was made to be —
-see [Difficulty knobs](#difficulty-knobs).
-
-Each figure appears in two `condition`s that share the same objects, count, and shape, differing only
-in whether the contour is drawn:
-
-- **`illusory`** — the shape is only induced (`has_illusion: true`, `has_visible_contour: false`).
-- **`control`** — the shape's contour is drawn (`has_illusion: false`, `has_visible_contour: true`).
-
-The control is a positive control: it isolates perception of the illusory contour from the ability to
-name and count the shape. The shipped set uses bezier figures, so `illusory_shape` is always
-`"irregular"`; for named shapes (`triangle`, `square`, …), use a Kanizsa configuration below.
-
-An example of running the tasks on models from Ollama:
-
-```bash
-python ollama_eval.py --model llama3.2-vision:11b
-```
-This script evaluates both the illusory and control images with two prompts and gets output in JSON format:
-
-```python
-"""
-Inspect the image. Report every visually distinc form a human inspecting the image would perceive.
-Count repeated forms separately. Use a short conventional name for each form. Do not explain your answer.
-"""
-"""
-Inspect the image. Is there a true or illusory contour? Do not explain your answer.
-"""
-
-Output format:
-```json
-{
-  "illusory": {
-    "img_name.jpg":{
-      "0": {
-        "has_illusion": true, # Whether there is an illusory contour.
-        "n_objects": 3 # Number of objects in the image, including the illusory shape. 
-        "visible_shapes": [ # Name the shapes counted in the objects
-          "square",
-          "circle",
-          ...
-        ]
-      }
-    }
-  }
-  "control":{
-  ...
-  }
-}
-```
-
-```
-
-Bash script to evaluate multiple models:
-
-```bash
-sh run.sh
-```
+| `has_illusion` | whether an implied figure is seen |
+| `illusory_shape` | what the figure is (`irregular` for bezier polygons, `triangle` and so on for Kanizsa figures) |
+| `polygon_vertices` | how many corners the hidden polygon has |
+| `nonillusory_shapes` | what the objects are, and their geometric primitive |
+| `difficulty` | the settings that made the image easy or hard, see [Difficulty](#difficulty) |
 
 ## Evaluation
-We provide an example script for computing accuracy, precision, and recall across all model outputs in the outs folder. 
-The script will plot all model results in bar plots.
+
+`ollama_eval.py` asks a vision model two questions about every image in a set and writes the answers
+as JSON. `evaluate.py` scores those answers against the keys and plots accuracy, precision and recall.
 
 ```bash
-python evaluate.py                                   # gen100: answer keys in benchmarks/gen100/gt
-python evaluate.py --gt_folder benchmarks/varying_difficulty_benchmark_100/hard/answers   # a benchmark level
-````
+python3 ollama_eval.py --model llama3.2-vision:11b          # a model served by Ollama, on out/comp
+python3 evaluate.py                                         # scores every file in outs/
+python3 evaluate.py --gt_folder benchmarks/varying_difficulty_benchmark_100/hard/answers
+```
+
 <p align="center">
   <img src="outs/has_illusion_metrics.png" width="300">
   <img src="outs/counting_accuracy.png" width="300">
 </p>
-<p align="center"><i>Results example</i></p>
 
-## Generate new silhouettes
-
-New silhouettes can be randomly generated with control over the number of vertices, number of inducers, and the smoothness of the illusory contour.
+**Closure score.** `src/eval/run_eval.py` scores image-classification backbones without any prompt.
+For every figure it embeds the illusory image, the drawn contour alone and the negative, then takes
+the cosine similarity of the illusory image to the contour minus that of the negative to the contour.
+A model whose features treat the implied figure like the drawn one scores high.
 
 ```bash
-python create_template.py
+pip install -r requirements-eval.txt
+python3 run.py configs/closure_sweep.yaml                                   # 21,600 figures in out/
+python3 -m src.eval.run_eval --data_root out --models resnet50 vit_base_patch16_224
+python3 -m src.eval.run_eval --data_root out                                # every model in assets/results-imagenet.csv
 ```
-Outputs grayscale illusory contour templates along with controls that draw the illusory contour explicitly.
 
 ## Make your own set
 
-Each benchmark is defined by one configuration file. To create your own, copy `configs/gen100.yaml`,
-edit the fields below, and run `python3 run.py configs/your.yaml`.
+One YAML file defines a set. Copy `configs/gen100.yaml`, edit, and run `python3 run.py configs/your.yaml`.
 
 ```yaml
-seed: 1                                              # any seed gives a reproducible draw
-silhouettes:
-  - {type: gestalt, params: {mode: rank, n: 10}}     # mode: rank picks the N best silhouettes;
-                                                     # random = seeded sample; or {type: kanizsa, params: {n_sides: 3}}
+seed: 1                                            # one seed makes the whole run reproducible
+silhouettes:                                       # where the figures come from, see below
+  - {type: gestalt, params: {mode: rank, n: 10}}
 pairs:
-  source: catalog                                    # object/background pairs (pipeline/pairs_catalog.yaml)
+  source: catalog                                  # 15 validated object/background pairs
   select: random
   n_per_silhouette: 10
 dress:
-  backends: [composite]                              # composite real objects into the figure
-  conditions: [illusory, control]                    # matched pair per figure (drop control for illusory-only)
-  contour: auto                                      # control-outline colour: auto | white | black
-  texture: 3                                         # difficulty knob, see below
-  contrast: null                                     # difficulty knob, see below (null = native colours)
-  shadow: 0                                          # optional inward depth cue (e.g. 55)
-  feather: 1.5
+  backends: [composite]
+  conditions: [illusory, control, negative]
+  contour: auto                                    # colour of the drawn contour: auto | white | black
+  texture: 3                                       # difficulty, see below
+  contrast: null                                   # difficulty, see below
+  shadow: 0                                        # drop shadow under each object, a depth cue
+  feather: 1.5                                     # softness of the cutout edge in px
 ```
 
-The number of stimuli is `#silhouettes × n_per_silhouette × #conditions`. Textures are drawn from a
-catalog of 15 pre-validated object/background pairs.
+The number of images is figures × `n_per_silhouette` × conditions.
 
-## Difficulty knobs
+### Where figures come from
 
-We control the difficulty of a stimulus with three parameters. Each parameter varies one property
-of the image and holds the rest fixed. The sweep below shows each parameter on one figure: one row
-per parameter, easy on the left, hard on the right. To re-render it, run
-`python3 tools/make_difficulty_examples.py`.
-
-<p align="center">
-  <img src="docs/difficulty_examples.png" width="900">
-</p>
-<p align="center"><i>Per-parameter sweeps: texture (rendering realism), closeness (inducer size), and contrast (background recolored toward the object). The row labels list the values held fixed.</i></p>
-
-| Parameter | Range | What it controls |
+| type | what it does | parameters |
 |---|---|---|
-| `closeness` | [0, 1] | The size of the inducers. We set the inducer radius to `min + closeness·(max − min)`, where `max` is the largest radius at which the inducers fit on the contour without touching. Larger inducers leave smaller gaps along the illusory contour, so the illusion is easier to see. |
-| `texture` | {0, 1, 2, 3} | The realism of the rendering. 0: black inducers on a flat background. 1: solid-color inducers on a solid background. 2: real objects on a solid background. 3: real objects on a real background. |
-| `contrast` | [0, 1] | How far the background is recolored toward the object's color. At 0 (the default, `null`), the pair keeps its native colors. At 1, the background matches the object's mean color and the inducers nearly disappear. |
+| `gestalt` | pick from the stored pool `data/silhouettes/` | `mode: rank` takes the `n` best by contour quality, `mode: random` a seeded sample; `inducers: [3, 4]` limits the count |
+| `kanizsa` | a clean regular polygon with pac-man inducers | `n_sides` |
+| `dropin` | files you put in `data/silhouettes/` | `files` |
+| `generate` | render new figures | the table below |
 
-`closeness` is set at silhouette generation (`main.generate`); `texture` and `contrast` are set at
-dressing time (`dress.texture`, `dress.contrast`). A fourth setting, `dress.shadow` (default 0),
-adds a drop shadow under each inducer; the shadow is a depth cue that makes the figure easier to
-see at any difficulty.
+Every figure in the store gets a control (`data/control/`) and a negative (`data/negative/`). The
+negative is built from the stored image by moving each inducer to another inducer's place, under the
+run's seed.
 
-Each answer key records the parameter values and the quantities they induce in a `difficulty`
-block. We report `closeness_measured`, the mean closeness between neighboring inducers (1 =
-touching); `support_ratio`, the fraction of the illusory contour traced by the inducers; and
-`lum_gap`, the remaining luminance gap between the background and the objects.
+### `type: generate`
 
-```json
-"difficulty": {
-  "texture": 3,
-  "closeness": 0.5,
-  "closeness_measured": 0.55,
-  "support_ratio": 0.47,
-  "contrast": 0.25,
-  "lum_gap": 0.11
-}
-```
+A figure is a bezier polygon with discs placed on its contour, each disc bitten by the polygon. Five
+knobs describe it, and `space` lists the values each knob may take, as a list or a `{min, max}`
+range to sample. Knobs you leave out keep the defaults below.
 
-To generate silhouettes at chosen closeness values, pass `closenesses: [0.25, 0.5, 1.0]` to
-`main.generate`, or call `main.generate_one` directly (see `tools/make_difficulty_examples.py`).
-The closeness value is appended to the silhouette filename, and each silhouette gets a JSON
-sidecar with its measured values.
+| knob | meaning | default values |
+|---|---|---|
+| `polygon_randomness` | 0 is a regular polygon, 1 a strongly deformed one | 0, 0.4, 0.8, 1 |
+| `n_vertices` | corners of the hidden polygon | 3 to 8 |
+| `n_inducers` | number of discs | 3 to 6 |
+| `corner_sharpness` | low rounds the corners, high keeps them sharp | 0.1, 0.5, 1 |
+| `side_bulge` | how far each side bows out between corners | 0.1, 0.2, 0.4 |
+| `inducer_radius` | disc radius in px. `derived` means 3 × `inducer_scale` / `n_inducers`, so 3 discs of radius 125 or 6 of radius 62 at the default scale. A list sweeps the radius as its own factor, skipping radii above the derived one | `derived` |
 
-**Selecting silhouettes.** `mode: rank` keeps the `n` silhouettes with the crispest illusory contour
-and the most regular full-frame coverage — inducers evenly spaced around the centre, spanning all
-sides — scored geometrically from the mask (no model). `mode: random` takes a seeded random sample;
-`type: dropin` pins exact files. The ranking is shared with `tools/rank_silhouettes.py`, which prints
-the ordered list (`python3 tools/rank_silhouettes.py`). `configs/gen_100_rank.yaml` is a ready-made
-`mode: rank` set of 200 stimuli (100 figures); a rendered preview is committed under
-`benchmarks/gen_100_rank/`.
+How many figures, and how they are drawn and kept:
 
-**Filtering.** We keep a silhouette only if it passes a geometric test on its mask
-(`rank_score` in `pipeline/silhouettes.py`). We check three things. The mask must contain exactly as
-many separate blobs as declared inducers. Each inducer must have a concave bite: we measure the ratio
-of its area to the area of its convex hull, and reject the figure if more than `max_flat_frac` of
-its inducers exceed `flat_solidity`, which means they were cut by a straight edge rather than bitten
-(the default allows none; the difficulty set allows one in five or six). The inducers must
-surround the figure: with `all_sides: true` they must fall in all four quadrants around their
-centroid; with `all_sides: false` no two neighbours may be more than `max_gap` times the even spacing
-apart. Figures that pass are ranked by how evenly they are spaced, how equidistant they are from the
-centroid, how much of the frame they cover, and how deep their bites are. These thresholds are a
-`filter: {...}` field on the spec; the defaults reproduce the ranking used for `gen_100_rank`.
+| parameter | meaning | default |
+|---|---|---|
+| `n_figures` | how many figures. A number draws from `space` until that many pass the filter. `all` renders every combination of the lists | required |
+| `figures_per_combination` | with `n_figures: all`, random figures per combination | 1 |
+| `inducer_count_mix` | with a numeric `n_figures`, the share of each inducer count, as `{3: 0.15, 4: 0.35, 5: 0.35, 6: 0.15}`. `uniform` spreads equally over the counts the filter accepts | `uniform` |
+| `figures` | instead of `n_figures`: pinned rows `[randomness, n_vertices, n_inducers, corner_sharpness, side_bulge, seed]` | |
+| `polygon_size` | size of the hidden polygon in px, inside the 1024 × 1024 canvas | `[700, 700]` |
+| `inducer_scale` | sets the derived disc radius, 3 × `inducer_scale` / `n_inducers` | 125 |
+| `inducer_closeness` | bite depth when the radius is derived: 0 leaves the discs far apart, 1 brings them nearly touching | 0.5 |
+| `also_closeness` | render the same figures at these further closeness values too, for matched easy and hard sets | `[]` |
+| `contour_px` | width of the drawn contour in the control | 5 |
+| `quality_filter` | `true` rejects weak figures, `false` keeps all, a dict changes the thresholds (next section) | `true` |
+| `rng` | `fresh` restarts from the seed at each step, so one seed gives the same polygon at every closeness. `shared` uses one stream per figure for polygon, placement and negative, for large sweeps | `fresh` |
+| `indices` | with `n_figures: all`, render only these positions of the sweep, for example a few figures to dress | all |
+| `max_seeds` | with a numeric `n_figures`, how many seeds to try per row before giving up | 200 |
+| `jobs` | worker processes | all cores but one |
 
-**Generating until enough pass.** `type: generate` renders figures fresh at a chosen `closeness`
-and keeps drawing new seeds until `n` figures pass the filter, in the requested inducer-count mix
-(`quota`; default 3:15% 4:35% 5:35% 6:15%):
+Older configs may use `n`, `grid`, `quota`, `filter`, `closeness`, `polygon_shape` and `basedist`.
+They still work and mean `n_figures`, `space`, `inducer_count_mix`, `quality_filter`,
+`inducer_closeness`, `polygon_size` and `inducer_scale`.
 
-```yaml
-silhouettes:
-  - type: generate
-    params: {n: 100, closeness: 0.5, quota: {3: 0.15, 4: 0.35, 5: 0.35, 6: 0.15},
-             filter: {min_inducers: 3, all_sides: false, max_flat_frac: 0.2},
-             grid: {randomness: [0, 0.4, 0.8, 1], n_vertices: [3, 4, 5, 6, 7, 8], edgy: [0.1, 0.5], rad: [0.1, 0.2]}}
-```
+Two shipped examples: `configs/closure_sweep.yaml` renders every combination with four disc radii,
+ten times each, with no filter, and `configs/closure_sweep_dressed.yaml` draws 60 filtered figures
+and dresses them in all three conditions.
 
-Passing `figures: [[randomness, n_vertices, n_points, edgy, rad, seed], ...]` instead of `n` pins
-an explicit list.
+**Quality filter.** We keep a figure only if its mask has exactly as many separate blobs as inducers,
+every inducer shows a concave bite, and the inducers surround the figure. The thresholds are
+`min_inducers`, `flat_solidity` with `max_flat_frac` (an inducer whose area over its convex hull
+exceeds `flat_solidity` was cut by a straight edge, and at most that fraction of them may be),
+`all_sides` (inducers in all four quadrants) or `max_gap` (no gap wider than that multiple of even
+spacing). Figures that pass are ranked by spacing, equal distance from the centre, frame coverage and
+bite depth. `tools/rank_silhouettes.py` prints the ranking of the stored pool.
 
-**Matched multi-level sets.** To test the *same* figures at several difficulty levels, pick the
-figures once, judged at the middle level and required to be feasible at the others, then write one
-config per level with the same figure list:
+## Difficulty
+
+Three settings change one property of an image and hold the rest fixed. Re-render the figure below
+with `python3 tools/make_difficulty_examples.py`.
+
+<p align="center"><img src="docs/difficulty_examples.png" width="900"></p>
+
+| setting | range | what it controls |
+|---|---|---|
+| `inducer_closeness` | 0 to 1 | disc size along the contour. The radius is `min + closeness · (max − min)`, where `max` is the largest radius at which the discs still fit without touching. Larger discs leave smaller gaps, so the figure is easier to see |
+| `texture` | 0, 1, 2, 3 | realism. 0 black discs on a flat background, 1 solid colours, 2 real objects on a solid background, 3 real objects on a real background |
+| `contrast` | 0 to 1 | how far the background is recoloured toward the object. At 1 the objects nearly vanish |
+
+Closeness is set when figures are generated, texture and contrast when they are dressed. The answer
+key records the values and what they produced: `closeness_measured`, the mean closeness between
+neighbouring discs, `support_ratio`, the fraction of the contour traced by discs, and `lum_gap`, the
+remaining luminance difference between object and background.
+
+**Matched levels.** To test the same figures at several closeness values, pick them once, judged at
+the middle level and required to fit at the others, then write one config per level:
 
 ```bash
-python3 tools/pick_difficulty_figures.py --n 100 --judge 0.5 --levels 0.25 0.75     # -> out/difficulty_figures.yaml
+python3 tools/pick_difficulty_figures.py --n 100 --judge 0.5 --levels 0.25 0.75
 python3 tools/make_difficulty_configs.py --name varying_difficulty_benchmark_100 --levels easy=0.75,0.0 normal=0.5,0.0 hard=0.25,0.5
-python3 tools/run_difficulty_set.py --name varying_difficulty_benchmark_100                     # -> out/varying_difficulty_benchmark_100/<level>/
-python3 tools/export_benchmark.py out/varying_difficulty_benchmark_100 varying_difficulty_benchmark_100   # -> benchmarks/varying_difficulty_benchmark_100/
+python3 tools/run_difficulty_set.py --name varying_difficulty_benchmark_100
+python3 tools/export_benchmark.py out/varying_difficulty_benchmark_100 varying_difficulty_benchmark_100
 ```
 
-Every stage shows a progress bar with an ETA (nested per level, stage, and figure); when output is
-not a terminal the bars become one log line per 5%, and `GESTALT_PROGRESS=0` silences them.
-
-Each level config uses `pairs: {select: distinct}` (one catalog pair per figure, round-robin) and
-`dress: {texture: [0, 3]}`; a texture list writes `comp/<plain|texture>/<illusory|control>/` and
-records the level in the manifest's `texture` column. The export lays a set out for people:
-`benchmarks/<name>/<level>/<plain|texture>_<illusory|contour>/f017_texture_illusory.jpg`, where
-`f017` is the same figure in every level, variant and condition, with `answers.csv` per level and a
-`preview_<level>.jpg` per level. `benchmarks/varying_difficulty_benchmark_100/` is the first-pass evaluation set: 100
-matched figures × {plain, texture} × {illusory, contour} = 400 images per level, built from
-`configs/varying_difficulty_benchmark_100_{easy,normal,hard}.yaml`. Evaluate one level with
+The export lays a set out as `benchmarks/<name>/<level>/<plain|texture>_<illusory|contour|negative>/f017_texture_illusory.jpg`,
+where `f017` is the same figure in every level, variant and condition, with `answers.csv` and a
+preview per level. `benchmarks/varying_difficulty_benchmark_100/` is such a set. Evaluate one level with
 `python3 ollama_eval.py --model <m> --data_dir benchmarks/varying_difficulty_benchmark_100/hard --variant texture`.
 
 <details>
-<summary><b>Generate new objects and backgrounds (requires a model)</b></summary>
+<summary><b>New objects and backgrounds (needs a model)</b></summary>
 
-The catalog is fixed. To introduce new textures, name a provider in the configuration and supply its
-credentials; the rest of the pipeline is unchanged. New pairs are validated for round shape and colour
-contrast before use. Backgrounds are prompted as uniform full-frame material surfaces (stone, wood,
-sand, moss, felt, terrazzo, …) with no bounded objects or geometric patterns, so the background never
-confounds recognition of the illusory figure.
+The catalog is fixed. To add textures, name a provider in the config and supply its credentials.
+New pairs are checked for round shape and colour contrast before use. Backgrounds are uniform
+material surfaces, so the background never confounds the figure.
 
-- **`hf_api`** — HuggingFace Inference API. `pip install -r requirements-hf.txt`, `export HF_TOKEN=...`
-- **`modal_hf`** — SDXL on a Modal GPU. `pip install -r requirements-modal.txt`, `modal deploy app.py`
-- **your own** — copy `pipeline/providers/template.py` and set `provider: "yourmodule:YourClass"`
+- `hf_api`: HuggingFace Inference API. `pip install -r requirements-hf.txt`, `export HF_TOKEN=...`
+- `modal_hf`: SDXL on a Modal GPU. `pip install -r requirements-modal.txt`, `modal deploy app.py`
+- your own: copy `pipeline/providers/template.py` and set `provider: "yourmodule:YourClass"`
 
 </details>
 
 ## Reproducibility
 
-Stimuli are assembled from two stochastic, GPU-bound models — a language model that proposes
-object/background pairs, and a diffusion model that renders them. To make the set reproducible we ship
-their frozen output: the proposed pairs that passed validation (`pipeline/pairs_catalog.yaml`) and the
-rendered cutouts (`data/assets/`). Every remaining step — which silhouettes and pairs are selected, and
-how objects are composited — is seeded and deterministic, so `seed: 1` yields the identical set on any
-machine. The silhouettes and their matched controls are regenerated with `python3 main.py`.
+Two stochastic models are involved, a language model that proposed object/background pairs and a
+diffusion model that rendered them. We ship their frozen output, the validated pairs in
+`pipeline/pairs_catalog.yaml` and the cutouts in `data/assets/`. Every other step is seeded, so one
+seed gives the same images on any machine. The stored silhouette pool predates seeding and is
+committed as files. New figures made with `type: generate` are reproducible from their config.
 
+## Tests
 
+```bash
+python3 -m pytest -q                  # fast suite, no network, no model
+python3 -m pytest -q --run-slow       # adds the end-to-end run of run.py
+```

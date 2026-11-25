@@ -38,6 +38,7 @@ def compute_has_illusion_metrics(json_path):
     Ground truth:
         illusory -> True
         control  -> False
+        negative -> False   (same inducers, shuffled: no figure)
 
     Returns:
         accuracy
@@ -52,6 +53,7 @@ def compute_has_illusion_metrics(json_path):
     gt_labels = {
         "illusory": True,
         "control": False,
+        "negative": False,
     }
 
     tp = 0
@@ -225,6 +227,11 @@ def compute_counting_metrics(json_path, gt_counts):
             "absolute_error_sum": 0,
         },
         "control": {
+            "correct": 0,
+            "total": 0,
+            "absolute_error_sum": 0,
+        },
+        "negative": {
             "correct": 0,
             "total": 0,
             "absolute_error_sum": 0,

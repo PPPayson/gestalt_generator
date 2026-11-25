@@ -21,5 +21,13 @@
       "circle",
       "circle"
     ]
+  },
+  "difficulty": {
+    "texture": 3,
+    "closeness": null,
+    "closeness_measured": null,
+    "support_ratio": null,
+    "contrast": null,
+    "lum_gap": null
   }
 }

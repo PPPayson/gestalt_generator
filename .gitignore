@@ -9,9 +9,7 @@ out/
 # Intermediates (regenerable)
 data/candidates_*.json
 data/pairs.json
-data/control
 data/negative
-data/positive
 
 # NOTE: data/assets/ is TRACKED — it ships the catalog asset pack so `provider: local`/offline
 # works with no generation. New assets you generate land here too; commit or ignore as you like.
@@ -22,8 +20,17 @@ data/silhouettes/*.json
 # closeness-suffixed figures regenerated per config by `type: generate` (difficulty sets)
 data/silhouettes/img_*_*_*_*_*_*.png
 data/control/img_*_*_*_*_*_*.png
+# sweep figures (`n_figures: all`) are regenerated per config
+data/silhouettes/gen_s*.png
+data/control/gen_s*.png
 
 # NOTE: data/silhouettes/*.png is TRACKED on purpose — it holds the friend's generated
 # silhouettes (moved from out/). Do not ignore the PNGs.
 
 *.out
+# research write-ups, not part of the generator
+reports/
+research_notes/
+
+# duplicate copies a sync client makes ("name 2.ext")
+* 2.*

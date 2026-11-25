@@ -100,9 +100,11 @@ def get_bezier_curve(a, rad=0.2, edgy=0):
     return x, y, a
 
 
-def get_random_points(n=5, scale=0.8, randomness=0.0, seed=None, rotation=None):
-    """Generate a polygon by deforming a regular polygon (see original docstring)."""
-    rng = np.random.default_rng(seed)
+def get_random_points(n=5, scale=0.8, randomness=0.0, seed=None, rotation=None, rng=None):
+    """Generate a polygon by deforming a regular polygon (see original docstring).
+    `rng`: draw from this generator instead of a fresh default_rng(seed)."""
+    if rng is None:
+        rng = np.random.default_rng(seed)
     if rotation is None:
         rotation = rng.uniform(0, 2 * np.pi)
     center = np.array([0.5, 0.5]); R = 0.45
@@ -125,10 +127,12 @@ def save_as_json(x, y, a, out_file):
         f.write(json.dumps({"a": a, "x": x, "y": y}, indent=4))
 
 
-def sample_points(coords, n, mindist, seed=None, max_attempt=100):
-    """Randomly sample n points at least `mindist` apart (or None)."""
+def sample_points(coords, n, mindist, seed=None, max_attempt=100, rng=None):
+    """Randomly sample n points at least `mindist` apart (or None).
+    `rng`: draw from this generator instead of a fresh default_rng(seed)."""
     points = np.asarray(coords)
-    rng = np.random.default_rng(seed)
+    if rng is None:
+        rng = np.random.default_rng(seed)
     if n > len(points):
         raise ValueError("n cannot exceed the number of candidate points.")
     for _ in range(max_attempt):
@@ -160,6 +164,36 @@ def draw_shapes(points, mindist, shape=(1024, 1024), shape_type="circle"):
             raise ValueError("shape_type must be 'circle' or 'square'")
         mask |= region
     return mask.astype(np.uint8)
+
+
+def shuffle_discs(image, points, mindist, shape=(1024, 1024), shape_type="circle", rng=None):
+    """NEGATIVE: move every carved disc of `image` (radius `mindist`, centred at `points`) to another
+    disc's centre, drawn as a random permutation that changes at least one position. Each disc keeps
+    its bite orientation, so the inducers no longer align on a common contour and no illusory figure
+    is seen. Returns None if two target discs differ in pixel count (clipped at the canvas edge)."""
+    new_image = np.zeros_like(image)
+    points = np.array(points)
+    H, W = shape
+    yy, xx = np.ogrid[:H, :W]
+    generator = np.random.default_rng() if rng is None else rng
+    shuffled_points = generator.permutation(points)
+    while np.array_equal(shuffled_points, points):
+        shuffled_points = generator.permutation(points)
+    for i, point in enumerate(points):
+        y, x = point
+        target_y, target_x = shuffled_points[i]
+        if shape_type == "circle":
+            region = (xx - x) ** 2 + (yy - y) ** 2 <= mindist ** 2
+            target_region = (xx - target_x) ** 2 + (yy - target_y) ** 2 <= mindist ** 2
+        elif shape_type == "square":
+            region = (np.abs(xx - x) <= mindist) & (np.abs(yy - y) <= mindist)
+            target_region = (np.abs(xx - target_x) <= mindist) & (np.abs(yy - target_y) <= mindist)
+        else:
+            raise ValueError("shape_type must be 'circle' or 'square'")
+        if target_region.sum() != region.sum():
+            return None
+        new_image[target_region] = image[region]
+    return new_image
 
 
 def support_ratio(discs, mask, contour_px=5):

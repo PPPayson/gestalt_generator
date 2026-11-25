@@ -1,0 +1,37 @@
+# Exhaustive, unfiltered parameter sweep for feature-space closure evaluation.
+# Renders every combination of the knob lists below, 10 random figures each, as three silhouettes:
+#   out/silhouettes/  illusory figure (bitten discs, no contour)
+#   out/control/      the same figure with the polygon outline drawn
+#   out/negative/     the same discs shuffled so they share no contour
+# No objects or backgrounds are dressed (dress.backends is empty). Run:
+#   python3 run.py configs/closure_sweep.yaml          (about 0.5 s per figure per core)
+#   python3 -m src.eval.run_eval --data_root out       (closure score per TIMM model)
+name: closure_sweep
+seed: 0
+
+silhouettes:
+  - type: generate
+    params:
+      space:                                   # the values each knob takes (a list, or {min, max})
+        polygon_randomness: [0, 0.4, 0.8, 1]   # 0 regular polygon .. 1 strongly deformed
+        n_vertices: [3, 4, 5, 6, 7, 8]         # corners of the hidden polygon
+        n_inducers: [3, 4, 5, 6]               # bitten discs
+        corner_sharpness: [0.1, 0.5, 1]        # low = rounded corners, high = sharp
+        side_bulge: [0.1, 0.2, 0.4]            # how far the sides bow out between corners
+        inducer_radius: [100, 75, 60, 50]      # disc radius in px, swept as its own factor; a radius
+                                               # above 3 * inducer_scale / n_inducers is skipped
+      n_figures: all                           # every combination of the lists above (2,160)
+      figures_per_combination: 10              # random figures per combination -> 21,600
+      polygon_size: [600, 600]                 # px, inside the 1024 x 1024 canvas
+      inducer_scale: 100                       # derived disc radius = 3 * inducer_scale / n_inducers
+      contour_px: 5                            # width of the drawn outline in the control
+      quality_filter: false                    # keep every figure (no contour-quality rejection)
+      rng: shared                              # one random stream per figure for polygon, placement
+                                               # and negative (fresh: restart from the seed per step)
+      # jobs: 4                                # worker processes (default: all cores but one)
+
+dress:
+  backends: []                                 # silhouettes only
+
+output:
+  contact_sheet: false

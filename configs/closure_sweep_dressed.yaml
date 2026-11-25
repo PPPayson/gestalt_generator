@@ -1,0 +1,35 @@
+# A sampled subset of the closure sweep, dressed with real objects in all three conditions.
+# Same knobs as configs/closure_sweep.yaml, but 60 figures drawn under the quality filter,
+# at our default sizes, each dressed with 2 catalog pairs:
+#   60 figures x 2 pairs x 3 conditions = 360 stimuli in out/comp/{illusory,control,negative}/
+name: closure_sweep_dressed
+seed: 0
+
+silhouettes:
+  - type: generate
+    params:
+      space:
+        polygon_randomness: [0, 0.4, 0.8, 1]
+        n_vertices: [3, 4, 5, 6, 7, 8]
+        n_inducers: [3, 4, 5, 6]
+        corner_sharpness: [0.1, 0.5, 1]
+        side_bulge: [0.1, 0.2, 0.4]
+      n_figures: 60                            # draw until 60 pass the quality filter
+      inducer_count_mix: uniform               # equal shares over the counts the filter accepts (4, 5, 6)
+      inducer_closeness: 0.5                   # bite depth: 0 far apart .. 1 nearly touching
+      quality_filter: true                     # reject weak figures (merged discs, flat bites, gaps)
+
+pairs:
+  source: catalog
+  select: random
+  n_per_silhouette: 2
+
+dress:
+  backends: [composite]
+  modes: [perfect]
+  conditions: [illusory, control, negative]
+  contour: auto
+  crop: true
+
+output:
+  contact_sheet: true

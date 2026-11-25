@@ -3,7 +3,7 @@ Polarity-agnostic, aspect-preserving, object clipped EXACTLY to the region, inwa
 import numpy as np
 from PIL import Image, ImageFilter, ImageOps
 from scipy import ndimage
-from .utils import OBJ, BG, OUT, SIL, SIL_CTRL, slug, sid, append_manifest, stim_path, progress
+from .utils import OBJ, BG, OUT, SIL, SIL_CTRL, SIL_NEG, slug, sid, append_manifest, stim_path, progress
 from .geometry import inducer_labels, crop_to_content
 from . import gt
 
@@ -217,16 +217,21 @@ def run(cfg, metas, pairs):
     for meta in progress(metas, desc="composite"):
         sp = SIL / f"{meta['stem']}.png"
         cp = SIL_CTRL / f"{meta['stem']}.png"
+        npth = SIL_NEG / f"{meta['stem']}.png"
         for it in pairs.get(meta["stem"], []):
             for mode in cfg["dress"]["modes"]:
-                for cond in conditions:                 # illusory (no contour) + control (drawn contour)
-                    if cond == "control" and not cp.exists():
+                for cond in conditions:                 # illusory (no contour) | control (drawn contour)
+                    if cond == "control" and not cp.exists():   # | negative (inducers shuffled)
                         print(f"  ! no control silhouette for {meta['stem']}; skipping control")
                         continue                        # never emit a 'control' without a drawn contour
+                    if cond == "negative" and not npth.exists():
+                        print(f"  ! no negative silhouette for {meta['stem']}; skipping negative")
+                        continue
                     ctrl = cp if cond == "control" else None
+                    src = npth if cond == "negative" else sp   # the negative is dressed like the illusory
                     for tex in textures:
                         info = {}
-                        img, _ = render(sp, it["object"], it["background"], shadow, mode, crop,
+                        img, _ = render(src, it["object"], it["background"], shadow, mode, crop,
                                         feather=feather, control=ctrl, contour=contour,
                                         texture=tex, contrast=contrast, info=info)
                         tag = f"{mode}_{cond}" + (f"_t{tex}" if multi else "")   # scalar: legacy ids

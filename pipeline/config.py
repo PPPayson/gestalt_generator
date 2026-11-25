@@ -28,7 +28,7 @@ DEFAULTS = {
     "dress": {"backends": ["composite"], "modes": ["perfect"],
               "shadow": 0,                      # OFF by default; set >0 (e.g. 55) for an inward depth cue
               "crop": True, "feather": 1.5,
-              "conditions": ["illusory"],       # illusory | control (control draws the shape's outline)
+              "conditions": ["illusory"],       # illusory | control (outline drawn) | negative (inducers shuffled)
               "contour": "auto",                # control outline colour: auto | white | black
               "texture": 3,                     # 0 flat b/w | 1 color chips | 2 objects on solid | 3 full
               "contrast": None},                # camouflage [0,1]: 0/None native colors, 1 bg = obj color
@@ -50,4 +50,6 @@ def load(path):
     assert cfg["pairs"]["source"] in ("catalog", "propose", "explicit"), "bad pairs.source"
     for b in cfg["dress"]["backends"]:
         assert b in ("composite", "controlnet"), f"bad backend {b}"
+    for c in cfg["dress"]["conditions"]:
+        assert c in ("illusory", "control", "negative"), f"bad condition {c}"
     return cfg

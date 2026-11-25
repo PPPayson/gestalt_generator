@@ -31,6 +31,14 @@ def test_gt_control_condition():
     assert g["has_visible_contour"] is True and g["has_illusion"] is False   # contour is drawn/real
 
 
+def test_gt_negative_condition():
+    meta = _meta_kanizsa()
+    g = gt.write("stim_n", meta, {"object": "moon", "background": "sky"}, "composite", "perfect",
+                 condition="negative")
+    assert g["condition"] == "negative"
+    assert g["has_illusion"] is False and g["has_visible_contour"] is False   # parts only, no figure
+
+
 def test_gt_gestalt_is_irregular():
     stem = S.use_gestalt(mode="existing", n=1, seed=0)[0]
     import json

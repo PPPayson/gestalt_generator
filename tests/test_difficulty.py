@@ -272,7 +272,7 @@ def test_rank_score_filter_thresholds(overrides, passes):
 
 
 @pytest.mark.parametrize("n, quota, expected", [
-    (100, None, {3: 15, 4: 35, 5: 35, 6: 15}),     # default mix
+    (100, None, {3: 25, 4: 25, 5: 25, 6: 25}),     # default mix: uniform over the inducer counts
     (10, {4: 0.5, 5: 0.3}, {4: 6, 5: 4}),          # fractions renormalised, largest remainder
     (5, {4: 3, 5: 2}, {4: 3, 5: 2}),               # explicit counts
     (0, {4: 3, 5: 2}, {4: 3, 5: 2}),               # n=0: counts taken as given

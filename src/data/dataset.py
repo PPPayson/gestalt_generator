@@ -1,99 +1,48 @@
-from torch.utils.data import Dataset
-from src.utils import data_utils
+"""Closure-sweep triplets read from a pipeline output folder (out/ by default).
+
+For every silhouette stem that has all three files
+    <root>/silhouettes/<stem>.png   illusory figure: bitten discs, no contour
+    <root>/control/<stem>.png       the same figure with the polygon outline drawn
+    <root>/negative/<stem>.png      the same discs shuffled so they share no contour
+the dataset yields (ring, pos, neg): the contour-only outline (control minus illusory), the
+illusory image and the negative, each a float32 0/1 array (then `transform`, if given).
+Produce the folder with  python3 run.py configs/closure_sweep.yaml  (or any config)."""
+import os
 import numpy as np
+from PIL import Image
+from torch.utils.data import Dataset
 
 
 class IllusionDataset(Dataset):
-    def __init__(
-        self,
-        rs=(0, 0.4, 0.8, 1),
-        n_vs=(3, 4, 5, 6, 7, 8),
-        n_ps=(3, 4, 5, 6),
-        es=(0.1, 0.5, 1),
-        rads=(0.1, 0.2, 0.4),
-        output_shape = (1024, 1024),
-        polygon_shape = (600, 600),
-        basedist=100,
-        contour_px=5,
-        shape_type='circle',
-        seed=0,
-        transform=None,
-        repeats=10
-        ):
+    def __init__(self, root="out", transform=None):
         super().__init__()
-        self.contour_px = contour_px
-        self.shape_type = shape_type
-        self.output_shape = output_shape
-        self.polygon_shape = polygon_shape
-        self.basedist = basedist
-        self.seed = seed
-        self.transform=transform
-        self.repeats=repeats
-        dists = []
-        for n_points in (n_ps):
-            dists.append(int(self.basedist * 3.0)/ n_points)
+        self.root = root
+        self.transform = transform
+        dirs = [os.path.join(root, d) for d in ("silhouettes", "control", "negative")]
+        for d in dirs:
+            if not os.path.isdir(d):
+                raise FileNotFoundError(f"{d} missing: run `python3 run.py configs/closure_sweep.yaml` first")
+        stems = set(f[:-4] for f in os.listdir(dirs[0]) if f.endswith(".png"))
+        for d in dirs[1:]:
+            stems &= set(f[:-4] for f in os.listdir(d) if f.endswith(".png"))
+        self.stems = sorted(stems)
+        if not self.stems:
+            raise RuntimeError(f"no silhouette with control + negative under {root}")
 
-        self.combinations = []
-        for randomness in rs:
-            for n_vertices in n_vs:
-                for i, n_points in enumerate(n_ps):
-                    for edgy in es:
-                        for rad in rads:
-                            for dist in dists[i:]:
-                                self.combinations.append({
-                                    'r': randomness,
-                                    'n_v': n_vertices,
-                                    'n_p': n_points,
-                                    'edgy': edgy,
-                                    'rad': rad,
-                                    'dist': dist
-                                })
-        
     def __len__(self):
-        return len(self.combinations) * self.repeats
+        return len(self.stems)
+
+    @staticmethod
+    def _bin(path):
+        return (np.array(Image.open(path).convert("L")) > 127).astype(np.uint8)
 
     def __getitem__(self, idx):
-        rng = np.random.default_rng(self.seed+idx)
-        idx = idx % len(self.combinations)
-
-        combination = self.combinations[idx]
-        randomness = combination['r']
-        n_vertices = combination['n_v']
-        n_points = combination['n_p']
-        edgy = combination['edgy']
-        rad = combination['rad']
-        mindist = combination['dist']
-
-        contour_return = None
-        attempt = 0
-        while contour_return is None:
-            attempt += 1
-            if attempt > 100:
-                raise RuntimeError("Failed to load a valid sample after 100 attempts")
-            a = data_utils.get_random_points(n=n_vertices, scale=0.8, randomness=randomness, rng=rng)
-            x, y, _ = data_utils.get_bezier_curve(a, rad=rad, edgy=edgy)
-            x = np.int16(self.polygon_shape[0] * x)
-            y = np.int16(self.polygon_shape[1] * y)
-            coords = np.stack([x, y], axis=1)
-            mask, coords = data_utils.padded_polygon_mask(coords, self.polygon_shape, self.output_shape)
-            sampled = data_utils.sample_points(coords, n=n_points, mindist=mindist * 2.5, rng=rng)
-            if sampled is None:
-                continue
-            out = data_utils.draw_shapes(sampled, mindist=mindist, shape=self.output_shape, shape_type=self.shape_type)
-            out[mask] = 0 # carve the illusory polygon
-            neg_out = data_utils.shuffle_shapes(out, sampled, mindist=mindist,shape=self.output_shape, shape_type=self.shape_type, rng=rng)
-            if neg_out is None:
-                continue
-            ring = mask - data_utils.erode_mask(mask, self.contour_px) # polygon outline
-            contour_return = ring
-            pos_return = out
-            neg_return = neg_out
-            if self.transform is not None:
-                contour_return = self.transform(contour_return.astype(np.float32))
-                pos_return = self.transform(pos_return.astype(np.float32))
-                neg_return = self.transform(neg_return.astype(np.float32))
-        return contour_return, pos_return, neg_return
-        
-
-
-            
+        stem = self.stems[idx]
+        pos = self._bin(os.path.join(self.root, "silhouettes", f"{stem}.png"))
+        ctrl = self._bin(os.path.join(self.root, "control", f"{stem}.png"))
+        neg = self._bin(os.path.join(self.root, "negative", f"{stem}.png"))
+        ring = (ctrl.astype(bool) & ~pos.astype(bool)).astype(np.uint8)
+        out = [a.astype(np.float32) for a in (ring, pos, neg)]
+        if self.transform is not None:
+            out = [self.transform(a) for a in out]
+        return tuple(out)

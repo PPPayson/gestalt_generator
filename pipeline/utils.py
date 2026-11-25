@@ -8,6 +8,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = pathlib.Path(os.environ.get("GESTALT_DATA", ROOT / "data"))
 SIL = DATA / "silhouettes"           # silhouette store (his generator output lives here too)
 SIL_CTRL = DATA / "control"          # paired control silhouettes (illusory shape drawn as an outline)
+SIL_NEG = DATA / "negative"          # paired negatives (inducers shuffled: same parts, no common contour)
 OBJ = DATA / "assets" / "objects"
 BG = DATA / "assets" / "bg"
 OUT = pathlib.Path(os.environ.get("GESTALT_OUT", ROOT / "out"))   # benchmark output (stimuli, gt, manifest)
