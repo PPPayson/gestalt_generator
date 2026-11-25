@@ -188,9 +188,6 @@ How many figures, and how they are drawn and kept:
 | `max_seeds` | with a numeric `n_figures`, how many seeds to try per row before giving up | 200 |
 | `jobs` | worker processes | all cores but one |
 
-Older configs may use `n`, `grid`, `quota`, `filter`, `closeness`, `polygon_shape` and `basedist`.
-They still work and mean `n_figures`, `space`, `inducer_count_mix`, `quality_filter`,
-`inducer_closeness`, `polygon_size` and `inducer_scale`.
 
 Two shipped examples: `configs/closure_sweep.yaml` renders every combination with four disc radii,
 ten times each, with no filter, and `configs/closure_sweep_dressed.yaml` draws 60 filtered figures

@@ -40,9 +40,9 @@ def test_sweep_is_reproducible():
     assert a == b and (SIL / f"{b[0]}.png").read_bytes() == pa
 
 
-def test_old_names_still_work():
-    stems = S.use_generate(figures=[[0, 6, 3, 0.1, 0.1, 2]], closeness=0.5, seed=1)
-    assert stems and stems[0].startswith("img_")
+def test_unknown_parameter_is_rejected():
+    with pytest.raises(TypeError):
+        S.use_generate(figures=[[0, 6, 3, 0.1, 0.1, 2]], closeness=0.5, seed=1)
 
 
 def test_config_rejects_unknown_condition(tmp_path):

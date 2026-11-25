@@ -11,7 +11,7 @@ Writes a YAML `figures:` list for tools/make_difficulty_configs.py.
         --quota 3=0.15 4=0.35 5=0.35 6=0.15 --filter min_inducers=3 all_sides=false
 
 A config can do the same for ONE level with no tool at all:
-    silhouettes: [{type: generate, params: {n: 100, closeness: 0.5, filter: {min_inducers: 3, all_sides: false}}}]
+    silhouettes: [{type: generate, params: {n_figures: 100, inducer_closeness: 0.5, quality_filter: {min_inducers: 3, all_sides: false}}}]
 """
 import sys, pathlib, argparse, json
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))

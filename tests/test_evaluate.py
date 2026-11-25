@@ -7,8 +7,10 @@ def _responses(tmp_path):
     data = {"illusory": {"stim_a.jpg": {"0": {"has_illusion": True, "n_objects": 4}}},
             "control": {"stim_b.jpg": {"0": {"has_illusion": False, "n_objects": 4}}},
             "negative": {"stim_c.jpg": {"0": {"has_illusion": True, "n_objects": 3}}}}   # model fooled
-    p = tmp_path / "model.json"; p.write_text(json.dumps(data))
-    gt = tmp_path / "gt"; gt.mkdir()
+    p = tmp_path / "model.json"
+    p.write_text(json.dumps(data))
+    gt = tmp_path / "gt"
+    gt.mkdir()
     for s in ("stim_a", "stim_b", "stim_c"):
         (gt / f"{s}.json").write_text(json.dumps({"n_inducers": 3}))
     return p, gt

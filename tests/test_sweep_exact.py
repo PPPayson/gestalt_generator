@@ -37,6 +37,8 @@ def test_sweep_matches_oracle():
     stems = silhouettes.use_generate(indices=sorted(ORACLE), jobs=1, **SWEEP)
     assert len(stems) == len(ORACLE)
     for idx, stem in zip(sorted(ORACLE), stems):
-        pos = _bin(SIL / f"{stem}.png"); ctrl = _bin(SIL_CTRL / f"{stem}.png"); neg = _bin(SIL_NEG / f"{stem}.png")
+        pos = _bin(SIL / f"{stem}.png")
+        ctrl = _bin(SIL_CTRL / f"{stem}.png")
+        neg = _bin(SIL_NEG / f"{stem}.png")
         ring = (ctrl & ~pos.astype(bool)).astype(np.uint8)
         assert (_h(ring), _h(pos), _h(neg)) == ORACLE[idx], f"figure {idx} ({stem}) differs"

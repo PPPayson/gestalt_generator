@@ -1,6 +1,9 @@
+import csv
+import json
 import numpy as np
 from pipeline import dress_composite as DC, silhouettes as S
-from pipeline.utils import SIL, OUT
+from pipeline.negative import ensure_negatives
+from pipeline.utils import SIL, SIL_CTRL, SIL_NEG, OUT
 from pipeline.geometry import inducer_labels
 
 
@@ -47,8 +50,6 @@ def test_run_writes_stimuli_and_manifest(cfg):
 
 def test_control_draws_contour():
     # render a gestalt silhouette with and without its control; the control must differ (drawn outline)
-    from pipeline.utils import SIL_CTRL
-    import numpy as np
     stem = sorted(p.stem for p in SIL.glob("img_*.png"))[0]
     illus, _ = DC.render(SIL / f"{stem}.png", "white disc", "black bg", crop=True, control=None)
     ctrl, _ = DC.render(SIL / f"{stem}.png", "white disc", "black bg", crop=True,
@@ -58,9 +59,6 @@ def test_control_draws_contour():
 
 
 def test_run_emits_all_three_conditions(cfg):
-    from pipeline.utils import OUT, SIL_NEG
-    from pipeline.negative import ensure_negatives
-    import csv, json
     stem = sorted(p.stem for p in SIL.glob("img_*.png"))[0]
     assert ensure_negatives([stem], seed=1) == []
     metas = [{"stem": stem, "illusion": stem, "illusory_shape": "irregular"}]
@@ -79,8 +77,6 @@ def test_run_emits_all_three_conditions(cfg):
 
 
 def test_negative_skipped_when_missing(cfg, capsys):
-    from pipeline.utils import OUT
-    import csv
     S.produce_kanizsa(n_sides=4)                 # no negative written for this stem
     metas = [{"stem": "kanizsa_square", "illusion": "kanizsa_square", "illusory_shape": "square"}]
     pairs = {"kanizsa_square": [{"object": "white disc", "background": "black bg", "natural": False}]}

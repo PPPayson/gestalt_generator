@@ -36,6 +36,7 @@ def test_load_rejects_bad_backend(tmp_path):
 
 
 def test_load_rejects_bad_condition(tmp_path):
-    p = tmp_path / "c.yaml"; p.write_text("dress: {conditions: [illusory, shuffled]}\n")
+    p = tmp_path / "c.yaml"
+    p.write_text("dress: {conditions: [illusory, shuffled]}\n")
     with pytest.raises(ValueError):
         config.load(p)

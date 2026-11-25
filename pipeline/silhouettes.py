@@ -20,6 +20,7 @@ import numpy as np
 from PIL import Image, ImageDraw
 import main
 from .geometry import separate_inducer_count
+from .negative import ensure_negatives
 from .utils import SIL, SIL_CTRL, SIL_NEG, bar, progress
 
 POLY = {3: "triangle", 4: "square", 5: "pentagon", 6: "hexagon"}
@@ -526,7 +527,8 @@ def _sweep_cell(job):
         kw = {"rng": rng} if rng is not None else {"seed": figure_seed}
         a = main.get_random_points(n=nv, scale=0.8, randomness=r, **kw)
         x, y, _ = main.get_bezier_curve(a, rad=rad, edgy=e)
-        x = np.int16(polygon_shape[0] * x); y = np.int16(polygon_shape[1] * y)
+        x = np.int16(polygon_shape[0] * x)
+        y = np.int16(polygon_shape[1] * y)
         coords = np.stack([x, y], axis=1)
         mask, coords = main.padded_polygon_mask(coords, polygon_shape, output_shape)
         sampled = main.sample_points(coords, n=np_, mindist=radius * 2.5, **kw)
@@ -545,7 +547,9 @@ def _sweep_cell(job):
         return idx, None
     stem = f"gen_s{seed}_{idx:05d}"
     save = lambda d, arr: Image.fromarray((np.asarray(arr, dtype=np.uint8) * 255)).save(Path(d) / f"{stem}.png")
-    save(sil_dir, pos); save(ctrl_dir, np.clip(pos + ring, 0, 1)); save(neg_dir, neg)
+    save(sil_dir, pos)
+    save(ctrl_dir, np.clip(pos + ring, 0, 1))
+    save(neg_dir, neg)
     meta = {"illusion": stem, "inducer_shape": "a disc with a bezier-polygon bite (gestalt inducer)",
             "illusory_shape": "irregular", "primitive": "circle", "n_inducers": np_,
             "polygon_vertices": nv, "randomness": r, "edgy": e, "rad": rad,
@@ -573,7 +577,8 @@ def render_sweep(seed=0, space=None, figures_per_combination=1, inducer_radius="
     for d in dirs:
         Path(d).mkdir(parents=True, exist_ok=True)
     jobs = jobs or max(1, mp.cpu_count() - 1)
-    polygon_shape = list(polygon_size); output_shape = list(output_shape)
+    polygon_shape = list(polygon_size)
+    output_shape = list(output_shape)
     jobs_list = [(i, combos[i % len(combos)], int(seed), rng, polygon_shape, output_shape, int(contour_px),
                   int(attempts), tuple(str(d) for d in dirs)) for i in idxs]
     log(f"  sweep: {len(combos)} combinations x {figures_per_combination} = {total} figures"
@@ -592,10 +597,7 @@ def render_sweep(seed=0, space=None, figures_per_combination=1, inducer_radius="
 def use_generate(figures=None, seed=None, space=None, n_figures=None, figures_per_combination=1,
                  inducer_count_mix="uniform", inducer_closeness=0.5, also_closeness=(),
                  quality_filter=True, max_seeds=200, polygon_size=(700, 700), inducer_scale=125,
-                 inducer_radius="derived", contour_px=5, rng="fresh", jobs=None, indices=None,
-                 # old names, still accepted
-                 n=None, grid=None, quota=None, filter=None, closeness=None,
-                 polygon_shape=None, basedist=None):
+                 inducer_radius="derived", contour_px=5, rng="fresh", jobs=None, indices=None):
     """`type: generate`: render figures fresh into the store. Three ways to say WHICH figures:
       figures            pinned rows [[randomness, n_vertices, n_points, edgy, rad, seed], ...]
       n_figures: <int>   draw from `space` until that many pass `quality_filter`, in the
@@ -609,17 +611,10 @@ def use_generate(figures=None, seed=None, space=None, n_figures=None, figures_pe
     `rng` ("fresh": restart from the seed per step, so the same seed gives the same polygon at every
     closeness; "shared": one stream per figure for polygon, placement and negative).
     `indices` (with n_figures: all) renders only those sweep positions, e.g. a few figures to dress;
-    `max_seeds` caps how many seeds a numeric n_figures tries per row before giving up.
-    Old names n/grid/quota/filter/closeness/polygon_shape/basedist are accepted as aliases."""
-    n_figures = n if n_figures is None else n_figures
-    space = dict((grid if space is None else space) or {})
+    `max_seeds` caps how many seeds a numeric n_figures tries per row before giving up."""
+    space = dict(space or {})
     if "inducer_radius" in space:                      # the radius knob may be written inside `space`
         inducer_radius = space.pop("inducer_radius")
-    inducer_count_mix = quota if quota is not None else inducer_count_mix
-    quality_filter = filter if filter is not None else quality_filter
-    inducer_closeness = closeness if closeness is not None else inducer_closeness
-    polygon_size = polygon_shape or polygon_size
-    inducer_scale = basedist or inducer_scale
     if rng not in ("fresh", "shared"):
         raise ValueError(f"rng must be 'fresh' or 'shared', got {rng!r}")
     if isinstance(inducer_radius, (int, float)) and not isinstance(inducer_radius, bool):
@@ -701,7 +696,6 @@ def build(cfg):
     for s in stems:                                 # dedupe, preserve order
         if s not in seen:
             seen.add(s); uniq.append(s)
-    from .negative import ensure_negatives
     ensure_negatives(uniq, seed=cfg.get("seed", 0))     # every silhouette gets a seeded negative
     metas = [json.loads((SIL / f"{s}.json").read_text()) | {"stem": s} for s in uniq]
     print(f"  silhouettes: {len(metas)} ({', '.join(uniq[:6])}{' ...' if len(uniq) > 6 else ''})")

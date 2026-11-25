@@ -65,8 +65,10 @@ def make_negative(sil_png, dst_png, seed=0):
             dx = int(np.clip(dx, -xs.min(), W - 1 - xs.max()))
             ny, nx = ys + dy, xs + dx
             if (dy == 0 and dx == 0) or taken[ny, nx].any():
-                ok = False; break
-            out[ny, nx] = fg_val; taken[ny, nx] = True
+                ok = False
+                break
+            out[ny, nx] = fg_val
+            taken[ny, nx] = True
         if ok:
             Image.fromarray(out).save(dst_png)
             return True

@@ -42,7 +42,7 @@ def main():
             "name": f"{args.name}_{level}",
             "seed": args.seed,
             "silhouettes": [{"type": "generate",
-                             "params": {"figures": figs, "closeness": knobs["closeness"]}}],
+                             "params": {"figures": figs, "inducer_closeness": knobs["closeness"]}}],
             "pairs": {"source": "catalog", "select": "distinct"},
             "dress": {"backends": ["composite"], "modes": ["perfect"],
                       "conditions": ["illusory", "control", "negative"], "contour": "auto",

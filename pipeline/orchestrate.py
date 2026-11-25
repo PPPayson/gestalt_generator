@@ -30,7 +30,9 @@ def run(cfg):
     backends = cfg["dress"]["backends"]
     if not backends:                                      # silhouettes only (e.g. a closure sweep)
         _copy_silhouettes(metas)
-        top.update(3); top.set_postfix_str("done"); top.close()
+        top.update(3)
+        top.set_postfix_str("done")
+        top.close()
         print(f"  dress: no backends -> silhouettes only\nDONE -> {OUT} (silhouettes + control + negative)")
         return
 
@@ -77,7 +79,9 @@ def _copy_silhouettes(metas):
     negatives into out/negative/ (mirrors the data/ split)."""
     import shutil
     from .utils import SIL, SIL_CTRL, SIL_NEG, OUT
-    d = OUT / "silhouettes"; dc = OUT / "control"; dn = OUT / "negative"
+    d = OUT / "silhouettes"
+    dc = OUT / "control"
+    dn = OUT / "negative"
     for x in (d, dc, dn):
         x.mkdir(parents=True, exist_ok=True)
     for m in metas:
