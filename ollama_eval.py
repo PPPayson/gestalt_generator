@@ -195,6 +195,7 @@ def run_model(args):
         d = f"{args.variant}_{suffix}" if args.variant else cond
         path = os.path.join(args.data_dir, d)
         if not os.path.isdir(path):
+            print(f"  (no {d}/ folder, skipping the {cond} condition)")
             continue
         image_names = [n for n in sorted(os.listdir(path)) if os.path.isfile(os.path.join(path, n))]
         if args.max_images is not None:
@@ -216,6 +217,9 @@ def run_model(args):
                 )
                 output_dict[cond][image_name][str(rep)] = response
 
+    if not output_dict:
+        raise FileNotFoundError(f"no condition folder found under {args.data_dir} "
+                                f"(looked for {[f'{args.variant}_{x}' if args.variant else c for c, x in folders.items()]})")
     return output_dict
 
 

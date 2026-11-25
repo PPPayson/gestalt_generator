@@ -294,6 +294,9 @@ GRID_DEFAULT = {"randomness": [0, 0.4, 0.8, 1], "n_vertices": [3, 4, 5, 6, 7, 8]
                 "n_points": [3, 4, 5, 6], "edgy": [0.1, 0.5, 1], "rad": [0.1, 0.2, 0.4]}
 
 
+KNOB_MIN = {"n_vertices": 3, "n_points": 2}      # a polygon needs 3 corners; a shuffle needs 2 discs
+
+
 def _space(space):
     """Normalise a config `space` (new or internal knob names; list or {min, max} per knob) to
     internal names. Missing knobs -> GRID_DEFAULT. Ranges stay dicts for the sampler."""
@@ -306,8 +309,20 @@ def _space(space):
             if set(v) != {"min", "max"}:
                 raise ValueError(f"space.{k}: a range is {{min, max}}, got {v}")
             out[key] = {"min": float(v["min"]), "max": float(v["max"])}
+            if out[key]["min"] > out[key]["max"]:
+                raise ValueError(f"space.{k}: min {v['min']} is above max {v['max']}")
+            lo, hi = out[key]["min"], out[key]["max"]
         else:
-            out[key] = list(v) if isinstance(v, (list, tuple)) else [v]
+            vals = list(v) if isinstance(v, (list, tuple)) else [v]
+            if not vals or not all(isinstance(x, (int, float)) and not isinstance(x, bool) for x in vals):
+                raise ValueError(f"space.{k}: needs a non-empty list of numbers, got {v!r}")
+            out[key] = vals
+            lo, hi = min(vals), max(vals)
+        floor = KNOB_MIN.get(key)
+        if floor is not None and lo < floor:
+            raise ValueError(f"space.{k}: values must be at least {floor}, got {lo}")
+        if key in ("randomness", "edgy", "rad") and (lo < 0 or hi > 1):
+            raise ValueError(f"space.{k}: values must lie in [0, 1], got {lo}..{hi}")
     return out
 
 
@@ -326,14 +341,16 @@ def _draw_knob(v, rng, integer):
 
 
 def _quota_counts(n, quota, n_points_list=(3, 4, 5, 6)):
-    """{n_points: count}. quota None/"uniform" -> equal shares over `n_points_list`; values all <= 1
-    are FRACTIONS (renormalised, remainder to the largest); otherwise absolute counts summing to n."""
+    """{n_points: count}. quota None/"uniform" -> equal shares over `n_points_list`. Non-integer values
+    (or values summing to 1) are SHARES of n, renormalised, largest remainder gets the rounding;
+    whole numbers are absolute counts and must sum to n."""
     if quota is None or quota == "uniform":
         quota = {int(k): 1.0 / len(n_points_list) for k in n_points_list}
     q = {int(k): float(v) for k, v in quota.items()}
     if not q or sum(q.values()) <= 0:
         raise ValueError(f"inducer_count_mix must request at least one figure: {quota}")
-    if all(v <= 1.0 for v in q.values()):                           # fractions -> counts
+    fractions = any(v != int(v) for v in q.values()) or abs(sum(q.values()) - 1.0) < 1e-6
+    if fractions:                                                   # shares -> counts
         tot = sum(q.values())
         exact = {k: n * v / tot for k, v in q.items()}
         counts = {k: int(x) for k, x in exact.items()}
@@ -451,8 +468,8 @@ def sample_figures(n, closeness=0.5, quota=None, grid=None, filter=None, seed=0,
                 best = {}
                 for sc, fig in have[k]:
                     key = (fig[0], fig[1], fig[2], fig[5])
-                    if key not in best or sc > best[key][0]:
-                        best[key] = (sc, fig)
+                    if key not in best or (sc, fig) > best[key]:     # ties broken by the row itself,
+                        best[key] = (sc, fig)                        # not by worker arrival order
                 have[k] = list(best.values())
             top.set_postfix_str(short_str()); top.update(passed() - before)
             if done():
@@ -460,7 +477,7 @@ def sample_figures(n, closeness=0.5, quota=None, grid=None, filter=None, seed=0,
     top.close()
     out = []
     for k in need:
-        got = sorted(have[k], key=lambda t: -t[0])[: need[k]]
+        got = sorted(have[k], key=lambda t: (-t[0], t[1]))[: need[k]]
         if len(got) < need[k]:
             log(f"  ! sample: only {len(got)}/{need[k]} figures with {k} inducers after {max_seeds} seeds")
         out += [fig for _, fig in got]
@@ -478,13 +495,18 @@ def _sweep_combos(g, inducer_radius, inducer_scale):
     for r in g["randomness"]:
         for nv in g["n_vertices"]:
             for np_ in g["n_points"]:
-                derived = int(inducer_scale * 3.0) / np_
+                derived = inducer_scale * 3.0 / np_
                 radii = [derived] if inducer_radius == "derived" else \
                         [float(x) for x in inducer_radius if float(x) <= derived + 1e-9]
+                if not radii:
+                    raise ValueError(f"inducer_radius {inducer_radius}: every radius is above the derived "
+                                     f"{derived:g} px for {np_} inducers (discs would overlap)")
                 for e in g["edgy"]:
                     for rad in g["rad"]:
                         for radius in radii:
                             out.append((r, int(nv), int(np_), e, rad, radius))
+    if not out:
+        raise ValueError("n_figures: all has no combinations to render (an empty space list?)")
     return out
 
 
@@ -544,6 +566,9 @@ def render_sweep(seed=0, space=None, figures_per_combination=1, inducer_radius="
     combos = _sweep_combos(g, inducer_radius, inducer_scale)
     total = len(combos) * int(figures_per_combination)
     idxs = list(range(total)) if indices is None else [int(i) for i in indices]
+    bad = [i for i in idxs if not 0 <= i < total]
+    if bad:
+        raise ValueError(f"indices {bad[:5]} outside the sweep (0 .. {total - 1})")
     dirs = dirs or (SIL, SIL_CTRL, SIL_NEG)
     for d in dirs:
         Path(d).mkdir(parents=True, exist_ok=True)
@@ -597,6 +622,20 @@ def use_generate(figures=None, seed=None, space=None, n_figures=None, figures_pe
     inducer_scale = basedist or inducer_scale
     if rng not in ("fresh", "shared"):
         raise ValueError(f"rng must be 'fresh' or 'shared', got {rng!r}")
+    if isinstance(inducer_radius, (int, float)) and not isinstance(inducer_radius, bool):
+        inducer_radius = [inducer_radius]
+    if inducer_radius != "derived" and not (isinstance(inducer_radius, (list, tuple)) and inducer_radius
+                                            and all(isinstance(x, (int, float)) for x in inducer_radius)):
+        raise ValueError(f"inducer_radius must be 'derived' or a list of px radii, got {inducer_radius!r}")
+    ignored = (["figures", "inducer_closeness", "also_closeness", "inducer_count_mix", "max_seeds"]
+               if n_figures == "all" else ["figures_per_combination", "rng", "indices"])
+    given = {"figures": figures is not None, "inducer_closeness": inducer_closeness != 0.5,
+             "also_closeness": bool(also_closeness), "inducer_count_mix": inducer_count_mix != "uniform",
+             "max_seeds": max_seeds != 200, "figures_per_combination": figures_per_combination != 1,
+             "rng": rng != "fresh", "indices": indices is not None}
+    for name in ignored:
+        if given[name]:
+            print(f"  ! generate: `{name}` has no effect with n_figures: {n_figures}")
     seed = 0 if seed is None else int(seed)
     geom = {"polygon_shape": tuple(polygon_size), "basedist": inducer_scale, "contour_px": contour_px}
     if n_figures == "all":

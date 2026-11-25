@@ -175,6 +175,8 @@ def shuffle_discs(image, points, mindist, shape=(1024, 1024), shape_type="circle
     points = np.array(points)
     H, W = shape
     yy, xx = np.ogrid[:H, :W]
+    if len(points) < 2:                      # nothing to permute
+        return None
     generator = np.random.default_rng() if rng is None else rng
     shuffled_points = generator.permutation(points)
     while np.array_equal(shuffled_points, points):

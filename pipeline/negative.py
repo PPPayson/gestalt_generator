@@ -6,6 +6,7 @@ unchanged, only their arrangement is, so no illusory figure is seen. Sweep figur
 write their negative in-stream; this module covers every other stored silhouette (legacy pool,
 kanizsa, drop-ins, closeness figures)."""
 import zlib
+from pathlib import Path
 import numpy as np
 from PIL import Image
 from scipy import ndimage
@@ -44,7 +45,7 @@ def make_negative(sil_png, dst_png, seed=0):
     fg_val = int(a[lab == ids[0]][0] > 127) * 255           # inducer colour
     bg_val = 255 - fg_val
     cents = np.array(ndimage.center_of_mass(np.ones_like(a), lab, ids))
-    rng = np.random.default_rng([int(seed), zlib.crc32(str(sil_png).rsplit("/", 1)[-1].encode())])
+    rng = np.random.default_rng([int(seed), zlib.crc32(Path(sil_png).name.encode())])
     H, W = a.shape
     r_eq = float(np.sqrt(ndimage.sum(np.ones_like(a), lab, ids).mean() / np.pi))   # typical blob radius
     for t in range(RETRIES):
@@ -73,14 +74,15 @@ def make_negative(sil_png, dst_png, seed=0):
 
 
 def ensure_negatives(stems, seed=0, log=print):
-    """Write SIL_NEG/<stem>.png for every stem that lacks one. Returns the stems that have none."""
+    """Write SIL_NEG/<stem>.png for every stem that lacks one or whose silhouette is newer than its
+    negative (the store keeps negatives across runs). Returns the stems that have none."""
     SIL_NEG.mkdir(parents=True, exist_ok=True)
     missing = []
     for stem in stems:
-        dst = SIL_NEG / f"{stem}.png"
-        if dst.exists():
+        src, dst = SIL / f"{stem}.png", SIL_NEG / f"{stem}.png"
+        if dst.exists() and dst.stat().st_mtime >= src.stat().st_mtime:   # up to date
             continue
-        if not make_negative(SIL / f"{stem}.png", dst, seed):
+        if not make_negative(src, dst, seed):
             missing.append(stem)
     if missing:
         log(f"  ! negative: could not build a negative for {len(missing)} silhouette(s): {missing[:5]}")

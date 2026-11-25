@@ -52,3 +52,19 @@ def test_ensure_negatives_fills_store(gestalt_stem):
     (SIL_NEG / f"{gestalt_stem}.png").unlink(missing_ok=True)
     assert ensure_negatives([gestalt_stem], seed=1) == []
     assert (SIL_NEG / f"{gestalt_stem}.png").exists()
+
+
+def test_shuffle_discs_needs_two(tmp_path):
+    from main import shuffle_discs
+    assert shuffle_discs(np.zeros((64, 64), np.uint8), [(32, 32)], 10, shape=(64, 64)) is None
+
+
+def test_ensure_negatives_refreshes_stale(gestalt_stem):
+    import os, time
+    from pipeline.negative import ensure_negatives
+    ensure_negatives([gestalt_stem], seed=0)
+    neg = SIL_NEG / f"{gestalt_stem}.png"
+    old = neg.stat().st_mtime - 100
+    os.utime(neg, (old, old))                              # negative now older than its silhouette
+    ensure_negatives([gestalt_stem], seed=0)
+    assert neg.stat().st_mtime > old + 50

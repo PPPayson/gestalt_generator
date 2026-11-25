@@ -167,7 +167,7 @@ range to sample. Knobs you leave out keep the defaults below.
 | `n_inducers` | number of discs | 3 to 6 |
 | `corner_sharpness` | low rounds the corners, high keeps them sharp | 0.1, 0.5, 1 |
 | `side_bulge` | how far each side bows out between corners | 0.1, 0.2, 0.4 |
-| `inducer_radius` | disc radius in px. `derived` means 3 × `inducer_scale` / `n_inducers`, so 3 discs of radius 125 or 6 of radius 62 at the default scale. A list sweeps the radius as its own factor, skipping radii above the derived one | `derived` |
+| `inducer_radius` | disc radius in px, written inside `space` or beside it. `derived` means 3 × `inducer_scale` / `n_inducers`, so 3 discs of radius 125 or 6 of radius 62 at the default scale. A list sweeps the radius as its own factor, skipping radii above the derived one | `derived` |
 
 How many figures, and how they are drawn and kept:
 
@@ -175,7 +175,7 @@ How many figures, and how they are drawn and kept:
 |---|---|---|
 | `n_figures` | how many figures. A number draws from `space` until that many pass the filter. `all` renders every combination of the lists | required |
 | `figures_per_combination` | with `n_figures: all`, random figures per combination | 1 |
-| `inducer_count_mix` | with a numeric `n_figures`, the share of each inducer count, as `{3: 0.15, 4: 0.35, 5: 0.35, 6: 0.15}`. `uniform` spreads equally over the counts the filter accepts | `uniform` |
+| `inducer_count_mix` | with a numeric `n_figures`, the share of each inducer count, as `{3: 0.15, 4: 0.35, 5: 0.35, 6: 0.15}`. Fractions are shares, renormalised to 1. Whole numbers are counts and must sum to `n_figures`. `uniform` spreads equally over the counts the filter accepts | `uniform` |
 | `figures` | instead of `n_figures`: pinned rows `[randomness, n_vertices, n_inducers, corner_sharpness, side_bulge, seed]` | |
 | `polygon_size` | size of the hidden polygon in px, inside the 1024 × 1024 canvas | `[700, 700]` |
 | `inducer_scale` | sets the derived disc radius, 3 × `inducer_scale` / `n_inducers` | 125 |
