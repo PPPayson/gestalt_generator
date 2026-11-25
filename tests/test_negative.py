@@ -14,12 +14,12 @@ def _arr(p):
 
 
 def _blob_sizes(a):
-    lab, ids = _blobs(a)
+    lab, ids, _ = _blobs(a)
     return sorted(int((lab == i).sum()) for i in ids)
 
 
 def _centroids(a):
-    lab, ids = _blobs(a)
+    lab, ids, _ = _blobs(a)
     return np.array(ndimage.center_of_mass(np.ones_like(a), lab, ids))
 
 
@@ -31,8 +31,8 @@ def test_negative_keeps_parts_moves_all(gestalt_stem, tmp_path):
     assert _blob_sizes(a) == _blob_sizes(b)                       # same blobs, same pixel counts
     assert not np.array_equal(a, b)
     # match blobs across the two images by pixel count (unique here): each one has moved
-    la, ia = _blobs(a)
-    lb, ib = _blobs(b)
+    la, ia, _ = _blobs(a)
+    lb, ib, _ = _blobs(b)
     pos_a = {int((la == i).sum()): ndimage.center_of_mass(la == i) for i in ia}
     pos_b = {int((lb == i).sum()): ndimage.center_of_mass(lb == i) for i in ib}
     if len(pos_a) == len(ia):
@@ -70,3 +70,31 @@ def test_ensure_negatives_refreshes_stale(gestalt_stem):
     os.utime(neg, (old, old))                              # negative now older than its silhouette
     ensure_negatives([gestalt_stem], seed=0)
     assert neg.stat().st_mtime > old + 5
+
+
+def test_negative_fails_when_a_blob_is_dropped(gestalt_stem, tmp_path):
+    a = _arr(SIL / f"{gestalt_stem}.png")
+    a[:, :2] = a.max()                                     # a stripe on the border: one more component, filtered out
+    src = tmp_path / "edge.png"
+    Image.fromarray(a).save(src)
+    assert make_negative(src, tmp_path / "neg.png", seed=0) is False
+
+
+def test_ensure_negatives_rebuilds_on_seed_change(gestalt_stem):
+    neg = SIL_NEG / f"{gestalt_stem}.png"
+    ensure_negatives([gestalt_stem], seed=1)
+    first = neg.read_bytes()
+    ensure_negatives([gestalt_stem], seed=1)
+    assert neg.read_bytes() == first                       # same seed: untouched
+    ensure_negatives([gestalt_stem], seed=2)
+    assert neg.read_bytes() != first                       # other seed: rebuilt
+
+
+def test_ensure_negatives_keeps_sweep_negatives(gestalt_stem):
+    from PIL.PngImagePlugin import PngInfo
+    neg = SIL_NEG / f"{gestalt_stem}.png"
+    info = PngInfo()
+    info.add_text("negative", "sweep")
+    Image.fromarray(np.zeros((16, 16), np.uint8)).save(neg, pnginfo=info)
+    ensure_negatives([gestalt_stem], seed=5)
+    assert _arr(neg).shape == (16, 16)                     # not rebuilt

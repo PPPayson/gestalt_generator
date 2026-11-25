@@ -152,7 +152,9 @@ The number of images is figures × `n_per_silhouette` × conditions.
 
 Every figure in the store gets a control (`data/control/`) and a negative (`data/negative/`). The
 negative is built from the stored image by moving each inducer to another inducer's place, under the
-run's seed.
+run's seed. Sweep figures (`rng: shared`) instead permute the disc positions in the figure's own
+random stream, which can leave some discs where they were; this keeps the sweep identical to the
+closure data it reproduces.
 
 ### `type: generate`
 
@@ -220,7 +222,8 @@ neighbouring discs, `support_ratio`, the fraction of the contour traced by discs
 remaining luminance difference between object and background.
 
 **Matched levels.** To test the same figures at several closeness values, pick them once, judged at
-the middle level and required to fit at the others, then write one config per level:
+the middle level and required to fit at the others, then write one config per level. The picker's
+defaults are the settings of the shipped set, so the first command below returns its 100 rows:
 
 ```bash
 python3 tools/pick_difficulty_figures.py --n 100 --judge 0.5 --levels 0.25 0.75

@@ -83,3 +83,16 @@ def test_sweep_same_across_worker_counts():
     two = S.use_generate(jobs=2, **kw)
     b2 = [(SIL / f"{s}.png").read_bytes() + (SIL_NEG / f"{s}.png").read_bytes() for s in two]
     assert one == two and b1 == b2
+
+
+def test_sweeps_with_same_seed_get_distinct_stems():
+    a = S.use_generate(space=SMALL, n_figures="all", seed=4, jobs=1)
+    b = S.use_generate(space={**SMALL, "side_bulge": [0.2]}, n_figures="all", seed=4, jobs=1)
+    assert a[0] != b[0] and a[0].startswith("gen_s4_") and b[0].startswith("gen_s4_")
+    assert (SIL / f"{a[0]}.png").exists() and (SIL / f"{b[0]}.png").exists()
+    assert json.loads((SIL / f"{b[0]}.json").read_text())["rad"] == 0.2
+
+
+def test_count_mix_outside_space_is_rejected():
+    with pytest.raises(ValueError):
+        S.sample_figures(2, grid={"n_inducers": [4]}, quota={3: 1, 4: 1}, seed=1, jobs=1, log=lambda *a: None)

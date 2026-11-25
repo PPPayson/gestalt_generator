@@ -10,6 +10,9 @@ Writes a YAML `figures:` list for tools/make_difficulty_configs.py.
     python3 tools/pick_difficulty_figures.py --n 100 --judge 0.5 --levels 0.25 0.75 \\
         --quota 3=0.15 4=0.35 5=0.35 6=0.15 --filter min_inducers=3 all_sides=false
 
+The defaults (quota, filter, --space, seed 1) are the settings varying_difficulty_benchmark_100 was
+drawn with, so the bare command reproduces its figure list.
+
 A config can do the same for ONE level with no tool at all:
     silhouettes: [{type: generate, params: {n_figures: 100, inducer_closeness: 0.5, quality_filter: {min_inducers: 3, all_sides: false}}}]
 """
@@ -45,18 +48,23 @@ def main():
     ap.add_argument("--filter", nargs="*",
                     default=["min_inducers=3", "all_sides=false", "max_flat_frac=0.2"],
                     help="rank_score thresholds, e.g. flat_solidity=0.95 max_gap=1.8")
+    ap.add_argument("--space", nargs="*",
+                    default=["corner_sharpness=0.1,0.5", "side_bulge=0.1,0.2"],
+                    help="knob=v1,v2,... values to draw from (knobs not given use the default space)")
     ap.add_argument("--seed", type=int, default=1)
     ap.add_argument("--max-seeds", type=int, default=200)
     ap.add_argument("--out", default="out/difficulty_figures.yaml")
     args = ap.parse_args()
     quota = {k: float(v) for k, v in _kv(args.quota, int).items()}
     filt = {k: _val(v) for k, v in _kv(args.filter, str).items()}
+    space = {k: [_val(x) for x in v.split(",")] for k, v in _kv(args.space, str).items()}
     figs = sample_figures(args.n, closeness=args.judge, quota=quota, filter=filt, seed=args.seed,
-                          also_closeness=args.levels, max_seeds=args.max_seeds)
+                          also_closeness=args.levels, max_seeds=args.max_seeds, grid=space)
     out = pathlib.Path(args.out); out.parent.mkdir(parents=True, exist_ok=True)
     with open(out, "w") as f:
         f.write(f"# {len(figs)} figures [randomness, n_vertices, n_points, edgy, rad, seed]; judged at "
-                f"closeness {args.judge}, feasible at {args.levels}; filter {filt}; quota {quota}\n")
+                f"closeness {args.judge}, feasible at {args.levels}; filter {filt}; quota {quota}; "
+                f"space {space}\n")
         f.write("figures:\n")
         for fig in figs:
             f.write(f"  - {json.dumps(fig)}\n")

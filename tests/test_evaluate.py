@@ -28,3 +28,12 @@ def test_negative_in_counting_stats(tmp_path):
     assert m["class_stats"]["negative"]["total"] == 1
     assert m["class_stats"]["negative"]["correct"] == 0           # gt count is n_inducers + 1 = 4
     assert m["class_stats"]["illusory"]["correct"] == 1
+
+
+def test_print_results_reports_negative(tmp_path, capsys):
+    p, gt = _responses(tmp_path)
+    results = {"m": {"illusion": E.compute_has_illusion_metrics(p),
+                     "counting": E.compute_counting_metrics(p, E.load_ground_truth_counts(gt))}}
+    E.print_results(results)
+    out = capsys.readouterr().out
+    assert "Neg. Count" in out and "Negative: 0/1" in out

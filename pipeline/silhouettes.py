@@ -6,6 +6,7 @@
               sweep of every parameter combination); see use_generate for every parameter
 Every silhouette in the store has a paired control (outline drawn, data/control/) and a negative
 (inducers shuffled so they share no contour, data/negative/)."""
+import hashlib
 import itertools
 import json
 import math
@@ -18,6 +19,7 @@ import tempfile
 from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw
+from PIL.PngImagePlugin import PngInfo
 import main
 from .geometry import separate_inducer_count
 from .negative import ensure_negatives
@@ -430,6 +432,10 @@ def sample_figures(n, closeness=0.5, quota=None, grid=None, filter=None, seed=0,
         # the default mix only covers counts the filter can pass (3-inducer figures never pass
         # min_inducers 4 / all_sides, and would stall the draw for max_seeds rounds)
         counts = [k for k in counts if k >= filt["min_inducers"]] or counts
+    if isinstance(quota, dict):
+        outside = sorted(set(int(k) for k in quota) - set(int(c) for c in g["n_points"]))
+        if outside:
+            raise ValueError(f"inducer_count_mix names counts outside space.n_inducers {g['n_points']}: {outside}")
     need = _quota_counts(n, quota, counts)
     levels = [closeness] + list(also_closeness)
     have = {k: [] for k in need}
@@ -517,7 +523,7 @@ def _sweep_cell(job):
     to `attempts` re-draws of the whole figure when placement or the negative fails.
     rng "fresh": polygon and placement each restart from `seed + idx` (main.py's convention), the
     negative draws from a fresh stream of the same seed. Returns (idx, stem) or (idx, None)."""
-    idx, combo, seed, rng_mode, polygon_shape, output_shape, contour_px, attempts, dirs = job
+    idx, combo, seed, rng_mode, polygon_shape, output_shape, contour_px, attempts, dirs, tag = job
     r, nv, np_, e, rad, radius = combo
     sil_dir, ctrl_dir, neg_dir = dirs
     figure_seed = seed + idx
@@ -545,15 +551,17 @@ def _sweep_cell(job):
         break
     if pos is None:
         return idx, None
-    stem = f"gen_s{seed}_{idx:05d}"
-    save = lambda d, arr: Image.fromarray((np.asarray(arr, dtype=np.uint8) * 255)).save(Path(d) / f"{stem}.png")
+    stem = f"gen_s{seed}_{tag}_{idx:05d}"
+    save = lambda d, arr, **kw: Image.fromarray((np.asarray(arr, dtype=np.uint8) * 255)).save(Path(d) / f"{stem}.png", **kw)
     save(sil_dir, pos)
     save(ctrl_dir, np.clip(pos + ring, 0, 1))
-    save(neg_dir, neg)
+    info = PngInfo()
+    info.add_text("negative", "sweep")                      # ensure_negatives leaves it alone
+    save(neg_dir, neg, pnginfo=info)
     meta = {"illusion": stem, "inducer_shape": "a disc with a bezier-polygon bite (gestalt inducer)",
             "illusory_shape": "irregular", "primitive": "circle", "n_inducers": np_,
             "polygon_vertices": nv, "randomness": r, "edgy": e, "rad": rad,
-            "inducer_radius": radius, "seed": figure_seed, "sweep_index": idx, "rng": rng_mode,
+            "inducer_radius": radius, "seed": figure_seed, "sweep_index": idx, "sweep_tag": tag, "rng": rng_mode,
             "support_ratio": round(main.support_ratio(main.draw_shapes(sampled, mindist=radius, shape=output_shape), mask, contour_px), 4)}
     (Path(sil_dir) / f"{stem}.json").write_text(json.dumps(meta))
     return idx, stem
@@ -565,9 +573,13 @@ def render_sweep(seed=0, space=None, figures_per_combination=1, inducer_radius="
     """`n_figures: all`: render EVERY combination of the space lists (x `figures_per_combination`
     random draws each) at an explicit disc radius, with illusory + control + negative written side by
     side. Figure idx -> combination idx % len(combos), seed `seed + idx`. `indices` restricts to a
-    subset of idx (partial sweeps, tests). Returns the stems in idx order."""
+    subset of idx (partial sweeps, tests). Stems are gen_s<seed>_<tag>_<idx>, where <tag> hashes the
+    sweep settings so sweeps with the same seed but another space do not overwrite each other.
+    Returns the stems in idx order."""
     g = _space(space)
     combos = _sweep_combos(g, inducer_radius, inducer_scale)
+    tag = hashlib.sha1(json.dumps([g, inducer_radius, inducer_scale, list(polygon_size), contour_px, rng,
+                                   figures_per_combination], sort_keys=True, default=str).encode()).hexdigest()[:6]
     total = len(combos) * int(figures_per_combination)
     idxs = list(range(total)) if indices is None else [int(i) for i in indices]
     bad = [i for i in idxs if not 0 <= i < total]
@@ -580,7 +592,7 @@ def render_sweep(seed=0, space=None, figures_per_combination=1, inducer_radius="
     polygon_shape = list(polygon_size)
     output_shape = list(output_shape)
     jobs_list = [(i, combos[i % len(combos)], int(seed), rng, polygon_shape, output_shape, int(contour_px),
-                  int(attempts), tuple(str(d) for d in dirs)) for i in idxs]
+                  int(attempts), tuple(str(d) for d in dirs), tag) for i in idxs]
     log(f"  sweep: {len(combos)} combinations x {figures_per_combination} = {total} figures"
         + (f" (rendering {len(idxs)})" if indices is not None else "") + f", rng={rng}")
     got = {}
