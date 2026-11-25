@@ -47,9 +47,12 @@ def _merge(base, over):
 def load(path):
     raw = yaml.safe_load(pathlib.Path(path).read_text()) or {}
     cfg = _merge(DEFAULTS, raw)
-    assert cfg["pairs"]["source"] in ("catalog", "propose", "explicit"), "bad pairs.source"
+    if cfg["pairs"]["source"] not in ("catalog", "propose", "explicit"):
+        raise ValueError(f"bad pairs.source {cfg['pairs']['source']!r}: catalog | propose | explicit")
     for b in cfg["dress"]["backends"]:
-        assert b in ("composite", "controlnet"), f"bad backend {b}"
+        if b not in ("composite", "controlnet"):
+            raise ValueError(f"bad backend {b!r}: composite | controlnet")
     for c in cfg["dress"]["conditions"]:
-        assert c in ("illusory", "control", "negative"), f"bad condition {c}"
+        if c not in ("illusory", "control", "negative"):
+            raise ValueError(f"bad condition {c!r}: illusory | control | negative")
     return cfg

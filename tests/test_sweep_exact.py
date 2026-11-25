@@ -1,7 +1,10 @@
 """`n_figures: all` with rng: shared reproduces the in-memory closure-sweep triplets bit for bit.
 Oracle hashes (md5, first 12 hex, over uint8 0/1 arrays of ring, illusory, negative) were recorded on
 2026-11-24 from the original in-memory generator (IllusionDataset, seed 0) for figure indices spanning
-the whole 21,600-item sweep: first items, a middle cell, the last combination and the first repeat."""
+the whole 21,600-item sweep: first items, a middle cell, the last combination and the first repeat.
+The hashes depend on numpy's Generator stream (integers, permutation) and on the polygon and mask
+rasterisation (scipy, OpenCV). A deliberate upgrade of those can change them with no bug in this
+repo: then re-record from a run checked by eye, never loosen the comparison."""
 import hashlib
 import numpy as np
 from PIL import Image

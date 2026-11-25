@@ -9,6 +9,9 @@ from . import gt
 
 def run(provider, cfg, metas, pairs):
     out = OUT / "cn"; out.mkdir(parents=True, exist_ok=True); k = 0
+    extra = [c for c in cfg["dress"].get("conditions", []) if c != "illusory"]
+    if extra:
+        print(f"  ! controlnet: renders the illusory condition only; skipping {', '.join(extra)}")
     crop = cfg["dress"].get("crop", True)
     for meta in metas:
         sil_img = SIL / f"{meta['stem']}.png"

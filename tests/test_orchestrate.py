@@ -49,3 +49,24 @@ def test_controlnet_with_dress_runs(cfg):
             dress={"backends": ["controlnet"]}, output={"contact_sheet": False})
     orchestrate.run(c)
     assert len(list((OUT / "cn").glob("*.png"))) == 1
+
+
+def test_controlnet_warns_on_other_conditions(cfg, capsys):
+    c = cfg(silhouettes=KAN,
+            models={"image": {"provider": FAKE_CN}},
+            pairs={"source": "explicit", "n_per_silhouette": 1,
+                   "explicit": [{"object": "white disc", "background": "black bg"}]},
+            dress={"backends": ["controlnet"], "conditions": ["illusory", "negative"]},
+            output={"contact_sheet": False})
+    orchestrate.run(c)
+    assert "illusory condition only" in capsys.readouterr().out
+    assert len(list((OUT / "cn").glob("*.png"))) == 1
+
+
+def test_no_backends_copies_silhouettes_only(cfg, capsys):
+    c = cfg(silhouettes=KAN, dress={"backends": []}, output={"contact_sheet": False})
+    orchestrate.run(c)
+    assert "silhouettes only" in capsys.readouterr().out
+    for d in ("silhouettes", "negative"):                 # kanizsa stems ship no control mask
+        assert list((OUT / d).glob("*.png")), d
+    assert (OUT / "control").is_dir() and not (OUT / "comp").exists()

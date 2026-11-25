@@ -48,7 +48,7 @@ def test_old_names_still_work():
 def test_config_rejects_unknown_condition(tmp_path):
     p = tmp_path / "c.yaml"
     p.write_text("name: x\ndress: {conditions: [illusory, bogus]}\n")
-    with pytest.raises(AssertionError):
+    with pytest.raises(ValueError):
         config.load(p)
 
 
