@@ -1,6 +1,9 @@
+import csv
+import json
 import numpy as np
 from pipeline import dress_composite as DC, silhouettes as S
-from pipeline.utils import SIL, OUT
+from pipeline.negative import ensure_negatives
+from pipeline.utils import SIL, SIL_CTRL, SIL_NEG, OUT
 from pipeline.geometry import inducer_labels
 
 
@@ -47,8 +50,6 @@ def test_run_writes_stimuli_and_manifest(cfg):
 
 def test_control_draws_contour():
     # render a gestalt silhouette with and without its control; the control must differ (drawn outline)
-    from pipeline.utils import SIL_CTRL
-    import numpy as np
     stem = sorted(p.stem for p in SIL.glob("img_*.png"))[0]
     illus, _ = DC.render(SIL / f"{stem}.png", "white disc", "black bg", crop=True, control=None)
     ctrl, _ = DC.render(SIL / f"{stem}.png", "white disc", "black bg", crop=True,
@@ -57,16 +58,31 @@ def test_control_draws_contour():
     assert not np.array_equal(np.asarray(illus), np.asarray(ctrl))   # contour was drawn
 
 
-def test_run_emits_both_conditions(cfg):
-    from pipeline.utils import OUT
-    import csv
+def test_run_emits_all_three_conditions(cfg):
     stem = sorted(p.stem for p in SIL.glob("img_*.png"))[0]
+    assert ensure_negatives([stem], seed=1) == []
     metas = [{"stem": stem, "illusion": stem, "illusory_shape": "irregular"}]
     pairs = {stem: [{"object": "white disc", "background": "black bg", "natural": False}]}
     c = cfg(dress={"backends": ["composite"], "modes": ["perfect"],
-                   "conditions": ["illusory", "control"], "contour": "auto",
+                   "conditions": ["illusory", "control", "negative"], "contour": "auto",
                    "shadow": 55, "crop": True, "feather": 1.5})
     DC.run(c, metas, pairs)
-    conds = {r["condition"] for r in csv.DictReader(open(OUT / "manifest.csv"))}
-    assert conds == {"illusory", "control"}
-    assert len(list((OUT / "comp").rglob("*.png"))) == 2
+    rows = list(csv.DictReader(open(OUT / "manifest.csv")))
+    assert {r["condition"] for r in rows} == {"illusory", "control", "negative"}
+    assert len(list((OUT / "comp").rglob("*.png"))) == 3
+    assert (SIL_NEG / f"{stem}.png").exists()
+    neg = [r for r in rows if r["condition"] == "negative"][0]
+    g = json.loads((OUT / "gt" / f"{neg['id']}.json").read_text())
+    assert g["has_illusion"] is False and g["has_visible_contour"] is False
+
+
+def test_negative_skipped_when_missing(cfg, capsys):
+    S.produce_kanizsa(n_sides=4)                 # no negative written for this stem
+    metas = [{"stem": "kanizsa_square", "illusion": "kanizsa_square", "illusory_shape": "square"}]
+    pairs = {"kanizsa_square": [{"object": "white disc", "background": "black bg", "natural": False}]}
+    c = cfg(dress={"backends": ["composite"], "modes": ["perfect"],
+                   "conditions": ["illusory", "negative"], "contour": "auto",
+                   "shadow": 0, "crop": True, "feather": 1.5})
+    DC.run(c, metas, pairs)
+    assert {r["condition"] for r in csv.DictReader(open(OUT / "manifest.csv"))} == {"illusory"}
+    assert "no negative silhouette" in capsys.readouterr().out

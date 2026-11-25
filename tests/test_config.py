@@ -25,11 +25,18 @@ def test_load_valid(tmp_path):
 
 def test_load_rejects_bad_source(tmp_path):
     p = tmp_path / "c.yaml"; p.write_text("pairs: {source: nope}\n")
-    with pytest.raises(AssertionError):
+    with pytest.raises(ValueError):
         config.load(p)
 
 
 def test_load_rejects_bad_backend(tmp_path):
     p = tmp_path / "c.yaml"; p.write_text("dress: {backends: [wat]}\n")
-    with pytest.raises(AssertionError):
+    with pytest.raises(ValueError):
+        config.load(p)
+
+
+def test_load_rejects_bad_condition(tmp_path):
+    p = tmp_path / "c.yaml"
+    p.write_text("dress: {conditions: [illusory, shuffled]}\n")
+    with pytest.raises(ValueError):
         config.load(p)

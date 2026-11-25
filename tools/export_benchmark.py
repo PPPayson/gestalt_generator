@@ -8,6 +8,7 @@
         plain_contour/     f001_plain_contour.jpg ...      same, contour drawn
         texture_illusory/  f001_texture_illusory.jpg ...   real object on real background
         texture_contour/   f001_texture_contour.jpg ...
+        <variant>_negative/ f001_<variant>_negative.jpg ... same inducers shuffled, no figure (when the set has negatives)
         answers.csv                           one row per image (figure, variant, condition, keys ...)
         answers/           f001_plain_illusory.json ...   per-image answer key (evaluate.py reads these)
 
@@ -25,7 +26,7 @@ from pipeline.utils import TEXTURE_DIRS, progress
 from pipeline.silhouettes import GESTALT_RE
 from PIL import Image
 
-COND = {"illusory": "illusory", "control": "contour"}
+COND = {"illusory": "illusory", "control": "contour", "negative": "negative"}
 ANSWER_COLS = ["figure", "file", "variant", "condition", "n_inducers", "has_illusion",
                "has_visible_contour", "illusory_shape", "polygon_vertices", "object", "background",
                "texture", "closeness", "closeness_measured", "support_ratio", "contrast", "lum_gap",
@@ -133,7 +134,7 @@ def _write_readme(dst, name, summary):
                      f"{sum(sr) / len(sr):.2f} |" if sr else f"| {lv} | {len(rows)} | | | |")
     lines += ["",
               "- `plain_*`: black inducers on a flat fill (texture 0). `texture_*`: real object on a real background (texture 3).",
-              "- `*_illusory`: no contour drawn (`has_illusion: true`). `*_contour`: the shape's outline drawn (positive control).",
+              "- `*_illusory`: no contour drawn (`has_illusion: true`). `*_contour`: the shape's outline drawn (positive control). `*_negative`: the same inducers shuffled so they share no contour (`has_illusion: false`).",
               "- `answers.csv`: one row per image with the answer key and the difficulty parameters; `answers/<stem>.json` is the same per image.",
               "- `preview_<level>.jpg`: contact sheet of the level (half size).", "",
               "Regenerate: `python3 tools/run_difficulty_set.py --name " + name + "` then "

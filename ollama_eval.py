@@ -48,9 +48,9 @@ def get_args_parser():
     parser.add_argument("--out_dir", type=str, default="outs/")
     parser.add_argument("--data_dir", type=str, default="benchmarks/gen100/images")
     parser.add_argument("--variant", type=str, default=None, choices=["plain", "texture"],
-                        help="benchmark levels hold <variant>_illusory/ and <variant>_contour/ "
+                        help="benchmark levels hold <variant>_illusory/, <variant>_contour/ and <variant>_negative/ "
                              "(e.g. benchmarks/varying_difficulty_benchmark_100/hard); omit for "
-                             "sets laid out as illusory/ and control/")
+                             "sets laid out as illusory/, control/ and negative/")
 
     parser.add_argument("--temperature", type=float, default=0.0)
     parser.add_argument("--reps", type=int, default=3)
@@ -187,86 +187,39 @@ def run_model(args):
             """,
             "Inspect the image. Is there a true or illusory contour? Do not explain your answer."]
 
-    ill_dir = f"{args.variant}_illusory" if args.variant else "illusory"
-    ctl_dir = f"{args.variant}_contour" if args.variant else "control"
-    image_names = [
-        name
-        for name in sorted(os.listdir(os.path.join(args.data_dir, ill_dir)))
-        if os.path.isfile(os.path.join(args.data_dir, ill_dir, name))
-    ]
+    # one folder per condition: illusory | control | negative (benchmark levels name them
+    # <variant>_illusory / <variant>_contour / <variant>_negative); every folder present is run
+    folders = {"illusory": "illusory", "control": "contour", "negative": "negative"}
+    output_dict = {}
+    for cond, suffix in folders.items():
+        d = f"{args.variant}_{suffix}" if args.variant else cond
+        path = os.path.join(args.data_dir, d)
+        if not os.path.isdir(path):
+            print(f"  (no {d}/ folder, skipping the {cond} condition)")
+            continue
+        image_names = [n for n in sorted(os.listdir(path)) if os.path.isfile(os.path.join(path, n))]
+        if args.max_images is not None:
+            image_names = image_names[:args.max_images]
+        output_dict[cond] = {}
+        for count, image_name in enumerate(image_names, start=1):
+            print(f"[{cond} {count}/{len(image_names)}] {image_name}")
+            output_dict[cond][image_name] = {}
+            for rep in range(args.reps):
+                response = get_model_response(
+                    provider=args.provider,
+                    model=args.model,
+                    query=query,
+                    image_path=os.path.join(path, image_name),
+                    max_tokens=args.max_tokens,
+                    thinking=args.thinking,
+                    temperature=args.temperature,
+                    max_context=args.max_context,
+                )
+                output_dict[cond][image_name][str(rep)] = response
 
-    control_image_names = [
-        name
-        for name in sorted(os.listdir(os.path.join(args.data_dir, ctl_dir)))
-        if os.path.isfile(os.path.join(args.data_dir, ctl_dir, name))
-    ]
-
-
-    if args.max_images is not None:
-        image_names = image_names[:args.max_images]
-
-    output_dict = {'illusory':{}, 'control':{}}
-
-    for count, image_name in enumerate(image_names, start=1):
-
-        print(
-            f"[{count}/{len(image_names)}] "
-            f"{image_name}"
-        )
-
-        output_dict['illusory'][image_name] = {}
-
-        full_path = os.path.join(
-            args.data_dir,
-            ill_dir,
-            image_name,
-        )
-
-        for rep in range(args.reps):
-
-            response = get_model_response(
-                provider=args.provider,
-                model=args.model,
-                query=query,
-                image_path=full_path,
-                max_tokens=args.max_tokens,
-                thinking=args.thinking,
-                temperature=args.temperature,
-                max_context=args.max_context,
-            )
-
-            output_dict['illusory'][image_name][str(rep)] = response
-
-    for count, image_name in enumerate(control_image_names, start=1):
-
-        print(
-            f"[{count}/{len(image_names)}] "
-            f"{image_name}"
-        )
-
-        output_dict['control'][image_name] = {}
-
-        full_path = os.path.join(
-            args.data_dir,
-            ctl_dir,
-            image_name,
-        )
-
-        for rep in range(args.reps):
-
-            response = get_model_response(
-                provider=args.provider,
-                model=args.model,
-                query=query,
-                image_path=full_path,
-                max_tokens=args.max_tokens,
-                thinking=args.thinking,
-                temperature=args.temperature,
-                max_context=args.max_context,
-            )
-
-            output_dict['control'][image_name][str(rep)] = response
-
+    if not output_dict:
+        raise FileNotFoundError(f"no condition folder found under {args.data_dir} "
+                                f"(looked for {[f'{args.variant}_{x}' if args.variant else c for c, x in folders.items()]})")
     return output_dict
 
 

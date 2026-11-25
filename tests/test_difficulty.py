@@ -204,8 +204,8 @@ def test_generate_spec_materialises_matched_figures():
     """`type: generate` renders png + sidecar + control for each figure at the given closeness;
     the same figures+seeds at another closeness give the same stems bar the closeness suffix."""
     figs = [[0, 4, 4, 0.1, 0.1, 3], [0, 5, 5, 0.1, 0.1, 3]]
-    a = S.build({"silhouettes": [{"type": "generate", "params": {"figures": figs, "closeness": 0.5}}]})
-    b = S.build({"silhouettes": [{"type": "generate", "params": {"figures": figs, "closeness": 0.75}}]})
+    a = S.build({"silhouettes": [{"type": "generate", "params": {"figures": figs, "inducer_closeness": 0.5}}]})
+    b = S.build({"silhouettes": [{"type": "generate", "params": {"figures": figs, "inducer_closeness": 0.75}}]})
     assert [m["stem"] for m in a] == ["img_0_4_4_0.1_0.1_0.5_s3", "img_0_5_5_0.1_0.1_0.5_s3"]
     base = lambda ms: [m["stem"].rsplit("_", 2)[0] for m in ms]
     assert base(a) == base(b)                                   # matched figures, closeness suffix apart
@@ -272,7 +272,7 @@ def test_rank_score_filter_thresholds(overrides, passes):
 
 
 @pytest.mark.parametrize("n, quota, expected", [
-    (100, None, {3: 15, 4: 35, 5: 35, 6: 15}),     # default mix
+    (100, None, {3: 25, 4: 25, 5: 25, 6: 25}),     # default mix: uniform over the inducer counts
     (10, {4: 0.5, 5: 0.3}, {4: 6, 5: 4}),          # fractions renormalised, largest remainder
     (5, {4: 3, 5: 2}, {4: 3, 5: 2}),               # explicit counts
     (0, {4: 3, 5: 2}, {4: 3, 5: 2}),               # n=0: counts taken as given
@@ -338,9 +338,9 @@ def test_generate_n_runs_under_run_py(tmp_path):
         seed: 1
         silhouettes:
           - type: generate
-            params: {n: 2, closeness: 0.5, quota: {4: 2}, max_seeds: 12,
-                     grid: {randomness: [0], n_vertices: [4], edgy: [0.1], rad: [0.1]},
-                     filter: {min_inducers: 3, all_sides: false}}
+            params: {n_figures: 2, inducer_closeness: 0.5, inducer_count_mix: {4: 2}, max_seeds: 12,
+                     space: {randomness: [0], n_vertices: [4], edgy: [0.1], rad: [0.1]},
+                     quality_filter: {min_inducers: 3, all_sides: false}}
         pairs: {source: catalog, select: distinct}
         dress: {conditions: [illusory], texture: 0, shadow: 0}
         output: {contact_sheet: false}
@@ -365,7 +365,7 @@ def test_sample_figures_fills_quota_across_seeds():
 
 def test_generate_spec_with_n_renders_passing_figures():
     metas = S.build({"seed": 1, "silhouettes": [{"type": "generate", "params": {
-        "n": 2, "closeness": 0.5, "quota": {4: 2},
-        "grid": {"randomness": [0], "n_vertices": [4], "edgy": [0.1], "rad": [0.1]},
-        "filter": {"min_inducers": 3, "all_sides": False}, "max_seeds": 12}}]})
+        "n_figures": 2, "inducer_closeness": 0.5, "inducer_count_mix": {4: 2},
+        "space": {"randomness": [0], "n_vertices": [4], "edgy": [0.1], "rad": [0.1]},
+        "quality_filter": {"min_inducers": 3, "all_sides": False}, "max_seeds": 12}}]})
     assert len(metas) == 2 and all(m["n_inducers"] == 4 and m["seed"] >= 1 for m in metas)

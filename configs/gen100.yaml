@@ -1,5 +1,5 @@
 # OUR benchmark set. Reproduce with:  python3 run.py configs/gen100.yaml
-#   N = (#silhouettes) x (n_per_silhouette) = 10 x 10 = 100 stimuli.
+#   N = (#silhouettes) x (n_per_silhouette) x (conditions) = 10 x 10 x 3 = 300 stimuli (100 figures).
 # REPRODUCTION NEEDS NO GPU / API KEY / INTERNET: pairs.source=catalog and all catalog assets are
 # shipped in data/assets/, so NO provider is ever loaded (the models block below is unused here).
 # The models block only matters if you generate NEW textures (pairs.source=propose) or use the
@@ -27,7 +27,7 @@ assets:
 dress:
   backends: [composite]    # composite only (add controlnet to also run the one-pass Modal path)
   modes: [perfect]
-  conditions: [illusory, control]   # matched pairs: illusory (no contour) + control (contour drawn)
+  conditions: [illusory, control, negative]   # illusory (no contour) + control (contour drawn) + negative (inducers shuffled)
   contour: auto            # control-outline colour: auto (per-image high contrast) | white | black
   shadow: 0                # no shadow by default (set e.g. 55 to add an inward depth cue)
   crop: true               # trim dead silhouette margin so objects fill the frame

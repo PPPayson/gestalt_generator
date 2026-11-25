@@ -1,0 +1,33 @@
+{
+  "id": "stim_816e4c593a",
+  "condition": "control",
+  "n_inducers": 5,
+  "has_illusion": false,
+  "has_visible_contour": true,
+  "illusory_shape": "irregular",
+  "polygon_vertices": 5,
+  "nonillusory_shapes": {
+    "real_life": [
+      "target",
+      "target",
+      "target",
+      "target",
+      "target"
+    ],
+    "primitive": [
+      "circle",
+      "circle",
+      "circle",
+      "circle",
+      "circle"
+    ]
+  },
+  "difficulty": {
+    "texture": 3,
+    "closeness": null,
+    "closeness_measured": null,
+    "support_ratio": null,
+    "contrast": null,
+    "lum_gap": null
+  }
+}

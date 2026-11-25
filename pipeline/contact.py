@@ -26,7 +26,7 @@ def run(cfg):
     tex = lambda r: int(r["texture"]) if r.get("texture") not in (None, "") else 3
     cond = lambda r: r.get("condition") or "illusory"
     cols = sorted({(tex(r), cond(r)) for r in rows},        # one column per (texture, condition)
-                  key=lambda t: (t[0], ["illusory", "control"].index(t[1])))
+                  key=lambda t: (t[0], ["illusory", "control", "negative"].index(t[1])))
     multi = len({t for t, _ in cols}) > 1               # labels only; file lookup probes both layouts
     g = defaultdict(dict)                                # (silhouette, object) -> (texture, cond) -> id
     for r in rows:

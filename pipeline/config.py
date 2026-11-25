@@ -28,7 +28,7 @@ DEFAULTS = {
     "dress": {"backends": ["composite"], "modes": ["perfect"],
               "shadow": 0,                      # OFF by default; set >0 (e.g. 55) for an inward depth cue
               "crop": True, "feather": 1.5,
-              "conditions": ["illusory"],       # illusory | control (control draws the shape's outline)
+              "conditions": ["illusory"],       # illusory | control (outline drawn) | negative (inducers shuffled)
               "contour": "auto",                # control outline colour: auto | white | black
               "texture": 3,                     # 0 flat b/w | 1 color chips | 2 objects on solid | 3 full
               "contrast": None},                # camouflage [0,1]: 0/None native colors, 1 bg = obj color
@@ -47,7 +47,12 @@ def _merge(base, over):
 def load(path):
     raw = yaml.safe_load(pathlib.Path(path).read_text()) or {}
     cfg = _merge(DEFAULTS, raw)
-    assert cfg["pairs"]["source"] in ("catalog", "propose", "explicit"), "bad pairs.source"
+    if cfg["pairs"]["source"] not in ("catalog", "propose", "explicit"):
+        raise ValueError(f"bad pairs.source {cfg['pairs']['source']!r}: catalog | propose | explicit")
     for b in cfg["dress"]["backends"]:
-        assert b in ("composite", "controlnet"), f"bad backend {b}"
+        if b not in ("composite", "controlnet"):
+            raise ValueError(f"bad backend {b!r}: composite | controlnet")
+    for c in cfg["dress"]["conditions"]:
+        if c not in ("illusory", "control", "negative"):
+            raise ValueError(f"bad condition {c!r}: illusory | control | negative")
     return cfg

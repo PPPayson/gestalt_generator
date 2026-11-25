@@ -16,13 +16,13 @@ from src.utils.eval_utils import get_basic_transform
 
 
 def run_feature_comparison(args):
-    device = torch.device(f'cuda:{args.gpu_id}')
+    device = torch.device(f'cuda:{args.gpu_id}' if torch.cuda.is_available() else 'cpu')
     model = timm.create_model(args.model_name, pretrained=True, num_classes=0, in_chans=1)
     
     data_config = timm.data.resolve_model_data_config(model)
     transform = get_basic_transform(data_config)
 
-    train_dataset = IllusionDataset(transform=transform)
+    train_dataset = IllusionDataset(root=args.data_root, transform=transform)
     # val_dataset = IllusionDataset()
 
     
@@ -76,8 +76,13 @@ def extract_features(model, data_loader, device, return_path = False):
         return features, labels, img_path_list
 
 def get_args_parser():
-    parser = argparse.ArgumentParser("Linear Probe with Illusionary Contour Data")
+    parser = argparse.ArgumentParser("Closure score of TIMM models on illusory-contour triplets")
     parser.add_argument('--model_name', type=str, default="vit_base_patch16_224.augreg_in21k_ft_in1k", help="TIMM model name")
+    parser.add_argument('--data_root', type=str, default="out",
+                        help="pipeline output with silhouettes/, control/, negative/ (python3 run.py configs/closure_sweep.yaml)")
+    parser.add_argument('--output', type=str, default="outs/closure.json", help="results json (resumes if present)")
+    parser.add_argument('--models', type=str, nargs='*', default=None,
+                        help="TIMM model names to score; default: every model in assets/results-imagenet.csv")
     parser.add_argument('--epochs', type=int, default=30)
     parser.add_argument('--batch_size', type=int, default=16)
     parser.add_argument('--extract_batch_size', type=int, default=16)
@@ -91,17 +96,19 @@ def get_args_parser():
 
 if __name__ == "__main__":
     args = get_args_parser().parse_args()
-    output_file = "outs/closure_2.json"
+    output_file = args.output
+    os.makedirs(os.path.dirname(output_file) or ".", exist_ok=True)
     if os.path.exists(output_file):
         with open(output_file, 'r') as f:
             output_dict = json.load(f)
     else:
         output_dict = {}
-    timm_results_csv = os.path.join('assets', 'results-imagenet.csv')
-    result_df = pd.read_csv(timm_results_csv)
-    num_models = len(result_df.index)
-    for index in reversed(range(num_models)):
-        model_name = result_df['model'][index]
+    if args.models:
+        model_names = list(args.models)
+    else:
+        result_df = pd.read_csv(os.path.join('assets', 'results-imagenet.csv'))
+        model_names = list(reversed(list(result_df['model'])))
+    for model_name in model_names:
         if model_name in output_dict and output_dict[model_name] != "Failed":
             continue
         print(model_name)

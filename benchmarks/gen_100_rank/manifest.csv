@@ -1,201 +1,301 @@
 id,silhouette,object,background,backend,mode,natural,condition
-stim_07a11cb9be,img_1_6_4_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,illusory
-stim_84c66b24d6,img_1_6_4_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,control
+stim_6fb27eea90,img_1_6_4_0.1_0.1,Frisbee,olive green felt,composite,perfect,False,illusory
+stim_e3a6c2d6a6,img_1_6_4_0.1_0.1,Frisbee,olive green felt,composite,perfect,False,control
+stim_e3bdf06bd8,img_1_6_4_0.1_0.1,Frisbee,olive green felt,composite,perfect,False,negative
 stim_3be2d8ffed,img_1_6_4_0.1_0.1,lens,white concrete,composite,perfect,False,illusory
 stim_b1e0830040,img_1_6_4_0.1_0.1,lens,white concrete,composite,perfect,False,control
+stim_59ad80b55e,img_1_6_4_0.1_0.1,lens,white concrete,composite,perfect,False,negative
 stim_27f993cfef,img_1_6_4_0.1_0.1,moon,black basalt fine grain,composite,perfect,False,illusory
 stim_e092e05466,img_1_6_4_0.1_0.1,moon,black basalt fine grain,composite,perfect,False,control
-stim_0a5e974ac1,img_1_6_4_0.1_0.1,Space pod,orange terrazzo,composite,perfect,False,illusory
-stim_f7a0929ddd,img_1_6_4_0.1_0.1,Space pod,orange terrazzo,composite,perfect,False,control
+stim_c15e0bb4c8,img_1_6_4_0.1_0.1,moon,black basalt fine grain,composite,perfect,False,negative
 stim_f0b9b317eb,img_1_6_4_0.1_0.1,white pearl,charcoal grey cork,composite,perfect,False,illusory
 stim_c13639cfc9,img_1_6_4_0.1_0.1,white pearl,charcoal grey cork,composite,perfect,False,control
-stim_05ce09125b,img_1_6_4_0.1_0.1,lily pad,polished black granite,composite,perfect,False,illusory
-stim_255391f4f0,img_1_6_4_0.1_0.1,lily pad,polished black granite,composite,perfect,False,control
+stim_33aa86b4a3,img_1_6_4_0.1_0.1,white pearl,charcoal grey cork,composite,perfect,False,negative
+stim_07a11cb9be,img_1_6_4_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,illusory
+stim_84c66b24d6,img_1_6_4_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,control
+stim_c48c0e7c03,img_1_6_4_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,negative
 stim_49141352e7,img_1_6_4_0.1_0.1,macaron,soft white frosted quartz,composite,perfect,False,illusory
 stim_b727fb9259,img_1_6_4_0.1_0.1,macaron,soft white frosted quartz,composite,perfect,False,control
+stim_5cfc327bb1,img_1_6_4_0.1_0.1,macaron,soft white frosted quartz,composite,perfect,False,negative
 stim_a891332977,img_1_6_4_0.1_0.1,candle,charcoal mottled plaster,composite,perfect,False,illusory
 stim_3e6e87c67a,img_1_6_4_0.1_0.1,candle,charcoal mottled plaster,composite,perfect,False,control
+stim_efcb4a0960,img_1_6_4_0.1_0.1,candle,charcoal mottled plaster,composite,perfect,False,negative
 stim_0ce645e6a3,img_1_6_4_0.1_0.1,grapefruit,deep green moss,composite,perfect,False,illusory
 stim_ba0d6419bf,img_1_6_4_0.1_0.1,grapefruit,deep green moss,composite,perfect,False,control
+stim_5e71bd4892,img_1_6_4_0.1_0.1,grapefruit,deep green moss,composite,perfect,False,negative
 stim_41356ff13c,img_1_6_4_0.1_0.1,Satellite dish,orange sand,composite,perfect,False,illusory
 stim_9eb480819f,img_1_6_4_0.1_0.1,Satellite dish,orange sand,composite,perfect,False,control
-stim_770d635715,img_0_4_4_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,illusory
-stim_8c39a009c2,img_0_4_4_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,control
+stim_7599de296c,img_1_6_4_0.1_0.1,Satellite dish,orange sand,composite,perfect,False,negative
+stim_9a4271fb50,img_1_6_4_0.1_0.1,target,dark chocolate brown wood,composite,perfect,False,illusory
+stim_b43044bfc4,img_1_6_4_0.1_0.1,target,dark chocolate brown wood,composite,perfect,False,control
+stim_2484a9e35a,img_1_6_4_0.1_0.1,target,dark chocolate brown wood,composite,perfect,False,negative
+stim_3952ffdc52,img_0_4_4_0.1_0.1,Frisbee,olive green felt,composite,perfect,False,illusory
+stim_04a831eb79,img_0_4_4_0.1_0.1,Frisbee,olive green felt,composite,perfect,False,control
+stim_a8c2ba3c6f,img_0_4_4_0.1_0.1,Frisbee,olive green felt,composite,perfect,False,negative
 stim_14ba290228,img_0_4_4_0.1_0.1,lens,white concrete,composite,perfect,False,illusory
 stim_266bea3119,img_0_4_4_0.1_0.1,lens,white concrete,composite,perfect,False,control
+stim_350bceab3c,img_0_4_4_0.1_0.1,lens,white concrete,composite,perfect,False,negative
 stim_b20dd38cea,img_0_4_4_0.1_0.1,moon,black basalt fine grain,composite,perfect,False,illusory
 stim_747404b16a,img_0_4_4_0.1_0.1,moon,black basalt fine grain,composite,perfect,False,control
-stim_fba748dd99,img_0_4_4_0.1_0.1,Space pod,orange terrazzo,composite,perfect,False,illusory
-stim_4dd4241512,img_0_4_4_0.1_0.1,Space pod,orange terrazzo,composite,perfect,False,control
+stim_a2377010b0,img_0_4_4_0.1_0.1,moon,black basalt fine grain,composite,perfect,False,negative
 stim_ef717fec65,img_0_4_4_0.1_0.1,white pearl,charcoal grey cork,composite,perfect,False,illusory
 stim_33526f0e23,img_0_4_4_0.1_0.1,white pearl,charcoal grey cork,composite,perfect,False,control
-stim_8c60e56627,img_0_4_4_0.1_0.1,lily pad,polished black granite,composite,perfect,False,illusory
-stim_08f620f70c,img_0_4_4_0.1_0.1,lily pad,polished black granite,composite,perfect,False,control
+stim_8063d53cce,img_0_4_4_0.1_0.1,white pearl,charcoal grey cork,composite,perfect,False,negative
+stim_770d635715,img_0_4_4_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,illusory
+stim_8c39a009c2,img_0_4_4_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,control
+stim_ebb4993a34,img_0_4_4_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,negative
 stim_60780cd066,img_0_4_4_0.1_0.1,macaron,soft white frosted quartz,composite,perfect,False,illusory
 stim_464f3e5840,img_0_4_4_0.1_0.1,macaron,soft white frosted quartz,composite,perfect,False,control
+stim_ed96b7a7ae,img_0_4_4_0.1_0.1,macaron,soft white frosted quartz,composite,perfect,False,negative
 stim_a92812e744,img_0_4_4_0.1_0.1,candle,charcoal mottled plaster,composite,perfect,False,illusory
 stim_3007919d18,img_0_4_4_0.1_0.1,candle,charcoal mottled plaster,composite,perfect,False,control
+stim_e901a20616,img_0_4_4_0.1_0.1,candle,charcoal mottled plaster,composite,perfect,False,negative
 stim_145de4548c,img_0_4_4_0.1_0.1,grapefruit,deep green moss,composite,perfect,False,illusory
 stim_8b5b4f42ef,img_0_4_4_0.1_0.1,grapefruit,deep green moss,composite,perfect,False,control
+stim_37f3b4762c,img_0_4_4_0.1_0.1,grapefruit,deep green moss,composite,perfect,False,negative
 stim_9895e45f72,img_0_4_4_0.1_0.1,Satellite dish,orange sand,composite,perfect,False,illusory
 stim_6c60c48e36,img_0_4_4_0.1_0.1,Satellite dish,orange sand,composite,perfect,False,control
-stim_533c449a14,img_0.8_8_5_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,illusory
-stim_b74c82f96a,img_0.8_8_5_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,control
+stim_e12297d9f7,img_0_4_4_0.1_0.1,Satellite dish,orange sand,composite,perfect,False,negative
+stim_7168ba3e94,img_0_4_4_0.1_0.1,target,dark chocolate brown wood,composite,perfect,False,illusory
+stim_d4df93cc66,img_0_4_4_0.1_0.1,target,dark chocolate brown wood,composite,perfect,False,control
+stim_e42a072aa1,img_0_4_4_0.1_0.1,target,dark chocolate brown wood,composite,perfect,False,negative
+stim_d7810c28ed,img_0.8_8_5_0.1_0.1,Frisbee,olive green felt,composite,perfect,False,illusory
+stim_78ef09cc48,img_0.8_8_5_0.1_0.1,Frisbee,olive green felt,composite,perfect,False,control
+stim_8e6cb2dd43,img_0.8_8_5_0.1_0.1,Frisbee,olive green felt,composite,perfect,False,negative
 stim_dc2ed08811,img_0.8_8_5_0.1_0.1,lens,white concrete,composite,perfect,False,illusory
 stim_b339568828,img_0.8_8_5_0.1_0.1,lens,white concrete,composite,perfect,False,control
+stim_f009d3bbcf,img_0.8_8_5_0.1_0.1,lens,white concrete,composite,perfect,False,negative
 stim_34f68511c8,img_0.8_8_5_0.1_0.1,moon,black basalt fine grain,composite,perfect,False,illusory
 stim_121e50e4b9,img_0.8_8_5_0.1_0.1,moon,black basalt fine grain,composite,perfect,False,control
-stim_dc5e7ba23f,img_0.8_8_5_0.1_0.1,Space pod,orange terrazzo,composite,perfect,False,illusory
-stim_46ccf0602b,img_0.8_8_5_0.1_0.1,Space pod,orange terrazzo,composite,perfect,False,control
+stim_0c540cd399,img_0.8_8_5_0.1_0.1,moon,black basalt fine grain,composite,perfect,False,negative
 stim_be80498b5c,img_0.8_8_5_0.1_0.1,white pearl,charcoal grey cork,composite,perfect,False,illusory
 stim_3a449e983e,img_0.8_8_5_0.1_0.1,white pearl,charcoal grey cork,composite,perfect,False,control
-stim_c9325bd8ac,img_0.8_8_5_0.1_0.1,lily pad,polished black granite,composite,perfect,False,illusory
-stim_4819672d96,img_0.8_8_5_0.1_0.1,lily pad,polished black granite,composite,perfect,False,control
+stim_fbd9770a63,img_0.8_8_5_0.1_0.1,white pearl,charcoal grey cork,composite,perfect,False,negative
+stim_533c449a14,img_0.8_8_5_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,illusory
+stim_b74c82f96a,img_0.8_8_5_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,control
+stim_d84702f14f,img_0.8_8_5_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,negative
 stim_af257c8839,img_0.8_8_5_0.1_0.1,macaron,soft white frosted quartz,composite,perfect,False,illusory
 stim_3d8db3efc2,img_0.8_8_5_0.1_0.1,macaron,soft white frosted quartz,composite,perfect,False,control
+stim_6adcc0a86f,img_0.8_8_5_0.1_0.1,macaron,soft white frosted quartz,composite,perfect,False,negative
 stim_bad720bd70,img_0.8_8_5_0.1_0.1,candle,charcoal mottled plaster,composite,perfect,False,illusory
 stim_4d1dac9d4d,img_0.8_8_5_0.1_0.1,candle,charcoal mottled plaster,composite,perfect,False,control
+stim_738abd4c82,img_0.8_8_5_0.1_0.1,candle,charcoal mottled plaster,composite,perfect,False,negative
 stim_801a9b9cd5,img_0.8_8_5_0.1_0.1,grapefruit,deep green moss,composite,perfect,False,illusory
 stim_52e36619ab,img_0.8_8_5_0.1_0.1,grapefruit,deep green moss,composite,perfect,False,control
+stim_154bb2496e,img_0.8_8_5_0.1_0.1,grapefruit,deep green moss,composite,perfect,False,negative
 stim_cb37d88ac6,img_0.8_8_5_0.1_0.1,Satellite dish,orange sand,composite,perfect,False,illusory
 stim_781ef44efb,img_0.8_8_5_0.1_0.1,Satellite dish,orange sand,composite,perfect,False,control
-stim_fddd3e9e66,img_0_6_4_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,illusory
-stim_62c7035724,img_0_6_4_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,control
+stim_93566dd9c1,img_0.8_8_5_0.1_0.1,Satellite dish,orange sand,composite,perfect,False,negative
+stim_eb68aa791f,img_0.8_8_5_0.1_0.1,target,dark chocolate brown wood,composite,perfect,False,illusory
+stim_76241e3b88,img_0.8_8_5_0.1_0.1,target,dark chocolate brown wood,composite,perfect,False,control
+stim_b917febfea,img_0.8_8_5_0.1_0.1,target,dark chocolate brown wood,composite,perfect,False,negative
+stim_9f4563b6ae,img_0_6_4_0.1_0.1,Frisbee,olive green felt,composite,perfect,False,illusory
+stim_335de07471,img_0_6_4_0.1_0.1,Frisbee,olive green felt,composite,perfect,False,control
+stim_b41a91199b,img_0_6_4_0.1_0.1,Frisbee,olive green felt,composite,perfect,False,negative
 stim_62c23aa0df,img_0_6_4_0.1_0.1,lens,white concrete,composite,perfect,False,illusory
 stim_2d821cf78d,img_0_6_4_0.1_0.1,lens,white concrete,composite,perfect,False,control
+stim_c01f5e2f63,img_0_6_4_0.1_0.1,lens,white concrete,composite,perfect,False,negative
 stim_32a7605262,img_0_6_4_0.1_0.1,moon,black basalt fine grain,composite,perfect,False,illusory
 stim_2b28ca6258,img_0_6_4_0.1_0.1,moon,black basalt fine grain,composite,perfect,False,control
-stim_e82dd9ee75,img_0_6_4_0.1_0.1,Space pod,orange terrazzo,composite,perfect,False,illusory
-stim_fc26ebc85a,img_0_6_4_0.1_0.1,Space pod,orange terrazzo,composite,perfect,False,control
+stim_5717ed480b,img_0_6_4_0.1_0.1,moon,black basalt fine grain,composite,perfect,False,negative
 stim_7e1558143d,img_0_6_4_0.1_0.1,white pearl,charcoal grey cork,composite,perfect,False,illusory
 stim_305ece8513,img_0_6_4_0.1_0.1,white pearl,charcoal grey cork,composite,perfect,False,control
-stim_72b62e52cf,img_0_6_4_0.1_0.1,lily pad,polished black granite,composite,perfect,False,illusory
-stim_a1ddff8e1b,img_0_6_4_0.1_0.1,lily pad,polished black granite,composite,perfect,False,control
+stim_d04c7506be,img_0_6_4_0.1_0.1,white pearl,charcoal grey cork,composite,perfect,False,negative
+stim_fddd3e9e66,img_0_6_4_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,illusory
+stim_62c7035724,img_0_6_4_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,control
+stim_df2d21197e,img_0_6_4_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,negative
 stim_de00060541,img_0_6_4_0.1_0.1,macaron,soft white frosted quartz,composite,perfect,False,illusory
 stim_0e9b97b168,img_0_6_4_0.1_0.1,macaron,soft white frosted quartz,composite,perfect,False,control
+stim_64f2d0c9e0,img_0_6_4_0.1_0.1,macaron,soft white frosted quartz,composite,perfect,False,negative
 stim_56e3b34e01,img_0_6_4_0.1_0.1,candle,charcoal mottled plaster,composite,perfect,False,illusory
 stim_876bd154d1,img_0_6_4_0.1_0.1,candle,charcoal mottled plaster,composite,perfect,False,control
+stim_5f0829db1a,img_0_6_4_0.1_0.1,candle,charcoal mottled plaster,composite,perfect,False,negative
 stim_a3e51b2b6c,img_0_6_4_0.1_0.1,grapefruit,deep green moss,composite,perfect,False,illusory
 stim_dd0fa00f2d,img_0_6_4_0.1_0.1,grapefruit,deep green moss,composite,perfect,False,control
+stim_1774ef26e2,img_0_6_4_0.1_0.1,grapefruit,deep green moss,composite,perfect,False,negative
 stim_8b6840e1fe,img_0_6_4_0.1_0.1,Satellite dish,orange sand,composite,perfect,False,illusory
 stim_0cdfbaf920,img_0_6_4_0.1_0.1,Satellite dish,orange sand,composite,perfect,False,control
-stim_75c0383b7b,img_0_5_4_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,illusory
-stim_66cd8d121c,img_0_5_4_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,control
+stim_ca87aa20c3,img_0_6_4_0.1_0.1,Satellite dish,orange sand,composite,perfect,False,negative
+stim_18efc5951b,img_0_6_4_0.1_0.1,target,dark chocolate brown wood,composite,perfect,False,illusory
+stim_c2a989ce87,img_0_6_4_0.1_0.1,target,dark chocolate brown wood,composite,perfect,False,control
+stim_c1d6432416,img_0_6_4_0.1_0.1,target,dark chocolate brown wood,composite,perfect,False,negative
+stim_ce51520977,img_0_5_4_0.1_0.1,Frisbee,olive green felt,composite,perfect,False,illusory
+stim_f1be8dcc69,img_0_5_4_0.1_0.1,Frisbee,olive green felt,composite,perfect,False,control
+stim_7e7314a753,img_0_5_4_0.1_0.1,Frisbee,olive green felt,composite,perfect,False,negative
 stim_618bf656f8,img_0_5_4_0.1_0.1,lens,white concrete,composite,perfect,False,illusory
 stim_f79b10e7a5,img_0_5_4_0.1_0.1,lens,white concrete,composite,perfect,False,control
+stim_8ccf51b46d,img_0_5_4_0.1_0.1,lens,white concrete,composite,perfect,False,negative
 stim_1c31675e09,img_0_5_4_0.1_0.1,moon,black basalt fine grain,composite,perfect,False,illusory
 stim_baaf81f2d4,img_0_5_4_0.1_0.1,moon,black basalt fine grain,composite,perfect,False,control
-stim_38a4c421ba,img_0_5_4_0.1_0.1,Space pod,orange terrazzo,composite,perfect,False,illusory
-stim_22f3a2b790,img_0_5_4_0.1_0.1,Space pod,orange terrazzo,composite,perfect,False,control
+stim_4e63d5cb33,img_0_5_4_0.1_0.1,moon,black basalt fine grain,composite,perfect,False,negative
 stim_bcb3990d8f,img_0_5_4_0.1_0.1,white pearl,charcoal grey cork,composite,perfect,False,illusory
 stim_4962f24403,img_0_5_4_0.1_0.1,white pearl,charcoal grey cork,composite,perfect,False,control
-stim_63aca03378,img_0_5_4_0.1_0.1,lily pad,polished black granite,composite,perfect,False,illusory
-stim_50a88854d7,img_0_5_4_0.1_0.1,lily pad,polished black granite,composite,perfect,False,control
+stim_dc34018adc,img_0_5_4_0.1_0.1,white pearl,charcoal grey cork,composite,perfect,False,negative
+stim_75c0383b7b,img_0_5_4_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,illusory
+stim_66cd8d121c,img_0_5_4_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,control
+stim_22c96eca21,img_0_5_4_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,negative
 stim_a79484447a,img_0_5_4_0.1_0.1,macaron,soft white frosted quartz,composite,perfect,False,illusory
 stim_7351d21499,img_0_5_4_0.1_0.1,macaron,soft white frosted quartz,composite,perfect,False,control
+stim_85ea837661,img_0_5_4_0.1_0.1,macaron,soft white frosted quartz,composite,perfect,False,negative
 stim_b4c777f397,img_0_5_4_0.1_0.1,candle,charcoal mottled plaster,composite,perfect,False,illusory
 stim_c621f26194,img_0_5_4_0.1_0.1,candle,charcoal mottled plaster,composite,perfect,False,control
+stim_d21e25c306,img_0_5_4_0.1_0.1,candle,charcoal mottled plaster,composite,perfect,False,negative
 stim_274ab1e278,img_0_5_4_0.1_0.1,grapefruit,deep green moss,composite,perfect,False,illusory
 stim_16a5d6429d,img_0_5_4_0.1_0.1,grapefruit,deep green moss,composite,perfect,False,control
+stim_a1ee559ec9,img_0_5_4_0.1_0.1,grapefruit,deep green moss,composite,perfect,False,negative
 stim_638be9a466,img_0_5_4_0.1_0.1,Satellite dish,orange sand,composite,perfect,False,illusory
 stim_3f9d2464df,img_0_5_4_0.1_0.1,Satellite dish,orange sand,composite,perfect,False,control
-stim_224d3da113,img_0.8_7_5_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,illusory
-stim_f145fe7f13,img_0.8_7_5_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,control
+stim_ff8de445a3,img_0_5_4_0.1_0.1,Satellite dish,orange sand,composite,perfect,False,negative
+stim_0f16deb68e,img_0_5_4_0.1_0.1,target,dark chocolate brown wood,composite,perfect,False,illusory
+stim_3970406cbe,img_0_5_4_0.1_0.1,target,dark chocolate brown wood,composite,perfect,False,control
+stim_ad0ceab865,img_0_5_4_0.1_0.1,target,dark chocolate brown wood,composite,perfect,False,negative
+stim_3e21b56666,img_0.8_7_5_0.1_0.1,Frisbee,olive green felt,composite,perfect,False,illusory
+stim_8ee26137ac,img_0.8_7_5_0.1_0.1,Frisbee,olive green felt,composite,perfect,False,control
+stim_42b0e27cb1,img_0.8_7_5_0.1_0.1,Frisbee,olive green felt,composite,perfect,False,negative
 stim_291106bbfd,img_0.8_7_5_0.1_0.1,lens,white concrete,composite,perfect,False,illusory
 stim_1c6e7b5014,img_0.8_7_5_0.1_0.1,lens,white concrete,composite,perfect,False,control
+stim_5441875440,img_0.8_7_5_0.1_0.1,lens,white concrete,composite,perfect,False,negative
 stim_5090d81dc7,img_0.8_7_5_0.1_0.1,moon,black basalt fine grain,composite,perfect,False,illusory
 stim_42c47dac33,img_0.8_7_5_0.1_0.1,moon,black basalt fine grain,composite,perfect,False,control
-stim_f67bae9cd1,img_0.8_7_5_0.1_0.1,Space pod,orange terrazzo,composite,perfect,False,illusory
-stim_a09bccbf8b,img_0.8_7_5_0.1_0.1,Space pod,orange terrazzo,composite,perfect,False,control
+stim_466b9ddc2c,img_0.8_7_5_0.1_0.1,moon,black basalt fine grain,composite,perfect,False,negative
 stim_acc5ef5f94,img_0.8_7_5_0.1_0.1,white pearl,charcoal grey cork,composite,perfect,False,illusory
 stim_3702f2a335,img_0.8_7_5_0.1_0.1,white pearl,charcoal grey cork,composite,perfect,False,control
-stim_ce8a4ac8e6,img_0.8_7_5_0.1_0.1,lily pad,polished black granite,composite,perfect,False,illusory
-stim_d664aab67a,img_0.8_7_5_0.1_0.1,lily pad,polished black granite,composite,perfect,False,control
+stim_6f93ba0f6a,img_0.8_7_5_0.1_0.1,white pearl,charcoal grey cork,composite,perfect,False,negative
+stim_224d3da113,img_0.8_7_5_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,illusory
+stim_f145fe7f13,img_0.8_7_5_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,control
+stim_9da48ef8d3,img_0.8_7_5_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,negative
 stim_14bd3824ee,img_0.8_7_5_0.1_0.1,macaron,soft white frosted quartz,composite,perfect,False,illusory
 stim_fc43dc0662,img_0.8_7_5_0.1_0.1,macaron,soft white frosted quartz,composite,perfect,False,control
+stim_02142ee655,img_0.8_7_5_0.1_0.1,macaron,soft white frosted quartz,composite,perfect,False,negative
 stim_d0be471f0c,img_0.8_7_5_0.1_0.1,candle,charcoal mottled plaster,composite,perfect,False,illusory
 stim_de1581e1e0,img_0.8_7_5_0.1_0.1,candle,charcoal mottled plaster,composite,perfect,False,control
+stim_3a76e01ab8,img_0.8_7_5_0.1_0.1,candle,charcoal mottled plaster,composite,perfect,False,negative
 stim_3a0790c6df,img_0.8_7_5_0.1_0.1,grapefruit,deep green moss,composite,perfect,False,illusory
 stim_830b102f08,img_0.8_7_5_0.1_0.1,grapefruit,deep green moss,composite,perfect,False,control
+stim_fc001507b5,img_0.8_7_5_0.1_0.1,grapefruit,deep green moss,composite,perfect,False,negative
 stim_912b9fb589,img_0.8_7_5_0.1_0.1,Satellite dish,orange sand,composite,perfect,False,illusory
 stim_9d8ab58b70,img_0.8_7_5_0.1_0.1,Satellite dish,orange sand,composite,perfect,False,control
-stim_3969dd3508,img_0_7_4_0.1_0.2,Bullseye,navy blue velvet,composite,perfect,False,illusory
-stim_887a87a7f2,img_0_7_4_0.1_0.2,Bullseye,navy blue velvet,composite,perfect,False,control
+stim_cf46026c9d,img_0.8_7_5_0.1_0.1,Satellite dish,orange sand,composite,perfect,False,negative
+stim_9e11375650,img_0.8_7_5_0.1_0.1,target,dark chocolate brown wood,composite,perfect,False,illusory
+stim_a9e1ac6cbc,img_0.8_7_5_0.1_0.1,target,dark chocolate brown wood,composite,perfect,False,control
+stim_c0584b044d,img_0.8_7_5_0.1_0.1,target,dark chocolate brown wood,composite,perfect,False,negative
+stim_d2e7023479,img_0_7_4_0.1_0.2,Frisbee,olive green felt,composite,perfect,False,illusory
+stim_adac22ec81,img_0_7_4_0.1_0.2,Frisbee,olive green felt,composite,perfect,False,control
+stim_22167527f6,img_0_7_4_0.1_0.2,Frisbee,olive green felt,composite,perfect,False,negative
 stim_523b68d886,img_0_7_4_0.1_0.2,lens,white concrete,composite,perfect,False,illusory
 stim_ebb02ac322,img_0_7_4_0.1_0.2,lens,white concrete,composite,perfect,False,control
+stim_624c26c52f,img_0_7_4_0.1_0.2,lens,white concrete,composite,perfect,False,negative
 stim_4f803f69a8,img_0_7_4_0.1_0.2,moon,black basalt fine grain,composite,perfect,False,illusory
 stim_383e2d5996,img_0_7_4_0.1_0.2,moon,black basalt fine grain,composite,perfect,False,control
-stim_22cf49aded,img_0_7_4_0.1_0.2,Space pod,orange terrazzo,composite,perfect,False,illusory
-stim_514ae99707,img_0_7_4_0.1_0.2,Space pod,orange terrazzo,composite,perfect,False,control
+stim_2d81329adf,img_0_7_4_0.1_0.2,moon,black basalt fine grain,composite,perfect,False,negative
 stim_b564bc730b,img_0_7_4_0.1_0.2,white pearl,charcoal grey cork,composite,perfect,False,illusory
 stim_257142e6f8,img_0_7_4_0.1_0.2,white pearl,charcoal grey cork,composite,perfect,False,control
-stim_acd9d97c69,img_0_7_4_0.1_0.2,lily pad,polished black granite,composite,perfect,False,illusory
-stim_9c5c545ff6,img_0_7_4_0.1_0.2,lily pad,polished black granite,composite,perfect,False,control
+stim_81e82d4d50,img_0_7_4_0.1_0.2,white pearl,charcoal grey cork,composite,perfect,False,negative
+stim_3969dd3508,img_0_7_4_0.1_0.2,Bullseye,navy blue velvet,composite,perfect,False,illusory
+stim_887a87a7f2,img_0_7_4_0.1_0.2,Bullseye,navy blue velvet,composite,perfect,False,control
+stim_e9d257b075,img_0_7_4_0.1_0.2,Bullseye,navy blue velvet,composite,perfect,False,negative
 stim_5d1a85f577,img_0_7_4_0.1_0.2,macaron,soft white frosted quartz,composite,perfect,False,illusory
 stim_3939f79047,img_0_7_4_0.1_0.2,macaron,soft white frosted quartz,composite,perfect,False,control
+stim_bc9f2c4d6d,img_0_7_4_0.1_0.2,macaron,soft white frosted quartz,composite,perfect,False,negative
 stim_7e495b196d,img_0_7_4_0.1_0.2,candle,charcoal mottled plaster,composite,perfect,False,illusory
 stim_0adaef8a6b,img_0_7_4_0.1_0.2,candle,charcoal mottled plaster,composite,perfect,False,control
+stim_e0415e7fa9,img_0_7_4_0.1_0.2,candle,charcoal mottled plaster,composite,perfect,False,negative
 stim_6b1d1a9177,img_0_7_4_0.1_0.2,grapefruit,deep green moss,composite,perfect,False,illusory
 stim_35314cabeb,img_0_7_4_0.1_0.2,grapefruit,deep green moss,composite,perfect,False,control
+stim_980d84d375,img_0_7_4_0.1_0.2,grapefruit,deep green moss,composite,perfect,False,negative
 stim_1f063446ce,img_0_7_4_0.1_0.2,Satellite dish,orange sand,composite,perfect,False,illusory
 stim_b189d31071,img_0_7_4_0.1_0.2,Satellite dish,orange sand,composite,perfect,False,control
-stim_e793148b76,img_0.4_7_5_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,illusory
-stim_003ccea64d,img_0.4_7_5_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,control
+stim_cfdf4b079b,img_0_7_4_0.1_0.2,Satellite dish,orange sand,composite,perfect,False,negative
+stim_15d08671ce,img_0_7_4_0.1_0.2,target,dark chocolate brown wood,composite,perfect,False,illusory
+stim_78cf463cd1,img_0_7_4_0.1_0.2,target,dark chocolate brown wood,composite,perfect,False,control
+stim_844a274e2e,img_0_7_4_0.1_0.2,target,dark chocolate brown wood,composite,perfect,False,negative
+stim_78062d558c,img_0.4_7_5_0.1_0.1,Frisbee,olive green felt,composite,perfect,False,illusory
+stim_127fba4834,img_0.4_7_5_0.1_0.1,Frisbee,olive green felt,composite,perfect,False,control
+stim_120ca5cf62,img_0.4_7_5_0.1_0.1,Frisbee,olive green felt,composite,perfect,False,negative
 stim_9b208d5cc1,img_0.4_7_5_0.1_0.1,lens,white concrete,composite,perfect,False,illusory
 stim_892f3e5910,img_0.4_7_5_0.1_0.1,lens,white concrete,composite,perfect,False,control
+stim_728945ff9d,img_0.4_7_5_0.1_0.1,lens,white concrete,composite,perfect,False,negative
 stim_d4760b8510,img_0.4_7_5_0.1_0.1,moon,black basalt fine grain,composite,perfect,False,illusory
 stim_813dd7389a,img_0.4_7_5_0.1_0.1,moon,black basalt fine grain,composite,perfect,False,control
-stim_120ab23048,img_0.4_7_5_0.1_0.1,Space pod,orange terrazzo,composite,perfect,False,illusory
-stim_fc87b286ef,img_0.4_7_5_0.1_0.1,Space pod,orange terrazzo,composite,perfect,False,control
+stim_b8fc3e765f,img_0.4_7_5_0.1_0.1,moon,black basalt fine grain,composite,perfect,False,negative
 stim_f5ab6a39f5,img_0.4_7_5_0.1_0.1,white pearl,charcoal grey cork,composite,perfect,False,illusory
 stim_60358a84fa,img_0.4_7_5_0.1_0.1,white pearl,charcoal grey cork,composite,perfect,False,control
-stim_d66d046795,img_0.4_7_5_0.1_0.1,lily pad,polished black granite,composite,perfect,False,illusory
-stim_0fc572659d,img_0.4_7_5_0.1_0.1,lily pad,polished black granite,composite,perfect,False,control
+stim_eb9d2218df,img_0.4_7_5_0.1_0.1,white pearl,charcoal grey cork,composite,perfect,False,negative
+stim_e793148b76,img_0.4_7_5_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,illusory
+stim_003ccea64d,img_0.4_7_5_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,control
+stim_082901dd6e,img_0.4_7_5_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,negative
 stim_5d4f99fb9c,img_0.4_7_5_0.1_0.1,macaron,soft white frosted quartz,composite,perfect,False,illusory
 stim_cc4ffa2fcf,img_0.4_7_5_0.1_0.1,macaron,soft white frosted quartz,composite,perfect,False,control
+stim_ebeb7a2edd,img_0.4_7_5_0.1_0.1,macaron,soft white frosted quartz,composite,perfect,False,negative
 stim_ea72c3d4eb,img_0.4_7_5_0.1_0.1,candle,charcoal mottled plaster,composite,perfect,False,illusory
 stim_54e5e0e926,img_0.4_7_5_0.1_0.1,candle,charcoal mottled plaster,composite,perfect,False,control
+stim_bf14313e5c,img_0.4_7_5_0.1_0.1,candle,charcoal mottled plaster,composite,perfect,False,negative
 stim_71a633bda7,img_0.4_7_5_0.1_0.1,grapefruit,deep green moss,composite,perfect,False,illusory
 stim_85c9f1e659,img_0.4_7_5_0.1_0.1,grapefruit,deep green moss,composite,perfect,False,control
+stim_25c7180f2a,img_0.4_7_5_0.1_0.1,grapefruit,deep green moss,composite,perfect,False,negative
 stim_267efd85c6,img_0.4_7_5_0.1_0.1,Satellite dish,orange sand,composite,perfect,False,illusory
 stim_df48037f43,img_0.4_7_5_0.1_0.1,Satellite dish,orange sand,composite,perfect,False,control
-stim_f55adfc1da,img_0.8_5_4_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,illusory
-stim_58eb2ee113,img_0.8_5_4_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,control
+stim_1ee9248b5c,img_0.4_7_5_0.1_0.1,Satellite dish,orange sand,composite,perfect,False,negative
+stim_d554fad3e7,img_0.4_7_5_0.1_0.1,target,dark chocolate brown wood,composite,perfect,False,illusory
+stim_1c3d342f78,img_0.4_7_5_0.1_0.1,target,dark chocolate brown wood,composite,perfect,False,control
+stim_3895d0523a,img_0.4_7_5_0.1_0.1,target,dark chocolate brown wood,composite,perfect,False,negative
+stim_70ca33c561,img_0.8_5_4_0.1_0.1,Frisbee,olive green felt,composite,perfect,False,illusory
+stim_a68f740b1f,img_0.8_5_4_0.1_0.1,Frisbee,olive green felt,composite,perfect,False,control
+stim_775afe6d22,img_0.8_5_4_0.1_0.1,Frisbee,olive green felt,composite,perfect,False,negative
 stim_b16158f76f,img_0.8_5_4_0.1_0.1,lens,white concrete,composite,perfect,False,illusory
 stim_3c409b583e,img_0.8_5_4_0.1_0.1,lens,white concrete,composite,perfect,False,control
+stim_8d014ff3e1,img_0.8_5_4_0.1_0.1,lens,white concrete,composite,perfect,False,negative
 stim_9aa36c0886,img_0.8_5_4_0.1_0.1,moon,black basalt fine grain,composite,perfect,False,illusory
 stim_ebab30c771,img_0.8_5_4_0.1_0.1,moon,black basalt fine grain,composite,perfect,False,control
-stim_5f897b11c1,img_0.8_5_4_0.1_0.1,Space pod,orange terrazzo,composite,perfect,False,illusory
-stim_5eae086847,img_0.8_5_4_0.1_0.1,Space pod,orange terrazzo,composite,perfect,False,control
+stim_c2866266d4,img_0.8_5_4_0.1_0.1,moon,black basalt fine grain,composite,perfect,False,negative
 stim_2874b90447,img_0.8_5_4_0.1_0.1,white pearl,charcoal grey cork,composite,perfect,False,illusory
 stim_aa66b1382b,img_0.8_5_4_0.1_0.1,white pearl,charcoal grey cork,composite,perfect,False,control
-stim_57d84593c9,img_0.8_5_4_0.1_0.1,lily pad,polished black granite,composite,perfect,False,illusory
-stim_0bdb197023,img_0.8_5_4_0.1_0.1,lily pad,polished black granite,composite,perfect,False,control
+stim_97c9b89780,img_0.8_5_4_0.1_0.1,white pearl,charcoal grey cork,composite,perfect,False,negative
+stim_f55adfc1da,img_0.8_5_4_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,illusory
+stim_58eb2ee113,img_0.8_5_4_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,control
+stim_8b9f35a139,img_0.8_5_4_0.1_0.1,Bullseye,navy blue velvet,composite,perfect,False,negative
 stim_ac56a5e031,img_0.8_5_4_0.1_0.1,macaron,soft white frosted quartz,composite,perfect,False,illusory
 stim_d46105e069,img_0.8_5_4_0.1_0.1,macaron,soft white frosted quartz,composite,perfect,False,control
+stim_3047b7f334,img_0.8_5_4_0.1_0.1,macaron,soft white frosted quartz,composite,perfect,False,negative
 stim_76fb97da0d,img_0.8_5_4_0.1_0.1,candle,charcoal mottled plaster,composite,perfect,False,illusory
 stim_b278a147b2,img_0.8_5_4_0.1_0.1,candle,charcoal mottled plaster,composite,perfect,False,control
+stim_d04bad9787,img_0.8_5_4_0.1_0.1,candle,charcoal mottled plaster,composite,perfect,False,negative
 stim_f51834cf88,img_0.8_5_4_0.1_0.1,grapefruit,deep green moss,composite,perfect,False,illusory
 stim_a388c66804,img_0.8_5_4_0.1_0.1,grapefruit,deep green moss,composite,perfect,False,control
+stim_c23709b3ac,img_0.8_5_4_0.1_0.1,grapefruit,deep green moss,composite,perfect,False,negative
 stim_6a06cd2fcb,img_0.8_5_4_0.1_0.1,Satellite dish,orange sand,composite,perfect,False,illusory
 stim_6f0c0addce,img_0.8_5_4_0.1_0.1,Satellite dish,orange sand,composite,perfect,False,control
-stim_2fe60304d1,img_0_5_5_0.1_0.2,Bullseye,navy blue velvet,composite,perfect,False,illusory
-stim_73ecf604a8,img_0_5_5_0.1_0.2,Bullseye,navy blue velvet,composite,perfect,False,control
+stim_fb28e790ec,img_0.8_5_4_0.1_0.1,Satellite dish,orange sand,composite,perfect,False,negative
+stim_de04dbce75,img_0.8_5_4_0.1_0.1,target,dark chocolate brown wood,composite,perfect,False,illusory
+stim_136f086134,img_0.8_5_4_0.1_0.1,target,dark chocolate brown wood,composite,perfect,False,control
+stim_7e14456653,img_0.8_5_4_0.1_0.1,target,dark chocolate brown wood,composite,perfect,False,negative
+stim_47ad2a32b7,img_0_5_5_0.1_0.2,Frisbee,olive green felt,composite,perfect,False,illusory
+stim_25c3f6b3fa,img_0_5_5_0.1_0.2,Frisbee,olive green felt,composite,perfect,False,control
+stim_d236270222,img_0_5_5_0.1_0.2,Frisbee,olive green felt,composite,perfect,False,negative
 stim_a0e0840d8e,img_0_5_5_0.1_0.2,lens,white concrete,composite,perfect,False,illusory
 stim_5ff4352d5a,img_0_5_5_0.1_0.2,lens,white concrete,composite,perfect,False,control
+stim_7e8df4c12b,img_0_5_5_0.1_0.2,lens,white concrete,composite,perfect,False,negative
 stim_9304a408f5,img_0_5_5_0.1_0.2,moon,black basalt fine grain,composite,perfect,False,illusory
 stim_60339798b7,img_0_5_5_0.1_0.2,moon,black basalt fine grain,composite,perfect,False,control
-stim_88905944ee,img_0_5_5_0.1_0.2,Space pod,orange terrazzo,composite,perfect,False,illusory
-stim_02b81054bf,img_0_5_5_0.1_0.2,Space pod,orange terrazzo,composite,perfect,False,control
+stim_cbf7fc8e85,img_0_5_5_0.1_0.2,moon,black basalt fine grain,composite,perfect,False,negative
 stim_6b35d10ede,img_0_5_5_0.1_0.2,white pearl,charcoal grey cork,composite,perfect,False,illusory
 stim_16f11efb11,img_0_5_5_0.1_0.2,white pearl,charcoal grey cork,composite,perfect,False,control
-stim_9c4ee99cdb,img_0_5_5_0.1_0.2,lily pad,polished black granite,composite,perfect,False,illusory
-stim_c45998b6a9,img_0_5_5_0.1_0.2,lily pad,polished black granite,composite,perfect,False,control
+stim_c504cb9dba,img_0_5_5_0.1_0.2,white pearl,charcoal grey cork,composite,perfect,False,negative
+stim_2fe60304d1,img_0_5_5_0.1_0.2,Bullseye,navy blue velvet,composite,perfect,False,illusory
+stim_73ecf604a8,img_0_5_5_0.1_0.2,Bullseye,navy blue velvet,composite,perfect,False,control
+stim_8622a6e806,img_0_5_5_0.1_0.2,Bullseye,navy blue velvet,composite,perfect,False,negative
 stim_a741563c74,img_0_5_5_0.1_0.2,macaron,soft white frosted quartz,composite,perfect,False,illusory
 stim_76cbd0d8b2,img_0_5_5_0.1_0.2,macaron,soft white frosted quartz,composite,perfect,False,control
+stim_4d2951fcc4,img_0_5_5_0.1_0.2,macaron,soft white frosted quartz,composite,perfect,False,negative
 stim_acb4a243ab,img_0_5_5_0.1_0.2,candle,charcoal mottled plaster,composite,perfect,False,illusory
 stim_6a91c7c0c7,img_0_5_5_0.1_0.2,candle,charcoal mottled plaster,composite,perfect,False,control
+stim_1443dfb9d5,img_0_5_5_0.1_0.2,candle,charcoal mottled plaster,composite,perfect,False,negative
 stim_993f029426,img_0_5_5_0.1_0.2,grapefruit,deep green moss,composite,perfect,False,illusory
 stim_a476a91906,img_0_5_5_0.1_0.2,grapefruit,deep green moss,composite,perfect,False,control
+stim_528030b023,img_0_5_5_0.1_0.2,grapefruit,deep green moss,composite,perfect,False,negative
 stim_f8582f2e9f,img_0_5_5_0.1_0.2,Satellite dish,orange sand,composite,perfect,False,illusory
 stim_47b920138a,img_0_5_5_0.1_0.2,Satellite dish,orange sand,composite,perfect,False,control
+stim_fb9f6968ea,img_0_5_5_0.1_0.2,Satellite dish,orange sand,composite,perfect,False,negative
+stim_f09b0a69f7,img_0_5_5_0.1_0.2,target,dark chocolate brown wood,composite,perfect,False,illusory
+stim_816e4c593a,img_0_5_5_0.1_0.2,target,dark chocolate brown wood,composite,perfect,False,control
+stim_a2215fcb00,img_0_5_5_0.1_0.2,target,dark chocolate brown wood,composite,perfect,False,negative

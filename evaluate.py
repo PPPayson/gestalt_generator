@@ -38,6 +38,7 @@ def compute_has_illusion_metrics(json_path):
     Ground truth:
         illusory -> True
         control  -> False
+        negative -> False   (same inducers, shuffled: no figure)
 
     Returns:
         accuracy
@@ -52,6 +53,7 @@ def compute_has_illusion_metrics(json_path):
     gt_labels = {
         "illusory": True,
         "control": False,
+        "negative": False,
     }
 
     tp = 0
@@ -225,6 +227,11 @@ def compute_counting_metrics(json_path, gt_counts):
             "absolute_error_sum": 0,
         },
         "control": {
+            "correct": 0,
+            "total": 0,
+            "absolute_error_sum": 0,
+        },
+        "negative": {
             "correct": 0,
             "total": 0,
             "absolute_error_sum": 0,
@@ -415,6 +422,7 @@ def print_results(results):
         f"{'Count Acc':>10s} "
         f"{'Illus. Count':>12s} "
         f"{'Ctrl Count':>12s} "
+        f"{'Neg. Count':>12s} "
         f"{'Count MAE':>10s}"
     )
 
@@ -433,6 +441,10 @@ def print_results(results):
             counting["class_stats"]["control"]["accuracy"]
         )
 
+        negative_count_acc = (
+            counting["class_stats"]["negative"]["accuracy"]
+        )
+
         print(
             f"{model:35s} "
             f"{illusion['accuracy']:10.4f} "
@@ -441,6 +453,7 @@ def print_results(results):
             f"{counting['accuracy']:10.4f} "
             f"{illusory_count_acc:12.4f} "
             f"{control_count_acc:12.4f} "
+            f"{negative_count_acc:12.4f} "
             f"{counting['mae']:10.4f}"
         )
 
@@ -460,6 +473,10 @@ def print_results(results):
 
         control_stats = (
             counting["class_stats"]["control"]
+        )
+
+        negative_stats = (
+            counting["class_stats"]["negative"]
         )
 
         print(f"\n{model}")
@@ -498,6 +515,14 @@ def print_results(results):
             f"{control_stats['total']} correct "
             f"(accuracy={control_stats['accuracy']:.4f}, "
             f"MAE={control_stats['mae']:.4f})"
+        )
+
+        print(
+            f"    Negative: "
+            f"{negative_stats['correct']}/"
+            f"{negative_stats['total']} correct "
+            f"(accuracy={negative_stats['accuracy']:.4f}, "
+            f"MAE={negative_stats['mae']:.4f})"
         )
 
         if counting["missing_gt"] > 0:
@@ -744,25 +769,39 @@ def plot_counting_accuracy_by_class(
         for _, result in sorted_results
     ]
 
+    negative_accuracy = [
+        result["counting"]["class_stats"][
+            "negative"
+        ]["accuracy"]
+        for _, result in sorted_results
+    ]
+
     x = np.arange(len(models))
-    width = 0.35
+    width = 0.27
 
     fig, ax = plt.subplots(
         figsize=(max(8, len(models) * 1.4), 5)
     )
 
     bars_illusory = ax.bar(
-        x - width / 2,
+        x - width,
         illusory_accuracy,
         width,
         label="Illusory",
     )
 
     bars_control = ax.bar(
-        x + width / 2,
+        x,
         control_accuracy,
         width,
         label="Control",
+    )
+
+    bars_negative = ax.bar(
+        x + width,
+        negative_accuracy,
+        width,
+        label="Negative",
     )
 
     # Numerical labels
@@ -775,6 +814,13 @@ def plot_counting_accuracy_by_class(
 
     ax.bar_label(
         bars_control,
+        fmt="%.3f",
+        padding=3,
+        fontsize=8,
+    )
+
+    ax.bar_label(
+        bars_negative,
         fmt="%.3f",
         padding=3,
         fontsize=8,
